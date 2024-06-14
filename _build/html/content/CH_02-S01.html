@@ -397,6 +397,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tipos-de-datos">
+   2. Tipos de Datos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#an-example-cell">
    An example cell
   </a>
@@ -441,6 +446,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tipos-de-datos">
+   2. Tipos de Datos
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#an-example-cell">
@@ -518,7 +528,7 @@ title="Print to PDF"
 </ul>
 <p><strong>Solución</strong>:</p>
 <ul>
-<li><p><strong>Empleando java</strong>: a continuación se muestra el código solución (<span class="xref myst">ex1_ch2_S01.java</span>) en java:</p>
+<li><p><strong>Empleando java</strong>: a continuación se muestra el código solución (<span class="xref myst">ex1_ch2_S01.java</span>) en java (<a class="reference external" href="https://pythontutor.com/render.html#code=public%20class%20Hello%20%7B%0A%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20System.out.println%28%22Hello%20world%22%29%3B%0A%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=java&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulación</a>):</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="p">{</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello world&quot;</span><span class="p">);</span>
@@ -527,7 +537,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong>Empleando C</strong>: en el enlace solución en C se encuentra el código C (<span class="xref myst">ex1_ch2_S01.c</span>) que implementa lo solicitado:</p>
+<li><p><strong>Empleando C</strong>: en el enlace solución en C se encuentra el código C (<span class="xref myst">ex1_ch2_S01.c</span>) que implementa lo solicitado (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28int%20argc,%20char%20*argv%5B%5D%29%20%7B%0A%20%20printf%28%22%25s%22,%22Hello,%20World%22%29%3B%0A%20%20return%200%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulación</a>):</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -548,10 +558,164 @@ Hello, World
 </ul>
 </li>
 </ol>
+</section>
+</section>
+<section id="tipos-de-datos">
+<h2>2. Tipos de Datos<a class="headerlink" href="#tipos-de-datos" title="Permalink to this headline">#</a></h2>
+<p>Los tipos de datos básicos incorporados en C son los enteros, los reales y los tipo carácter. En la siguiente tabla se resumen éstos:</p>
+<p><strong>Tabla 1</strong>. Tipos de datos primitivos en C</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tipo de dato</p></th>
+<th class="head"><p>Tamaño (en bytes)</p></th>
+<th class="head"><p>Rango</p></th>
+<th class="head"><p>Especificador de formato</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>short (short int)</p></td>
+<td><p>2</p></td>
+<td><p>-32768 to 32767</p></td>
+<td><p>%hd</p></td>
+</tr>
+<tr class="row-odd"><td><p>unsigned short (unsigned short int)</p></td>
+<td><p>2</p></td>
+<td><p>0 to 65535</p></td>
+<td><p>%hu</p></td>
+</tr>
+<tr class="row-even"><td><p>unsigned (unsigned int)</p></td>
+<td><p>4</p></td>
+<td><p>0 to 4294967295</p></td>
+<td><p>%u</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p>4</p></td>
+<td><p>2147483648 to 2147483647</p></td>
+<td><p>%d</p></td>
+</tr>
+<tr class="row-even"><td><p>long (long int)</p></td>
+<td><p>4</p></td>
+<td><p>2147483648 to 2147483647</p></td>
+<td><p>%ld</p></td>
+</tr>
+<tr class="row-odd"><td><p>unsigned long (unsigned long int)</p></td>
+<td><p>4</p></td>
+<td><p>0 to 4294967295</p></td>
+<td><p>%lu</p></td>
+</tr>
+<tr class="row-even"><td><p>long long (long long int)</p></td>
+<td><p>8</p></td>
+<td><p>-(2^63) to (2^63)-1</p></td>
+<td><p>%lld</p></td>
+</tr>
+<tr class="row-odd"><td><p>unsigned long long (unsigned long long int)</p></td>
+<td><p>8</p></td>
+<td><p>0 to 18446744073709551615</p></td>
+<td><p>%llu</p></td>
+</tr>
+<tr class="row-even"><td><p>char (signed char)</p></td>
+<td><p>1</p></td>
+<td><p>-128 to 127</p></td>
+<td><p>%c</p></td>
+</tr>
+<tr class="row-odd"><td><p>unsigned char</p></td>
+<td><p>1</p></td>
+<td><p>0 to 255</p></td>
+<td><p>%c</p></td>
+</tr>
+<tr class="row-even"><td><p>float</p></td>
+<td><p>4</p></td>
+<td><p></p></td>
+<td><p>%f</p></td>
+</tr>
+<tr class="row-odd"><td><p>double</p></td>
+<td><p>8</p></td>
+<td><p></p></td>
+<td><p>%lf</p></td>
+</tr>
+<tr class="row-even"><td><p>long double</p></td>
+<td><p>12</p></td>
+<td><p></p></td>
+<td><p>%Lf</p></td>
+</tr>
+</tbody>
+</table>
+<p>El manejo de los tipos de datos en C es muy similar al que se hace en java. Cabe resaltar que de los tipos de datos enteros, el tipo <strong>char</strong> se utiliza para representar caracteres de modo que las constantes tipo <strong>char</strong> pueden ser:</p>
+<ol class="simple">
+<li><p>Caracteres encerrados entre comillas (‘A’, ‘b’, ‘p’) asociados a un valor ascii.</p></li>
+<li><p>Caracteres no imprimibles (tabulación, avance de página) los cuales se representan con secuencias de escape (‘\n’, ‘\t’). La siguiente tabla muestra algunos de estos caracteres:</p></li>
+</ol>
+<p><strong>Tabla 2</strong>. Secuencias de escape en C</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Carácter de escape</p></th>
+<th class="head"><p>Singnificado</p></th>
+<th class="head"><p>Código ASCII</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>\a</p></td>
+<td><p>Carácter de alerta (timbre)</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p>\b</p></td>
+<td><p>Retroceso de espacio</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>\f</p></td>
+<td><p>Avance de página</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-odd"><td><p>\n</p></td>
+<td><p>Nueva línea</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>\r</p></td>
+<td><p>Retorno de carro</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>\t</p></td>
+<td><p>Tabulación horizontal</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>\v</p></td>
+<td><p>Tabulación vertical</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p>\</p></td>
+<td><p>Backslash ( \ ).</p></td>
+<td><p>92</p></td>
+</tr>
+<tr class="row-even"><td><p>?</p></td>
+<td><p>Interrogación ( ? ).</p></td>
+<td><p>63</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘</p></td>
+<td><p>Comilla sencilla ( ‘ ).</p></td>
+<td><p>39</p></td>
+</tr>
+<tr class="row-even"><td><p>“</p></td>
+<td><p>Comillas dobles.</p></td>
+<td><p>34</p></td>
+</tr>
+<tr class="row-odd"><td><p>\0nn</p></td>
+<td><p>Número octal.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>\Xnn</p></td>
+<td><p>Número hexadecimal</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>\0</p></td>
+<td><p>Carácter nulo o terminación de cadena</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>La equivalencia entre un carácter específico y su valor ascii se puede encontrar en una tabla ascii como la mostrada en el siguiente <a class="reference external" href="http://www.fceia.unr.edu.ar/~ifc/apuntes/tascii.pdf">enlace</a>.</p>
 <p>Jupyter Book also lets you write text-based notebooks using MyST Markdown.
 See <a class="reference external" href="https://jupyterbook.org/file-types/myst-notebooks.html">the Notebooks with MyST Markdown documentation</a> for more detailed instructions.
 This page shows off a notebook written in MyST Markdown.</p>
-</section>
 </section>
 <section id="an-example-cell">
 <h2>An example cell<a class="headerlink" href="#an-example-cell" title="Permalink to this headline">#</a></h2>
