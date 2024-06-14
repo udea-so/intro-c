@@ -472,18 +472,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#an-example-cell">
-   An example cell
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">
-   Create a notebook with MyST Markdown
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">
-   Quickly add YAML metadata for MyST Notebooks
+  <a class="reference internal nav-link" href="#estructuras-de-contro">
+   4. Estructuras de Contro
   </a>
  </li>
 </ul>
@@ -593,18 +583,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#an-example-cell">
-   An example cell
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">
-   Create a notebook with MyST Markdown
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">
-   Quickly add YAML metadata for MyST Notebooks
+  <a class="reference internal nav-link" href="#estructuras-de-contro">
+   4. Estructuras de Contro
   </a>
  </li>
 </ul>
@@ -921,7 +901,7 @@ Hello, World
 </pre></div>
 </div>
 <p>El resultado en memoria puede ser visto en el siguiente <a class="reference external" href="https://pythontutor.com/render.html#code=int%20main%28%29%20%7B%0A%20%20char%20temp%5B5%5D%20%3D%20%22Hot%22%3B%0A%20%20return%200%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">enlace</a></p>
-<img src="./local/img/CH_02-S01-fig1.png" alt="representacion cadena">   
+<p>![cadena](./local/img/CH_02-S01-fig1.png” alt=”representacion cadena)</p>
 <p>Es importante resaltar que el programador debe asegurarse que la cadena de caracteres sea lo bastante grande para el uso deseado. Vemos que <strong><code class="docutils literal notranslate"><span class="pre">temp</span></code></strong> mantiene 4 caracteres, 3 de la palabra <code class="docutils literal notranslate"><span class="pre">Hot</span></code> más el carácter <code class="docutils literal notranslate"><span class="pre">NULL</span></code>(<code class="docutils literal notranslate"><span class="pre">\0</span></code>).</p>
 </li>
 <li><p>Se tienen la siguientes declaraciones (<a class="reference external" href="ttps://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20s1%5B6%5D%3B%0A%20%20char%20s2%5B5%5D%20%3D%20%22Hola%22%3B%0A%20%20char%20s3%5B%5D%20%3D%20%22zzz%22%3B%0A%20%20return%200%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulación</a>):</p>
@@ -1219,40 +1199,9 @@ See <a class="reference external" href="https://jupyterbook.org/file-types/myst-
 This page shows off a notebook written in MyST Markdown.</p>
 </section>
 </section>
-<section id="an-example-cell">
-<h2>An example cell<a class="headerlink" href="#an-example-cell" title="Permalink to this headline">#</a></h2>
-<p>With MyST Markdown, you can define code cells with a directive like so:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>When your book is built, the contents of any <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> blocks will be
-executed with your default Jupyter kernel, and their outputs will be displayed
-in-line with the rest of your content.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>Jupyter Book uses <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/">Jupytext</a> to convert text-based files to notebooks, and can support <a class="reference external" href="https://jupyterbook.org/file-types/jupytext.html">many other text-based notebook files</a>.</p>
-</div>
-</section>
-<section id="create-a-notebook-with-myst-markdown">
-<h2>Create a notebook with MyST Markdown<a class="headerlink" href="#create-a-notebook-with-myst-markdown" title="Permalink to this headline">#</a></h2>
-<p>MyST Markdown notebooks are defined by two things:</p>
-<ol class="simple">
-<li><p>YAML metadata that is needed to understand if / how it should convert text files to notebooks (including information about the kernel needed).
-See the YAML at the top of this page for example.</p></li>
-<li><p>The presence of <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> directives, which will be executed with your book.</p></li>
-</ol>
-<p>That’s all that is needed to get started!</p>
-</section>
-<section id="quickly-add-yaml-metadata-for-myst-notebooks">
-<h2>Quickly add YAML metadata for MyST Notebooks<a class="headerlink" href="#quickly-add-yaml-metadata-for-myst-notebooks" title="Permalink to this headline">#</a></h2>
-<p>If you have a markdown file and you’d like to quickly add YAML metadata to it, so that Jupyter Book will treat it as a MyST Markdown Notebook, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">myst</span> <span class="n">init</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">markdownfile</span><span class="o">.</span><span class="n">md</span>
-</pre></div>
-</div>
+<section id="estructuras-de-contro">
+<h2>4. Estructuras de Contro<a class="headerlink" href="#estructuras-de-contro" title="Permalink to this headline">#</a></h2>
+<p>Las Instrucciones de control en C son similares a las de Java. A continuación se describe la estructura y se muestan algunos ejemplos</p>
 </section>
 </section>
 
