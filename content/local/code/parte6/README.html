@@ -1,0 +1,1334 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Manejo de archivos en C &#8212; Introducción al lenguaje C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción al lenguaje C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/udea-so/intro-c"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/udea-so/intro-c/issues/new?title=Issue%20on%20page%20%2Fcontent/local/code/parte6/README.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/content/local/code/parte6/README.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conceptualizacion">
+   1. Conceptualización
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#que-son-los-archivos">
+     1.1. ¿Que son los archivos?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#para-que-se-usan-los-archivos">
+     1.2. ¿Para que se usan los archivos?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#empleando-c-para-el-trabajo-con-archivos">
+   2. Empleando C para el trabajo con archivos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aspectos-introductorios">
+     2.1. Aspectos introductorios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usando-archivos-en-c">
+     2.2. Usando archivos en C
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#abriendo-el-archivo">
+       2.2.1. Abriendo el archivo
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cerrando-el-archivo-el-archivo">
+       2.2.2. Cerrando el archivo el archivo
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#trabajando-con-archivos">
+       2.2.3. Trabajando con archivos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#entrada-y-salida-por-caracteres">
+       2.2.3.1. Entrada y salida por caracteres
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-putc">
+       2.2.3.1.1. Funcion putc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-getc">
+       2.2.3.1.2. Funcion getc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-gets">
+       2.2.3.1.3. Funcion gets
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-puts">
+       2.2.3.1.4. Funcion puts
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-fprintf">
+       2.2.3.1.5. Funcion fprintf
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-fscanf">
+       2.2.3.1.6. Funcion fscanf
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x-enlaces">
+   X. Enlaces:
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Manejo de archivos en C</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conceptualizacion">
+   1. Conceptualización
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#que-son-los-archivos">
+     1.1. ¿Que son los archivos?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#para-que-se-usan-los-archivos">
+     1.2. ¿Para que se usan los archivos?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#empleando-c-para-el-trabajo-con-archivos">
+   2. Empleando C para el trabajo con archivos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aspectos-introductorios">
+     2.1. Aspectos introductorios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usando-archivos-en-c">
+     2.2. Usando archivos en C
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#abriendo-el-archivo">
+       2.2.1. Abriendo el archivo
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cerrando-el-archivo-el-archivo">
+       2.2.2. Cerrando el archivo el archivo
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#trabajando-con-archivos">
+       2.2.3. Trabajando con archivos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#entrada-y-salida-por-caracteres">
+       2.2.3.1. Entrada y salida por caracteres
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-putc">
+       2.2.3.1.1. Funcion putc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-getc">
+       2.2.3.1.2. Funcion getc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-gets">
+       2.2.3.1.3. Funcion gets
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-puts">
+       2.2.3.1.4. Funcion puts
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-fprintf">
+       2.2.3.1.5. Funcion fprintf
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funcion-fscanf">
+       2.2.3.1.6. Funcion fscanf
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x-enlaces">
+   X. Enlaces:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="manejo-de-archivos-en-c">
+<h1>Manejo de archivos en C<a class="headerlink" href="#manejo-de-archivos-en-c" title="Permalink to this headline">#</a></h1>
+<section id="conceptualizacion">
+<h2>1. Conceptualización<a class="headerlink" href="#conceptualizacion" title="Permalink to this headline">#</a></h2>
+<section id="que-son-los-archivos">
+<h3>1.1. ¿Que son los archivos?<a class="headerlink" href="#que-son-los-archivos" title="Permalink to this headline">#</a></h3>
+<p>Un archivo es una colección de información almacenada en un dispositivo de memoria no volatil, usualmente el disco de un computador. Como la información no se pierde esta puede ser reutilizada una vez se ha guardado.</p>
+</section>
+<section id="para-que-se-usan-los-archivos">
+<h3>1.2. ¿Para que se usan los archivos?<a class="headerlink" href="#para-que-se-usan-los-archivos" title="Permalink to this headline">#</a></h3>
+<p>Los archivos son usados para almacenamiento permanente de grandes cantidades de datos ya que los datos almacenados en arreglos y variables solo existen temporalmente (Mientras el programa se ejecuta). A todo archivo le es asignado un nombre que es usado por el sistema operativo y por el usuario para propósitos de identificación.</p>
+</section>
+</section>
+<section id="empleando-c-para-el-trabajo-con-archivos">
+<h2>2. Empleando C para el trabajo con archivos<a class="headerlink" href="#empleando-c-para-el-trabajo-con-archivos" title="Permalink to this headline">#</a></h2>
+<section id="aspectos-introductorios">
+<h3>2.1. Aspectos introductorios<a class="headerlink" href="#aspectos-introductorios" title="Permalink to this headline">#</a></h3>
+<p>Un concepto muy importante en C es el de <strong>stream</strong>. Un <strong>stream</strong> no es mas que una interfaz logica que permite el intercambio de datos entre una aplicacion y un archivo (en el sentido amplio de la palabra, se asocia no solo al disco duro sino que tambien puede hacer alusion a otros dispositivos como el teclado, la pantalla, etc.). Cuando se establece un intercambio de datos entre una aplicacion y un archivo se establece un buffer (flujo de bytes) que es intercambiado entre el dispositivo y la aplicación tal y como se muestra en la siguiente figura:</p>
+<p><img alt="fig1" src="../../../../_images/file_IO.png" /></p>
+<p><strong>Figura 1</strong>. C stream.</p>
+<p>Tal y como se muestra en la figura 2, el intercambio de informacion entre el archivo y la aplicacion implica tres actividades:</p>
+<ol class="simple">
+<li><p><strong>Abrir el archivo</strong>: con esto se indica que se va a iniciar una transferencia de datos asi como el sentido en el cual se va a llevar a cabo.</p></li>
+<li><p><strong>Procesar los datos</strong>: en esta parte la aplicacion lleva a cabo el desarrollo de la logica como tal; esta puede implicar el procesamiento de informacion y el uso de instrucciones (lectura/escritura) para intercambio de datos entre el archivo y la aplicacion.</p></li>
+<li><p><strong>Cerrar el archivo</strong>: lo cual indica que se dara por terminada la transferencia de datos entre este y la aplicacion.</p></li>
+</ol>
+<p><img alt="fig2" src="../../../../_images/procesando_archivos.png" /></p>
+<p><strong>Figura 2</strong>. Trabajando con archivos.</p>
+</section>
+<section id="usando-archivos-en-c">
+<h3>2.2. Usando archivos en C<a class="headerlink" href="#usando-archivos-en-c" title="Permalink to this headline">#</a></h3>
+<p>A continuación se describiran la forma como se llevan a cabo cada una de las actividades previamente citadas:</p>
+<section id="abriendo-el-archivo">
+<h4>2.2.1. Abriendo el archivo<a class="headerlink" href="#abriendo-el-archivo" title="Permalink to this headline">#</a></h4>
+<p>Abrir el archivo implica dos cosas:</p>
+<ol class="simple">
+<li><p>Declarar un apuntador a <code class="docutils literal notranslate"><span class="pre">FILE</span></code></p></li>
+<li><p>Hacer uso de la funcion <code class="docutils literal notranslate"><span class="pre">fopen</span></code></p></li>
+</ol>
+<p><strong>Declarando un apuntador a FILE</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">FILE</span></code> es una estructura definida en la libreria <code class="docutils literal notranslate"><span class="pre">stdio.h</span></code> (no olvidar incluir en el archivo fuente) para trabajar con archivos, de modo que el primer paso para empezar el proceso de trabajar con archivos consiste en la declaracion de un apuntador a este tipo de dato. La forma para esto es la siguiente:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">file_pointer_name</span><span class="p">,..;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Por ejemplo a continuacion se declaran dos apuntadores a FILE:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">ifp</span><span class="p">;</span><span class="w"></span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">ofp</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Abriendo un archivo</strong>
+Para abrir un archivo y asociarlo con un stream se usa la funcion <code class="docutils literal notranslate"><span class="pre">fopen()</span></code> cuyo prototipo se muestra a continuacion:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">fopen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">mode</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>fname</strong> esta asociado al nombre del archivo.</p></li>
+<li><p><strong>mode</strong> opcion que indica a C si el archivo se va a leer, a escribir o a modificar entre otras. La siguiente tabla describe las opciones disponibles el modo.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Modo</p></th>
+<th class="head"><p>Significado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>r</p></td>
+<td><p>Abre un archivo de texto para lectura</p></td>
+</tr>
+<tr class="row-odd"><td><p>w</p></td>
+<td><p>Abre un archivo de texto para escritura</p></td>
+</tr>
+<tr class="row-even"><td><p>a</p></td>
+<td><p>Agrega contenido a un archivo de texto</p></td>
+</tr>
+<tr class="row-odd"><td><p>rb</p></td>
+<td><p>Abre un archivo binario para lectura</p></td>
+</tr>
+<tr class="row-even"><td><p>wb</p></td>
+<td><p>Abre un archivo binario para escritura</p></td>
+</tr>
+<tr class="row-odd"><td><p>ab</p></td>
+<td><p>Agrega contenido a un archivo binario</p></td>
+</tr>
+<tr class="row-even"><td><p>r+</p></td>
+<td><p>Abre un archivo de texto para leer/escribir</p></td>
+</tr>
+<tr class="row-odd"><td><p>w+</p></td>
+<td><p>Crea un archivo de texto para leer/escribir</p></td>
+</tr>
+<tr class="row-even"><td><p>a+</p></td>
+<td><p>Abre o crea un archivo de texto para leer/escribir</p></td>
+</tr>
+<tr class="row-odd"><td><p>r+b</p></td>
+<td><p>Abre binario para leer/escribir</p></td>
+</tr>
+<tr class="row-even"><td><p>w+b</p></td>
+<td><p>Crea binario para leer/escribir</p></td>
+</tr>
+<tr class="row-odd"><td><p>a+b</p></td>
+<td><p>Abre o crea binario para leer/escribir</p></td>
+</tr>
+</tbody>
+</table>
+<p>Si el programa abre exitoramente el archivo, fopen() devuelve un apuntador a file pointer el cual puede ser empleado para aplicar otras funciones de I/O sobre el archivo asociado (como lo veremos despues). Por otro lado, si hay un error, el valor retornado sera un puntero nulo.</p>
+<p><strong>Code snippets</strong></p>
+<ol class="simple">
+<li><p>Crear un archivo de texto llamado <strong>data.dat</strong> y dejandolo listo para escribir</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="p">...</span><span class="w"></span>
+<span class="c1">// Abriendo el archivo</span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">outFile</span><span class="p">;</span><span class="w"></span>
+<span class="n">inFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">&quot;data.dat&quot;</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Este codigo continuara...</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Abrir para leer un archivo llamado “lista.txt”</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="p">...</span><span class="w"></span>
+<span class="c1">// Abriendo el archivo</span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">inFile</span><span class="p">;</span><span class="w"></span>
+<span class="n">inFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">&quot;lista.txt&quot;</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Verificando que el archivo se haya abierto</span>
+<span class="k">if</span><span class="p">(</span><span class="n">inFile</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;No se puede abrir lista.txt</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="c1">// Este codigo continuara...</span>
+</pre></div>
+</div>
+<p>Note que se chequeo el resultado de <strong>fopen</strong>. Esta función puede devolver NULL mas espeficicamente por cosas como:</p>
+<ul class="simple">
+<li><p>Usar un nombre de archivo invalido.</p></li>
+<li><p>Intentar abrir un archivo en un disco que no esta listo; por ejemplo, cuando el disco no esta formateado.</p></li>
+<li><p>Intentar abrir un archivo en un directorio inexistente o en un disco duro inexistente.</p></li>
+<li><p>Intentar abrir un archivo inexistente en modo <strong>r</strong>.</p></li>
+</ul>
+<ol class="simple">
+<li><p>Abrir para leer un archivo. Su nombre debera ser pasado por teclado.</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="p">...</span><span class="w"></span>
+<span class="c1">// Abriendo el archivo</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">filename</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span><span class="w"></span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">;</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Entre el nombre del archivo que sera abierto: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">gets</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span><span class="w"> </span>
+<span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Verificando que el archivo se haya abierto</span>
+<span class="k">if</span><span class="p">(</span><span class="n">fp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Can not open %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="c1">// Este codigo continuara...</span>
+</pre></div>
+</div>
+<p>Como se puede ver en el código anteriormente mostrado, se empleo la funcion fgets() la cual es una funcion como scanf para entrada de datos desde el teclado. Para mas informacion sobre esta, puede consultar el siguiente <a class="reference external" href="http://c.conclase.net/librerias/?ansifun=fgets">enlace</a>.</p>
+<ol class="simple">
+<li><p>Crear un archivo dentro del directorio <strong>/home/vito.corleone</strong>. El nombre del archivo sera pasado por teclado.</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="p">...</span><span class="w"></span>
+<span class="c1">// Abriendo el archivo</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">path</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/home/vito.corleone/&quot;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">filename</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">fullName</span><span class="p">[</span><span class="mi">161</span><span class="p">];</span><span class="w"> </span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">;</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Entre el nombre del archivo que sera abierto: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">gets</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span><span class="w"></span>
+<span class="n">strcat</span><span class="p">(</span><span class="n">fullName</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="n">strcat</span><span class="p">(</span><span class="n">fullName</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="p">);</span><span class="w"></span>
+<span class="n">fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">fullName</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Este codigo continuara...</span>
+</pre></div>
+</div>
+<p>Para obtener el nombre completo del archivo (ruta + nombre) se uso la función <strong>strcat</strong> que concatena dos cadenas de caracteres. Para mas informacion sobre esta puede consultar el siguiente <a class="reference external" href="http://c.conclase.net/librerias/?ansifun=strcat">enlace</a></p>
+</section>
+<section id="cerrando-el-archivo-el-archivo">
+<h4>2.2.2. Cerrando el archivo el archivo<a class="headerlink" href="#cerrando-el-archivo-el-archivo" title="Permalink to this headline">#</a></h4>
+<p>Despues de completarse el procesamiento de un archivo, este debe ser cerrado y para ello se emplea la funcion fclose(). El prototipo de la funcion fclose es el siguiente:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">fclose</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>fp</strong> es el FILE pointer asociado con el stream.</p></li>
+</ul>
+<p>La funcion anterior retorna 0 si el stream fue cerrado con exito o -1 si hay errores.</p>
+<p><strong>Code snippets</strong></p>
+<ol class="simple">
+<li><p>En el siguiente ejemplo se muestra como se cierra un archivo despues de que este ha sido abierto.</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="p">...</span><span class="w"></span>
+<span class="c1">// Abriendo el archivo</span>
+<span class="kt">char</span><span class="w"> </span><span class="n">fullName</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/home/vito.corleone/data.dat&quot;</span><span class="w"></span>
+<span class="n">fout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">fullName</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Este codigo continuara</span>
+
+<span class="p">...</span><span class="w"></span>
+<span class="c1">// Cerrando el archivo</span>
+<span class="n">fclose</span><span class="p">(</span><span class="n">fout</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="trabajando-con-archivos">
+<h4>2.2.3. Trabajando con archivos<a class="headerlink" href="#trabajando-con-archivos" title="Permalink to this headline">#</a></h4>
+<p>C proporsiona varias funciones para leer y escribir archivos, la siguiente tabla muestra algunas de ellas:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Modo</p></th>
+<th class="head"><p>Funciones</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Lectura</p></td>
+<td><p>fscanf, fgets, fgetc, fread</p></td>
+</tr>
+<tr class="row-odd"><td><p>Escrirtura</p></td>
+<td><p>fprintf, fputs, fputc, fwrite</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entrada-y-salida-por-caracteres">
+<h4>2.2.3.1. Entrada y salida por caracteres<a class="headerlink" href="#entrada-y-salida-por-caracteres" title="Permalink to this headline">#</a></h4>
+<p>Para leer y escribir archivos de caracter en caracter se emplea las funciones <strong>getc</strong> y <strong>putc</strong> respectivamente. A continuación se hablará de cada una de estas</p>
+</section>
+<section id="funcion-putc">
+<h4>2.2.3.1.1. Funcion putc<a class="headerlink" href="#funcion-putc" title="Permalink to this headline">#</a></h4>
+<p>Permite escribir un unico caracter a un stream especifico. El prototipo de esta se muestra a continuacion:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">putc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>ch</strong> es el caracter que sera escrito.</p></li>
+<li><p><strong>fp</strong> es el file pointer asociado al archivo despues de que este ha sido abierto mediante la funcion fopen.</p></li>
+</ul>
+<p>La funcion retorna el caracter que se acabo de escribir si el proceso fue exitoso o EOF (constante simbolica definida en stdio.h cuyo valor es -1) si un error ocurre.</p>
+<p><strong>Ejemplo</strong></p>
+<ol class="simple">
+<li><p>Una cadena de ADN puede se representa mediante un alfabeto de 4 simbolos (‘A’, ‘C’, ‘G’ y ‘T’). Hacer un programa que permita generar una archivo con una cadena de ADN cuyo tamaño y nombre sea ingresado por el usuario.</p></li>
+</ol>
+<p><strong>Solucion</strong>: En <span class="xref myst">write_caracter.c</span> se encuentra la solucion de este programa. Por comodidad aqui tambien se pone:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+
+<span class="kt">char</span><span class="w"> </span><span class="nf">generarCaracter</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w"> </span><span class="c1">// Inicializacion del generador</span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">filename</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">outFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el nombre de la cadena de ADN a generar: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%[^</span><span class="se">\n</span><span class="s">]s&quot;</span><span class="p">,</span><span class="n">filename</span><span class="p">);</span><span class="w"> </span><span class="c1">// Formato para que la entrada pueda aceptar espacios</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el tamaño de la cadena: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">tam</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">outFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generarCaracter</span><span class="p">();</span><span class="w"> </span><span class="c1">// Generacion de la letra</span>
+<span class="w">    </span><span class="n">putc</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">putc</span><span class="p">(</span><span class="sc">&#39;\0&#39;</span><span class="p">,</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">char</span><span class="w"> </span><span class="nf">generarCaracter</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">randomNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c1">//Generando un aleatorio entre 0 y 3</span>
+<span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">randomNum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="sc">&#39;G&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="sc">&#39;T&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="funcion-getc">
+<h4>2.2.3.1.2. Funcion getc<a class="headerlink" href="#funcion-getc" title="Permalink to this headline">#</a></h4>
+<p>Permite leer un unico caracter de un stream especifico. El prototipo de esta se muestra a continuacion:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">getc</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>fp</strong> es el file pointer asociado al archivo despues de que este ha sido abierto mediante la funcion fopen.</p></li>
+</ul>
+<p>La funcion retorna el caracter que fue leido <strong>EOF</strong> (-1) en caso de error.</p>
+<p><strong>Ejemplo</strong></p>
+<ol class="simple">
+<li><p>Hacer un programa que lea un archivo de texto caracter por caracter y lo imprima en pantalla.</p></li>
+</ol>
+<p><strong>Solucion</strong>: <span class="xref myst">read_caracter.c</span> es el codigo solucion. Por comodidad se muestra este codigo a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w"> </span><span class="c1">// Inicializacion del generador</span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">filename</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">inputFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el nombre de la cadena de ADN a generar: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%[^</span><span class="se">\n</span><span class="s">]s&quot;</span><span class="p">,</span><span class="n">filename</span><span class="p">);</span><span class="w"> </span><span class="c1">// Formato para que la entrada pueda aceptar espacios</span>
+<span class="w">  </span><span class="n">inputFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inputFile</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error al abrir el archivo %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getc</span><span class="p">(</span><span class="n">inputFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%c&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">EOF</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">inputFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Hacer un programa que abra un archivo que contiene una cadena de ADN y genere un archivo de salida con el numero de cada uno de los caracteres el alfabeto genetico (‘A’, ‘G’, ‘G’ y ‘C’) separados por espacio. El nombre del archivo sera <strong>inventario_nombreArchivo</strong>. Asi por ejemplo si se tiene un archivo con el siguiente nombre <strong>secuencia.dat</strong> con el siguiente contenido:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AGCTTTTCATTCT</span>
+</pre></div>
+</div>
+<p>La salida sera un archivo llamado <strong>inventario_secuencia.dat</strong> y su contenido será el siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">7</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p><strong>Solución</strong>: En <span class="xref myst">read_write_caracter.c</span> se muestra el codigo solución, por comodidad a continuación tambien aparece:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">inFilename</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">outFilename</span><span class="p">[</span><span class="mi">80</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;inventario_&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">cntS</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">cnt</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">inFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">outFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el nombre de la cadena de ADN a generar: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%[^</span><span class="se">\n</span><span class="s">]s&quot;</span><span class="p">,</span><span class="n">inFilename</span><span class="p">);</span><span class="w"> </span><span class="c1">// Formato para que la entrada pueda aceptar espacios</span>
+<span class="w">  </span><span class="n">inFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">inFilename</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inFile</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error al abrir el archivo %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">inFilename</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getc</span><span class="p">(</span><span class="n">inFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">cnt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;G&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">cnt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;T&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">cnt</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">cnt</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">EOF</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">inFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">strcat</span><span class="p">(</span><span class="n">outFilename</span><span class="p">,</span><span class="n">inFilename</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">outFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">outFilename</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">snprintf</span><span class="p">(</span><span class="n">cntS</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cnt</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">cntS</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">putc</span><span class="p">(</span><span class="n">cntS</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">j</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">putc</span><span class="p">(</span><span class="sc">&#39; &#39;</span><span class="p">,</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">putc</span><span class="p">(</span><span class="sc">&#39;\0&#39;</span><span class="p">,</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Hay que resaltar que en el codigo anterior, hay algunas funciones que no se han visto pero que pueden ser consultadas en internet, a continuacion como <a class="reference external" href="https://www.ibm.com/support/knowledgecenter/en/ssw_ibm_i_73/rtref/strcat.htm">strcat</a> y <a class="reference external" href="https://www.ibm.com/support/knowledgecenter/en/ssw_ibm_i_73/rtref/snprintf.htm">snprintf</a>. Lo animamos a que observe la descripcion y ejemplos de los enlaces y comprenda como se usan estos en el programa.</p>
+</section>
+<section id="funcion-gets">
+<h4>2.2.3.1.3. Funcion gets<a class="headerlink" href="#funcion-gets" title="Permalink to this headline">#</a></h4>
+<p>Es una funcion empleada para leer un archivo linea por linea. El prototipo de la funcion es el siguiente:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">fgets</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>str</strong> cadena de caracteres a la que se llevara la parte leida del archivo.</p></li>
+<li><p><strong>n</strong> numero maximo de caracteres a leer tenieno en cuenta el NULL. Por lo tanto el maximo de caracteres es de <strong>n - 1</strong>.</p></li>
+<li><p><strong>fp</strong> es el file pointer asociado al archivo despues de que este ha sido abierto mediante la funcion fopen.</p></li>
+</ul>
+<p>La funcion detiene la lectura si:</p>
+<ul class="simple">
+<li><p>Se han leido ya n - 1 caracteres.</p></li>
+<li><p>Se a encontrado el caracter de nueva linea.</p></li>
+<li><p>Se ha alcanzado el final del archivo.</p></li>
+<li><p>Se ha lanzado un error de lectura.</p></li>
+</ul>
+<p>Esta funcion agreda un terminador null a los datos leidos, comparada con la version de lectura caracter por caracter (getc) esta funcion es maas eficiente.</p>
+<p><strong>Ejemplos</strong>:</p>
+<ol class="simple">
+<li><p>Hacer un programa que lea un archivo y lo muestre en pantalla. Este programa, debera mostrar ademas el numero de linea asociado. Por ejemplo, supongase que se tiene un archivo de texto llamado “frases.txt”</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>La vida es una obra teatral que no importa cuánto haya durado, sino lo bien que haya sido representada. 
+Séneca
+
+Estar preparado es importante, saber esperar lo es aún más, pero aprovechar el momento adecuado es la clave de la vida. 
+Arthur Schnitzler
+
+¡Qué pequeñas son mis manos…! En relación con todo lo que la vida ha querido darme.
+Ramón J. Sénder
+
+Todo el mundo trata de realizar algo grande, sin darse cuenta de que la vida se compone de cosas pequeñas. 
+Frank Clark
+
+Sólo le falta el tiempo a quien no sabe aprovecharlo. 
+Jovellanos
+
+Nuestra mayor gloria no está en no caer nunca, sino en levantarnos cada vez que caemos. 
+Confucio
+
+La alegría cuanto más se gasta, más queda. 
+Ralph Waldo Emerson
+
+Se necesitan dos años para aprender a hablar, y sesenta para aprender a callar. 
+Ernest Hemingway
+</pre></div>
+</div>
+<p>Cuando se muestre en pantalla sera:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1   La vida es una obra teatral que no importa cuánto haya durado, sino lo bien que haya sido representada. 
+2   Séneca
+3
+4   Estar preparado es importante, saber esperar lo es aún más, pero aprovechar el momento adecuado es la clave de la vida. 
+5   Arthur Schnitzler
+6
+7   ¡Qué pequeñas son mis manos…! En relación con todo lo que la vida ha querido darme.
+8   Ramón J. Sénder
+9  
+10  Todo el mundo trata de realizar algo grande, sin darse cuenta de que la vida se compone de cosas pequeñas. 
+11  Frank Clark
+12
+13  Sólo le falta el tiempo a quien no sabe aprovecharlo. 
+14  Jovellanos
+15
+16  Nuestra mayor gloria no está en no caer nunca, sino en levantarnos cada vez que caemos. 
+17  Confucio
+18
+19  La alegría cuanto más se gasta, más queda. 
+20  Ralph Waldo Emerson
+21
+22  Se necesitan dos años para aprender a hablar, y sesenta para aprender a callar. 
+23  Ernest Hemingway
+</pre></div>
+</div>
+<p><strong>Solucion</strong>: El archivo <span class="xref myst">read_linea.c</span> contiene la sulucion. A continuacion se muestra este por comodidad:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">filename</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">line</span><span class="p">[</span><span class="mi">201</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">numLinea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">iF</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el nombre del archivo: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fflush</span><span class="p">(</span><span class="n">stdin</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%[^</span><span class="se">\n</span><span class="s">]s&quot;</span><span class="p">,</span><span class="n">filename</span><span class="p">);</span><span class="w"> </span><span class="c1">// Formato para que la entrada pueda aceptar espacios</span>
+<span class="w">  </span><span class="n">iF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iF</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error al abrir el archivo %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="mi">201</span><span class="p">,</span><span class="w"> </span><span class="n">iF</span><span class="p">)</span><span class="o">!=</span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%-5d&quot;</span><span class="p">,</span><span class="n">numLinea</span><span class="o">++</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="n">line</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">iF</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="funcion-puts">
+<h4>2.2.3.1.4. Funcion puts<a class="headerlink" href="#funcion-puts" title="Permalink to this headline">#</a></h4>
+<p>Escribe una cadena de caracteres a un stream. El prototipo de la funcion es el siguiente:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="nf">fputs</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>str</strong> es un apuntador a una cadena de caracteres terminada con NULL.</p></li>
+<li><p><strong>fp</strong> es el file pointer asociado al archivo despues de que este ha sido abierto mediante la funcion fopen.</p></li>
+</ul>
+<p>La función retorna un valor no negativo si todo sale bien o EOF en caso de error.</p>
+<p><strong>Ejemplo</strong>:</p>
+<ol class="simple">
+<li><p>Hacer un programa que lea una cadena de ADN de un archivo cualquiera y genere la cadena complementaria en otro archivo con <strong>complemento_nombreArchivo</strong> como nombre. Tenga en cuenta que en una cadena de ADN los pares complementarios son: ‘A’ con ‘T’ y ‘G’ con ‘C’. Por ejemplo, si la cadena se llama <strong>adn1.txt</strong> y tiene el siguiente contenido:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AGTTTCTTAAGCCG</span>
+</pre></div>
+</div>
+<p>El resultado será una cadena llamada <strong>complemento_adn1.txt</strong> con el siguiente contenido:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TCAAAGAATTCGGC</span>
+</pre></div>
+</div>
+<p><strong>Solución</strong>: El archivo <span class="xref myst">read_write_line1.c</span> contiene la sulucion. A continuacion se muestra este por comodidad:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">complementar</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">cad</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">inFilename</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">outFilename</span><span class="p">[</span><span class="mi">80</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;complemento_&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">adn_string</span><span class="p">[</span><span class="mi">21</span><span class="p">];</span><span class="w"> </span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">inFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">outFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el nombre de la cadena de ADN a generar: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fflush</span><span class="p">(</span><span class="n">stdin</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%[^</span><span class="se">\n</span><span class="s">]s&quot;</span><span class="p">,</span><span class="n">inFilename</span><span class="p">);</span><span class="w"> </span><span class="c1">// Formato para que la entrada pueda aceptar espacios</span>
+<span class="w">  </span><span class="n">strcat</span><span class="p">(</span><span class="n">outFilename</span><span class="p">,</span><span class="n">inFilename</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">inFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">inFilename</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">outFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">outFilename</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inFile</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error al abrir el archivo %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">inFilename</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">adn_string</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="n">inFile</span><span class="p">)</span><span class="o">!=</span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">complementar</span><span class="p">(</span><span class="n">adn_string</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">fputs</span><span class="p">(</span><span class="n">adn_string</span><span class="p">,</span><span class="w"> </span><span class="n">outFile</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">inFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">complementar</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">cad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">cad</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="o">*</span><span class="n">cad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="o">*</span><span class="n">cad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;T&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;T&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="o">*</span><span class="n">cad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;G&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="o">*</span><span class="n">cad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="o">*</span><span class="n">cad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;G&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">cad</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="funcion-fprintf">
+<h4>2.2.3.1.5. Funcion fprintf<a class="headerlink" href="#funcion-fprintf" title="Permalink to this headline">#</a></h4>
+<p>Esta trabaja de manera similar a printf, solo que lo que escribe no va a pantalla si no a un archivo. El prototipo de esta funcion es motrado a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">fprintf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>fp</strong> es el file pointer asociado al archivo despues de que este ha sido abierto mediante la funcion fopen.</p></li>
+<li><p><strong>format</strong> es la cadena de caracteres en C que sera escrita, esta sigue la misma forma que el caso de <strong>printf</strong></p></li>
+</ul>
+<p><strong>Ejemplo</strong>:</p>
+<ol class="simple">
+<li><p>Hacer un programa que genere un archivo con N datos entre 0 y 100. Cada numero estara en un renglon.</p></li>
+</ol>
+<p><strong>Solucion</strong>: El archivo <span class="xref myst">write_line.c</span> contiene la sulucion. A continuacion se muestra este por comodidad:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w"> </span><span class="c1">// Inicializacion del generador</span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">outFilename</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">outFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el nombre del archivo: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fflush</span><span class="p">(</span><span class="n">stdin</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%[^</span><span class="se">\n</span><span class="s">]s&quot;</span><span class="p">,</span><span class="n">outFilename</span><span class="p">);</span><span class="w"> </span><span class="c1">// Formato para que la entrada pueda aceptar espacios</span>
+<span class="w">  </span><span class="n">fflush</span><span class="p">(</span><span class="n">stdin</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La cantidad de numeros que desea que se guarden en este: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">outFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">outFilename</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">101</span><span class="p">;</span><span class="w"> </span><span class="c1">//Generando un aleatorio entre 0 y 100</span>
+<span class="w">    </span><span class="c1">// printf(&quot;%d\n&quot;,num);</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">outFile</span><span class="p">,</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Este ejercicio ya se realizo empleando putc, pero para propositos de comparacion se va a realizar con fprintf. Hacer un programa que abra un archivo que contiene una cadena de ADN y genere un archivo de salida con el numero de cada uno de los caracteres el alfabeto genetico (‘A’, ‘G’, ‘G’ y ‘C’) separados por espacio. El nombre del archivo sera <strong>inventario_nombreArchivo</strong>. Asi por ejemplo si se tiene un archivo con el siguiente nombre <strong>secuencia.dat</strong> con el siguiente contenido:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AGCTTTTCATTCT</span>
+</pre></div>
+</div>
+<p>La salida sera un archivo llamado <strong>inventario_secuencia.dat</strong> y su contenido será el siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">7</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p><strong>Solucion</strong>: Solución: En <span class="xref myst">read_write_line2.c</span> se muestra el codigo solución, por comodidad a continuación tambien aparece:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">inFilename</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">outFilename</span><span class="p">[</span><span class="mi">80</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;inventario_&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">cntS</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">cnt</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">inFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">outFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el nombre de la cadena de ADN a generar: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%[^</span><span class="se">\n</span><span class="s">]s&quot;</span><span class="p">,</span><span class="n">inFilename</span><span class="p">);</span><span class="w"> </span><span class="c1">// Formato para que la entrada pueda aceptar espacios</span>
+<span class="w">  </span><span class="n">inFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">inFilename</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inFile</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error al abrir el archivo %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">inFilename</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getc</span><span class="p">(</span><span class="n">inFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">cnt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;G&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">cnt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;T&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">cnt</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">cnt</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">EOF</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">inFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">strcat</span><span class="p">(</span><span class="n">outFilename</span><span class="p">,</span><span class="n">inFilename</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">outFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">outFilename</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">outFile</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cnt</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w">    </span>
+
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="funcion-fscanf">
+<h4>2.2.3.1.6. Funcion fscanf<a class="headerlink" href="#funcion-fscanf" title="Permalink to this headline">#</a></h4>
+<p>Esta trabaja de manera similar a scanf, solo que lo que toma no viene desde el teclado sino desde un archivo. El prototipo de esta funcion es mostrado a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">fscanf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>fp</strong> es el file pointer asociado al archivo despues de que este ha sido abierto mediante la funcion fopen.</p></li>
+<li><p><strong>format</strong> es la cadena de caracteres en C que sera escrita, esta sigue la misma forma que el caso de <strong>printf</strong></p></li>
+</ul>
+<p>La gran ventaja de esta funcion es que una vez se obtiene el dato del archivo la conversion se hace de manera transparente. Es decir no es necesario usar explicitamente alguna funcion de convierta datos tipo string a otro tipo de datos como enteros o reales por ejemplo. Esto, simplifica enormemente la etapa de procesamiento del problema.</p>
+<p><strong>Ejemplo</strong>:</p>
+<ol class="simple">
+<li><p>Hacer un programa que lea un archivo que contenga varios numeros enteros (uno por fila) y obtenga la suma y el promedio de estos los imprima en pantalla y los lleve a un archivo.</p></li>
+</ol>
+<p><strong>Solución</strong>: El archivo <span class="xref myst">read_write_line3.c</span> contiene la sulucion. A continuacion se muestra este por comodidad:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">inFilename</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">outFilename</span><span class="p">[</span><span class="mi">80</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;inventario_&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">prom</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">inFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">outFile</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el nombre del archivo: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fflush</span><span class="p">(</span><span class="n">stdin</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%[^</span><span class="se">\n</span><span class="s">]s&quot;</span><span class="p">,</span><span class="n">inFilename</span><span class="p">);</span><span class="w"> </span><span class="c1">// Formato para que la entrada pueda aceptar espacios</span>
+<span class="w">  </span><span class="n">inFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">inFilename</span><span class="p">,</span><span class="s">&quot;r&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inFile</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error al abrir el archivo %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">inFilename</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">fscanf</span><span class="p">(</span><span class="n">inFile</span><span class="p">,</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">)</span><span class="o">!=</span><span class="n">EOF</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">tam</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">inFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">strcat</span><span class="p">(</span><span class="n">outFilename</span><span class="p">,</span><span class="n">inFilename</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Suma: %lld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">prom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">sum</span><span class="o">/</span><span class="n">tam</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Promedio: %.2lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prom</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">outFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">outFilename</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fprintf</span><span class="p">(</span><span class="n">outFile</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Suma: %lld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fprintf</span><span class="p">(</span><span class="n">outFile</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Promedio: %.2lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prom</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">fclose</span><span class="p">(</span><span class="n">outFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="x-enlaces">
+<h2>X. Enlaces:<a class="headerlink" href="#x-enlaces" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://c.conclase.net/librerias/">http://c.conclase.net/librerias/</a></p></li>
+<li><p><a class="reference external" href="https://www.ntu.edu.sg/home/ehchua/programming/index.html">https://www.ntu.edu.sg/home/ehchua/programming/index.html</a></p></li>
+<li><p><a class="reference external" href="https://www.le.ac.uk/users/rjm1/cotter/index.htm">https://www.le.ac.uk/users/rjm1/cotter/index.htm</a></p></li>
+<li><p><a class="reference external" href="https://pablohaya.com/2013/10/12/diferencia-entre-scanf-gets-y-fgets/">https://pablohaya.com/2013/10/12/diferencia-entre-scanf-gets-y-fgets/</a></p></li>
+<li><p><a class="reference external" href="http://www.dummies.com/programming/c/how-to-use-the-fgets-function-for-text-input-in-c-programming/">http://www.dummies.com/programming/c/how-to-use-the-fgets-function-for-text-input-in-c-programming/</a></p></li>
+<li><p><a class="reference external" href="https://www.programiz.com/c-programming">https://www.programiz.com/c-programming</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content\local\code\parte6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

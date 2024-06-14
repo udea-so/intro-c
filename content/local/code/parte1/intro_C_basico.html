@@ -1,0 +1,2477 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1. Formato típico de un programa en C &#8212; Introducción al lenguaje C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción al lenguaje C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/udea-so/intro-c/blob/master/content/local/code/parte1/intro_C_basico.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/udea-so/intro-c"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/udea-so/intro-c/issues/new?title=Issue%20on%20page%20%2Fcontent/local/code/parte1/intro_C_basico.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/content/local/code/parte1/intro_C_basico.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   1. Formato típico de un programa en C
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tipos-de-datos">
+   2. Tipos de Datos
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables">
+     2.1. Variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo">
+       Ejemplo:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cadenas-de-caracteres">
+     2.2. Cadenas de caracteres
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplos">
+       Ejemplos
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrada-y-salida-estandar">
+   3. Entrada y salida estándar
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-printf">
+     Funcion printf
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-scanf">
+     Funcion scanf
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sentencias-de-control">
+   4. Sentencias de Control
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-condicional">
+     4.1 Estructura condicional
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-if-else-if-else">
+     4.1.1. Estructura if/else if/else
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Ejemplo
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-switch">
+     4.1.2. Estructura switch
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Ejemplo
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-repetitiva">
+     4.2 Estructura repetitiva
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-for">
+     4.2.1. Estructura for
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Ejemplo
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-while">
+     4.2.2. Estructura while
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Ejemplo
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-do-while">
+     4.2.3. Estructura do-while
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Ejemplo
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funciones">
+   5. Funciones
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definicion-de-la-funcion">
+     1. Definición de la función
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#declaracion-de-la-funcion">
+     2. Declaración de la función
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uso-de-la-funcion">
+     3. Uso de la función
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-1-paso-a-paso">
+       Ejemplo 1 (paso a paso)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-2">
+       Ejemplo 2
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#paso-de-parametros-a-una-funcion">
+   6. Paso de parámetros a una función
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-por-valor">
+     6.1. Paso por valor
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-por-referencia">
+     6.2. Paso por referencia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   7. Enlaces de interes
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>1. Formato típico de un programa en C</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   1. Formato típico de un programa en C
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tipos-de-datos">
+   2. Tipos de Datos
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables">
+     2.1. Variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo">
+       Ejemplo:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cadenas-de-caracteres">
+     2.2. Cadenas de caracteres
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplos">
+       Ejemplos
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrada-y-salida-estandar">
+   3. Entrada y salida estándar
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-printf">
+     Funcion printf
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-scanf">
+     Funcion scanf
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sentencias-de-control">
+   4. Sentencias de Control
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-condicional">
+     4.1 Estructura condicional
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-if-else-if-else">
+     4.1.1. Estructura if/else if/else
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Ejemplo
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-switch">
+     4.1.2. Estructura switch
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Ejemplo
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-repetitiva">
+     4.2 Estructura repetitiva
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-for">
+     4.2.1. Estructura for
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Ejemplo
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-while">
+     4.2.2. Estructura while
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Ejemplo
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-do-while">
+     4.2.3. Estructura do-while
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Ejemplo
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funciones">
+   5. Funciones
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definicion-de-la-funcion">
+     1. Definición de la función
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#declaracion-de-la-funcion">
+     2. Declaración de la función
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uso-de-la-funcion">
+     3. Uso de la función
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-1-paso-a-paso">
+       Ejemplo 1 (paso a paso)
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-2">
+       Ejemplo 2
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#paso-de-parametros-a-una-funcion">
+   6. Paso de parámetros a una función
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-por-valor">
+     6.1. Paso por valor
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-por-referencia">
+     6.2. Paso por referencia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   7. Enlaces de interes
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a class="reference external" href="https://colab.research.google.com/github/dannymrock/UdeA-SO-Lab/blob/master/lab0/lab0b/parte1/intro_C_basico.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip3 install tutormagic
+<span class="o">%</span><span class="k">load_ext</span> tutormagic
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tutormagic in /home/tigarto/miniconda3/lib/python3.7/site-packages (0.3.0)
+Requirement already satisfied: notebook&gt;=3.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from tutormagic) (6.0.1)
+Requirement already satisfied: nbformat in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (4.4.0)
+Requirement already satisfied: jupyter-client&gt;=5.3.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (5.3.3)
+Requirement already satisfied: ipykernel in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (5.1.3)
+Requirement already satisfied: prometheus-client in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (0.7.1)
+Requirement already satisfied: pyzmq&gt;=17 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (18.1.1)
+Requirement already satisfied: tornado&gt;=5.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (6.0.3)
+Requirement already satisfied: ipython-genutils in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (0.2.0)
+Requirement already satisfied: jinja2 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (2.10.3)
+Requirement already satisfied: terminado&gt;=0.8.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (0.8.3)
+Requirement already satisfied: jupyter-core&gt;=4.4.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (4.6.1)
+Requirement already satisfied: Send2Trash in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (1.5.0)
+Requirement already satisfied: traitlets&gt;=4.2.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (4.3.3)
+Requirement already satisfied: nbconvert in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (5.6.1)
+Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (3.2.0)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jupyter-client&gt;=5.3.1-&gt;notebook&gt;=3.0-&gt;tutormagic) (2.8.1)
+Requirement already satisfied: ipython&gt;=5.0.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (7.11.1)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jinja2-&gt;notebook&gt;=3.0-&gt;tutormagic) (1.1.1)
+Requirement already satisfied: decorator in /home/tigarto/miniconda3/lib/python3.7/site-packages (from traitlets&gt;=4.2.1-&gt;notebook&gt;=3.0-&gt;tutormagic) (4.4.1)
+Requirement already satisfied: six in /home/tigarto/miniconda3/lib/python3.7/site-packages (from traitlets&gt;=4.2.1-&gt;notebook&gt;=3.0-&gt;tutormagic) (1.12.0)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.8.4)
+Requirement already satisfied: testpath in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.4.4)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (1.4.2)
+Requirement already satisfied: defusedxml in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.6.0)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.3)
+Requirement already satisfied: pygments in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (2.5.2)
+Requirement already satisfied: bleach in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (3.1.0)
+Requirement already satisfied: setuptools in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (45.2.0)
+Requirement already satisfied: attrs&gt;=17.4.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (19.3.0)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.15.6)
+Requirement already satisfied: importlib-metadata; python_version &lt; &quot;3.8&quot; in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (1.3.0)
+Requirement already satisfied: pickleshare in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.7.5)
+Requirement already satisfied: pexpect; sys_platform != &quot;win32&quot; in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (4.7.0)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (3.0.2)
+Requirement already satisfied: jedi&gt;=0.10 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.15.2)
+Requirement already satisfied: backcall in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.1.0)
+Requirement already satisfied: webencodings in /home/tigarto/miniconda3/lib/python3.7/site-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.5.1)
+Requirement already satisfied: zipp&gt;=0.5 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from importlib-metadata; python_version &lt; &quot;3.8&quot;-&gt;jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.6.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from pexpect; sys_platform != &quot;win32&quot;-&gt;ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.6.0)
+Requirement already satisfied: wcwidth in /home/tigarto/miniconda3/lib/python3.7/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.1.8)
+Requirement already satisfied: parso&gt;=0.5.2 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jedi&gt;=0.10-&gt;ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.5.2)
+Requirement already satisfied: more-itertools in /home/tigarto/miniconda3/lib/python3.7/site-packages (from zipp&gt;=0.5-&gt;importlib-metadata; python_version &lt; &quot;3.8&quot;-&gt;jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (8.0.2)
+The tutormagic extension is already loaded. To reload it, use:
+  %reload_ext tutormagic
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Introducción al lenguaje C</strong></p>
+<ul class="simple">
+<li><p>Conocer las generalidades del lenguaje de programación C.</p></li>
+<li><p>Conocer la estructura de un programa en C.</p></li>
+<li><p>Introducir el uso de las funciones y establecer cómo se realiza el paso de parámetros a funciones.</p></li>
+</ul>
+<hr class="docutils" />
+<section id="formato-tipico-de-un-programa-en-c">
+<h1>1. Formato típico de un programa en C<a class="headerlink" href="#formato-tipico-de-un-programa-en-c" title="Permalink to this headline">#</a></h1>
+<p>En su forma más básica un programa en C tiene la siguiente estructura:</p>
+<hr class="docutils" />
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/** Directivas del preprocesador */</span><span class="w"></span>
+<span class="c1">// Librerías </span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;libreriaSistema&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libreriaUsuario&quot;</span><span class="cp"></span>
+
+<span class="c1">// Macros y constantes con define</span>
+<span class="cp">#define CTE VALOR_CTE</span>
+
+<span class="cm">/* Variables globales*/</span><span class="w"></span>
+<span class="n">tipo1</span><span class="w"> </span><span class="n">varG1_1</span><span class="p">,</span><span class="w"> </span><span class="n">varG2_1</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
+<span class="n">tipo2</span><span class="w"> </span><span class="n">varG1_2</span><span class="p">,</span><span class="w"> </span><span class="n">varG2_2</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+
+<span class="cm">/* Función principal (Primera en ser llamada)*/</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/** Variables locales */</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo1</span><span class="w"> </span><span class="n">varL1_1</span><span class="p">,</span><span class="w"> </span><span class="n">varL2_1</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo2</span><span class="w"> </span><span class="n">varL1_2</span><span class="p">,</span><span class="w"> </span><span class="n">varL2_2</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/** Instrucciones */</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="n">código</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Como se puede notar, la forma es similar a la que se emplea en cualquier otro lenguaje. A continuación se muestra, con un breve ejemplo un caso de aplicación de la plantilla anterior.</p>
+<p><strong>Ejemplo</strong>:
+Hacer un programa que despliegue Hello world en pantalla:</p>
+<ol class="simple">
+<li><p>Empleando java.</p></li>
+<li><p>Empleando C.</p></li>
+</ol>
+<p><strong>Solución</strong>:</p>
+<ul class="simple">
+<li><p><strong>Empleando java</strong>: a continuación se muestra el código solución en java:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l java -k
+public class Hello {
+    public static void main(String[] args) {
+      System.out.println(&quot;Hello world&quot;);
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=public%20class%20Hello%20%7B%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20System.out.println%28%22Hello%20world%22%29%3B%0A%20%20%20%20%7D%0A%7D%0A&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=java&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<ul class="simple">
+<li><p><strong>Empleando C</strong>: en el enlace solución en C se encuentra el código C que implementa lo solicitado:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  printf(&quot;%s&quot;,&quot;Hello, World&quot;);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>A modo de repaso, se muestran los comandos empleados para compilar y ejecutar el programa en C:</p>
+<hr class="docutils" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[user@cluster test4]$ gcc -Wall hello.c -o hello.out
+[user@cluster test4]$ ls
+hello.c  hello.out
+[user@cluster test4]$ ./hello.out
+Hello, World
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="tipos-de-datos">
+<h1>2. Tipos de Datos<a class="headerlink" href="#tipos-de-datos" title="Permalink to this headline">#</a></h1>
+<p>Los tipos de datos básicos incorporados en C son los enteros, los reales y los tipo carácter. En la siguiente tabla se resumen éstos:</p>
+<p><strong>Tabla 1</strong>. Tipos de datos primitivos en C</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tipo de dato</p></th>
+<th class="head"><p>Tamaño (en bytes)</p></th>
+<th class="head"><p>Rango</p></th>
+<th class="head"><p>Especificador de formato</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>short (short int)</p></td>
+<td><p>2</p></td>
+<td><p>-32768 to 32767</p></td>
+<td><p>%hd</p></td>
+</tr>
+<tr class="row-odd"><td><p>unsigned short (unsigned short int)</p></td>
+<td><p>2</p></td>
+<td><p>0 to 65535</p></td>
+<td><p>%hu</p></td>
+</tr>
+<tr class="row-even"><td><p>unsigned (unsigned int)</p></td>
+<td><p>4</p></td>
+<td><p>0 to 4294967295</p></td>
+<td><p>%u</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p>4</p></td>
+<td><p>2147483648 to 2147483647</p></td>
+<td><p>%d</p></td>
+</tr>
+<tr class="row-even"><td><p>long (long int)</p></td>
+<td><p>4</p></td>
+<td><p>2147483648 to 2147483647</p></td>
+<td><p>%ld</p></td>
+</tr>
+<tr class="row-odd"><td><p>unsigned long (unsigned long int)</p></td>
+<td><p>4</p></td>
+<td><p>0 to 4294967295</p></td>
+<td><p>%lu</p></td>
+</tr>
+<tr class="row-even"><td><p>long long (long long int)</p></td>
+<td><p>8</p></td>
+<td><p>-(2^63) to (2^63)-1</p></td>
+<td><p>%lld</p></td>
+</tr>
+<tr class="row-odd"><td><p>unsigned long long (unsigned long long int)</p></td>
+<td><p>8</p></td>
+<td><p>0 to 18446744073709551615</p></td>
+<td><p>%llu</p></td>
+</tr>
+<tr class="row-even"><td><p>char (signed char)</p></td>
+<td><p>1</p></td>
+<td><p>-128 to 127</p></td>
+<td><p>%c</p></td>
+</tr>
+<tr class="row-odd"><td><p>unsigned char</p></td>
+<td><p>1</p></td>
+<td><p>0 to 255</p></td>
+<td><p>%c</p></td>
+</tr>
+<tr class="row-even"><td><p>float</p></td>
+<td><p>4</p></td>
+<td><p></p></td>
+<td><p>%f</p></td>
+</tr>
+<tr class="row-odd"><td><p>double</p></td>
+<td><p>8</p></td>
+<td><p></p></td>
+<td><p>%lf</p></td>
+</tr>
+<tr class="row-even"><td><p>long double</p></td>
+<td><p>12</p></td>
+<td><p></p></td>
+<td><p>%Lf</p></td>
+</tr>
+</tbody>
+</table>
+<p>El manejo de los tipos de datos en C es muy similar al que se hace en java. Cabe resaltar que de los tipos de datos enteros, el tipo <strong>char</strong> se utiliza para representar caracteres de modo que las constantes tipo <strong>char</strong> pueden ser:</p>
+<ol class="simple">
+<li><p>Caracteres encerrados entre comillas (‘A’, ‘b’, ‘p’) asociados a un valor ascii.</p></li>
+<li><p>Caracteres no imprimibles (tabulación, avance de página) los cuales se representan con secuencias de escape (‘\n’, ‘\t’). La siguiente tabla muestra algunos de estos caracteres:</p></li>
+</ol>
+<p><strong>Tabla 2</strong>. Secuencias de escape en C</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Carácter de escape</p></th>
+<th class="head"><p>Singnificado</p></th>
+<th class="head"><p>Código ASCII</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>\a</p></td>
+<td><p>Carácter de alerta (timbre)</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p>\b</p></td>
+<td><p>Retroceso de espacio</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>\f</p></td>
+<td><p>Avance de página</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-odd"><td><p>\n</p></td>
+<td><p>Nueva línea</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>\r</p></td>
+<td><p>Retorno de carro</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p>\t</p></td>
+<td><p>Tabulación horizontal</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>\v</p></td>
+<td><p>Tabulación vertical</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p>\</p></td>
+<td><p>Backslash ( \ ).</p></td>
+<td><p>92</p></td>
+</tr>
+<tr class="row-even"><td><p>?</p></td>
+<td><p>Interrogación ( ? ).</p></td>
+<td><p>63</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘</p></td>
+<td><p>Comilla sencilla ( ‘ ).</p></td>
+<td><p>39</p></td>
+</tr>
+<tr class="row-even"><td><p>“</p></td>
+<td><p>Comillas dobles.</p></td>
+<td><p>34</p></td>
+</tr>
+<tr class="row-odd"><td><p>\0nn</p></td>
+<td><p>Número octal.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>\Xnn</p></td>
+<td><p>Número hexadecimal</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>\0</p></td>
+<td><p>Carácter nulo o terminación de cadena</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>La equivalencia entre un carácter específico y su valor ascii se puede encontrar en una tabla ascii como la mostrada en el siguiente <a class="reference external" href="http://www.fceia.unr.edu.ar/~ifc/apuntes/tascii.pdf">enlace</a>.</p>
+<section id="variables">
+<h2>2.1. Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h2>
+<p>Una declaración indica el tipo de variable y le sirve al compilador para determinar la cantidad de memoria requerida para almacenar la variable deseada. El formato básico para declarar una variable es:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">var2</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Si la declaración produce también un almacenamiento (inicialización), entonces es una definición.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="n">inicial</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Nota</strong>:</p>
+<ul class="simple">
+<li><p>Todas las variables en C se declaran o definen antes de ser utilizadas, de lo contrario el compilador arrojará un error de variable no declarada.</p></li>
+<li><p>En esta sección se hace referencia sólo a las variables primitivas (char, int, float, double, et.), cuando las variables son compuestas (arrays, cadenas de caracteres, matrices, …) la inicializacion es diferente (este tema será abordado más adelante en el curso).</p></li>
+</ul>
+<section id="ejemplo">
+<h3>Ejemplo:<a class="headerlink" href="#ejemplo" title="Permalink to this headline">#</a></h3>
+<p>A continuación se muestran varias declaraciones de variables, note que la forma es similar a la empleada en java:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">;</span><span class="w"></span>
+<span class="kt">float</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">midinit</span><span class="p">;</span><span class="w"></span>
+<span class="kt">float</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16.78</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">ac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;@&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">IVA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">19</span><span class="w"></span>
+</pre></div>
+</div>
+<p>En el siguiente <a class="reference external" href="https://goo.gl/cgydMU">enlace</a> puede hacer la simulacion del código anterior (note que las variables no inicializadas no aparecen desplegadas).</p>
+<p><strong>Nota</strong>: La palabra reservada <strong>const</strong> (<strong>final</strong> en el caso de java) permite definir determinadas variables con valores constantes que no se pueden modificar.</p>
+</section>
+</section>
+<section id="cadenas-de-caracteres">
+<h2>2.2. Cadenas de caracteres<a class="headerlink" href="#cadenas-de-caracteres" title="Permalink to this headline">#</a></h2>
+<p>En C una cadena de caracteres (C String) no es un tipo de dato primitivo. En C se requiere usar un <strong>arreglo</strong> de caracteres (datos primitivos tipo char) cada vez que se requiera utilizar un <strong>String</strong>. Existen varias formas de declarar cadenas de caracteres:</p>
+<ol class="simple">
+<li><p>Indicando el máximo número de carácteres en la definición:</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">nombreCadena</span><span class="p">[</span><span class="n">TAM</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Inicializando la cadena de carácteres de modo que el compilador pueda deducir su tamaño:</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">nombreCadena</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Contenido_de_la_cadena&quot;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Definiendo el tamaño e inicializando:</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">nombreCadena</span><span class="p">[</span><span class="n">TAM</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Contenido_de_la_cadena&quot;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>En una cadena de carácteres el último carácter útil es el carácter NULL (\0). El cual se incluye de manera automática para marcar el final de la cadena.</p>
+<section id="ejemplos">
+<h3>Ejemplos<a class="headerlink" href="#ejemplos" title="Permalink to this headline">#</a></h3>
+<p><strong>P1</strong>. Declarar una cadena llamada temp de 5 bytes cuyo contenido inicial sea <em>Hot</em>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">temp</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hot&quot;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El resultado en memoria puede ser visto en el siguiente <a class="reference external" href="http://www.pythontutor.com/c.html#code=int%20main%28%29%20%7B%0A%20%20char%20temp%5B5%5D%20%3D%20%22Hot%22%3B%0A%20%20return%200%3B%0A%7D&amp;curInstr=2&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c&amp;rawInputLstJSON=%5B%5D">enlace</a></p>
+<p><strong>Pendiente imagen</strong></p>
+<p>Es importante resaltar que el programador debe asegurarse que la cadena de caracteres sea lo bastante grande para el uso deseado. Vemos que <strong>temp</strong> mantiene 4 caracteres, 3 de la palabra <em>Hot</em> más el carácter NULL(\0).</p>
+<p><strong>P2</strong>. Se tienen la siguientes declaraciones:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  char s1[6];
+  char s2[5] = &quot;Hola&quot;;
+  char s3[] = &quot;zzz&quot;;
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20s1%5B6%5D%3B%0A%20%20char%20s2%5B5%5D%20%3D%20%22Hola%22%3B%0A%20%20char%20s3%5B%5D%20%3D%20%22zzz%22%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Responda las siguientes preguntas:</p>
+<ul class="simple">
+<li><p>¿Cuál es el tamaño de cada una de las cadenas?</p></li>
+<li><p>¿Cuál es el contenido almacenado en cada una?</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="entrada-y-salida-estandar">
+<h1>3. Entrada y salida estándar<a class="headerlink" href="#entrada-y-salida-estandar" title="Permalink to this headline">#</a></h1>
+<p>En C la entrada y salida de texto se abstraen como streams o flujos de caracteres, no importa de dónde se origine el flujo o hacia a donde se dirija. Un flujo de texto, es una secuencia de caracteres dividida en líneas; cada línea consiste de cero o más caracteres seguidos por un carácter de nueva línea.</p>
+<p>En C las funciones de E/S y  las estructuras de datos usadas por esas funciones se encuentran declaradas en el archivo de cabecera <strong>&lt;stdio.h&gt;</strong>. Para el correcto funcionamiento del código es necesario incluir dicho archivo mediante la directiva del preprocesador <strong>#include</strong>, pues en caso contrario, puede funcionar de forma incorrecta, e incluso, puede llegar a dar errores de compilación.</p>
+<p>La biblioteca stdio.h provee un conjunto de funciones para leer y escribir desde la consola. A continuación veremos algunas:</p>
+<section id="funcion-printf">
+<h2>Funcion printf<a class="headerlink" href="#funcion-printf" title="Permalink to this headline">#</a></h2>
+<p>La forma de la función se muestra a continuacion:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">[,</span><span class="n">argumento</span><span class="p">,...]);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La función <code class="docutils literal notranslate"><span class="pre">printf()</span></code> se usa para escribir cualquier tipo de dato a la consola. Se conoce como salida formateada pues convierte, formatea, e imprime sus argumentos <code class="docutils literal notranslate"><span class="pre">(arg1,</span> <span class="pre">arg2,</span> <span class="pre">...)</span></code> en la salida estándar. Para ello toma el formato establecido por el usuario en el argumento <strong>format</strong> (ver en la tabla 1 la columna <strong>especificador de formato</strong> asociada a cada tipo de dato).
+Para informacion adicional puede consultar el siguiente <a class="reference external" href="http://c.conclase.net/librerias/?ansifun=printf#inicio">enlace</a></p>
+<p>Por ejemplo suponiendo que se tiene el siguiente fragmento de código en C:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Color %s, Number %d, Float %5.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La salida en pantalla será:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Color</span> <span class="n">red</span><span class="p">,</span> <span class="n">Number</span> <span class="mi">12345</span><span class="p">,</span> <span class="n">Float</span> <span class="mf">3.14</span>
+</pre></div>
+</div>
+<p>Observe el siguiente codigo para comprender lo anterior:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  printf(&quot;Color %s, Number %d, Float %5.2f\n&quot;, &quot;red&quot;, 12345, 3.14);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20printf%28%22Color%20%25s%2C%20Number%20%25d%2C%20Float%20%255.2f%5Cn%22%2C%20%22red%22%2C%2012345%2C%203.14%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Notará que la parte asociada a especificador de formato (parte precedida por % en el primer argumento de la función printf) se reemplaza por el respectivo valor asociado a la variable o constante. Como recordatorio, presentamos en la siguiente tabla los especificadores de formato más comunes:</p>
+<p><strong>Tabla 3</strong>. Especificadores de formato más comunes en C</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Especificador de formato</p></th>
+<th class="head"><p>Tipo de dato</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>%d</p></td>
+<td><p>int</p></td>
+</tr>
+<tr class="row-odd"><td><p>%c</p></td>
+<td><p>char</p></td>
+</tr>
+<tr class="row-even"><td><p>%s</p></td>
+<td><p>char[] (cadena de caracteres)</p></td>
+</tr>
+<tr class="row-odd"><td><p>%f</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>%lf</p></td>
+<td><p>double</p></td>
+</tr>
+<tr class="row-odd"><td><p>%e</p></td>
+<td><p>float (El resultado se muestra en notación exponencial)</p></td>
+</tr>
+<tr class="row-even"><td><p>%u</p></td>
+<td><p>unsigned</p></td>
+</tr>
+<tr class="row-odd"><td><p>%o</p></td>
+<td><p>unsigned (el resultado se muestra en formato octal)</p></td>
+</tr>
+<tr class="row-even"><td><p>%x</p></td>
+<td><p>unsigned (el resultado se muestra en formato hexadecimal)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo</strong>: Dado el siguiente fragmento de código. ¿Cual es su salida en pantalla?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  printf(&quot;ABC&quot;);
+  printf(&quot;\n&quot;);
+  printf(&quot;---\n&quot;);
+  printf(&quot;%d\n&quot;,5);
+  printf(&quot;---\n&quot;);
+  printf(&quot;%c %c %c\n&quot;,&#39;A&#39;,&#39;B&#39;,&#39;C&#39;);
+  printf(&quot;---\n&quot;);
+  printf(&quot;From sea &quot;);
+  printf(&quot;to shining &quot;);
+  printf(&quot;C\n&quot;);
+  printf(&quot;---\n&quot;);
+  float leg1 = 200.3, leg2 = 357.4;
+  printf(&quot;If was %f miles\n&quot;, leg1 + leg2);
+  printf(&quot;---\n&quot;);
+  int num1 = 10, num2 = 33;
+  printf(&quot;%d\t%d\n&quot;, num1, num2);
+  printf(&quot;---\n&quot;);
+  float big = 11e+23;
+  printf(&quot;%e\n&quot;, big);
+  printf(&quot;---\n&quot;);
+  printf(&quot;%c\n&quot;,&#39;?&#39;);
+  printf(&quot;%d\n&quot;,&#39;?&#39;);
+  printf(&quot;---\n&quot;);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20printf%28%22ABC%22%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20printf%28%22---%5Cn%22%29%3B%0A%20%20printf%28%22%25d%5Cn%22%2C5%29%3B%0A%20%20printf%28%22---%5Cn%22%29%3B%0A%20%20printf%28%22%25c%20%25c%20%25c%5Cn%22%2C%27A%27%2C%27B%27%2C%27C%27%29%3B%0A%20%20printf%28%22---%5Cn%22%29%3B%0A%20%20printf%28%22From%20sea%20%22%29%3B%0A%20%20printf%28%22to%20shining%20%22%29%3B%0A%20%20printf%28%22C%5Cn%22%29%3B%0A%20%20printf%28%22---%5Cn%22%29%3B%0A%20%20float%20leg1%20%3D%20200.3%2C%20leg2%20%3D%20357.4%3B%0A%20%20printf%28%22If%20was%20%25f%20miles%5Cn%22%2C%20leg1%20%2B%20leg2%29%3B%0A%20%20printf%28%22---%5Cn%22%29%3B%0A%20%20int%20num1%20%3D%2010%2C%20num2%20%3D%2033%3B%0A%20%20printf%28%22%25d%5Ct%25d%5Cn%22%2C%20num1%2C%20num2%29%3B%0A%20%20printf%28%22---%5Cn%22%29%3B%0A%20%20float%20big%20%3D%2011e%2B23%3B%0A%20%20printf%28%22%25e%5Cn%22%2C%20big%29%3B%0A%20%20printf%28%22---%5Cn%22%29%3B%0A%20%20printf%28%22%25c%5Cn%22%2C%27%3F%27%29%3B%0A%20%20printf%28%22%25d%5Cn%22%2C%27%3F%27%29%3B%0A%20%20printf%28%22---%5Cn%22%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>El comportamiendo del especificador dependerá del tipo de dato tal y como se resume en las siguiente tablas segun el tipo de dato a imprimir.</p>
+<p><strong>Caso 1 - Datos enteros y caracter</strong></p>
+<p><strong>Tabla 3</strong>. Usando especificadores para datos tipo char e int</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Especificador de formato</p></th>
+<th class="head"><p>Tipo de dato</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>%[alineación][ancho]c</p></td>
+<td><p>char</p></td>
+</tr>
+<tr class="row-odd"><td><p>%[alineación][ancho]d</p></td>
+<td><p>int</p></td>
+</tr>
+</tbody>
+</table>
+<p>La salida formateada permite un mayor control de la apariencia de la salida en pantalla, ya que es posible controlar que tantas columnas serán usadas a la salida del contenido de una variable particular al especificar el ancho del campo.
+En lo que respecta a la alineación y para todos los casos cuando el símbolo es un menos (-) la alineación será a la izquierda, por otro lado si no hay símbolo, la alineación será a la derecha. Tambien, si se desea colocar ceros en vez de espacios, se debe colocar un cero (0) antes del campo ancho ancho. Por ejemplo: %04d.</p>
+<p><strong>Ejemplo</strong>: Dado el siguiente fragmento de código. ¿Cual es su salida en pantalla?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  char lett=&#39;w&#39;;
+  int i=1,j=29;
+  printf (&quot;%c\n&quot;,lett);
+  printf (&quot;%4c\n&quot;,lett);
+  printf (&quot;%-3c\n\n&quot;,lett);
+  printf (&quot;%d\n&quot;,i);
+  printf (&quot;%d\n&quot;,j);
+  printf (&quot;%10d\n&quot;,j);
+  printf (&quot;%010d\n&quot;,j);
+  printf (&quot;%-010d\n&quot;,j);
+  printf (&quot;%2o\n&quot;,j);
+  printf (&quot;%2x\n&quot;,j);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20lett%3D%27w%27%3B%0A%20%20int%20i%3D1%2Cj%3D29%3B%0A%20%20printf%20%28%22%25c%5Cn%22%2Clett%29%3B%0A%20%20printf%20%28%22%254c%5Cn%22%2Clett%29%3B%0A%20%20printf%20%28%22%25-3c%5Cn%5Cn%22%2Clett%29%3B%0A%20%20printf%20%28%22%25d%5Cn%22%2Ci%29%3B%0A%20%20printf%20%28%22%25d%5Cn%22%2Cj%29%3B%0A%20%20printf%20%28%22%2510d%5Cn%22%2Cj%29%3B%0A%20%20printf%20%28%22%25010d%5Cn%22%2Cj%29%3B%0A%20%20printf%20%28%22%25-010d%5Cn%22%2Cj%29%3B%0A%20%20printf%20%28%22%252o%5Cn%22%2Cj%29%3B%0A%20%20printf%20%28%22%252x%5Cn%22%2Cj%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p><strong>Caso 2 - Datos reales</strong></p>
+<p><strong>Tabla 4</strong>. Usando especificadores para datos tipo float (también aplica a los demas tipos de datos reales)</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Especificador de formato</p></th>
+<th class="head"><p>Tipo de dato</p></th>
+<th class="head"><p>Ejemplo</p></th>
+<th class="head"><p>Resultado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>%[alineación][ancho].[decimales]f</p></td>
+<td><p>float</p></td>
+<td><p>printf(“%10.4f”,4.0/3.0)</p></td>
+<td><p>_ _ _ _1.3333</p></td>
+</tr>
+<tr class="row-odd"><td><p>%[alineación][ancho].[decimales]e</p></td>
+<td><p>float</p></td>
+<td><p>printf(“%10.4e”,4.0/3.0)</p></td>
+<td><p>_1.333e+10</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo</strong>: Dado el siguiente fragmento de código. ¿Cual es su salida en pantalla?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  float x=333.123456;
+  double y=333.1234567890123456;
+  printf(&quot;%f\n&quot;,x);
+  printf(&quot;%.1f\n&quot;,x);
+  printf(&quot;%20.3f\n&quot;,x);
+  printf(&quot;%-20.3f\n&quot;,x);
+  printf(&quot;%020.3f\n&quot;,x);
+  printf(&quot;%f\n&quot;,y);
+  printf(&quot;%.9f\n&quot;,y);
+  printf(&quot;%.20f\n&quot;,y);
+  printf(&quot;%20.4e\n&quot;,y);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20float%20x%3D333.123456%3B%0A%20%20double%20y%3D333.1234567890123456%3B%0A%20%20printf%28%22%25f%5Cn%22%2Cx%29%3B%0A%20%20printf%28%22%25.1f%5Cn%22%2Cx%29%3B%0A%20%20printf%28%22%2520.3f%5Cn%22%2Cx%29%3B%0A%20%20printf%28%22%25-20.3f%5Cn%22%2Cx%29%3B%0A%20%20printf%28%22%25020.3f%5Cn%22%2Cx%29%3B%0A%20%20printf%28%22%25f%5Cn%22%2Cy%29%3B%0A%20%20printf%28%22%25.9f%5Cn%22%2Cy%29%3B%0A%20%20printf%28%22%25.20f%5Cn%22%2Cy%29%3B%0A%20%20printf%28%22%2520.4e%5Cn%22%2Cy%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p><strong>Caso 3 - Cadenas de caracteres</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Especificador de formato</p></th>
+<th class="head"><p>Tipo de dato</p></th>
+<th class="head"><p>Ejemplo</p></th>
+<th class="head"><p>Resultado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>%[alineación][ancho].[Máximo_número_de_caracteres_a_imprimir]s</p></td>
+<td><p>char[]</p></td>
+<td><p>printf(“%3.4s\n”,”Sheridan”)</p></td>
+<td><p>Sher</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo</strong>: Dado el siguiente fragmento de código. ¿Cual es su salida en pantalla?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  char s[]=&quot;an evil presence&quot;;
+  printf(&quot;%s\n&quot;,s);
+  printf(&quot;%7s\n&quot;,s);
+  printf(&quot;%20s\n&quot;,s);
+  printf(&quot;%-20s\n&quot;,s);
+  printf(&quot;%.5s\n&quot;,s);
+  printf(&quot;%.12s\n&quot;,s);
+  printf(&quot;%15.12s\n&quot;,s);
+  printf(&quot;%-15.12s\n&quot;,s);
+  printf(&quot;%3.12s\n&quot;,s);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20s%5B%5D%3D%22an%20evil%20presence%22%3B%0A%20%20printf%28%22%25s%5Cn%22%2Cs%29%3B%0A%20%20printf%28%22%257s%5Cn%22%2Cs%29%3B%0A%20%20printf%28%22%2520s%5Cn%22%2Cs%29%3B%0A%20%20printf%28%22%25-20s%5Cn%22%2Cs%29%3B%0A%20%20printf%28%22%25.5s%5Cn%22%2Cs%29%3B%0A%20%20printf%28%22%25.12s%5Cn%22%2Cs%29%3B%0A%20%20printf%28%22%2515.12s%5Cn%22%2Cs%29%3B%0A%20%20printf%28%22%25-15.12s%5Cn%22%2Cs%29%3B%0A%20%20printf%28%22%253.12s%5Cn%22%2Cs%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+</section>
+<section id="funcion-scanf">
+<h2>Funcion scanf<a class="headerlink" href="#funcion-scanf" title="Permalink to this headline">#</a></h2>
+<p>La forma de la función se muestra a continuacion:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">scanf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">[,</span><span class="n">arg1</span><span class="p">,</span><span class="n">arg2</span><span class="p">...]);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La función <code class="docutils literal notranslate"><span class="pre">scanf()</span></code> se usa para leer cualquier tipo de dato predefinido desde el teclado, y convertirlo de forma automática al formato interno adecuado.</p>
+<p>Esta funcion lee caracteres desde el flujo de entrada estándar, los interpreta según lo especificado en <strong>format</strong>, y los almacena en los argumentos. Cada argumento debe ser la dirección de la variable donde será almacenado el carácter. Retorna el número de ítems (argumentos) de entrada emparejados con éxito (almacenados). Los identificadores de formato para scanf son los mismos que para printf (ver tabla 3).</p>
+<p><strong>Notas importantes</strong></p>
+<ul class="simple">
+<li><p>Cuando el tipo de dato asociado a la variable es simple (char, int, etc); se antepone el símbolo apersand (&amp;) a la variable, pues con este símbolo se obtiene la dirección en memoria de la variable (estoo será explicado más adelante en el curso), por ejemplo en el siguiente código:</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">estatura</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Digite la edad: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">edad</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Digite la estatura (en metros): &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">estatura</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">------------------------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Edad: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">edad</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Estatura %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">estatura</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>En el siguiente <a class="reference external" href="https://repl.it/&#64;HENRYALBERTOALB/ejemplo1scanf">enlace</a> se puede ejecutar el código anterior. Note como el ampersand es usado antepuesto a las variables edad y estatura cuando se emplea la funcion scanf. El programa anterior cuando se ejecuta arroja una salida como la siguiente (para nuestro caso asumimos una edad de 3 años y una estatura de 0.8 m).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Digite</span> <span class="n">la</span> <span class="n">edad</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">Digite</span> <span class="n">la</span> <span class="n">estatura</span> <span class="p">(</span><span class="n">en</span> <span class="n">metros</span><span class="p">):</span> <span class="mf">0.8</span>
+
+<span class="o">------------------------------------------</span>
+<span class="n">Edad</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">Estatura</span> <span class="mf">0.800000</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Cuando lo que se ingresa es una cadena de caracteres, no es necesario emplear el ampersand (&amp;) pues en C el nombre de una cadena de caracteres se interpreta como una dirección de memoria, por ejemplo:</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">nombre</span><span class="p">[</span><span class="mi">15</span><span class="p">];</span><span class="w"> </span><span class="c1">// Almacena maximo 14 caracteres</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Digite el nombre: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="n">nombre</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Hola: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">nombre</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note como en este codigo no se emplea el ampersand cuando se lee la cadena nombre con el scanf (a diferentecia de las variables edad y estatura del ejemplo anterior). La salida del programa anterior (el cual se puede  ejecutar en el siguiente <a class="reference external" href="https://repl.it/&#64;HENRYALBERTOALB/ejemplo2scanf">enlace</a>) se muestra a continuacion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Digite</span> <span class="n">el</span> <span class="n">nombre</span><span class="p">:</span> <span class="n">Ramon</span>
+
+<span class="n">Hola</span><span class="p">:</span> <span class="n">Ramon</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sentencias-de-control">
+<h1>4. Sentencias de Control<a class="headerlink" href="#sentencias-de-control" title="Permalink to this headline">#</a></h1>
+<p>Las Instrucciones de control en C son similares a las de Java. A continuación se describe la estructura y se muestan algunos ejemplos</p>
+<section id="estructura-condicional">
+<h2>4.1 Estructura condicional<a class="headerlink" href="#estructura-condicional" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="estructura-if-else-if-else">
+<h2>4.1.1. Estructura if/else if/else<a class="headerlink" href="#estructura-if-else-if-else" title="Permalink to this headline">#</a></h2>
+<p>La forma de esta estructura se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">condicion1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones_condicion_1_verdadero</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">condicion2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones_condicion_2_verdadero</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">condicion_N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nl">instrucciones_condicion_N_verdadero</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones_caso_falso</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="id1">
+<h3>Ejemplo<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Se tiene la siguiente tabla en la cual se muestra el equivalente entre números y letras para la calificación de notas en una guardería. Realizar un algoritmo en C que tomando como base dicha tabla y como entrada las notas, imprima la nota en letras correspondiente.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rango</p></th>
+<th class="head"><p>Nota</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nota &gt;= 4.5</p></td>
+<td><p>E</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.0 &lt;= nota &lt; 4.5</p></td>
+<td><p>B+</p></td>
+</tr>
+<tr class="row-even"><td><p>3.5 &lt;= nota &lt; 4.0</p></td>
+<td><p>B</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.0 &lt;= nota &lt; 3.5</p></td>
+<td><p>B-</p></td>
+</tr>
+<tr class="row-even"><td><p>nota &lt; 3</p></td>
+<td><p>I</p></td>
+</tr>
+</tbody>
+</table>
+<p>Una muestra de la salida del programa se muestra a continuación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Introduzca</span> <span class="n">la</span> <span class="n">nota</span> <span class="n">que</span> <span class="n">saco</span> <span class="n">el</span> <span class="n">pelao</span><span class="p">:</span> <span class="mf">3.2</span>
+<span class="n">La</span> <span class="n">nota</span> <span class="n">es</span><span class="p">:</span> <span class="o">-</span><span class="n">B</span>
+</pre></div>
+</div>
+<p>A continuación se muestra el <a class="reference external" href="https://repl.it/&#64;HENRYALBERTOALB/ejemplo1condicionales">código</a> de la solución:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">nota</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Introduzca la nota que saco el pelao: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">nota</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Implementacion con if anidados */</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">4.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// nota &gt;= 4.5 --&gt; E</span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La nota es: E</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">4.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// nota &lt; 4.5 y nota &gt;= 4.0 --&gt; 4 &lt;= nota &lt; 4.5 --&gt; B+</span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La nota es: B+</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">3.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// nota &lt; 4.0 y nota &gt;= 3.5 --&gt; 3.5 &lt;= nota &lt; 4 --&gt; B</span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La nota es: B</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">3.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// nota &lt; 3.5 y nota &gt;= 3.0 --&gt; 3.0 &lt;= nota &lt; 3.5 --&gt; B-</span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La nota es: B-</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// nota &lt; 3.0</span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La nota es: I</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuacion se muestran dos casos de ejecución y sus respectivas salidas para el programa anterior:</p>
+<ul class="simple">
+<li><p>Introduciendo una nota de 3.6:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Introduzca</span> <span class="n">la</span> <span class="n">nota</span> <span class="n">que</span> <span class="n">saco</span> <span class="n">el</span> <span class="n">pelao</span><span class="p">:</span> <span class="mf">3.6</span>
+<span class="n">La</span> <span class="n">nota</span> <span class="n">es</span><span class="p">:</span> <span class="n">B</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Introducciendo una nota de 4.8:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Introduzca</span> <span class="n">la</span> <span class="n">nota</span> <span class="n">que</span> <span class="n">saco</span> <span class="n">el</span> <span class="n">pelao</span><span class="p">:</span> <span class="mf">4.8</span>
+<span class="n">La</span> <span class="n">nota</span> <span class="n">es</span><span class="p">:</span> <span class="n">E</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="estructura-switch">
+<h2>4.1.2. Estructura switch<a class="headerlink" href="#estructura-switch" title="Permalink to this headline">#</a></h2>
+<p>La forma de esta estructura se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">switch</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nl">valor_1</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">instrucciones_1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span><span class="k">break</span><span class="p">;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nl">valor_2</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">instrucciones_2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span><span class="k">break</span><span class="p">;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nl">valor_N</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">instrucciones_N</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span><span class="k">break</span><span class="p">;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">instrucciones_default</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="id2">
+<h3>Ejemplo<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>En la siguiente tabla se muestran las categorías a las que pertenecen los signos del zodíaco:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rango</p></th>
+<th class="head"><p>Nota</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Aries</p></td>
+<td><p>Fuego</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tauro</p></td>
+<td><p>Tierra</p></td>
+</tr>
+<tr class="row-even"><td><p>Géminis</p></td>
+<td><p>Agua</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cáncer</p></td>
+<td><p>Aire</p></td>
+</tr>
+<tr class="row-even"><td><p>Leo</p></td>
+<td><p>Fuego</p></td>
+</tr>
+<tr class="row-odd"><td><p>Virgo</p></td>
+<td><p>Tierra</p></td>
+</tr>
+<tr class="row-even"><td><p>Libra</p></td>
+<td><p>Aire</p></td>
+</tr>
+<tr class="row-odd"><td><p>Escorpio</p></td>
+<td><p>Agua</p></td>
+</tr>
+<tr class="row-even"><td><p>Sagitario</p></td>
+<td><p>Fuego</p></td>
+</tr>
+<tr class="row-odd"><td><p>Capricornio</p></td>
+<td><p>Tierra</p></td>
+</tr>
+<tr class="row-even"><td><p>Acuario</p></td>
+<td><p>Aire</p></td>
+</tr>
+<tr class="row-odd"><td><p>Piscis</p></td>
+<td><p>Agua</p></td>
+</tr>
+</tbody>
+</table>
+<p>Se quiere escribir un programa en C que:</p>
+<ol class="simple">
+<li><p>Muestre el listado de los signos del zodiaco.</p></li>
+<li><p>Pida por teclado un número (dato entero) asociado a un signo del zodiaco.</p></li>
+<li><p>Muestre la categoría a la que pertenece el signo del zodiaco seleccionado.</p></li>
+</ol>
+<p><strong>Nota</strong>: Si el número introducido por el usuario, no está asociado a ningún signo del zodiaco, se mostrará
+el mensaje: <strong>“ERROR: <numero> no está asociado a ningún signo”</strong>. Hacer este problema usando la sentencia switch.</p>
+<p>A continuación se muestra el <a class="reference external" href="https://repl.it/&#64;HENRYALBERTOALB/ejemplo1case">código</a> de la solución:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define ARIES 1</span>
+<span class="cp">#define TAURO 2</span>
+<span class="cp">#define GEMINIS 3</span>
+<span class="cp">#define CANCER 4</span>
+<span class="cp">#define LEO 5</span>
+<span class="cp">#define VIRGO 6</span>
+<span class="cp">#define LIBRA 7</span>
+<span class="cp">#define ESCORPIO 8</span>
+<span class="cp">#define SAGITARIO 9</span>
+<span class="cp">#define CAPRICORNIO 10</span>
+<span class="cp">#define ACUARIO 11</span>
+<span class="cp">#define PISCIS 12</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">signo</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;SIGNOS DEL ZODIACO</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;1. Aries</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;2. Tauro</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;3. Géminis</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;4. Cáncer</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;5. Leo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;6. Virgo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;7. Libra</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;8. Escorpio</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;9. Sagitario</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;10. Capricornio</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;11. Acuario</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;12. Piscis</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Seleccione el signo del zodiaco de su preferencia: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">signo</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">signo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">ARIES</span><span class="p">:</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">LEO</span><span class="p">:</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">SAGITARIO</span><span class="p">:</span><span class="w"></span>
+<span class="w">	    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Su signo es categoria fuego</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">TAURO</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="nl">VIRGO</span><span class="p">:</span><span class="w">	  </span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="nl">CAPRICORNIO</span><span class="p">:</span><span class="w"></span>
+<span class="w">	    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Su signo es categoria tierra</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">	    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">GEMINIS</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="nl">ESCORPIO</span><span class="p">:</span><span class="w">	  </span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">PISCIS</span><span class="p">:</span><span class="w"></span>
+<span class="w">	    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Su signo es categoria agua</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">	    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">CANCER</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="nl">LIBRA</span><span class="p">:</span><span class="w">	  </span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">ACUARIO</span><span class="p">:</span><span class="w"></span>
+<span class="w">	    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Su signo es categoria aire</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">	    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">	  </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">	    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">ERROR</span><span class="se">\&quot;</span><span class="s">: no está asociado a ningún signo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestra un caso de test cuando el usuario ingresa un número no válido para un signo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">SIGNOS</span> <span class="n">DEL</span> <span class="n">ZODIACO</span>
+<span class="mf">1.</span> <span class="n">Aries</span>
+<span class="mf">2.</span> <span class="n">Tauro</span>
+<span class="mf">3.</span> <span class="n">Géminis</span>
+<span class="mf">4.</span> <span class="n">Cáncer</span>
+<span class="mf">5.</span> <span class="n">Leo</span>
+<span class="mf">6.</span> <span class="n">Virgo</span>
+<span class="mf">7.</span> <span class="n">Libra</span>
+<span class="mf">8.</span> <span class="n">Escorpio</span>
+<span class="mf">9.</span> <span class="n">Sagitario</span>
+<span class="mf">10.</span> <span class="n">Capricornio</span>
+<span class="mf">11.</span> <span class="n">Acuario</span>
+<span class="mf">12.</span> <span class="n">Piscis</span>
+
+<span class="n">Seleccione</span> <span class="n">el</span> <span class="n">signo</span> <span class="k">del</span> <span class="n">zodiaco</span> <span class="n">de</span> <span class="n">su</span> <span class="n">preferencia</span><span class="p">:</span> <span class="mi">13</span>
+<span class="s2">&quot;ERROR&quot;</span><span class="p">:</span> <span class="n">no</span> <span class="n">está</span> <span class="n">asociado</span> <span class="n">a</span> <span class="n">ningún</span> <span class="n">signo</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="estructura-repetitiva">
+<h2>4.2 Estructura repetitiva<a class="headerlink" href="#estructura-repetitiva" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="estructura-for">
+<h2>4.2.1. Estructura for<a class="headerlink" href="#estructura-for" title="Permalink to this headline">#</a></h2>
+<p>La forma de esta estructura se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="n">expresion_inicializacion</span><span class="p">;</span><span class="w"> </span><span class="n">expresion_test</span><span class="p">;</span><span class="w"> </span><span class="n">expression_modificacion</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="id3">
+<h3>Ejemplo<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>Escriba un programa que sume una secuencia de enteros. Suponga que el primer entero que se lee especifica el número de valores que faltan por introducir. Su programa deberá leer un solo valor por instrucción de entrada. Una secuencia de entrada típica podría ser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="mi">100</span> <span class="mi">200</span> <span class="mi">300</span> <span class="mi">400</span> <span class="mi">500</span>
+</pre></div>
+</div>
+<p>Donde 5 indica que deben sumarse los siguientes 5 valores.</p>
+<p>El <a class="reference external" href="https://repl.it/&#64;HENRYALBERTOALB/ejemplo1for">código</a> del programa se muestra a continuacion:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w">   </span><span class="c1">// Cantidad de numeros</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"> </span><span class="c1">// Numero a leer</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">   </span><span class="c1">// i-esimo numero</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Suma de los numeros</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese la cantidad de numeros a sumar: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">La suma es: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">sum</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestra un caso de ejecución del programa anterior:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ingrese</span> <span class="n">la</span> <span class="n">cantidad</span> <span class="n">de</span> <span class="n">numeros</span> <span class="n">a</span> <span class="n">sumar</span><span class="p">:</span> <span class="mi">3</span>
+<span class="mi">123</span> <span class="mi">3</span> <span class="mi">3</span>
+
+<span class="n">La</span> <span class="n">suma</span> <span class="n">es</span><span class="p">:</span> <span class="mi">129</span>
+</pre></div>
+</div>
+<p><strong>Nota</strong>: Para el caso, la función <code class="docutils literal notranslate"><span class="pre">scanf</span></code> toma el <strong>espacio</strong> como un <strong>enter</strong>. Lo anterior implica que el caso anterior sería similar al que se muestra a continuacion (en lo que respecta a los valores capturados desde el teclado):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ingrese</span> <span class="n">la</span> <span class="n">cantidad</span> <span class="n">de</span> <span class="n">numeros</span> <span class="n">a</span> <span class="n">sumar</span><span class="p">:</span> <span class="mi">3</span>
+<span class="mi">123</span> 
+<span class="mi">3</span> 
+<span class="mi">3</span>
+
+<span class="n">La</span> <span class="n">suma</span> <span class="n">es</span><span class="p">:</span> <span class="mi">129</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="estructura-while">
+<h2>4.2.2. Estructura while<a class="headerlink" href="#estructura-while" title="Permalink to this headline">#</a></h2>
+<p>La forma de esta estructura se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="p">(</span><span class="n">condicion_control</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="id4">
+<h3>Ejemplo<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>Escriba un programa que calcule e imprima el promedio de varios enteros posivos. Suponga que el último valor leído es el centinela 9999. Una secuencia típica de entrada sería:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="mi">8</span> <span class="mi">11</span> <span class="mi">7</span> <span class="mi">9</span> <span class="mi">9999</span>
+</pre></div>
+</div>
+<p>Que indica que el promedio de todos los valores que preceden a 9999 se va a calcular. (<strong>Pista</strong>: Hacer esto con un ciclo <strong>while</strong> dentro del cual se lean los valores a promediar, siempre y cuando la condición de que lo leído no sea 9999, se cumpla).</p>
+<p>La <a class="reference external" href="https://repl.it/&#64;HENRYALBERTOALB/ejemplo1while">solución</a> se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">CENTINELA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9999</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"> </span><span class="c1">// Numero a leer</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Suma de los numeros</span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%u&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CENTINELA</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">La suma es: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Ingresando los valores 10, 8, 11, 7 y 9 se obtiene 45 como resultado de la suma, veamos el programa en acción para este caso:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="mi">8</span> <span class="mi">11</span> <span class="mi">7</span> <span class="mi">9</span> <span class="mi">9999</span>
+
+<span class="n">La</span> <span class="n">suma</span> <span class="n">es</span><span class="p">:</span> <span class="mi">45</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="estructura-do-while">
+<h2>4.2.3. Estructura do-while<a class="headerlink" href="#estructura-do-while" title="Permalink to this headline">#</a></h2>
+<p>La forma de esta estructura se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">condicion_control</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="id5">
+<h3>Ejemplo<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p>Hacer un programa que solicite un número de tal manera que si este es negativo mostrara un mensaje que diga “Número negativo asi que suerte”, y si es positivo mostrará un mensaje que diga: “Número positivo, siga usted” y solicite nuevamente un número.</p>
+<p>La <a class="reference external" href="https://repl.it/&#64;HENRYALBERTOALB/ejemplo1dowhile">solución</a> se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"> </span><span class="c1">// Numero a leer</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Numero positivo, siga usted</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Numero negativo asi que suerte</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Fin del programa</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestra una salida típica al ejecutar el anterior programa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="n">Numero</span> <span class="n">positivo</span><span class="p">,</span> <span class="n">siga</span> <span class="n">usted</span>
+<span class="mi">2</span>
+<span class="n">Numero</span> <span class="n">positivo</span><span class="p">,</span> <span class="n">siga</span> <span class="n">usted</span>
+<span class="mi">3</span>
+<span class="n">Numero</span> <span class="n">positivo</span><span class="p">,</span> <span class="n">siga</span> <span class="n">usted</span>
+<span class="mi">0</span>
+<span class="n">Numero</span> <span class="n">positivo</span><span class="p">,</span> <span class="n">siga</span> <span class="n">usted</span>
+<span class="o">-</span><span class="mi">7</span>
+<span class="n">Numero</span> <span class="n">negativo</span> <span class="n">asi</span> <span class="n">que</span> <span class="n">suerte</span>
+
+<span class="n">Fin</span> <span class="k">del</span> <span class="n">programa</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="funciones">
+<h1>5. Funciones<a class="headerlink" href="#funciones" title="Permalink to this headline">#</a></h1>
+<p>Ademas de las funciones de librerias (como scanf y prinf) en C es posible crear funciones definidas por el usuario haciendo que los programas sean modulares. Una funcion en C es un pequeño <strong>sub-programa</strong> que lleva a cabo una tarea particular. La forma de trabajar con funciones en C sigue la misma filosofia que la empleada en los metodos en java. Para usar funciones el programador debe hacer tres cosas:</p>
+<ol class="simple">
+<li><p><strong>Definir</strong> la función.</p></li>
+<li><p><strong>Declarar</strong> la función.</p></li>
+<li><p><strong>Usar</strong> la función.</p></li>
+</ol>
+<p>A continuación se detalla cada aspecto de los anteriormente mencionados.</p>
+<section id="definicion-de-la-funcion">
+<h2>1. Definición de la función<a class="headerlink" href="#definicion-de-la-funcion" title="Permalink to this headline">#</a></h2>
+<p>Consiste en las instrucciones que implementan lo que hace la función. La definición de una función tiene la siguiente sintaxis:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">declarations</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">function</span><span class="w"> </span><span class="n">statements</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong></p>
+<p>Hacer una función que calcule el factorial de un número:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">product</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">product</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">product</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="declaracion-de-la-funcion">
+<h2>2. Declaración de la función<a class="headerlink" href="#declaracion-de-la-funcion" title="Permalink to this headline">#</a></h2>
+<p>La declaración de una función está asociada a la cabecera de la funcion. El código de la declaración debe ubicarse antes de que la función sea definida. También se conocen como prototipos de la función y no son más que la cabecera de la función. La forma es la siguiente.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">list</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>
+¿Cual es el prototipo de la función factorial del ejemplo anterior?</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="uso-de-la-funcion">
+<h2>3. Uso de la función<a class="headerlink" href="#uso-de-la-funcion" title="Permalink to this headline">#</a></h2>
+<p>Consiste en invocar la funcion; lo cual consiste en colocar el nombre de la función proporsionando los argumentos y variables para almacenar valores retornados (en caso de ser necesario).</p>
+<p><strong>Ejemplo</strong></p>
+<ul class="simple">
+<li><p>Calcular el factorial de 8 llevando el resultado a una variable llamada f</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">f</span><span class="p">;</span><span class="w"></span>
+<span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Calcular el factorial de un número ingresado por el usuario:</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">;</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el numero&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d! = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="ejemplo-1-paso-a-paso">
+<h3>Ejemplo 1 (paso a paso)<a class="headerlink" href="#ejemplo-1-paso-a-paso" title="Permalink to this headline">#</a></h3>
+<p>Los ejemplos anteriormente mostrados solo hacian énfasis en las partes de las funciones. Para usar una funcion es necesario unir los aspectos anteriormente mencionados a la hora de codificar el archivo fuente, vamos a ver varios ejemplos para tal fin. Veamos como se haria gradualmente el proceso de una función que calcula la serie fibonacci teniendo en cuenta lo anterior. Asumiendo que el archivo fuente se llame <strong>fibonacci.c</strong> y tenga el siguiente contenido (es decir esta vacio):</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// coloque aqui su codigo...</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Vamos a proceder a realizar las siguientes tareas:</p>
+<ul class="simple">
+<li><p><strong>Paso 1</strong>: Codificar la declaración y definición de la función:</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Declaración de la funcion */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// int fibonacci(int);</span>
+
+<span class="cm">/* Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// coloque aqui su codigo...</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="cm">/* Definición de la funcion */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Paso 2</strong>: Una vez que tiene la función codificada lleve a cabo casos de test para verificar que la lógica de esta sea correcta.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Caso</p></th>
+<th class="head"><p>n</p></th>
+<th class="head"><p>fibonacci(n)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>6</p></td>
+<td><p>8</p></td>
+</tr>
+</tbody>
+</table>
+<p>A continuación se muestra la función (con su respectiva invocación) de test que lleva a cabo estos casos de prueba:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+/* Declaración de la funcion */
+void test(void);
+int fibonacci(int n); // int fibonacci(int);
+
+/* Funcion main */
+int main() {
+  // coloque aqui su codigo...
+  test();
+  return 0;
+}
+
+
+/* Definición de la funcion */
+void test(void) {
+  int n = 0; int fib;  
+  fib = fibonacci(n);
+  printf(&quot;-&gt; Caso 1: n = 0 - fibonacci(0) = %d\n&quot;, fib);
+  n++;
+  printf(&quot;-&gt; Caso 2: n = %d - fibonacci(%d) = %d\n&quot;, n, n, fibonacci(n));
+  printf(&quot;-&gt; Caso 3: n = %d - fibonacci(%d) = %d\n&quot;, 6, 6, fibonacci(6));
+}
+
+int fibonacci(int n) {
+  if(n == 0) {
+    return 0;
+  }  
+  else if(n == 1) {
+    return 1;
+  }
+  else{
+    return fibonacci(n - 1) + fibonacci(n - 2); 
+  }
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/%2A%20Declaraci%C3%B3n%20de%20la%20funcion%20%2A/%0Avoid%20test%28void%29%3B%0Aint%20fibonacci%28int%20n%29%3B%20//%20int%20fibonacci%28int%29%3B%0A%0A/%2A%20Funcion%20main%20%2A/%0Aint%20main%28%29%20%7B%0A%20%20//%20coloque%20aqui%20su%20codigo...%0A%20%20test%28%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A%0A/%2A%20Definici%C3%B3n%20de%20la%20funcion%20%2A/%0Avoid%20test%28void%29%20%7B%0A%20%20int%20n%20%3D%200%3B%20int%20fib%3B%20%20%0A%20%20fib%20%3D%20fibonacci%28n%29%3B%0A%20%20printf%28%22-%3E%20Caso%201%3A%20n%20%3D%200%20-%20fibonacci%280%29%20%3D%20%25d%5Cn%22%2C%20fib%29%3B%0A%20%20n%2B%2B%3B%0A%20%20printf%28%22-%3E%20Caso%202%3A%20n%20%3D%20%25d%20-%20fibonacci%28%25d%29%20%3D%20%25d%5Cn%22%2C%20n%2C%20n%2C%20fibonacci%28n%29%29%3B%0A%20%20printf%28%22-%3E%20Caso%203%3A%20n%20%3D%20%25d%20-%20fibonacci%28%25d%29%20%3D%20%25d%5Cn%22%2C%206%2C%206%2C%20fibonacci%286%29%29%3B%0A%7D%0A%0Aint%20fibonacci%28int%20n%29%20%7B%0A%20%20if%28n%20%3D%3D%200%29%20%7B%0A%20%20%20%20return%200%3B%0A%20%20%7D%20%20%0A%20%20else%20if%28n%20%3D%3D%201%29%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20else%7B%0A%20%20%20%20return%20fibonacci%28n%20-%201%29%20%2B%20fibonacci%28n%20-%202%29%3B%20%0A%20%20%7D%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<ul class="simple">
+<li><p><strong>Paso 3</strong>: una vez verificado el correcto funcionamiento de la función, el siguiente paso consiste en adaptar el codigo necesario para hacer que el programa interactue con el usuario empleando esta función.</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Declaración de la funcion */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// int fibonacci(int);</span>
+
+<span class="cm">/* Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// coloque aqui su codigo...</span>
+<span class="w">  </span><span class="c1">//test();</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">numTerm</span><span class="p">,</span><span class="w"> </span><span class="n">fib</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-----------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;PROGRAMA FIBONACCI</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-----------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Digite el numero de termino al que le desea calcular la serie fibonacci: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">numTerm</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">numTerm</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;El numero de terminos debe ser positivo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">fib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">numTerm</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;fibonacci(%d) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">numTerm</span><span class="p">,</span><span class="n">fib</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="cm">/* Definición de la funcion */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fib</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="n">fib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Caso 1: n = 0 - fibonacci(0) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fib</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">n</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Caso 2: n = %d - fibonacci(%d) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Caso 3: n = %d - fibonacci(%d) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">6</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Paso 4</strong>: lo unico que resta es disfrutar el programa (lo cual puede hacerlo siguiendo el siguiente <a class="reference external" href="https://repl.it/&#64;HENRYALBERTOALB/ejemplo1funciones">enlace</a>). Por ejemplo, una posible salida si se hubiera colocado <strong>n = 8</strong> sería:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-----------------------</span>
+ <span class="n">PROGRAMA</span> <span class="n">FIBONACCI</span>
+ <span class="o">-----------------------</span>
+ <span class="n">Digite</span> <span class="n">el</span> <span class="n">numero</span> <span class="n">de</span> <span class="n">termino</span> <span class="n">al</span> <span class="n">que</span> <span class="n">le</span> <span class="n">desea</span> <span class="n">calcular</span> <span class="n">la</span> <span class="n">serie</span> <span class="n">fibonacci</span><span class="p">:</span>  <span class="mi">8</span>
+ <span class="n">fibonacci</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="mi">21</span> 
+</pre></div>
+</div>
+</section>
+<section id="ejemplo-2">
+<h3>Ejemplo 2<a class="headerlink" href="#ejemplo-2" title="Permalink to this headline">#</a></h3>
+<p>Hacer un programa que permita calcular el factorial de un numero. El programa deberá interactuar con el usuario y permitir su ejecución hasta que el usuario se aburra.</p>
+<p>A contunuación se muestra el codigo solución:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Declaracion de funciones */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* Funcion principal */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">fac</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Digite un numero positivo o -1 para terminar: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	 </span><span class="n">fac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d! = %d</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">fac</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Digite un numero positivo o -1 para terminar: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"> 	 </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Suerte es que le digo...&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/* Definicion de funciones */</span><span class="w"> </span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="o">*</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="mi">-1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestra un caso de ejecucion del programa anterior:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Digite un numero positivo o -1 para terminar: 0
+0! = 1
+
+Digite un numero positivo o -1 para terminar: 5
+5! = 120
+
+Digite un numero positivo o -1 para terminar: -1
+
+Suerte es que le digo...
+</pre></div>
+</div>
+<p>El programa anterior puede ser probado usando el siguiente <a class="reference external" href="https://repl.it/&#64;HENRYALBERTOALB/ejemplo2funciones">enlace</a>.</p>
+</section>
+</section>
+</section>
+<section id="paso-de-parametros-a-una-funcion">
+<h1>6. Paso de parámetros a una función<a class="headerlink" href="#paso-de-parametros-a-una-funcion" title="Permalink to this headline">#</a></h1>
+<p>En lenguaje C existen dos formas de pasar parametros a una función, estos son:</p>
+<ol class="simple">
+<li><p>Paso por valor.</p></li>
+<li><p>Paso por referencia.</p></li>
+</ol>
+<section id="paso-por-valor">
+<h2>6.1. Paso por valor<a class="headerlink" href="#paso-por-valor" title="Permalink to this headline">#</a></h2>
+<p>Cuando un argumento es pasado a una función su valor es copiado en el parámetro de la función. Como la función trabaja sobre el parámetro cuando es invocada, los cambios realizados al parámetro (copia del argumento) de la función no afectan el valor pasado como argumento. La forma típica de una función de este tipo se muestra a continuación:</p>
+<ul class="simple">
+<li><p><strong>Declaracion o prototipo</strong></p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">type1</span><span class="w"> </span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">type2</span><span class="w">  </span><span class="n">var2</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>El siguiente código es un ejemplo de lo anterior:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Definicion</strong></p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">type1</span><span class="w"> </span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">type2</span><span class="w">  </span><span class="n">var2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Intrucciones </span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="n">code</span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>El siguiente código es un ejemplo de lo anterior:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">num</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Invocacion</strong></p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="w"> </span><span class="n">var_resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="w"> </span><span class="n">arg2</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>El siguiente código es un ejemplo de lo anterior:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">incremento</span><span class="p">(</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>
+En el siguiente ejemplo se muestra una función que incrementa valor que se pasa al parámetro. Este, como los ejemplos vistos con anterioridad emplean el paso de funciones por argumento. A continuación se muestra el codigo solución:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+// Prototipo
+void incremento(int num);
+
+int main() {
+  int N = 3;
+  printf(&quot;Valor de N antes del llamado a la funcion: %d\n&quot;, N);
+  // Invocacion
+  incremento(N);
+  printf(&quot;Valor de N despues del llamado a la funcion: %d\n&quot;, N);
+  return 0;
+}
+
+// Definicion
+void incremento(int num) {
+  num++;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Prototipo%0Avoid%20incremento%28int%20num%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20N%20%3D%203%3B%0A%20%20printf%28%22Valor%20de%20N%20antes%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22%2C%20N%29%3B%0A%20%20//%20Invocacion%0A%20%20incremento%28N%29%3B%0A%20%20printf%28%22Valor%20de%20N%20despues%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22%2C%20N%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A//%20Definicion%0Avoid%20incremento%28int%20num%29%20%7B%0A%20%20num%2B%2B%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p><strong>Pregunta</strong></p>
+<ol class="simple">
+<li><p>¿Cuál es el valor de num y N antes del retorno de la función incremento?</p></li>
+<li><p>¿Cambian ambas variables?</p></li>
+</ol>
+</section>
+<section id="paso-por-referencia">
+<h2>6.2. Paso por referencia<a class="headerlink" href="#paso-por-referencia" title="Permalink to this headline">#</a></h2>
+<p>Una función por referencia es aquella que emplea como parámetros apuntadores (variables que almacenan direcciones de memoria, este tema se tratará después con más detalle). En este caso particular cuando una función es llamada por referencia lo que se pasa es la dirección de la variable pasada como argumento (anteponiendo el ampersand (<strong>&amp;</strong>) al nombre de esta (<strong>&amp;var</strong> = <strong>Dirección de var</strong>)), con esto, la función no trabaja sobre una copia local del argumento, sino directamente sobre la variable en sí, pues su contenido en memoria es manipulado a través del apuntador asociado al parámetro de la función. A continuación, se muestra la forma básica de trabajo para llamados por referencia:</p>
+<ul class="simple">
+<li><p><strong>Declaración o prototipo</strong></p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">type1</span><span class="w"> </span><span class="o">*</span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">type2</span><span class="w">  </span><span class="o">*</span><span class="n">var2</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>El siguiente código es un ejemplo de lo anterior:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Definición</strong></p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">type1</span><span class="w"> </span><span class="o">*</span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">type2</span><span class="w">  </span><span class="o">*</span><span class="n">var2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Intrucciones </span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="n">code</span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>El siguiente código es un ejemplo de lo anterior:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">num</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Nota</strong>: Tanto en la declaración como en la definición note que el manejo del parametro se hizo anteponiendo a la variable un simbolo asterisco (*****), esto se debe a que el parametro es una variable tipo apuntador, este será un tema posterior, por ahora, tenga en cuenta que gracias al asterisco es que se puede cambiar el contenido almacenado en la memoria de la variable a la que el parametro tipo apuntador num apunta.</p>
+<ul class="simple">
+<li><p><strong>Invocacion</strong></p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="w"> </span><span class="n">var_resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">function_name</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">arg1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg2</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>El siguiente código es un ejemplo de lo anterior:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">incremento</span><span class="p">(</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Nota</strong>: Observe que la invocación para el caso se hizo con el operador ampersand (&amp;), esto tiene su razón de ser pero será abordado después, por ahora tenga en cuenta que cuando se pasan variables a funciones y el llamado es por referencia se les debe anteponer el operador ampersand (&amp;) como en el ejemplo anterior y en el caso de la función scanf (analizada previamente).</p>
+<p><strong>Ejemplo</strong>
+En el siguiente ejemplo se muestra una función que incrementa referencia que se pasa al parámetro, la idea es resumir todo lo expuesto anteriormente, no se preocupe si de entrada no coje el hilo, es el tema más dificil de manejar en C (incluso, personalmente fue algo difícil de entender en nuestro pregrado), pero una vez tenga claridad con esto todo fluirá.</p>
+<p>A continuación se muestra el codigo asociado:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+void incremento(int *num);
+
+int main() {
+  int N = 3;
+  printf(&quot;Valor de N antes del llamado a la funcion: %d\n&quot;, N);
+  incremento(&amp;N);
+  printf(&quot;Valor de N despues del llamado a la funcion: %d\n&quot;, N);
+  return 0;
+}
+
+void incremento(int *num) {
+  *num += 1;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Pregunta</strong>: ¿Cuál es el valor de N antes y después del retorno de la función incremento?</p>
+<p><strong>Asimilando lo anterior</strong></p>
+<p><strong>P1</strong>. Repase los ejemplos anteriormente mostrados y observe las diferencias en su ejecución. Para cada caso: ¿cual es el valor antes y despues de la función de incremento?</p>
+<p><strong>Función llamada por valor</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+// Prototipo
+void incremento(int num);
+
+int main() {
+  int N = 3;
+  printf(&quot;Valor de N antes del llamado a la funcion: %d\n&quot;, N);
+  // Invocacion
+  incremento(N);
+  printf(&quot;Valor de N despues del llamado a la funcion: %d\n&quot;, N);
+  return 0;
+}
+
+// Definicion
+void incremento(int num) {
+  num++;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Prototipo%0Avoid%20incremento%28int%20num%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20N%20%3D%203%3B%0A%20%20printf%28%22Valor%20de%20N%20antes%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22%2C%20N%29%3B%0A%20%20//%20Invocacion%0A%20%20incremento%28N%29%3B%0A%20%20printf%28%22Valor%20de%20N%20despues%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22%2C%20N%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A//%20Definicion%0Avoid%20incremento%28int%20num%29%20%7B%0A%20%20num%2B%2B%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p><strong>Función llamada por referencia</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+void incremento(int *num);
+
+int main() {
+  int N = 3;
+  printf(&quot;Valor de N antes del llamado a la funcion: %d\n&quot;, N);
+  incremento(&amp;N);
+  printf(&quot;Valor de N despues del llamado a la funcion: %d\n&quot;, N);
+  return 0;
+}
+
+void incremento(int *num) {
+  *num += 1;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20incremento%28int%20%2Anum%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20N%20%3D%203%3B%0A%20%20printf%28%22Valor%20de%20N%20antes%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22%2C%20N%29%3B%0A%20%20incremento%28%26N%29%3B%0A%20%20printf%28%22Valor%20de%20N%20despues%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22%2C%20N%29%3B%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20incremento%28int%20%2Anum%29%20%7B%0A%20%20%2Anum%20%2B%3D%201%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p><strong>P2</strong>. Analice y entienda el siguiente código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+void intercambioReferencia(int *x, int *y);
+void intercambioValor(int x, int y);
+
+int main() {
+    int x = 5, y = 10;
+    printf(&quot;---------------------------------------------------\n&quot;);
+    printf(&quot;Llamada por valor\n&quot;);
+    printf(&quot;Antes del intercambio: x = %d; y = %d\n&quot;, x , y);    
+    intercambioValor(x, y);
+    printf(&quot;Despues del intercambio: x = %d; y = %d\n&quot;, x , y);
+    printf(&quot;---------------------------------------------------\n&quot;);
+    printf(&quot;Llamada por referencia\n&quot;);
+    printf(&quot;Antes del intercambio: x = %d; y = %d\n&quot;, x , y);    
+    intercambioReferencia(&amp;x, &amp;y);
+    printf(&quot;Despues del intercambio: x = %d; y = %d\n&quot;, x , y);
+    printf(&quot;---------------------------------------------------\n&quot;);
+    return 0;
+}
+
+void intercambioReferencia(int *px, int *py) {
+    int temp;
+    temp = *px;
+    *px = *py;
+    *py = temp;    
+}
+
+void intercambioValor(int x, int y) {
+    int temp;
+    temp = x;
+    x = y;
+    y = temp;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20intercambioReferencia%28int%20%2Ax%2C%20int%20%2Ay%29%3B%0Avoid%20intercambioValor%28int%20x%2C%20int%20y%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20x%20%3D%205%2C%20y%20%3D%2010%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Llamada%20por%20valor%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Antes%20del%20intercambio%3A%20x%20%3D%20%25d%3B%20y%20%3D%20%25d%5Cn%22%2C%20x%20%2C%20y%29%3B%20%20%20%20%0A%20%20%20%20intercambioValor%28x%2C%20y%29%3B%0A%20%20%20%20printf%28%22Despues%20del%20intercambio%3A%20x%20%3D%20%25d%3B%20y%20%3D%20%25d%5Cn%22%2C%20x%20%2C%20y%29%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Llamada%20por%20referencia%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Antes%20del%20intercambio%3A%20x%20%3D%20%25d%3B%20y%20%3D%20%25d%5Cn%22%2C%20x%20%2C%20y%29%3B%20%20%20%20%0A%20%20%20%20intercambioReferencia%28%26x%2C%20%26y%29%3B%0A%20%20%20%20printf%28%22Despues%20del%20intercambio%3A%20x%20%3D%20%25d%3B%20y%20%3D%20%25d%5Cn%22%2C%20x%20%2C%20y%29%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20intercambioReferencia%28int%20%2Apx%2C%20int%20%2Apy%29%20%7B%0A%20%20%20%20int%20temp%3B%0A%20%20%20%20temp%20%3D%20%2Apx%3B%0A%20%20%20%20%2Apx%20%3D%20%2Apy%3B%0A%20%20%20%20%2Apy%20%3D%20temp%3B%20%20%20%20%0A%7D%0A%0Avoid%20intercambioValor%28int%20x%2C%20int%20y%29%20%7B%0A%20%20%20%20int%20temp%3B%0A%20%20%20%20temp%20%3D%20x%3B%0A%20%20%20%20x%20%3D%20y%3B%0A%20%20%20%20y%20%3D%20temp%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+</section>
+</section>
+<section id="enlaces-de-interes">
+<h1>7. Enlaces de interes<a class="headerlink" href="#enlaces-de-interes" title="Permalink to this headline">#</a></h1>
+<ol class="simple">
+<li><p><a class="reference external" href="https://www.programiz.com/c-programming">Learn C Programming - The Definitive Guide</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/c-programming-language/">C Programming Language</a></p></li>
+<li><p><a class="reference external" href="https://www.tutorialspoint.com/cprogramming/">C Tutorial</a></p></li>
+<li><p><a class="reference external" href="http://www.learn-c.org/">learn-c</a></p></li>
+<li><p><a class="reference external" href="https://www.w3schools.in/c-tutorial/">C tutorial - w3schools</a></p></li>
+<li><p><a class="reference external" href="https://hackr.io/">hackr.io</a></p></li>
+<li><p><a class="reference external" href="https://beginnersbook.com/2014/01/c-tutorial-for-beginners-with-examples/">C Tutorial – Learn C Programming with examples
+</a></p></li>
+<li><p><a class="reference external" href="https://alison.com/course/introduction-to-c-programming">Introduction to C Programming</a></p></li>
+<li><p><a class="reference external" href="https://www3.ntu.edu.sg/home/ehchua/programming/index.html">programming notes</a></p></li>
+</ol>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content\local\code\parte1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
