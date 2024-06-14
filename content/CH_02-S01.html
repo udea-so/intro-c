@@ -517,6 +517,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funciones">
+   5. Funciones
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -668,6 +673,11 @@ title="Print to PDF"
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funciones">
+   5. Funciones
+  </a>
  </li>
 </ul>
 
@@ -1413,8 +1423,8 @@ This page shows off a notebook written in MyST Markdown.</p>
 <p>En la siguiente tabla se muestran las categorías a las que pertenecen los signos del zodíaco:</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Rango</p></th>
-<th class="head"><p>Nota</p></th>
+<tr class="row-odd"><th class="head"><p>Signo</p></th>
+<th class="head"><p>Tipo</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1704,6 +1714,224 @@ el mensaje: <strong>“ERROR: <numero> no está asociado a ningún signo”</str
 </div>
 </section>
 </section>
+</section>
+<section id="funciones">
+<h2>5. Funciones<a class="headerlink" href="#funciones" title="Permalink to this headline">#</a></h2>
+<p>Ademas de las funciones de librerias (como <code class="docutils literal notranslate"><span class="pre">scanf</span></code> y <code class="docutils literal notranslate"><span class="pre">prinf</span></code>) en C es posible crear funciones definidas por el usuario haciendo que los programas sean modulares. Una funcion en C es un pequeño <strong>sub-programa</strong> que lleva a cabo una tarea particular. La forma de trabajar con funciones en C sigue la misma filosofia que la empleada en los metodos en java. Para usar funciones el programador debe hacer tres cosas:</p>
+<ol class="simple">
+<li><p><strong>Definir</strong> la función.</p></li>
+<li><p><strong>Declarar</strong> la función.</p></li>
+<li><p><strong>Usar</strong> la función.</p></li>
+</ol>
+<p>A continuación se detalla cada aspecto de los anteriormente mencionados.</p>
+<p><strong>1. Definición de la función</strong></p>
+<p>Consiste en las instrucciones que implementan lo que hace la función. La definición de una función tiene la siguiente sintaxis:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">declarations</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">function</span><span class="w"> </span><span class="n">statements</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>: Hacer una función que calcule el factorial de un número:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">product</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">product</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">product</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>2. Declaración de la función</strong></p>
+<p>La declaración de una función está asociada a la cabecera de la funcion. El código de la declaración debe ubicarse antes de que la función sea definida. También se conocen como prototipos de la función y no son más que la cabecera de la función. La forma es la siguiente.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="n">list</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>: ¿Cual es el prototipo de la función factorial del ejemplo anterior?</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">factorial</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>3. Uso de la función</strong></p>
+<p>Consiste en invocar la funcion; lo cual consiste en colocar el nombre de la función proporsionando los argumentos y variables para almacenar valores retornados (en caso de ser necesario).</p>
+<p><strong>Ejemplo</strong>: Calcular el factorial de 8 llevando el resultado a una variable llamada <code class="docutils literal notranslate"><span class="pre">f</span></code></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">f</span><span class="p">;</span><span class="w"></span>
+<span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>: Calcular el factorial de un número ingresado por el usuario:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">;</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese el numero&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factorial</span><span class="p">(</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d! = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplos</strong></p>
+<ol>
+<li><p><strong>(paso a paso)</strong> Los ejemplos anteriormente mostrados solo hacian énfasis en las partes de las funciones. Para usar una funcion es necesario unir los aspectos anteriormente mencionados a la hora de codificar el archivo fuente, vamos a ver varios ejemplos para tal fin. Veamos como se haria gradualmente el proceso de una función que calcula la serie fibonacci teniendo en cuenta lo anterior. Asumiendo que el archivo fuente se llame <strong><code class="docutils literal notranslate"><span class="pre">fibonacci.c</span></code></strong> y tenga el siguiente contenido (es decir esta vacio):</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// coloque aqui su codigo...</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Vamos a proceder a realizar las siguientes tareas:</p>
+<ul>
+<li><p><strong>Paso 1</strong>: Codificar la declaración y definición de la función:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Declaración de la funcion */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// int fibonacci(int);</span>
+
+<span class="cm">/* Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// coloque aqui su codigo...</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="cm">/* Definición de la funcion */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Paso 2</strong>: Una vez que tiene la función codificada lleve a cabo casos de test para verificar que la lógica de esta sea correcta.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Caso</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">n</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">fibonacci(n)</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>6</p></td>
+<td><p>8</p></td>
+</tr>
+</tbody>
+</table>
+<p>A continuación se muestra la función (con su respectiva invocación) de test que lleva a cabo estos casos de prueba (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%0A/*%20Declaraci%C3%B3n%20de%20la%20funcion%20*/%0Avoid%20test%28void%29%3B%0Aint%20fibonacci%28int%20n%29%3B%20//%20int%20fibonacci%28int%29%3B%0A%0A/*%20Funcion%20main%20*/%0Aint%20main%28%29%20%7B%0A%20%20//%20coloque%20aqui%20su%20codigo...%0A%20%20test%28%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A%0A/*%20Definici%C3%B3n%20de%20la%20funcion%20*/%0Avoid%20test%28void%29%20%7B%0A%20%20int%20n%20%3D%200%3B%20int%20fib%3B%20%20%0A%20%20fib%20%3D%20fibonacci%28n%29%3B%0A%20%20printf%28%22-%3E%20Caso%201%3A%20n%20%3D%200%20-%20fibonacci%280%29%20%3D%20%25d%5Cn%22,%20fib%29%3B%0A%20%20n%2B%2B%3B%0A%20%20printf%28%22-%3E%20Caso%202%3A%20n%20%3D%20%25d%20-%20fibonacci%28%25d%29%20%3D%20%25d%5Cn%22,%20n,%20n,%20fibonacci%28n%29%29%3B%0A%20%20printf%28%22-%3E%20Caso%203%3A%20n%20%3D%20%25d%20-%20fibonacci%28%25d%29%20%3D%20%25d%5Cn%22,%206,%206,%20fibonacci%286%29%29%3B%0A%7D%0A%0Aint%20fibonacci%28int%20n%29%20%7B%0A%20%20if%28n%20%3D%3D%200%29%20%7B%0A%20%20%20%20return%200%3B%0A%20%20%7D%20%20%0A%20%20else%20if%28n%20%3D%3D%201%29%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20else%7B%0A%20%20%20%20return%20fibonacci%28n%20-%201%29%20%2B%20fibonacci%28n%20-%202%29%3B%20%0A%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulación</a>):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Declaración de la funcion */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// int fibonacci(int);</span>
+
+<span class="cm">/* Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// coloque aqui su codigo...</span>
+<span class="w">  </span><span class="n">test</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="w">    </span>
+<span class="cm">/* Definición de la funcion */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fib</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="n">fib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Caso 1: n = 0 - fibonacci(0) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fib</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">n</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Caso 2: n = %d - fibonacci(%d) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Caso 3: n = %d - fibonacci(%d) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">6</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Paso 3</strong>: una vez verificado el correcto funcionamiento de la función, el siguiente paso consiste en adaptar el codigo necesario para hacer que el programa interactue con el usuario empleando esta función.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="w">   </span>
+<span class="cm">/* Declaración de la funcion */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// int fibonacci(int);</span>
+<span class="w">   </span>
+<span class="cm">/* Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// coloque aqui su codigo...</span>
+<span class="w">  </span><span class="c1">//test();</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">numTerm</span><span class="p">,</span><span class="w"> </span><span class="n">fib</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-----------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;PROGRAMA FIBONACCI</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-----------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Digite el numero de termino al que le desea calcular la serie fibonacci: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">numTerm</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">numTerm</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;El numero de terminos debe ser positivo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">fib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">numTerm</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;fibonacci(%d) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">numTerm</span><span class="p">,</span><span class="n">fib</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="w">      </span>
+<span class="cm">/* Definición de la funcion */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fib</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="n">fib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Caso 1: n = 0 - fibonacci(0) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fib</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">n</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Caso 2: n = %d - fibonacci(%d) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Caso 3: n = %d - fibonacci(%d) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">6</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="w">   </span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fibonacci</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Paso 4</strong>: lo unico que resta es ejecutar el programa. Por ejemplo, una posible salida si se hubiera colocado <strong><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">8</span></code></strong> sería:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-----------------------</span>
+<span class="n">PROGRAMA</span> <span class="n">FIBONACCI</span>
+<span class="o">-----------------------</span>
+<span class="n">Digite</span> <span class="n">el</span> <span class="n">numero</span> <span class="n">de</span> <span class="n">termino</span> <span class="n">al</span> <span class="n">que</span> <span class="n">le</span> <span class="n">desea</span> <span class="n">calcular</span> <span class="n">la</span> <span class="n">serie</span> <span class="n">fibonacci</span><span class="p">:</span>  <span class="mi">8</span>
+<span class="n">fibonacci</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="mi">21</span> 
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
 </section>
 </section>
 
