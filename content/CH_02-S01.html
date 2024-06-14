@@ -428,6 +428,23 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrada-y-salida-estandar">
+   3. Entrada y salida estándar
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-printf">
+     Funcion
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       printf
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#an-example-cell">
    An example cell
   </a>
@@ -501,6 +518,23 @@ title="Print to PDF"
       </a>
      </li>
     </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrada-y-salida-estandar">
+   3. Entrada y salida estándar
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcion-printf">
+     Funcion
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       printf
+      </span>
+     </code>
+    </a>
    </li>
   </ul>
  </li>
@@ -615,6 +649,7 @@ Hello, World
 <section id="tipos-de-datos">
 <h2>2. Tipos de Datos<a class="headerlink" href="#tipos-de-datos" title="Permalink to this headline">#</a></h2>
 <p>Los tipos de datos básicos incorporados en C son los enteros, los reales y los tipo carácter. En la siguiente tabla se resumen éstos:</p>
+<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">Tabla</span> <span class="pre">1</span></code> Tipos de datos primitivos en C</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Tipo de dato</p></th>
@@ -689,11 +724,6 @@ Hello, World
 <td><p></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">%Lf</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref std std-numref docutils literal notranslate"><span class="pre">Tabla</span> <span class="pre">1</span></code> Tipos de datos primitivos en C</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
 <p>El manejo de los tipos de datos en C es muy similar al que se hace en java. Cabe resaltar que de los tipos de datos enteros, el tipo <strong><code class="docutils literal notranslate"><span class="pre">char</span></code></strong> se utiliza para representar caracteres de modo que las constantes tipo <strong><code class="docutils literal notranslate"><span class="pre">char</span></code></strong> pueden ser:</p>
@@ -701,6 +731,7 @@ Hello, World
 <li><p>Caracteres encerrados entre comillas (<code class="docutils literal notranslate"><span class="pre">'A'</span></code>, <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, <code class="docutils literal notranslate"><span class="pre">'p'</span></code>) asociados a un valor ascii.</p></li>
 <li><p>Caracteres no imprimibles (tabulación, avance de página) los cuales se representan con secuencias de escape (<code class="docutils literal notranslate"><span class="pre">'\n'</span></code>, <code class="docutils literal notranslate"><span class="pre">'\t'</span></code>). La siguiente tabla muestra algunos de estos caracteres:</p></li>
 </ol>
+<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">Tabla</span> <span class="pre">2</span></code> Secuencias de escape en C</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Carácter de escape</p></th>
@@ -763,10 +794,6 @@ Hello, World
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\0</span></code></p></td>
 <td><p>Carácter nulo o terminación de cadena</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref std std-numref docutils literal notranslate"><span class="pre">Tabla</span> <span class="pre">2</span></code> Secuencias de escape en C</p></td>
-<td><p></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -864,10 +891,80 @@ La palabra reservada <strong><code class="docutils literal notranslate"><span cl
 </ul>
 </li>
 </ol>
+</section>
+</section>
+</section>
+<section id="entrada-y-salida-estandar">
+<h2>3. Entrada y salida estándar<a class="headerlink" href="#entrada-y-salida-estandar" title="Permalink to this headline">#</a></h2>
+<p>En C la entrada y salida de texto se abstrae como streams o flujos de caracteres, no importa de dónde se origine el flujo o hacia a donde se dirija. Un flujo de texto, es una secuencia de caracteres dividida en líneas en la cual cada línea consiste de cero o más caracteres seguidos por un carácter de nueva línea.</p>
+<p>En C las funciones de E/S y  las estructuras de datos usadas por esas funciones se encuentran declaradas en el archivo de cabecera <strong><code class="docutils literal notranslate"><span class="pre">&lt;stdio.h&gt;</span></code></strong>. Para el correcto funcionamiento del código es necesario incluir dicho archivo mediante la directiva del preprocesador <strong><code class="docutils literal notranslate"><span class="pre">#include</span></code></strong>, pues en caso contrario, puede funcionar de forma incorrecta, e incluso, puede llegar a dar errores de compilación.</p>
+<p>La biblioteca <strong><code class="docutils literal notranslate"><span class="pre">stdio.h</span></code></strong> provee un conjunto de funciones para leer y escribir desde la consola. A continuación veremos algunas:</p>
+<section id="funcion-printf">
+<h3>Funcion <code class="docutils literal notranslate"><span class="pre">printf</span></code><a class="headerlink" href="#funcion-printf" title="Permalink to this headline">#</a></h3>
+<p>La forma de la función se muestra a continuacion:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">format</span><span class="p">[,</span><span class="n">argumento</span><span class="p">,...]);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La función <code class="docutils literal notranslate"><span class="pre">printf()</span></code> se usa para escribir cualquier tipo de dato a la consola. Se conoce como salida formateada pues convierte, formatea, e imprime sus argumentos <code class="docutils literal notranslate"><span class="pre">(arg1,</span> <span class="pre">arg2,</span> <span class="pre">...)</span></code> en la salida estándar. Para ello toma el formato establecido por el usuario en el argumento <strong>format</strong> (ver en la tabla 1 la columna <strong>especificador de formato</strong> asociada a cada tipo de dato).</p>
+<p>Para informacion adicional puede consultar el siguiente <a class="reference external" href="http://c.conclase.net/librerias/?ansifun=printf#inicio">enlace</a></p>
+<p>Por ejemplo suponiendo que se tiene el siguiente fragmento de código en C:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Color %s, Number %d, Float %5.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La salida en pantalla será:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Color</span> <span class="n">red</span><span class="p">,</span> <span class="n">Number</span> <span class="mi">12345</span><span class="p">,</span> <span class="n">Float</span> <span class="mf">3.14</span>
+</pre></div>
+</div>
+<p>Observe el siguiente codigo para comprender lo anterior (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20printf%28%22Color%20%25s,%20Number%20%25d,%20Float%20%255.2f%5Cn%22,%20%22red%22,%2012345,%203.14%29%3B%0A%20%20return%200%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulación</a>):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Color %s, Number %d, Float %5.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Notará que la parte asociada a especificador de formato (parte precedida por <code class="docutils literal notranslate"><span class="pre">%</span></code> en el primer argumento de la función <code class="docutils literal notranslate"><span class="pre">printf</span></code>) se reemplaza por el respectivo valor asociado a la variable o constante. Como recordatorio, presentamos en la siguiente tabla los especificadores de formato más comunes:</p>
+<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">Tabla</span> <span class="pre">3</span></code> Especificadores de formato más comunes en C</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Especificador de formato</p></th>
+<th class="head"><p>Tipo de dato</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%d</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%c</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">char</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%s</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">char[]</span></code> (cadena de caracteres)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%f</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%lf</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">double</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%e</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> (El resultado se muestra en notación exponencial)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%u</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%o</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span></code> (el resultado se muestra en formato octal)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%x</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unsigned</span></code> (el resultado se muestra en formato hexadecimal)</p></td>
+</tr>
+</tbody>
+</table>
 <p>Jupyter Book also lets you write text-based notebooks using MyST Markdown.
 See <a class="reference external" href="https://jupyterbook.org/file-types/myst-notebooks.html">the Notebooks with MyST Markdown documentation</a> for more detailed instructions.
 This page shows off a notebook written in MyST Markdown.</p>
-</section>
 </section>
 </section>
 <section id="an-example-cell">
