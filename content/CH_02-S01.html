@@ -417,6 +417,13 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#cadenas-de-caracteres">
      2.2. Cadenas de caracteres
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Ejemplos
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -487,6 +494,13 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#cadenas-de-caracteres">
      2.2. Cadenas de caracteres
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Ejemplos
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -761,11 +775,11 @@ Hello, World
 <section id="variables">
 <h3>2.1. Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h3>
 <p>Una declaración indica el tipo de variable y le sirve al compilador para determinar la cantidad de memoria requerida para almacenar la variable deseada. El formato básico para declarar una variable es:</p>
-<div class="highlight-{code}c notranslate"><div class="highlight"><pre><span></span>tipo var1, var2, ...;
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">var2</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Si la declaración produce también un almacenamiento (inicialización), entonces es una definición.</p>
-<div class="highlight-{code}c notranslate"><div class="highlight"><pre><span></span>tipo var = valor inicial;
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor</span><span class="w"> </span><span class="n">inicial</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -779,13 +793,13 @@ Hello, World
 <h4>Ejemplos<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
 <ol>
 <li><p>A continuación se muestran varias declaraciones de variables, note que la forma es similar a la empleada en java:</p>
-<div class="highlight-{code}c notranslate"><div class="highlight"><pre><span></span>int i, j, k;
-float length, height;
-char midinit;
-float total = 16.78;
-int a = 1, b = 2;
-char ac = &#39;@&#39;;
-const IVA = 19
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">;</span><span class="w"></span>
+<span class="kt">float</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">midinit</span><span class="p">;</span><span class="w"></span>
+<span class="kt">float</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16.78</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">ac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;@&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">IVA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">19</span><span class="w"></span>
 </pre></div>
 </div>
 <p>En el siguiente <a class="reference external" href="https://goo.gl/cgydMU">enlace</a> puede hacer la simulacion del código anterior (note que las variables no inicializadas no aparecen desplegadas).</p>
@@ -800,9 +814,41 @@ La palabra reservada <strong><code class="docutils literal notranslate"><span cl
 </section>
 <section id="cadenas-de-caracteres">
 <h3>2.2. Cadenas de caracteres<a class="headerlink" href="#cadenas-de-caracteres" title="Permalink to this headline">#</a></h3>
+<p>En C una cadena de caracteres (C String) no es un tipo de dato primitivo. En C se requiere usar un <strong>arreglo</strong> de caracteres (datos primitivos tipo char) cada vez que se requiera utilizar un <strong>String</strong>. Existen varias formas de declarar cadenas de caracteres:</p>
+<ol>
+<li><p>Indicando el máximo número de carácteres en la definición:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">nombreCadena</span><span class="p">[</span><span class="n">TAM</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Inicializando la cadena de carácteres de modo que el compilador pueda deducir su tamaño:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">nombreCadena</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Contenido_de_la_cadena&quot;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Definiendo el tamaño e inicializando:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">nombreCadena</span><span class="p">[</span><span class="n">TAM</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Contenido_de_la_cadena&quot;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>En una cadena de carácteres el último carácter útil es el carácter <code class="docutils literal notranslate"><span class="pre">NULL</span></code> (<code class="docutils literal notranslate"><span class="pre">\0</span></code>). El cual se incluye de manera automática para marcar el final de la cadena.</p>
+<section id="id2">
+<h4>Ejemplos<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<ol>
+<li><p>Declarar una cadena llamada temp de 5 bytes cuyo contenido inicial sea <em>Hot</em>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">temp</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hot&quot;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El resultado en memoria puede ser visto en el siguiente <a class="reference external" href="http://www.pythontutor.com/c.html#code=int%20main%28%29%20%7B%0A%20%20char%20temp%5B5%5D%20%3D%20%22Hot%22%3B%0A%20%20return%200%3B%0A%7D&amp;curInstr=2&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c&amp;rawInputLstJSON=%5B%5D">enlace</a></p>
+</li>
+</ol>
+<p><strong>Pendiente imagen</strong></p>
+<p>Es importante resaltar que el programador debe asegurarse que la cadena de caracteres sea lo bastante grande para el uso deseado. Vemos que <strong>temp</strong> mantiene 4 caracteres, 3 de la palabra <em>Hot</em> más el carácter NULL(\0).</p>
 <p>Jupyter Book also lets you write text-based notebooks using MyST Markdown.
 See <a class="reference external" href="https://jupyterbook.org/file-types/myst-notebooks.html">the Notebooks with MyST Markdown documentation</a> for more detailed instructions.
 This page shows off a notebook written in MyST Markdown.</p>
+</section>
 </section>
 </section>
 <section id="an-example-cell">
