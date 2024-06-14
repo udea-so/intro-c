@@ -1,0 +1,794 @@
+!pip3 install tutormagic
+
+%load_ext tutormagic
+
+%%tutor -l c -k
+#include <stdio.h>
+#include  <stdlib.h>
+
+typedef double elemento;
+
+typedef struct nodo {
+    elemento dato;
+    struct nodo *enlace;
+} nodo;
+
+int main() {
+  printf("En el ejemplo solo se declara una estructura tipo nodo\n");
+  return 0;  
+}
+
+%%tutor -l c -k 
+#include <stdio.h>
+#include  <stdlib.h>
+
+typedef double elemento;
+
+typedef struct nodo {
+    elemento dato;
+    struct nodo *enlace;
+} nodo;
+
+nodo *ptr_cabecera;   // Asociado al primer nodo
+nodo *ptr_cola;       // Asociado al ultimo nodo
+
+int main() {
+  ptr_cabecera = NULL;
+  printf("Solo se declaran punteros asociados a la cabeza y a la cola\n");
+  return 0;  
+}
+
+%%tutor -l c -k
+#include <stdio.h>
+#include  <stdlib.h>
+
+
+typedef struct nodo {
+    int dato;
+    struct nodo *siguiente;
+} nodo;
+
+int main() {
+  nodo *primero = NULL;  // Cabecera
+  primero = malloc(sizeof(nodo));  
+  primero->dato = 11;
+  primero->siguiente = NULL; // Se creo una lista de solo un elemento: (H) -> (11)
+  free(primero);  
+  primero = NULL;  
+  return 0;  
+}
+
+%%tutor -l c -k
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estructura asociada al nodo
+typedef struct nodo {
+    int dato;
+    struct nodo *siguiente;
+} nodo;
+
+// Declaracion de funciones
+nodo *crearNodo(int d,nodo *enlace);
+
+int main() {
+  nodo *primero = NULL;
+  primero = crearNodo(11,NULL);    // (H) -> (11)
+  primero = crearNodo(6,primero);  // (H) -> (6) -> (11) 
+  primero = crearNodo(4,primero);  // (H) -> (4) -> (6) -> (11)
+  free(primero);
+  primero = NULL;  
+  return 0;
+}
+
+// Definicion de funciones
+nodo *crearNodo(int d,nodo *enlace) {
+  nodo *p = malloc(sizeof(nodo));
+  p->dato = d;
+  p->siguiente = enlace;
+  return p;
+}
+
+%%tutor -l c -k
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estructura asociada al nodo
+typedef struct nodo {
+    int dato;
+    struct nodo *siguiente;
+} nodo;
+
+// Declaracion de funciones
+nodo *crearNodo(int d,nodo *enlace);
+
+int main() {
+  nodo *primero = NULL;
+  primero = crearNodo(40,NULL);        // (H) -> (40)
+  primero = crearNodo(25,primero);     // (H) -> (25) -> (40) 
+  primero = crearNodo(10,primero);     // (H) -> (10) -> (25) -> (40)
+  // nuevo elemento
+  nodo *nuevo = malloc(sizeof(nodo));
+  nuevo->dato = 4;
+  nuevo->siguiente = primero;  
+  primero = nuevo;                     // (H) -> (4) -> (10) -> (25) -> (40)
+  free(primero);
+  primero = NULL; 
+  nuevo = NULL;  
+  return 0;
+}
+
+// Definicion de funciones
+nodo *crearNodo(int d,nodo *enlace) {
+  nodo *p = malloc(sizeof(nodo));
+  p->dato = d;
+  p->siguiente = enlace;
+  return p;
+}
+
+%%tutor -l c -k
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estructura asociada al nodo
+typedef struct nodo {
+    int dato;
+    struct nodo *siguiente;
+} nodo;
+
+// Declaracion de funciones
+nodo *crearNodo(int d,nodo *enlace);
+void insertarPrimero(nodo **cabeza, int d); 
+int main() {
+  nodo *primero = NULL;
+  insertarPrimero(&primero,40);        // (H) -> (40)
+  insertarPrimero(&primero,25);        // (H) -> (25) -> (40) 
+  insertarPrimero(&primero,10);        // (H) -> (10) -> (25) -> (40)
+  insertarPrimero(&primero,4);         // (H) -> (4) -> (10) -> (25) -> (40)
+  primero = NULL; 
+  return 0;
+}
+
+// Definicion de funciones
+nodo *crearNodo(int d,nodo *enlace) {
+  nodo *p = malloc(sizeof(nodo));
+  p->dato = d;
+  p->siguiente = enlace;
+  return p;
+}
+
+void insertarPrimero(nodo **cabeza, int d) {
+  nodo *nuevo;
+  nuevo = malloc(sizeof(nodo));
+  nuevo->dato = d;
+  nuevo->siguiente = *cabeza;
+  *cabeza = nuevo;
+}
+
+%%tutor -l c -k
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estructura asociada al nodo
+typedef struct nodo {
+    int dato;
+    struct nodo *siguiente;
+} nodo;
+
+// Declaracion de funciones
+nodo *crearNodo(int d);
+void insertarPrimero(nodo **cabeza, int d); 
+void insertarFinal(nodo **cabeza, int d);
+
+int main() {
+  nodo *primero = NULL;
+  insertarFinal(&primero,4);          // (H) -> (4)
+  insertarFinal(&primero,10);         // (H) -> (4) -> (10) 
+  insertarFinal(&primero,25);         // (H) -> (4) -> (10) -> (25)
+  insertarFinal(&primero,40);         // (H) -> (4) -> (10) -> (25) -> (40)
+  primero = NULL; 
+  return 0;
+}
+
+// Definicion de funciones
+nodo *crearNodo(int d) {
+  nodo *a = malloc(sizeof(nodo));
+  a->dato = d;
+  a->siguiente = NULL;
+  return a;
+}
+
+void insertarPrimero(nodo **cabeza, int d) {
+  nodo *nuevo;
+  nuevo = malloc(sizeof(nodo));
+  nuevo->dato = d;
+  nuevo->siguiente = *cabeza;
+  *cabeza = nuevo;
+}
+
+void insertarFinal(nodo **cabeza, int d) {
+  nodo *ultimo;
+  ultimo = *cabeza;
+  if(ultimo == NULL) {
+    *cabeza = crearNodo(d);
+  }
+  else {
+    for(;ultimo->siguiente;) {
+      ultimo = ultimo->siguiente;
+    }
+    ultimo->siguiente = crearNodo(d);
+  }
+}
+
+%%tutor -l c -k
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estructura asociada al nodo
+typedef struct nodo {
+    int dato;
+    struct nodo *siguiente;
+} nodo;
+
+// Declaracion de funciones
+nodo *crearNodo(int d);
+void insertarPrimero(nodo **cabeza, int d); 
+void insertarFinal(nodo **cabeza, int d);
+void insertar(nodo **cabeza, int d_cmp, int d);
+
+int main() {
+  nodo *primero = NULL;
+  insertar(&primero, 0, 4);               // (H) -> (4)
+  insertar(&primero, 4, 40);              // (H) -> (4) -> (40) 
+  insertar(&primero, 4, 10);              // (H) -> (4) -> (10) -> (40)
+  insertar(&primero, 10, 25);             // (H) -> (4) -> (10) -> (25) -> (40)
+  primero = NULL; 
+  return 0;
+}
+
+// Definicion de funciones
+nodo *crearNodo(int d) {
+  nodo *a = malloc(sizeof(nodo));
+  a->dato = d;
+  a->siguiente = NULL;
+  return a;
+}
+
+void insertarPrimero(nodo **cabeza, int d) {
+  nodo *nuevo;
+  nuevo = malloc(sizeof(nodo));
+  nuevo->dato = d;
+  nuevo->siguiente = *cabeza;
+  *cabeza = nuevo;
+}
+
+void insertarFinal(nodo **cabeza, int d) {
+  nodo *ultimo;
+  ultimo = *cabeza;
+  if(ultimo == NULL) {
+    *cabeza = crearNodo(d);
+  }
+  else {
+    for(;ultimo->siguiente;) {
+      ultimo = ultimo->siguiente;
+    }
+    ultimo->siguiente = crearNodo(d);
+  }
+}
+
+void insertar(nodo **cabeza, int d_cmp, int d) {
+  nodo *nuevo, *despues; 
+  nuevo = crearNodo(d);
+  if(*cabeza == NULL) {
+    *cabeza = nuevo;  
+  }
+  else {
+    int ban = 0;
+    despues = *cabeza;
+    /* Etapa de busqueda */  
+    while((despues != NULL) && !ban) {
+      if(despues->dato != d_cmp) {
+        despues = despues->siguiente;  
+      }
+      else {
+        ban = 1;  
+      }
+    }
+    /* Etapa de insercion */  
+    if(ban) {
+      nuevo->siguiente = despues->siguiente;
+      despues->siguiente = nuevo;  
+    }  
+  } 
+}
+
+
+%%tutor -l c -k
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estructura asociada al nodo
+typedef struct nodo {
+    int dato;
+    struct nodo *siguiente;
+} nodo;
+
+// Declaracion de funciones
+nodo *crearNodo(int d);
+void insertarPrimero(nodo **cabeza, int d); 
+void insertarFinal(nodo **cabeza, int d);
+void insertar(nodo **cabeza, int d_cmp, int d);
+nodo *localizar(nodo *cabeza, int d);
+
+int main() {
+  nodo *primero = NULL;
+  insertar(&primero, 0, 4);               // (H) -> (4)
+  insertar(&primero, 4, 40);              // (H) -> (4) -> (40) 
+  insertar(&primero, 4, 10);              // (H) -> (4) -> (10) -> (40)
+  insertar(&primero, 10, 25);             // (H) -> (4) -> (10) -> (25) -> (40)
+  /* Test localizando nodos (10) y (25) */
+  nodo *n10 = localizar(primero,10);  
+  nodo *n25 = localizar(primero,25);  
+  primero = NULL; 
+  return 0;
+}
+
+// Definicion de funciones
+nodo *crearNodo(int d) {
+  nodo *a = malloc(sizeof(nodo));
+  a->dato = d;
+  a->siguiente = NULL;
+  return a;
+}
+
+void insertarPrimero(nodo **cabeza, int d) {
+  nodo *nuevo;
+  nuevo = malloc(sizeof(nodo));
+  nuevo->dato = d;
+  nuevo->siguiente = *cabeza;
+  *cabeza = nuevo;
+}
+
+void insertarFinal(nodo **cabeza, int d) {
+  nodo *ultimo;
+  ultimo = *cabeza;
+  if(ultimo == NULL) {
+    *cabeza = crearNodo(d);
+  }
+  else {
+    for(;ultimo->siguiente;) {
+      ultimo = ultimo->siguiente;
+    }
+    ultimo->siguiente = crearNodo(d);
+  }
+}
+
+void insertar(nodo **cabeza, int d_cmp, int d) {
+  nodo *nuevo, *despues; 
+  nuevo = crearNodo(d);
+  if(*cabeza == NULL) {
+    *cabeza = nuevo;  
+  }
+  else {
+    int ban = 0;
+    despues = *cabeza;
+    /* Etapa de busqueda */  
+    while((despues != NULL) && !ban) {
+      if(despues->dato != d_cmp) {
+        despues = despues->siguiente;  
+      }
+      else {
+        ban = 1;  
+      }
+    }
+    /* Etapa de insercion */  
+    if(ban) {
+      nuevo->siguiente = despues->siguiente;
+      despues->siguiente = nuevo;  
+    }  
+  } 
+}
+
+nodo *localizar(nodo *cabeza, int d) {
+  nodo *indice;
+  for(indice = cabeza; indice != NULL; indice = indice->siguiente) {
+    if(d == indice->dato) {
+      return indice;
+    }  
+  }
+  return NULL;  
+}
+
+%%tutor -l c -k
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estructura asociada al nodo
+typedef struct nodo {
+    int dato;
+    struct nodo *siguiente;
+} nodo;
+
+// Declaracion de funciones
+nodo *crearNodo(int d);
+void insertarPrimero(nodo **cabeza, int d); 
+void insertarFinal(nodo **cabeza, int d);
+void insertar(nodo **cabeza, int d_cmp, int d);
+nodo *localizar(nodo *cabeza, int d);
+nodo *buscarPosicion(nodo *cabeza, int pos);
+
+int main() {
+  nodo *primero = NULL;
+  insertar(&primero, 0, 4);               // (H) -> (4)
+  insertar(&primero, 4, 40);              // (H) -> (4) -> (40) 
+  insertar(&primero, 4, 10);              // (H) -> (4) -> (10) -> (40)
+  insertar(&primero, 10, 25);             // (H) -> (4) -> (10) -> (25) -> (40)
+  /* Test localizando nodos (4) y (10) por posicion */
+  nodo *n10 = buscarPosicion(primero,1);  
+  nodo *n25 = buscarPosicion(primero,2);  
+  primero = NULL; 
+  return 0;
+}
+
+// Definicion de funciones
+nodo *crearNodo(int d) {
+  nodo *a = malloc(sizeof(nodo));
+  a->dato = d;
+  a->siguiente = NULL;
+  return a;
+}
+
+void insertarPrimero(nodo **cabeza, int d) {
+  nodo *nuevo;
+  nuevo = malloc(sizeof(nodo));
+  nuevo->dato = d;
+  nuevo->siguiente = *cabeza;
+  *cabeza = nuevo;
+}
+
+void insertarFinal(nodo **cabeza, int d) {
+  nodo *ultimo;
+  ultimo = *cabeza;
+  if(ultimo == NULL) {
+    *cabeza = crearNodo(d);
+  }
+  else {
+    for(;ultimo->siguiente;) {
+      ultimo = ultimo->siguiente;
+    }
+    ultimo->siguiente = crearNodo(d);
+  }
+}
+
+void insertar(nodo **cabeza, int d_cmp, int d) {
+  nodo *nuevo, *despues; 
+  nuevo = crearNodo(d);
+  if(*cabeza == NULL) {
+    *cabeza = nuevo;  
+  }
+  else {
+    int ban = 0;
+    despues = *cabeza;
+    /* Etapa de busqueda */  
+    while((despues != NULL) && !ban) {
+      if(despues->dato != d_cmp) {
+        despues = despues->siguiente;  
+      }
+      else {
+        ban = 1;  
+      }
+    }
+    /* Etapa de insercion */  
+    if(ban) {
+      nuevo->siguiente = despues->siguiente;
+      despues->siguiente = nuevo;  
+    }  
+  } 
+}
+
+nodo *localizar(nodo *cabeza, int d) {
+  nodo *indice;
+  for(indice = cabeza; indice != NULL; indice = indice->siguiente) {
+    if(d == indice->dato) {
+      return indice;
+    }  
+  }
+  return NULL;  
+}
+
+nodo *buscarPosicion(nodo *cabeza, int pos) {
+  nodo *indice;
+  int i;
+  if(pos < 1) {
+    return NULL;
+  }
+  indice = cabeza;
+  for(i = 1; (i < pos) && (indice != NULL); i++) {
+    indice = indice->siguiente;
+  }
+  return indice;
+}
+
+%%tutor -l c -k
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estructura asociada al nodo
+typedef struct nodo {
+    int dato;
+    struct nodo *siguiente;
+} nodo;
+
+// Declaracion de funciones
+nodo *crearNodo(int d);
+void insertarPrimero(nodo **cabeza, int d); 
+void insertarFinal(nodo **cabeza, int d);
+void insertar(nodo **cabeza, int d_cmp, int d);
+nodo *localizar(nodo *cabeza, int d);
+nodo *buscarPosicion(nodo *cabeza, int pos);
+void eliminar(nodo **cabeza, int d);
+
+int main() {
+  nodo *primero = NULL;
+  insertar(&primero, 0, 4);               // (H) -> (4)
+  insertar(&primero, 4, 40);              // (H) -> (4) -> (40) 
+  insertar(&primero, 4, 10);              // (H) -> (4) -> (10) -> (40)
+  insertar(&primero, 10, 25);             // (H) -> (4) -> (10) -> (25) -> (40)
+  /* Test eliminando los nodos (4) y (25) */
+  eliminar(&primero,4);                   // (H) -> (10) -> (25) -> (40)
+  eliminar(&primero,25);                  // (H) -> (10) -> (40)
+  primero = NULL; 
+  return 0;
+}
+
+// Definicion de funciones
+nodo *crearNodo(int d) {
+  nodo *a = malloc(sizeof(nodo));
+  a->dato = d;
+  a->siguiente = NULL;
+  return a;
+}
+
+void insertarPrimero(nodo **cabeza, int d) {
+  nodo *nuevo;
+  nuevo = malloc(sizeof(nodo));
+  nuevo->dato = d;
+  nuevo->siguiente = *cabeza;
+  *cabeza = nuevo;
+}
+
+void insertarFinal(nodo **cabeza, int d) {
+  nodo *ultimo;
+  ultimo = *cabeza;
+  if(ultimo == NULL) {
+    *cabeza = crearNodo(d);
+  }
+  else {
+    for(;ultimo->siguiente;) {
+      ultimo = ultimo->siguiente;
+    }
+    ultimo->siguiente = crearNodo(d);
+  }
+}
+
+void insertar(nodo **cabeza, int d_cmp, int d) {
+  nodo *nuevo, *despues; 
+  nuevo = crearNodo(d);
+  if(*cabeza == NULL) {
+    *cabeza = nuevo;  
+  }
+  else {
+    int ban = 0;
+    despues = *cabeza;
+    /* Etapa de busqueda */  
+    while((despues != NULL) && !ban) {
+      if(despues->dato != d_cmp) {
+        despues = despues->siguiente;  
+      }
+      else {
+        ban = 1;  
+      }
+    }
+    /* Etapa de insercion */  
+    if(ban) {
+      nuevo->siguiente = despues->siguiente;
+      despues->siguiente = nuevo;  
+    }  
+  } 
+}
+
+nodo *localizar(nodo *cabeza, int d) {
+  nodo *indice;
+  for(indice = cabeza; indice != NULL; indice = indice->siguiente) {
+    if(d == indice->dato) {
+      return indice;
+    }  
+  }
+  return NULL;  
+}
+
+nodo *buscarPosicion(nodo *cabeza, int pos) {
+  nodo *indice;
+  int i;
+  if(pos < 1) {
+    return NULL;
+  }
+  indice = cabeza;
+  for(i = 1; (i < pos) && (indice != NULL); i++) {
+    indice = indice->siguiente;
+  }
+  return indice;
+}
+
+void eliminar(nodo **cabeza, int d) {
+  nodo *actual, *anterior;
+  int encontrado = 0;
+  actual = *cabeza;
+  anterior = NULL;
+  /* Busqueda del nodo y del anterior */
+  while((actual != NULL) && (!encontrado)) {
+    encontrado = (actual->dato == d);
+    if(!encontrado) {
+      anterior = actual;
+      actual = actual->siguiente;
+    }
+  }
+  /* Enlace de nodo anterior con siguiente */
+  if(actual != NULL) {
+    /* Distingue que el nodo sea cabecera o del resto de la lista */
+    if(actual == *cabeza) {
+      *cabeza = actual->siguiente;
+    }
+    else {
+      anterior->siguiente = actual->siguiente;
+    }
+  }
+  free(actual);
+}
+
+%%tutor -l c -k
+#include <stdio.h>
+#include <stdlib.h>
+
+// Estructura asociada al nodo
+typedef struct nodo {
+    int dato;
+    struct nodo *siguiente;
+} nodo;
+
+// Declaracion de funciones
+nodo *crearNodo(int d);
+void insertarPrimero(nodo **cabeza, int d); 
+void insertarFinal(nodo **cabeza, int d);
+void insertar(nodo **cabeza, int d_cmp, int d);
+nodo *localizar(nodo *cabeza, int d);
+nodo *buscarPosicion(nodo *cabeza, int pos);
+void eliminar(nodo **cabeza, int d);
+void recorrer(nodo *cabeza);
+int main() {
+  nodo *primero = NULL;
+  insertar(&primero, 0, 4);               // (H) -> (4)
+  insertar(&primero, 4, 40);              // (H) -> (4) -> (40) 
+  insertar(&primero, 4, 10);              // (H) -> (4) -> (10) -> (40)
+  insertar(&primero, 10, 25);             // (H) -> (4) -> (10) -> (25) -> (40)
+  /*Imprimiendo la lista de 4 elementos */
+  recorrer(primero);  
+  eliminar(&primero,4);                   // (H) -> (10) -> (25) -> (40)
+  eliminar(&primero,25);                  // (H) -> (10) -> (40)
+  /*Imprimiendo la lista de 2 elementos */
+  recorrer(primero);    
+  primero = NULL; 
+  return 0;
+}
+
+// Definicion de funciones
+nodo *crearNodo(int d) {
+  nodo *a = malloc(sizeof(nodo));
+  a->dato = d;
+  a->siguiente = NULL;
+  return a;
+}
+
+void insertarPrimero(nodo **cabeza, int d) {
+  nodo *nuevo;
+  nuevo = malloc(sizeof(nodo));
+  nuevo->dato = d;
+  nuevo->siguiente = *cabeza;
+  *cabeza = nuevo;
+}
+
+void insertarFinal(nodo **cabeza, int d) {
+  nodo *ultimo;
+  ultimo = *cabeza;
+  if(ultimo == NULL) {
+    *cabeza = crearNodo(d);
+  }
+  else {
+    for(;ultimo->siguiente;) {
+      ultimo = ultimo->siguiente;
+    }
+    ultimo->siguiente = crearNodo(d);
+  }
+}
+
+void insertar(nodo **cabeza, int d_cmp, int d) {
+  nodo *nuevo, *despues; 
+  nuevo = crearNodo(d);
+  if(*cabeza == NULL) {
+    *cabeza = nuevo;  
+  }
+  else {
+    int ban = 0;
+    despues = *cabeza;
+    /* Etapa de busqueda */  
+    while((despues != NULL) && !ban) {
+      if(despues->dato != d_cmp) {
+        despues = despues->siguiente;  
+      }
+      else {
+        ban = 1;  
+      }
+    }
+    /* Etapa de insercion */  
+    if(ban) {
+      nuevo->siguiente = despues->siguiente;
+      despues->siguiente = nuevo;  
+    }  
+  } 
+}
+
+nodo *localizar(nodo *cabeza, int d) {
+  nodo *indice;
+  for(indice = cabeza; indice != NULL; indice = indice->siguiente) {
+    if(d == indice->dato) {
+      return indice;
+    }  
+  }
+  return NULL;  
+}
+
+nodo *buscarPosicion(nodo *cabeza, int pos) {
+  nodo *indice;
+  int i;
+  if(pos < 1) {
+    return NULL;
+  }
+  indice = cabeza;
+  for(i = 1; (i < pos) && (indice != NULL); i++) {
+    indice = indice->siguiente;
+  }
+  return indice;
+}
+
+void eliminar(nodo **cabeza, int d) {
+  nodo *actual, *anterior;
+  int encontrado = 0;
+  actual = *cabeza;
+  anterior = NULL;
+  /* Busqueda del nodo y del anterior */
+  while((actual != NULL) && (!encontrado)) {
+    encontrado = (actual->dato == d);
+    if(!encontrado) {
+      anterior = actual;
+      actual = actual->siguiente;
+    }
+  }
+  /* Enlace de nodo anterior con siguiente */
+  if(actual != NULL) {
+    /* Distingue que el nodo sea cabecera o del resto de la lista */
+    if(actual == *cabeza) {
+      *cabeza = actual->siguiente;
+    }
+    else {
+      anterior->siguiente = actual->siguiente;
+    }
+  }
+  free(actual);
+}
+
+void recorrer(nodo *cabeza) {
+  for(;cabeza;cabeza = cabeza->siguiente) {
+    printf("%d ", cabeza->dato);
+  }
+  printf("\n");  
+}

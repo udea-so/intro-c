@@ -1,0 +1,1932 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Apuntadores y arreglos &#8212; Introducción al lenguaje C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/logo_udea.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción al lenguaje C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../CH_00.html">
+   Introducción
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../CH_01.html">
+   Herramientas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../CH_02.html">
+   Lenguaje C
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../CH_02-S01.html">
+     Introducción basica
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../CH_02-S02.html">
+     Segundo tema
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/udea-so/intro-c/blob/master/content/local/code/parte2/ptr_arrays.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/udea-so/intro-c"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/udea-so/intro-c/issues/new?title=Issue%20on%20page%20%2Fcontent/local/code/parte2/ptr_arrays.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/content/local/code/parte2/ptr_arrays.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conceptos-previos-que-sucede-cuando-se-declara-una-variable">
+   1. Conceptos previos - ¿Que sucede cuando se declara una variable?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrando-en-materia-algunos-aspectos-sobre-los-apuntadores">
+   2. Entrando en materia - Algunos aspectos sobre los apuntadores
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#que-es-un-apuntador">
+     2.1. ¿Que es un apuntador?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#como-se-declara-un-apuntador">
+     2.2. ¿Como se declara un apuntador?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulacion-de-memoria-mediante-apuntadores">
+     2.3. Manipulación de memoria mediante apuntadores
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#referenciar-un-apuntador">
+     2.3.1. Referenciar un apuntador
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#des-referenciar-un-apuntador">
+     2.3.2. Des-referenciar un apuntador
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usos-de-los-apuntadores">
+     2.4. Usos de los apuntadores
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-y-apuntadores">
+     2.4.1. Funciones y apuntadores
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apuntadores-y-vectores">
+     2.4.2. Apuntadores y vectores
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vectores">
+       2.4.2.1. Vectores
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       2.4.2.1. Apuntadores y vectores
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aritmetica-de-punteros">
+   3. Aritmetica de punteros
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-a-apuntadores">
+   4. Apuntadores a apuntadores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-genericos-y-casts">
+   5. Apuntadores genericos y casts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   6. Enlaces de interés
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Apuntadores y arreglos</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conceptos-previos-que-sucede-cuando-se-declara-una-variable">
+   1. Conceptos previos - ¿Que sucede cuando se declara una variable?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrando-en-materia-algunos-aspectos-sobre-los-apuntadores">
+   2. Entrando en materia - Algunos aspectos sobre los apuntadores
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#que-es-un-apuntador">
+     2.1. ¿Que es un apuntador?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#como-se-declara-un-apuntador">
+     2.2. ¿Como se declara un apuntador?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulacion-de-memoria-mediante-apuntadores">
+     2.3. Manipulación de memoria mediante apuntadores
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#referenciar-un-apuntador">
+     2.3.1. Referenciar un apuntador
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#des-referenciar-un-apuntador">
+     2.3.2. Des-referenciar un apuntador
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usos-de-los-apuntadores">
+     2.4. Usos de los apuntadores
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-y-apuntadores">
+     2.4.1. Funciones y apuntadores
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apuntadores-y-vectores">
+     2.4.2. Apuntadores y vectores
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vectores">
+       2.4.2.1. Vectores
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       2.4.2.1. Apuntadores y vectores
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aritmetica-de-punteros">
+   3. Aritmetica de punteros
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-a-apuntadores">
+   4. Apuntadores a apuntadores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-genericos-y-casts">
+   5. Apuntadores genericos y casts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   6. Enlaces de interés
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a class="reference external" href="https://colab.research.google.com/github/dannymrock/UdeA-SO-Lab/blob/master/lab0/lab0b/parte2/ptr_arrays.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip3 install tutormagic
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tutormagic
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="apuntadores-y-arreglos">
+<h1>Apuntadores y arreglos<a class="headerlink" href="#apuntadores-y-arreglos" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<blockquote>
+<div><p><strong>Objetivos</strong></p>
+<ul class="simple">
+<li><p>Conocer y utilizar los apuntadores para el uso eficiente de la memoria.</p></li>
+<li><p>Presentar el uso de las funciones y establecer cómo se realiza el paso de parámetros a funciones.</p></li>
+<li><p>Conocer y aplicar el concepto de arreglos de una y más dimensiones en la resolución de problemas mediante algoritmos.</p></li>
+<li><p>Conocer cómo es posible asignar de forma eficiente espacio en memoria.</p></li>
+</ul>
+</div></blockquote>
+<hr class="docutils" />
+<section id="conceptos-previos-que-sucede-cuando-se-declara-una-variable">
+<h2>1. Conceptos previos - ¿Que sucede cuando se declara una variable?<a class="headerlink" href="#conceptos-previos-que-sucede-cuando-se-declara-una-variable" title="Permalink to this headline">#</a></h2>
+<p>Cuando una variable se declara esta pasa a ocupar un lugar de memoria cuyo tamaño dependerá del número de bytes asociados al tipo de dato con el cual esta se declara. Suponiendo que se tienen las siguientes instrucciones en C:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">35</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La siguiente figura ilustra su representación en memoria:</p>
+<p><img alt="alt text" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/var_memoria.png?raw=true" /></p>
+<p><strong>Figura 1</strong>. Representación de una variable en memoria.</p>
+<p>Desde el punto de vista del mapa de memoria y suponiendo que una variable tipo int ocupa 4 bytes tenemos el siguiente resultado por instrucción:</p>
+<table>
+<tbody>
+<tr>
+<td>&nbsp;Instrucción</td>
+<td>Representación en&nbsp;memoria&nbsp;</td>
+</tr>
+<tr>
+<td>int i;</td>
+<td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/rep_mapa_inst1.png?raw=true" alt="var_mm1"></td>
+</tr>
+<tr>
+<td>i = 35;</td>
+<td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/rep_mapa_inst2.png?raw=true" alt="var_mm2"></td>
+</tr>
+</tbody>
+</table>
+<p>Como se puede ver en la figura anterior, lo que se modifica cuando se hace manipulación sobre variables es el contenido almacenado en un lugar especifico de memoria. Entender esto es de vital importancia para manejar el próximo tema.</p>
+</section>
+<section id="entrando-en-materia-algunos-aspectos-sobre-los-apuntadores">
+<h2>2. Entrando en materia - Algunos aspectos sobre los apuntadores<a class="headerlink" href="#entrando-en-materia-algunos-aspectos-sobre-los-apuntadores" title="Permalink to this headline">#</a></h2>
+<section id="que-es-un-apuntador">
+<h3>2.1. ¿Que es un apuntador?<a class="headerlink" href="#que-es-un-apuntador" title="Permalink to this headline">#</a></h3>
+<p>Un apuntador es una variable que almacena una <strong>dirección de memoria y no un valor</strong> como ocurre en el caso de las variables normales. La siguiente tabla resalta este hecho:</p>
+<table>
+    <tr>
+        <td colspan="2">Instrucciones</td>
+    </tr>
+    <tr>
+        <td><b>int *p;<br>
+            p = 1000;</b><br><br>
+            <b>Nota</b>: Supóngase que <b>el apuntador</b> se guarda en la posición 500.
+        </td>
+        <td>
+            <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/rep_mapa_ptr_inst1.png?raw=true">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">Mapa de memoria</td>
+    </tr>
+    <tr>
+        <td>
+          <b>int p;<br>
+            p = 1000;</b><br><br>
+            <b>Nota</b>: Supóngase que la <b>variable p</b> se guarda en posición 500.
+          </td>
+        <td>
+            <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/rep_mapa_var_inst1_comp.png?raw=true"> 
+         </td>
+    </tr>
+</table>
+<p>Como se puede notar en la figura anterior, cuando el valor almacenado en el apuntador hará referencia a la dirección 1000 y no al valor de 1000, esto nos permitirá acceder a dicho lugar de memoria desde el apuntador. Más tarde veremos cómo. Así mismo, como un apuntador guarda una dirección de memoria y teniendo en cuenta que para el ejemplo se supone una arquitectura en la cual se manejan 32 bits ( equivalentes a 4 bytes), esto hará que una variable tipo apuntador sin importar el tipo de dato al que apunte tenga un tamaño de 4 bytes. (Este tamaño se define por la arquitectura. Por ejemplo si la maquina es de 64 bits entonces el tamaño ocupado por una variable tipo apuntador será de 8 bytes).</p>
+</section>
+<section id="como-se-declara-un-apuntador">
+<h3>2.2. ¿Como se declara un apuntador?<a class="headerlink" href="#como-se-declara-un-apuntador" title="Permalink to this headline">#</a></h3>
+<p>Un apuntador se declara de la siguiente manera (donde las cosas que se encuentran entre corchetes son opcionales):</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="p">[</span><span class="n">modificadores_del_tipo</span><span class="p">]</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="n">valor</span><span class="w"> </span><span class="n">inicial</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Dónde:</p>
+<ul class="simple">
+<li><p><strong>Tipo</strong>: Tipo de dato al cual se desea apuntar, puede ser un tipo de dato simple (char, int, etc.) o un tipo de dato complejo como una estructura).</p></li>
+<li><p><strong>Modificadores del tipo</strong>: Puede contener cualquier combinación de los modificadores de tipo const, volatile y restrict.</p></li>
+<li><p><strong>Nombre</strong>: Nombre del apuntador.</p></li>
+<li><p><strong>Valor inicial</strong>: Valor inicial del apuntador.</p></li>
+</ul>
+<p>La siguiente figura muestra esto lo anterior en términos del mapa de memoria:</p>
+<table>
+    <tr>
+        <td><b>Instrucciones</b></td>
+        <td><b>Mapa de memoria</b></td>
+    </tr>
+    <tr>
+        <td><b>    
+        short i = 5; <br>
+        short *ptr = &i; 
+         </b> <br> <br>
+         <b>Nota</b>:
+        <ul>
+        <li>El tamaño de una variables short es de 2 bytes.</li>
+        <li>El tamaño de una variable tipo apuntador es de 4 bytes.</li>
+        <li>En el dibujo del mapa de memoria cada dirección aumenta de 1 en 1</li>
+        </ul> 
+        </td>       
+        <td>
+            <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/rep_ptr_map1.png?raw=true"> 
+        </td>
+    </tr>
+</table>
+<p>Como se puede notar en la figura anterior, lo que se guarda en el apuntador es la dirección base (dirección del byte de menor peso) de la variable a la cual se apunta. Para el caso anterior, la variable i ocupa 2 bytes (103 y 104) sin embargo, en el apuntador se almacena la parte menos correspondiente al byte pesado (byte 103).</p>
+<p>Si observa la segunda instrucción anteriormente mostrada, la forma como se obtuvo la dirección de i fue por medio del operador dirección (&amp;) antepuesto a la variable. La siguiente tabla se llena con base en la figura anterior:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Expresión</p></th>
+<th class="head"><p>Significado</p></th>
+<th class="head"><p>Valor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>i</p></td>
+<td><p>Contenido de i</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>&amp;i</p></td>
+<td><p>Dirección de i</p></td>
+<td><p>103</p></td>
+</tr>
+<tr class="row-even"><td><p>p</p></td>
+<td><p>Contenido del apuntador p</p></td>
+<td><p>103</p></td>
+</tr>
+<tr class="row-odd"><td><p>&amp;p</p></td>
+<td><p>Dirección del apuntador p</p></td>
+<td><p>106</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note en la tabla anterior y la figura previa que con &amp; lo que se obtiene es dirección base de una variable no importa su tipo ya sea una variable normal (char, int, float, etc), apuntador u otro. A continuación se muestra una forma simplificada (tomada de la sección <strong>Pointers basics</strong> de <a class="reference external" href="https://computer.howstuffworks.com/c22.htm">How Stuff Works</a>) para visualizar los apuntadores y las variables comunes de manera gráfica sin tener que recurrir al bosquejo del mapa de memoria previamente realizado.</p>
+<p><img alt="var_mem" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/apuntador2.png?raw=true" /></p>
+<p><strong>Figura 2</strong>. Vista simplificada con variables y apuntadores.</p>
+<p>Note la diferencia en la gráfica, en el dibujo el circulo representa una variable tipo apuntador y como tal almacena una dirección de memoria, la de i para el caso (103); por otro lado el vinculo entre el apuntador y la variable se representa por medio de la flecha. Finalmente, el contenido de la variable puede ser accedido o manipulado desde el símbolo i, o desde al desreferenciar el apuntador (usando *ptr), pero este sera un tema a tratar después.</p>
+<p>Una forma aun mas simplificada e incluso mas conveniente al momento de hacer pruebas de escritorio se muestra a continuación. En esta solo se resalta el vinculo del apuntador con la variable:</p>
+<p><img alt="var_mem" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/apuntador.png?raw=true" /></p>
+<p><strong>Figura 3</strong>. Vista aun mas simplificada con variables y apuntadores.</p>
+</section>
+<section id="manipulacion-de-memoria-mediante-apuntadores">
+<h3>2.3. Manipulación de memoria mediante apuntadores<a class="headerlink" href="#manipulacion-de-memoria-mediante-apuntadores" title="Permalink to this headline">#</a></h3>
+<p>Una de las aplicaciones más importantes es el acceso directo a memoria para su manipulación. Para ello, se manejan dos operadores importantes los cuales el operador referencia (&amp;) y el operador des-referencia (*).</p>
+</section>
+<section id="referenciar-un-apuntador">
+<h3>2.3.1. Referenciar un apuntador<a class="headerlink" href="#referenciar-un-apuntador" title="Permalink to this headline">#</a></h3>
+<p>Consiste en asociar el apuntador a una dirección específica (durante la declaración o después de esta), para esto se suele usar el operador &amp; para obtener la dirección de la variable en cuestión. A continuación se muestra la forma como normalmente se hace esto:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">apuntador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">variable</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>También es posible referenciar un apuntador pasándole el valor que se tiene en otro apuntador. Note que no se hizo uso del operador &amp; en este caso:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">apuntador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">variable</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Todo apuntador debe inicializarse antes de usarse. Si esto no se hace, cuando intente usarlo para hacer alguna operación en memoria el programa sacara un error. Un puntero que no ha sido inicializado se conoce como <strong>Wild pointer</strong>.</p>
+</section>
+<section id="des-referenciar-un-apuntador">
+<h3>2.3.2. Des-referenciar un apuntador<a class="headerlink" href="#des-referenciar-un-apuntador" title="Permalink to this headline">#</a></h3>
+<p>Para poder acceder al lugar de memoria que está siendo apuntado por el puntero y realizar operaciones de lectura y escritura sobre esta dirección de memoria se debe des-referenciar el apuntador. Para ello se hace uso del operador des-referencia (*) después de la declaración del apuntador. El contenido del lugar de memoria apuntado (lectura) se obtiene de la siguiente manera:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">apuntador</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Ahora si lo que se desea hacer es escribir en el lugar de memoria apuntado se hace lo siguiente:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">apuntador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variable</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo 1</strong></p>
+<p>Suponga que se tiene el siguiente fragmento de código fuente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  int i,j;
+  int *p; //Apuntador a un entero
+  p = &amp;i;
+  *p = 5;
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20i%2Cj%3B%0A%20%20int%20%2Ap%3B%20//Apuntador%20a%20un%20entero%0A%20%20p%20%3D%20%26i%3B%0A%20%20%2Ap%20%3D%205%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>También tenga en cuenta lo siguientes enunciados:</p>
+<ul class="simple">
+<li><p>Suponga que i y j son de 4 bytes y ocupan las direcciones base 1000 y 1004.</p></li>
+<li><p>El apuntador p ocupa las direccione base 2000.</p></li>
+<li><p>Así mismo la arquitectura es de 64 bits por lo que el espacio ocupado por el apuntador sera de 8 bytes.</p></li>
+</ul>
+<p>Muestre la ejecución paso a paso del código anterior resaltando la evolución en memoria.</p>
+<p><strong>Solución</strong>: Las instrucciones que se están evaluando en un momento dado se resaltan en la siguiente tabla</p>
+<table>
+    <tr>
+        <td><b>Instrucciones ejecutadas</b></td>
+        <td><b>Contenido del mapa de memoria</b></td>
+        <td><b>Visualización al estilo HowStuffWorks</b></td>
+    </tr>
+    <tr>
+        <td>
+            <b>
+            int i,j;</br>
+            int *p; //Apuntador a un entero</br></b>
+            p = &i;</br>
+            *p = 5;</br>
+</td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/ptr_ejem2_map1.png?raw=true"></td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/ptr_ejem2_hsw1.png?raw=true"></td>
+    </tr>
+    <tr>
+        <td>        
+        int i,j;</br>
+        int *p; //Apuntador a un entero</br>
+        <b>p = &i;</br></b>
+        *p = 5;</br>    
+        </td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/rep_ptr_map2.png?raw=true"></td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/ptr_ejem2_hsw2.png?raw=true"></td>
+    </tr>
+    <tr>
+        <td>        
+        int i,j;</br>
+        int *p; //Apuntador a un entero</br>
+        p = &i;</br>
+        <b>*p = 5;</br></b>     
+        </td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/rep_ptr_map3.png?raw=true"></td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/ptr_ejem2_hsw3.png?raw=true"></td>
+    </tr>
+</table>
+<p>Note que en la última instrucción resaltada el cambio del contenido de la sección de memoria asociado a la variable i no se realizó desde esta (i = 5) sino desde el apuntador p (*p = 5) el cual previamente se puso a apuntar a dicho lugar de memoria (p = &amp;i).</p>
+<p><strong>Ejemplo 2</strong></p>
+<p>A continuación se muestra otro ejemplo en el cual se resalta que es posible que varios apuntadores estén apuntando a un mismo lugar de memoria. Tenga en cuenta lo siguientes enunciados:</p>
+<ul class="simple">
+<li><p>Suponga que i y j son de 4 bytes y ocupan las direcciones base 1000 y 1008.</p></li>
+<li><p>Los apuntadores p, q y r ocupan las direcciones base 2000, 3000 y 4000.</p></li>
+<li><p>Así mismo la arquitectura es de 32 bits por lo que el espacio ocupado por el apuntador será de 4 bytes.</p></li>
+</ul>
+<p>El codigo asociado se muestra a continuación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  int i;
+  int *p,*q,*r;
+  p = &amp;i;
+  q = &amp;i;
+  r = p; 
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20i%3B%0A%20%20int%20%2Ap%2C%2Aq%2C%2Ar%3B%0A%20%20p%20%3D%20%26i%3B%0A%20%20q%20%3D%20%26i%3B%0A%20%20r%20%3D%20p%3B%20%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p><strong>Solución</strong>: la siguiente tabla muestra con detalle los resultados:</p>
+<table>
+    <tr>
+        <td><b>Instrucciones ejecutadas</b></td>
+        <td><b>Contenido del mapa de memoria</b></td>
+        <td><b>Visualización al estilo HowStuffWorks</b></td>
+    </tr>
+    <tr>
+        <td>
+          int i = 5; </br>
+          int *p,*q,*r; </br>
+          p = &i; </br>
+          q = &i; </br>
+          r = p; </br>
+        </td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/rep_ptr2_map.png?raw=true"></td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/rep_ptr2_hsw.png?raw=true"></td>
+    </tr>
+</table></section>
+<section id="usos-de-los-apuntadores">
+<h3>2.4. Usos de los apuntadores<a class="headerlink" href="#usos-de-los-apuntadores" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="funciones-y-apuntadores">
+<h3>2.4.1. Funciones y apuntadores<a class="headerlink" href="#funciones-y-apuntadores" title="Permalink to this headline">#</a></h3>
+<p>Como se vio en la primera parte del laboratorio, existen dos maneras de hacer llamados a funciones, por referencia y por valor. Cuando se realiza un <strong>llamado por valor</strong>; se trabaja sobre una copia de la variable pasada como argumento y por lo tanto la variable original (la que se pasó como argumento) no se modifica. Por otro lado, cuando se realiza un <strong>llamado por referencia</strong> al estar accediendo al lugar de memoria en el que se encuentra la variable pasada como argumento es posible modificar el valor original de la variable pasada como argumento. La siguiente tabla compara un poco la diferencia entre referencia y valor:</p>
+<table>
+    <tr>
+        <td><b>Ítem analizado</b></td>
+        <td><b>Llamada por valor</b></td>
+        <td><b>Llamada por referencia</b></td>
+    </tr>
+    <tr>
+        <td><b>Declaración</b></td>
+        <td>void swap(int i, int j);</td>
+        <td>void swap(int *i, int *j);</td>
+    </tr>
+    <tr>
+        <td><b>Definición</b></td>
+        <td>
+          void swap(int i, int j) { </br>
+            &nbsp;&nbsp;&nbsp;int t; </br>
+            &nbsp;&nbsp;&nbsp;t = x; </br>
+            &nbsp;&nbsp;&nbsp;i = j; </br>
+            &nbsp;&nbsp;&nbsp;j = t; </br>
+          } </br>
+        </td>
+        <td>
+           int v1 = 1, v2 = 2; </br>
+           swap(v1, v2); </br>
+        </td>
+    </tr>
+    <tr>
+        <td><b>Invocación</b></td>
+        <td>
+            void swap(int *i, *int j) { </br>
+               &nbsp;&nbsp;&nbsp;int t; </br>
+               &nbsp;&nbsp;&nbsp;t = *i; </br>
+               &nbsp;&nbsp;&nbsp;*i = *j; </br>
+               &nbsp;&nbsp;&nbsp;*j = t; </br>
+            }   </br>
+        </td>
+        <td>
+           int v1 = 1, v2 = 2; </br>
+           swap(&v1, &v2); </br>
+        </td>
+    </tr>
+</table>
+<p>El paso de funciones por referencia es de extrema utilidad cuando los argumentos que se están pasando a la función son pesados ya que esto evita que se tengan que hacer copias de dichos argumentos que en el peor de los casos pueden ocasionar que el programa colapse por llenar <strong>stack</strong>. También, mediante el uso de apuntadores, es posible superar la restricción que se tiene en la cual una función no puede retornar más de un elemento; así, por medio de referencias es posible retornar un array por ejemplo.</p>
+<p>Para indicar que una función será pasada por referencia, se emplean apuntadores en la cabecera de la función, esto porque lo que se pasa como argumento es la dirección de memoria. Por ejemplo:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo_retorno</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">tipo_1</span><span class="w"> </span><span class="o">*</span><span class="n">pName_1</span><span class="p">,</span><span class="n">tipo_2</span><span class="w"> </span><span class="o">*</span><span class="n">pName_2</span><span class="p">,...,</span><span class="n">tipo_N</span><span class="w"> </span><span class="o">*</span><span class="n">pName_N</span><span class="p">)</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>Para aterrizar un poco más lo anterior, supongamos esta función:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">j</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Como se pueden notar en la definición de la función anterior, en este caso ambos argumentos son pasados por referencia.</p>
+<p>Ahora en lo que respecta a la invocación si lo que se pasa es como parámetro es una variable como tal se debe hacer uso del operador <strong>&amp;</strong> para obtener la dirección de dicha variable y así inicializar el apuntador que funciona como argumento. Por otro lado si lo que se está pasando es un apuntador a una variable, no es necesario usar el operador <strong>&amp;</strong> ya que el valor almacenado en este será una dirección de memoria. La siguiente tabla ilustra esto:</p>
+<table>
+    <tr>
+        <td><b>Caso</b></td>
+        <td><b>Invocación</b></td>
+        <td><b>Observaciones</b></td>
+    </tr>
+    <tr>
+        <td>Se está pasando una variable a una función que se llama por referencia</td>
+        <td>
+            int a = 5, b = 10; </br>
+            swap(&a,&b); </br>
+        </td>
+        <td>Es necesario usar el operador & para obtener la dirección de memoria de las variables y así poder inicializar lo apuntadores que funcionan como argumentos.</td>
+    </tr>
+    <tr>
+        <td>Se está pasando apuntador a una función que se llama por referencia</td>
+        <td>
+            int a = 5, b = 10; </br>
+            int *px = &a, *py; </br>
+            py = &b;  </br>
+            swap(px,py); </br>
+        </td>
+        <td>Como lo que se pasan son apuntadores previamente inicializados, estos ya tienen la dirección de memoria de la variable que será pasada como argumento de la función, por lo tanto no es necesario usar el operador &.</td>
+    </tr>
+</table>
+<p>La siguiente figura (tomada de <a class="reference external" href="http://computer.howstuffworks.com/c26.htm">HowStuffWorks</a>) muestra cómo trabaja una función por referencia:</p>
+<p><img alt="call_ref" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/call_ref.png?raw=true" /></p>
+<p><strong>Figura 4</strong>. Llamado por referencia.</p>
+<p>Para aclarar un poco observe el siguiente código:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+void swap (int *x, int *y);
+void swap (int x, int y);
+
+int main() {
+    int x = 5, y = 10;
+    printf(&quot;---------------------------------------------------\n&quot;);
+    printf(&quot;Llamada por valor \n&quot;);
+    printf(&quot;Antes del swap -&gt; x = %d, y = %d\n&quot;,x,y);
+    swap(x, y);
+    printf(&quot;Después del swap -&gt; x = %d, y = %d\n&quot;,x,y);
+    printf(&quot;---------------------------------------------------\n&quot;);
+    printf(&quot;Llamada por referencia &quot; &lt;&lt; endl;
+    printf(&quot;Antes del swap -&gt; x = %d, y = %d\n&quot;,x,y);
+    swap(&amp;x, &amp;y);
+    printf(&quot;Después del swap -&gt; x = %d, y = %d\n&quot;,x,y);
+    printf(&quot;---------------------------------------------------\n&quot;);
+    return 0;
+}
+
+void swap(int *px, int *py) {
+    int temp;
+    temp = *px;
+    *px = *py;
+    *py = temp;    
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20swap%20%28int%20%2Ax%2C%20int%20%2Ay%29%3B%0Avoid%20swap%20%28int%20x%2C%20int%20y%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20x%20%3D%205%2C%20y%20%3D%2010%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Llamada%20por%20valor%20%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Antes%20del%20swap%20-%3E%20x%20%3D%20%25d%2C%20y%20%3D%20%25d%5Cn%22%2Cx%2Cy%29%3B%0A%20%20%20%20swap%28x%2C%20y%29%3B%0A%20%20%20%20printf%28%22Despu%C3%A9s%20del%20swap%20-%3E%20x%20%3D%20%25d%2C%20y%20%3D%20%25d%5Cn%22%2Cx%2Cy%29%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Llamada%20por%20referencia%20%22%20%3C%3C%20endl%3B%0A%20%20%20%20printf%28%22Antes%20del%20swap%20-%3E%20x%20%3D%20%25d%2C%20y%20%3D%20%25d%5Cn%22%2Cx%2Cy%29%3B%0A%20%20%20%20swap%28%26x%2C%20%26y%29%3B%0A%20%20%20%20printf%28%22Despu%C3%A9s%20del%20swap%20-%3E%20x%20%3D%20%25d%2C%20y%20%3D%20%25d%5Cn%22%2Cx%2Cy%29%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20swap%28int%20%2Apx%2C%20int%20%2Apy%29%20%7B%0A%20%20%20%20int%20temp%3B%0A%20%20%20%20temp%20%3D%20%2Apx%3B%0A%20%20%20%20%2Apx%20%3D%20%2Apy%3B%0A%20%20%20%20%2Apy%20%3D%20temp%3B%20%20%20%20%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida del programa sera la siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------</span>
+<span class="n">Llamada</span> <span class="n">por</span> <span class="n">valor</span> 
+<span class="n">Antes</span> <span class="k">del</span> <span class="n">swap</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Después</span> <span class="k">del</span> <span class="n">swap</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="o">---------------------------------------------------</span>
+<span class="n">Llamada</span> <span class="n">por</span> <span class="n">referencia</span> 
+<span class="n">Antes</span> <span class="k">del</span> <span class="n">swap</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Después</span> <span class="k">del</span> <span class="n">swap</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">---------------------------------------------------</span>
+</pre></div>
+</div>
+<p>Una función también puede retornar un apuntador cuando es invocada, para hacer esto, en la definición y declaración de la función se debe indicar que la función retornara un apuntador lo cual se hace precediendo el nombre de la función por un asterisco (Ver parte resaltada e rojo a continuación). A continuación se muestra la forma que debe llevar la función para este caso:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo_retorno</span><span class="w"> </span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">parámetros</span><span class="p">...)</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>Observe el siguiente fragmento de código, el cual consiste en una función que obtiene el valor mayor de un vector mediante apuntadores devolviendo la dirección del elemento mayor mediante un apuntador:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">mayor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="n">m</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La declaración de la función anterior se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">mayor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>Otra forma de declaración puede ser:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">mayor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>Recuerde lo importante en la declaración de la función es indicarle al compilador como van a usarse los parámetros.</p>
+<p>Así mismo, note también, que lo realimente importante es que se declaró un apuntador a un tipo de dato específico, se inicializo, se actualizo y luego se retornó este, en general en la definición de la función se sigue la siguiente plantilla:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="nf">funcion</span><span class="p">(</span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="n">arg1</span><span class="p">,...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w">  </span><span class="c1">// Declaración del apuntador</span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg</span><span class="p">;</span><span class="w"> </span><span class="c1">// Inicialización del apuntador</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="cm">/** Operaciones **/</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// Retorno del apuntador</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se puede simular el código anterior:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int *mayor(int *a,int n); // Declaracion
+
+int main() {
+    int a[6] = {1,2,5,9,-1,3};
+    int *p;
+    p = mayor(a,5); // Invocación
+    printf(&quot;El elemento mayor del vector es: %d\n&quot;,*p);
+    return 0;
+}
+
+// Definición
+int *mayor(int *a,int n) {
+  int i;
+  int *m = a;
+  a++;
+  for (i = 1; i &lt; n; ++i )
+    if(*m &lt; *a) {
+      m = a;
+      a++;
+    }
+  return m;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20%2Amayor%28int%20%2Aa%2Cint%20n%29%3B%20//%20Declaracion%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20a%5B6%5D%20%3D%20%7B1%2C2%2C5%2C9%2C-1%2C3%7D%3B%0A%20%20%20%20int%20%2Ap%3B%0A%20%20%20%20p%20%3D%20mayor%28a%2C5%29%3B%20//%20Invocaci%C3%B3n%0A%20%20%20%20printf%28%22El%20elemento%20mayor%20del%20vector%20es%3A%20%25d%5Cn%22%2C%2Ap%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0A//%20Definici%C3%B3n%0Aint%20%2Amayor%28int%20%2Aa%2Cint%20n%29%20%7B%0A%20%20int%20i%3B%0A%20%20int%20%2Am%20%3D%20a%3B%0A%20%20a%2B%2B%3B%0A%20%20for%20%28i%20%3D%201%3B%20i%20%3C%20n%3B%20%2B%2Bi%20%29%0A%20%20%20%20if%28%2Am%20%3C%20%2Aa%29%20%7B%0A%20%20%20%20%20%20m%20%3D%20a%3B%0A%20%20%20%20%20%20a%2B%2B%3B%0A%20%20%20%20%7D%0A%20%20return%20m%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La siguiente figura muestra el estado de ejecución del programa antes de hacer el retorno de la subrutina mayor:</p>
+<p><img alt="ret_ptr" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/retorno_prt.png?raw=true" /></p>
+<p><strong>Figura 5</strong>. Funcion retornando un apuntador.</p>
+<p>La salida del programa anterior en pantalla es la siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">El</span> <span class="n">elemento</span> <span class="n">mayor</span> <span class="k">del</span> <span class="n">vector</span> <span class="n">es</span><span class="p">:</span> <span class="mi">9</span>
+</pre></div>
+</div>
+</section>
+<section id="apuntadores-y-vectores">
+<h3>2.4.2. Apuntadores y vectores<a class="headerlink" href="#apuntadores-y-vectores" title="Permalink to this headline">#</a></h3>
+<section id="vectores">
+<h4>2.4.2.1. Vectores<a class="headerlink" href="#vectores" title="Permalink to this headline">#</a></h4>
+<p>Un arreglo es un conjunto o colección indexada que permite manejar elementos que son del mismo tipo de dato como un solo objeto. A continuación se muestran algunos ejemplos (<a class="reference external" href="https://goo.gl/8qAgxY">enlace simulación</a>) en los cuales se lleva a cabo la devlaración e inicialización de un vector:</p>
+<table>
+    <tr>
+        <td><b>Declaración del arreglo</b></td>
+        <td><b>Representación en memoria</b></td>
+    </tr>
+    <tr>
+        <td>int veci[4] = {2, 4, 6, 8};</td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/vec_int.png?raw=true"></td>
+    </tr>
+    <tr>
+        <td>float vecf[] = {2.657, 7.9, 2.003, 1.1, 5.8, 8.54, 9.5, 4.09};</td>
+        <td><img src=".https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/vec_float.png?raw=true"></td>
+    </tr>
+    <tr>
+        <td>char mess1[10] = "Hola";</td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/vec_char1.png?raw=true"></td>
+    </tr>
+    <tr>
+        <td>mess2[] = {'H','o','l','a','\0'};</td>
+        <td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/vec_char2.png?raw=true"></td>
+    </tr>
+</table>
+<p>Notese, que cuando no se pasa el <strong>tamaño</strong> en la declaracion entre corchetes; este es deducido de la lista de inicializacion (pasada entre llaves) o la cadena de caracteres (string) pasada al declarar. En sí, se sigue la siguiente forma:</p>
+<p><strong>Forma 1</strong>: Pasando el tamaño:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="n">arrayName</span><span class="p">[</span><span class="n">TAM</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">valor1</span><span class="p">,</span><span class="w"> </span><span class="n">valor2</span><span class="p">,</span><span class="w"> </span><span class="p">...};</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Nota</strong>: La cantidad de elementos de la lista de inicialización no puede superar el tamaño (TAM) del arreglo.</p>
+<p><strong>Forma 2</strong>: Pasando el tamaño:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="n">arrayName</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">valor1</span><span class="p">,</span><span class="w"> </span><span class="n">valor2</span><span class="p">,</span><span class="w"> </span><span class="p">...};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Por otro lado, cuando solo se declaran los arreglos pero no se inicializan, es obligatorio colocar entre corchetes el <strong>tamaño</strong>. La forma de hacer esto se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="n">arrayName</span><span class="p">[</span><span class="n">TAM</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El siguiente codigo muestra el caso en el que solo se declaran varios vectores de diferentes tipos tanto globales como locales:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+// Variables globales
+int A[3];
+double B[4];
+
+int main() {
+  // Variables locales
+  char C[6];
+  int D[2];
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Variables%20globales%0Aint%20A%5B3%5D%3B%0Adouble%20B%5B4%5D%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20//%20Variables%20locales%0A%20%20char%20C%5B6%5D%3B%0A%20%20int%20D%5B2%5D%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Observe la diferencia en el valor inicial de los arreglos globales respecto a los locales:</p>
+<p><img alt="array_no_init" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/array_no_inicializado.png?raw=true" />
+<strong>Figura 6</strong>. Representación en memoria de arreglos no inicializados.</p>
+<p><strong>Forma 2</strong>: Pasando el tamaño:</p>
+<p>En lo que respecta a la manipulacion de arreglos, es igual que en java. El uso de estructuras repetitivas para el manejo de los sibindices en el arreglo es empleado. En los siguientes ejemplos se tiene ilustra esto de manera rapida.</p>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Hacer un progama que llene un arreglo de 10 elementos con los multiplos del 10 (1, 10, 20, etc.).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+#define TAM 10
+
+int main() {
+  int A[TAM];
+  int num = 1;
+  // Inicializando el arreglo
+  for(int i = 0; i &lt; TAM; i++) {
+    A[i] = 10*num;
+    num++;     
+  }
+  // Imprimiendo el arreglo
+  printf(&quot;A = [ &quot;);
+  for(int i = 0; i &lt; TAM; i++) {
+    printf(&quot;%d &quot;, A[i]);     
+  }
+  printf(&quot;]&quot;);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%23define%20TAM%2010%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20A%5BTAM%5D%3B%0A%20%20int%20num%20%3D%201%3B%0A%20%20//%20Inicializando%20el%20arreglo%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20A%5Bi%5D%20%3D%2010%2Anum%3B%0A%20%20%20%20num%2B%2B%3B%20%20%20%20%20%0A%20%20%7D%0A%20%20//%20Imprimiendo%20el%20arreglo%0A%20%20printf%28%22A%20%3D%20%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22%2C%20A%5Bi%5D%29%3B%20%20%20%20%20%0A%20%20%7D%0A%20%20printf%28%22%5D%22%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La aplicacion arroja el siguiente resultado:</p>
+<p><img alt="array_ciclos1" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/array_ciclos1.png?raw=true" />
+<strong>Figura 7</strong>. Empleo de ciclos para manipulación de arrays.</p>
+<ol class="simple">
+<li><p>Hacer cree dos arreglos (A y B), luego, inicialice el arreglo A con numeros aleatorios entre el 1 y el 20, y finalmente lleve al arreglo B los elementos del arreglo A en orden inverso.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; // required to use &#39;rand()&#39;
+#include &lt;time.h&gt;  // required to use &#39;srand(time(NULL))&#39;
+#define TAM 10
+
+int main() {
+  srand(time(NULL)); // required for &quot;randomness&quot;
+  int A[TAM], B[TAM];
+  int limSup = 20, limInf = 1;  
+  // Inicializando el arreglo
+  for(int i = 0; i &lt; TAM; i++) {
+    A[i] = rand()%limSup + limInf; // generate a number 
+                                   // between limInf and limSup
+     
+  }
+  // Imprimiendo el arreglo A
+  printf(&quot;A = [ &quot;);
+  for(int i = 0; i &lt; TAM; i++) {
+    printf(&quot;%d &quot;, A[i]);   
+    B[TAM - (i + 1)] = A[i];
+  }
+  printf(&quot;]\n&quot;); 
+  // Imprimiendo el arreglo B
+  printf(&quot;B = [ &quot;);
+  for(int i = 0; i &lt; TAM; i++) {
+    printf(&quot;%d &quot;, B[i]);   
+  }
+  printf(&quot;]\n&quot;);
+  return 0;  
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%20//%20required%20to%20use%20%27rand%28%29%27%0A%23include%20%3Ctime.h%3E%20%20//%20required%20to%20use%20%27srand%28time%28NULL%29%29%27%0A%23define%20TAM%2010%0A%0Aint%20main%28%29%20%7B%0A%20%20srand%28time%28NULL%29%29%3B%20//%20required%20for%20%22randomness%22%0A%20%20int%20A%5BTAM%5D%2C%20B%5BTAM%5D%3B%0A%20%20int%20limSup%20%3D%2020%2C%20limInf%20%3D%201%3B%20%20%0A%20%20//%20Inicializando%20el%20arreglo%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20A%5Bi%5D%20%3D%20rand%28%29%25limSup%20%2B%20limInf%3B%20//%20generate%20a%20number%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20//%20between%20limInf%20and%20limSup%0A%20%20%20%20%20%0A%20%20%7D%0A%20%20//%20Imprimiendo%20el%20arreglo%20A%0A%20%20printf%28%22A%20%3D%20%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22%2C%20A%5Bi%5D%29%3B%20%20%20%0A%20%20%20%20B%5BTAM%20-%20%28i%20%2B%201%29%5D%20%3D%20A%5Bi%5D%3B%0A%20%20%7D%0A%20%20printf%28%22%5D%5Cn%22%29%3B%20%0A%20%20//%20Imprimiendo%20el%20arreglo%20B%0A%20%20printf%28%22B%20%3D%20%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22%2C%20B%5Bi%5D%29%3B%20%20%20%0A%20%20%7D%0A%20%20printf%28%22%5D%5Cn%22%29%3B%0A%20%20return%200%3B%20%20%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La simulación de la aplicacion arroja el siguiente resultado:</p>
+<p><img alt="array_ciclos2" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/array_ciclos2.png?raw=true" /></p>
+<p><strong>Figura 8</strong>. Otro ejemplo de empleo de ciclos para manipulación de arrays.</p>
+<p>Es posible pasar <strong>arreglos</strong> como argumentos de funciones. Basicamente para el caso se tienen en cuenta los mismos 3 aspectos que se mencionaron previamente al tratar las funciones de manera introductoria, pero hay una leve diferencia cuando se emplean arreglos y es propiamente en la parte de la declaracion y la definicion donde se nota esto. Veamos la forma:</p>
+<p><strong>Definición de la función</strong></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">array</span><span class="p">[],...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">declarations</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">function</span><span class="w"> </span><span class="n">statements</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Declaración de la función</strong></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="n">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">arrayParam</span><span class="p">[],...)</span><span class="w"> </span>
+</pre></div>
+</div>
+<p><strong>Invocación de la función</strong></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">return_type</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="n">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">arrayArg</span><span class="p">[],...)</span><span class="w"> </span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong></p>
+<ol class="simple">
+<li><p>Observe el ejemplo 2 anteriormente analizado, muestra cada uno de los componentes (definición, declaracón e invocación) de lo que sería una función para imprimir entero un vector de cualquier tamaño.</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>Definición de la función</strong></p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// Definicion de la funcion para imprimir un array de cualquier tamaño</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirVector</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">[],</span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[ &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w">   </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Declaración de la función</strong></p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// Declaracion de la funcion para imprimir un array de cualquier tamaño</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirVector</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">[],</span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Invocación de la función</strong></p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// Invocacion para imprimir </span>
+<span class="kt">int</span><span class="w"> </span><span class="n">X</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span><span class="w"></span>
+<span class="n">imprimirVector</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="c1">// Salida --&gt; [ 1 2 3 4 ]</span>
+
+<span class="mf">2.</span><span class="w"> </span><span class="n">Observe</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="n">ejemplo</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">anteriormente</span><span class="w"> </span><span class="n">analizado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">implementelo</span><span class="w"> </span><span class="n">en</span><span class="w"> </span><span class="n">forma</span><span class="w"> </span><span class="n">modular</span><span class="w"> </span><span class="n">empleando</span><span class="w"> </span><span class="n">funciones</span><span class="p">.</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; // required to use &#39;rand()&#39;
+#include &lt;time.h&gt;  // required to use &#39;srand(time(NULL))&#39;
+#define TAM 10
+
+void imprimirVector(int V[],int tam);
+void generarVectorAleatorio(int V[], int tam, int vInf, int vSup);
+void copiaReversa(int destino[], int origen[], int tam) ;
+
+int main() {
+  srand(time(NULL)); // required for &quot;randomness&quot;
+  int A[TAM], B[TAM];
+  int limSup = 20, limInf = 1;  
+  generarVectorAleatorio(A, TAM, 1, 20);
+  copiaReversa(B, A, TAM);
+  // Imprimiendo el arreglo A
+  printf(&quot;A = &quot;);
+  imprimirVector(A, TAM);
+  // Imprimiendo el arreglo B
+  printf(&quot;B = &quot;);
+  imprimirVector(B, TAM);
+  return 0;  
+}
+
+void generarVectorAleatorio(int V[], int tam, int vInf, int vSup) {
+  for(int i = 0; i &lt; tam; i++) {
+    V[i] = rand()%vSup + vInf;            
+  }
+}
+
+void imprimirVector(int V[],int tam) {
+  printf(&quot;[ &quot;);
+  for(int i = 0; i &lt; tam; i++) {
+    printf(&quot;%d &quot;, V[i]);   
+  }
+  printf(&quot;]\n&quot;);
+}
+
+void copiaReversa(int destino[], int origen[], int tam) {
+  for(int i = 0; i &lt; tam; i++) {
+    destino[tam - (i + 1)] = origen[i];   
+  }
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%20//%20required%20to%20use%20%27rand%28%29%27%0A%23include%20%3Ctime.h%3E%20%20//%20required%20to%20use%20%27srand%28time%28NULL%29%29%27%0A%23define%20TAM%2010%0A%0Avoid%20imprimirVector%28int%20V%5B%5D%2Cint%20tam%29%3B%0Avoid%20generarVectorAleatorio%28int%20V%5B%5D%2C%20int%20tam%2C%20int%20vInf%2C%20int%20vSup%29%3B%0Avoid%20copiaReversa%28int%20destino%5B%5D%2C%20int%20origen%5B%5D%2C%20int%20tam%29%20%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20srand%28time%28NULL%29%29%3B%20//%20required%20for%20%22randomness%22%0A%20%20int%20A%5BTAM%5D%2C%20B%5BTAM%5D%3B%0A%20%20int%20limSup%20%3D%2020%2C%20limInf%20%3D%201%3B%20%20%0A%20%20generarVectorAleatorio%28A%2C%20TAM%2C%201%2C%2020%29%3B%0A%20%20copiaReversa%28B%2C%20A%2C%20TAM%29%3B%0A%20%20//%20Imprimiendo%20el%20arreglo%20A%0A%20%20printf%28%22A%20%3D%20%22%29%3B%0A%20%20imprimirVector%28A%2C%20TAM%29%3B%0A%20%20//%20Imprimiendo%20el%20arreglo%20B%0A%20%20printf%28%22B%20%3D%20%22%29%3B%0A%20%20imprimirVector%28B%2C%20TAM%29%3B%0A%20%20return%200%3B%20%20%0A%7D%0A%0Avoid%20generarVectorAleatorio%28int%20V%5B%5D%2C%20int%20tam%2C%20int%20vInf%2C%20int%20vSup%29%20%7B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20tam%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20V%5Bi%5D%20%3D%20rand%28%29%25vSup%20%2B%20vInf%3B%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%7D%0A%7D%0A%0Avoid%20imprimirVector%28int%20V%5B%5D%2Cint%20tam%29%20%7B%0A%20%20printf%28%22%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20tam%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22%2C%20V%5Bi%5D%29%3B%20%20%20%0A%20%20%7D%0A%20%20printf%28%22%5D%5Cn%22%29%3B%0A%7D%0A%0Avoid%20copiaReversa%28int%20destino%5B%5D%2C%20int%20origen%5B%5D%2C%20int%20tam%29%20%7B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20tam%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20destino%5Btam%20-%20%28i%20%2B%201%29%5D%20%3D%20origen%5Bi%5D%3B%20%20%20%0A%20%20%7D%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La siguiente figura muestra el resultado del código anterior:</p>
+<p><img alt="funciones_arrays" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/funciones_arrays.png?raw=true" /></p>
+<p><strong>Figura 9</strong>. Manipulando arreglos con funciones.</p>
+</section>
+<section id="id1">
+<h4>2.4.2.1. Apuntadores y vectores<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>Como los apuntadores son variables es posible realizar operaciones matemáticas sobre ellos, sin embargo debido a que lo almacenado en  estos son direcciones de memoria no todas las operaciones convencionales que se podrían hacer sobre una variable normal son posibles. La siguiente tabla muestra las operaciones validas:</p>
+<table>
+    <tr>
+        <td><b>Operación</b></td>
+        <td><b>Anotaciones</b></td>
+    </tr>
+    <tr>
+        <td>Añadir o sustraer un entero de un apuntador.</td>
+        <td>Esto hace  que el puntero apunte a otro lugar de memoria diferente al que inicialmente estaba apuntando esto debido a la modificación de lo que se encuentra almacenado en este.</td>
+    </tr>
+    <tr>
+        <td>Sustraer un apuntador de otro.</td>
+        <td>Cuando se realiza esta operación, los dos apuntadores deben ser del mismo tipo. </td>
+    </tr>
+    <tr>
+        <td>Comparar dos apuntadores.</td>
+        <td>La comparación es comúnmente empleada para comparar cualquier puntero con el puntero a <b>NULL</b> usando los operadores de igualdad (<b>==</b> o <b>!=</b>).</td>
+    </tr>
+</table>
+<p>Las tres operaciones anteriormente descritas son generalmente útiles para apuntadores que se refieren a los elementos de un array. Recordemos que un array consiste de un conjunto de variables del mismo tipo las cuales pueden ser accedidas bajo un mismo nombre usando subíndices. Cuando se declara un array lo que sucede en memoria es que se reservan un conjunto de posiciones contiguas en memoria tal y como se muestra en la siguiente figura:</p>
+<p><img alt="array_hsw" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/array_hsw.png?raw=true" /></p>
+<p><strong>Figura 10</strong>. Diferencia entre una variable normal y un vector.</p>
+<p>Para ilustrar lo anterior suponga lo que tiene dos apuntadores, p1 y p2 los cuales están apuntando a los elementos de un array a como el siguiente:</p>
+<p><img alt="array_a" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/array_a.png?raw=true" /></p>
+<p><strong>Figura 11</strong>. Arreglo a.</p>
+<ul class="simple">
+<li><p>p1 apunta al elemento i del array (a[i]).</p></li>
+</ul>
+<p><img alt="array_a_p1" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/array_a_p1.png?raw=true" /></p>
+<p><strong>Figura 12</strong>. Arreglo a y apuntador p1.</p>
+<ul class="simple">
+<li><p>Si n es un entero, entonces la expresión <strong>p2 = p1 + n</strong> hace que <strong>p2</strong> apunta al elemento <strong>a[i+n]</strong>. Ojo que <strong>i+n</strong> debe estar dentro del índice del array (es decir <strong>0 &lt;= i+n &lt;= Tamaño del array - 1</strong>). La siguiente figura muestra el caso para <strong>n = 2</strong>, es decir que <strong>p2</strong> apuntara al elemento <strong>a[i+2]</strong></p></li>
+</ul>
+<p><img alt="array_a_p1_p2" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/array_a_p1_p2.png?raw=true" /></p>
+<p><strong>Figura 13</strong>. Arreglo a y apuntadores p1 y p2.</p>
+<ul class="simple">
+<li><p>La resta <strong>p2 – p1</strong> da el número de elementos del array entre los dos apuntadores. Para el caso de la gráfica anterior <strong>2</strong>.</p></li>
+<li><p>La comparación <strong>p1 &lt; p2</strong> es cierta si el elemento referenciado por p2 tiene un índice más grande que el referenciado por <strong>p1</strong>, de otro lado la comparación es <strong>falsa</strong>. Donde para la figura anterior el resultado es <strong>cierto</strong>.</p></li>
+</ul>
+<p>Lo anterior muestra que existe una relación entre la forma de escribir un array con subíndices y escribirlo con apuntadores aritmética de apuntadores. Para aterrizar un poco lo anterior analicemos la siguiente tabla:</p>
+<table>
+    <tr>
+        <td><b>Relación entre índices y array</b></td>
+        <td><b>En resumen</b></td>
+    </tr>
+    <tr>
+        <td>El nombre de un arreglo es <b>realmente un apuntador al primer elemento en el array</b>, así si a es un arreglo unidimensional entonces la dirección del primer elemento del array es <b>&a[0]</b> o simplemente <b>a</b>.</td>
+        <td>&a[0]↔a</td>
+    </tr>
+    <tr>
+        <td>La dirección del elemento **i** del array puede ser expresada como <b>&a[i]</b> o como <b>a + i</b>, por lo tanto existen dos manera de escribir la dirección de cualquier elemento del array.</td>
+        <td>&a[i]↔a+i</td>
+    </tr>
+    <tr>
+        <td><b>a[i]</b> o <b>*(a+i)</b> representan el contenido que hay en la dirección en cuestión</td>
+        <td>a[i]↔*(a+i)</td>
+    </tr>
+</table>
+<p>Para entender un poco lo anterior suponga que se ejecutan las siguientes instrucciones:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  char b[] = {&#39;h&#39;, &#39;o&#39;, &#39;l&#39;, &#39;a&#39;,&#39;\0&#39;};
+  *(b+2) = *b;
+  char *p1 = b;
+  char *p2 = b + 3;
+  p2 = p2 - 1;
+  p1 = p2 - 1;
+  *p2 = *(b + 1) + 1;
+  p2 = &amp;b[1];
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20b%5B%5D%20%3D%20%7B%27h%27%2C%20%27o%27%2C%20%27l%27%2C%20%27a%27%2C%27%5C0%27%7D%3B%0A%20%20%2A%28b%2B2%29%20%3D%20%2Ab%3B%0A%20%20char%20%2Ap1%20%3D%20b%3B%0A%20%20char%20%2Ap2%20%3D%20b%20%2B%203%3B%0A%20%20p2%20%3D%20p2%20-%201%3B%0A%20%20p1%20%3D%20p2%20-%201%3B%0A%20%20%2Ap2%20%3D%20%2A%28b%20%2B%201%29%20%2B%201%3B%0A%20%20p2%20%3D%20%26b%5B1%5D%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+</section>
+</section>
+</section>
+<section id="aritmetica-de-punteros">
+<h2>3. Aritmetica de punteros<a class="headerlink" href="#aritmetica-de-punteros" title="Permalink to this headline">#</a></h2>
+<p>Como se dijo previamente, un apuntador almacena un direccion de memoria asociada a un dato. Tambien, se mostro como es posible hacer uso de apuntadores para barrer y manipular arrays. La existencia diferentes tipos de datos en C (char, int, float, double, …) con un tamaño en bytes asociado repercute en los valores almancenados en el apuntador. Para aclarar esto un poco observemos las siguientes graaficas.</p>
+<p>En la figura 10 se muestra un array de datos tipo <strong>short</strong> comparado con uno tipo <strong>char</strong>. Los datos tipo short tienen un tamaño de 2 bytes de modo que cada miembro consecutivo del array tipo short (A) tendra una direccion aumentada 2 bytes respecto a miembro anterior; segun lo anterior, si la direccion del elemento A[0] es 0x1000 (&amp;A[0] = 0x1000), la dirección del miembro A[1] será 0x1000 + 2bytes = 0x1000 + 16bits = 0x1010. Por otro lado, en el caso del arreglo char B, la direccion solo cambiar de uno en uno. Asi, si &amp;B[0] = 0x1000, entonces &amp;B[1] = 0x1008. De modo que se puede llegar a una expresión mas general como la siguiente:</p>
+<p><img alt="array_p" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/arit_pointer.png?raw=true" /></p>
+<p><strong>Figura 14</strong>. Arrays y apuntadores.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dir</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+/-</span> <span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">sizeof</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span><span class="o">*</span><span class="mi">8</span><span class="p">)</span> <span class="n">bits</span>
+
+<span class="n">Donde</span> <span class="n">n</span> <span class="n">es</span> <span class="n">la</span> <span class="n">diferencia</span> <span class="n">entre</span> <span class="n">los</span> <span class="n">indices</span> <span class="n">j</span> <span class="n">e</span> <span class="n">i</span>
+</pre></div>
+</div>
+<p>Tomando nuevamente la grafica 10, vemos que &amp;A[3] = &amp;A[0] + 3*(sizeof(short)<em>8) = 0x1000 + 3</em>2<em>8 = 0x1000 + 48 = 0x1000 + 0x30 = 0x1030.
+De modo similar B[1] = B[2] - 1</em>(sizeof(char)<em>8)= 0x1000 - 1</em>(1*8) = 0x1000 + 8 = 0x1000 + 0x0008 = 0x1008.</p>
+<p>A continuación se muestran unos cuantos ejemplos para clarificar esto:</p>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Supongase que se tiene el siguiente código:</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">A</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;h&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">,</span><span class="sc">&#39;\0&#39;</span><span class="p">};</span><span class="w"></span>
+<span class="kt">short</span><span class="w"> </span><span class="n">B</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Asumiendo que un dato tipo short ocupa 2 bytes de memoria y uno char 1 byte. Dibuje en el mapa de memoria los vectores anteriormente resaltados. Las direcciones base son 100 para el vector A y 200 para el vector B. Asi mismo, para el caso las direcciones serán manejadas en decimal.</p>
+<p><strong>Representacion en memoria con un ancho a 4 bytes</strong>
+En la siguiente figura se muestra la representacion en memoria en la cual se manejan 4 bytes de ancho.</p>
+<p><img alt="array_hsw" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/mm_char_short1.png?raw=true" /></p>
+<p><strong>Figura 15</strong>. Representación a 4 bytes de ancho.</p>
+<p><strong>Representacion en memoria con un ancho a 1 byte</strong>
+En la siguiente figura se muestra la representacion en memoria en la cual se manejan 1 byte de ancho.</p>
+<p><img alt="array_hsw2" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/mm_char_short2.png?raw=true" /></p>
+<p><strong>Figura 16</strong>. Representación a 1 byte de ancho.</p>
+<ol class="simple">
+<li><p>Supongase que se tiene el siguiente codigo fuente:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int V[4];
+int main() {
+  print(&quot;%d\n&quot;,sizeof(int));
+  print(&quot;%p\n&quot;,V);
+  int *p1 = V;
+  *p1 = 3;
+  int p2 = &amp;V[0];
+  int p2 += 2;
+  *p2 = 1;
+  p1 = p2 - 1;
+  *p1 = -(*p2);
+  *(p2 + 1) = 2;
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20V%5B4%5D%3B%0Aint%20main%28%29%20%7B%0A%20%20print%28%22%25d%5Cn%22%2Csizeof%28int%29%29%3B%0A%20%20print%28%22%25p%5Cn%22%2CV%29%3B%0A%20%20int%20%2Ap1%20%3D%20V%3B%0A%20%20%2Ap1%20%3D%203%3B%0A%20%20int%20p2%20%3D%20%26V%5B0%5D%3B%0A%20%20int%20p2%20%2B%3D%202%3B%0A%20%20%2Ap2%20%3D%201%3B%0A%20%20p1%20%3D%20p2%20-%201%3B%0A%20%20%2Ap1%20%3D%20-%28%2Ap2%29%3B%0A%20%20%2A%28p2%20%2B%201%29%20%3D%202%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Responda las siguientes preguntas:</p>
+<ul class="simple">
+<li><p>¿Cual es la direccion base del vector V y de cada uno de sus elementos?</p></li>
+<li><p>¿Cuando se acaba la ejecucion que valor queda almacenado en los apuntadores p1 y p2?</p></li>
+<li><p>¿Cual es el contenido del vector cuando culmina el programa?</p></li>
+</ul>
+<p>Es posible acceder a cada uno de los elementos del arreglo por medio del índice o de manera alternativa usando apuntadores y es allí donde entra en juego la aritmética de punteros ya que por medio de las operaciones de adición y sustracción nos podemos mover a las diferentes posiciones del array para luego poder acceder a sus elementos. Para entender más esto suponga que tiene la siguiente porción de codigo en la cual se manipula un vector empleando la notación con subíndices:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  int a[6]={1,0,4,7,8,10};
+  int i,suma = 0;
+  a[0]=2;
+  a[3]=10;
+  for(i = 1;i&lt;6;i++) {
+    if(i%2==0) {
+      a[i] = -a[i];
+    }
+    else {
+      a[i]=a[i]+1;
+    }
+  }
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20a%5B6%5D%3D%7B1%2C0%2C4%2C7%2C8%2C10%7D%3B%0A%20%20int%20i%2Csuma%20%3D%200%3B%0A%20%20a%5B0%5D%3D2%3B%0A%20%20a%5B3%5D%3D10%3B%0A%20%20for%28i%20%3D%201%3Bi%3C6%3Bi%2B%2B%29%20%7B%0A%20%20%20%20if%28i%252%3D%3D0%29%20%7B%0A%20%20%20%20%20%20a%5Bi%5D%20%3D%20-a%5Bi%5D%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20a%5Bi%5D%3Da%5Bi%5D%2B1%3B%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Por otro lado el siguiente codigo, hace exactamente lo mismo mediante la notacion de apuntadores:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  int a[6]={1,0,4,7,8,10};
+  int *ptr;        // Declaracion del apuntador
+  ptr = &amp;a[0];    // Inicializacion del apuntador. (ptr = a)
+  *ptr = 2;    // a[0] = 2
+  ptr = &amp;a[3];    // Ahora ptr esta apuntando al elemento a[3]
+  *ptr=10;    //a[3] = 10
+  ptr = &amp;a[1];    // Ahora ptr esta apuntando al elemento a[1]
+  for(int i = 1;i &lt; 6;i++) {
+    if(i%2==0) {
+      *ptr = -(*ptr); 
+    }
+    else {
+      *ptr = *ptr + 1;
+    }
+    ptr++;    //Cambio del valor del apuntador para barrer el arreglo
+  }
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20a%5B6%5D%3D%7B1%2C0%2C4%2C7%2C8%2C10%7D%3B%0A%20%20int%20%2Aptr%3B%20%20%20%20%20%20%20%20//%20Declaracion%20del%20apuntador%0A%20%20ptr%20%3D%20%26a%5B0%5D%3B%20%20%20%20//%20Inicializacion%20del%20apuntador.%20%28ptr%20%3D%20a%29%0A%20%20%2Aptr%20%3D%202%3B%20%20%20%20//%20a%5B0%5D%20%3D%202%0A%20%20ptr%20%3D%20%26a%5B3%5D%3B%20%20%20%20//%20Ahora%20ptr%20esta%20apuntando%20al%20elemento%20a%5B3%5D%0A%20%20%2Aptr%3D10%3B%20%20%20%20//a%5B3%5D%20%3D%2010%0A%20%20ptr%20%3D%20%26a%5B1%5D%3B%20%20%20%20//%20Ahora%20ptr%20esta%20apuntando%20al%20elemento%20a%5B1%5D%0A%20%20for%28int%20i%20%3D%201%3Bi%20%3C%206%3Bi%2B%2B%29%20%7B%0A%20%20%20%20if%28i%252%3D%3D0%29%20%7B%0A%20%20%20%20%20%20%2Aptr%20%3D%20-%28%2Aptr%29%3B%20%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%2Aptr%20%3D%20%2Aptr%20%2B%201%3B%0A%20%20%20%20%7D%0A%20%20%20%20ptr%2B%2B%3B%20%20%20%20//Cambio%20del%20valor%20del%20apuntador%20para%20barrer%20el%20arreglo%0A%20%20%7D%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La conclusión a la que se llega depues de simular es que existe una correspondencia entre como accedo a un vector mediante la notacion con subindices y la notacion con apuntadores. La siguiente tabla muestra esta relación:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Notación subíndice</p></th>
+<th class="head"><p>Notación puntero</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&amp;A[0]</p></td>
+<td><p>A</p></td>
+</tr>
+<tr class="row-odd"><td><p>&amp;A[i]</p></td>
+<td><p>A + i</p></td>
+</tr>
+<tr class="row-even"><td><p>A[0]</p></td>
+<td><p>*A</p></td>
+</tr>
+<tr class="row-odd"><td><p>A[i]</p></td>
+<td><p>*(A + i)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Teniendo en cuenta <strong>la tabla de equivalencia</strong> anteriormente mostrada podemos pasar arreglos como parametros de funciones y manipularlos en las instrucciones del cuerpo de la instruccion, esto en resumen, no es mas que hacer un cambio de los corchetes <strong>[]</strong> por el asterirco (propio de los apuntadores) para la parametro asociado al vector. Veamos esto usando ejemplos.</p>
+<table>
+    <tr>
+        <td><b>Notación</b></td>
+        <td><b>Empleando subindices</b></td>
+        <td><b>Empleando apuntadores</b></td>
+    </tr>
+    <tr>
+        <td><b>Declaración</b></td>
+        <td>void imprimirVector(int V[],int tam);</td>
+        <td>void imprimirVector(int *V,int tam);</td>
+    </tr>   
+    <tr>
+        <td><b>Definición</b></td>
+        <td>             
+          void imprimirVector(int V[],int tam) {</br>
+             &nbsp;&nbsp;&nbsp;printf("[ ");</br>
+             &nbsp;&nbsp;&nbsp;for(int i = 0; i < tam; i++) {</br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   printf("%d ", V[i]); </br>  
+             &nbsp;&nbsp;&nbsp;}</br>
+             &nbsp;&nbsp;&nbsp;printf("]\n");</br>
+          }</br>
+        </td>
+        <td>        
+           void imprimirVector(int *V,int tam) {</br>
+             &nbsp;&nbsp;&nbsp;printf("[ ");</br>
+             &nbsp;&nbsp;&nbsp;for(int i = 0; i < tam; i++) {</br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   printf("%d ", *(V + i)); </br>  
+             &nbsp;&nbsp;&nbsp;}</br>
+             &nbsp;&nbsp;&nbsp;printf("]\n");</br>
+          }</br>
+        </td>
+    </tr>
+    <tr>
+        <td><b>Invocación</b></td>
+        <td>
+            int A[] = {1, 2, 3}; </br>
+            imprimirVector(A, 3); </br>
+        </td>
+        <td>
+           int A[] = {1, 2, 3}; </br>
+           imprimirVector(A, 3); </br>
+        </td>
+    </tr>
+</table>
+<p>En el siguiente <a class="reference external" href="https://goo.gl/onVv3v">enlace</a> se encuentra el anterior para simular. Pordrá notar que los resultados no cambian.</p>
+</section>
+<section id="apuntadores-a-apuntadores">
+<h2>4. Apuntadores a apuntadores<a class="headerlink" href="#apuntadores-a-apuntadores" title="Permalink to this headline">#</a></h2>
+<p>Es posible poner apuntar un apuntador a un apuntador, lo cual se indica con la cantidad de asteriscos colocados en la declaración del apuntador, así la declaración realizada en las siguientes líneas de código:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w"> </span><span class="cm">/*Un caracter*/</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pch</span><span class="p">;</span><span class="w"> </span><span class="cm">/*Un apuntado a un dato tipo caracter*/</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">pch</span><span class="p">;</span><span class="w"> </span><span class="cm">/*Un apuntador a un apuntador a un caracter*/</span><span class="w"></span>
+</pre></div>
+</div>
+<p>suponiendo que:</p>
+<ul class="simple">
+<li><p>El tamaño de ocupado por una variable apuntador es de 8 bytes.</p></li>
+<li><p>El tamaño ocupado por una variable tipo char es de 1 byte.</p></li>
+<li><p>Las direcciones de las variables ch, pch y ppch son 0xFFF000BCC, 0xFFF000BD0 y 0xFFF000BD8 respectivamente.</p></li>
+</ul>
+<p>El resultado de ejecutar las instrucciones anteriores muestra un resultado similar al de la siguiente figura:</p>
+<p><img alt="ptr_to_ptr" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/ptr_to_ptr_ambas.png?raw=true" /></p>
+<p><strong>Figura 17</strong>. Resultado de la ejecución del codigo anterior.</p>
+<p>Notese que aun no se han inicializado las variables (variable normal, apuntador y apuntador a apuntador). A continuación de muestra un código de inicializacion y su respectivo efecto:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ch</span><span class="p">;</span><span class="w"> </span><span class="cm">/*Inicializacion del apuntador*/</span><span class="w"></span>
+<span class="n">ppch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pch</span><span class="p">;</span><span class="w"> </span><span class="cm">/*Inicializacion del apuntador al apuntador*/</span><span class="w"></span>
+</pre></div>
+</div>
+<p><img alt="ptr_to_ptr__mem_2_3" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/ptr_to_ptr_mem_2_3.png?raw=true" /></p>
+<p><strong>Figura 18</strong>. Resultado de la ejecución del codigo anterior.</p>
+<p>Notese del codigo anterior que a un apuntador a un apuntador se le debe pasar la dirección de memoria del apuntador al que está siendo inicializado.</p>
+<p>La siguiente tabla muestra una lista de equivalencias entre los valores almacenados en las variables anteriormente creadas:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ítem</p></th>
+<th class="head"><p>Equivalencia en código</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Lugar de memoria accedido (variable ch)</p></td>
+<td><p>ch = *pch = **ppch</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dirección de la variable ch (&amp;ch)</p></td>
+<td><p>&amp;ch = pch = *ppch</p></td>
+</tr>
+<tr class="row-even"><td><p>Dirección de memoria del apuntador (&amp;pch)</p></td>
+<td><p>&amp;pch = ppch</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dirección de memoria del apuntador al apuntador (&amp;ppch)</p></td>
+<td><p>&amp;ppch</p></td>
+</tr>
+</tbody>
+</table>
+<p>Aplicando la anterior equivalencia en la figura 14 tenemos (Tenga muy claro el operador direccion (&amp;)):</p>
+<ol class="simple">
+<li><p>ch = *pch = **ppch = ?</p></li>
+<li><p>&amp;ch = pch = *ppch = 0xFFF000BCC</p></li>
+<li><p>&amp;pch = ppch = 0xFFF000BD0</p></li>
+<li><p>&amp;ppch = 0xFFF000BD8</p></li>
+</ol>
+<p>La anterior tabla implica que si yo quiero cambiar el valor de ch lo puedo hacer ya modificando la variable como tal (ch = valor) o desreferenciando el apuntador que la apunta (*pch = valor)  o desreferenciando el apuntador del apuntador que la apunta (**ppch = valor), a continuación se muestran las tres equivalencias. A continuación se muestra esto:</p>
+<p><strong>Forma 1</strong>: modificando la variable directamente</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Forma 2</strong>: modificando la variable por medio del apuntador</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Forma 3</strong>: modificando la variable por medio del apuntador al apuntador</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="o">**</span><span class="n">ppch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>:
+Simule el siguiente codigo y saque conclusiones:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  char ch;
+  char *pch, **ppch;
+  char ***pppch = &amp;ppch;
+  pch = &amp;ch;
+  ppch = &amp;pch;
+  ***pppch = &#39;A&#39;;
+  **ppch = *pch + 1;
+  ch = **ppch + 3;
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20ch%3B%0A%20%20char%20%2Apch%2C%20%2A%2Appch%3B%0A%20%20char%20%2A%2A%2Apppch%20%3D%20%26ppch%3B%0A%20%20pch%20%3D%20%26ch%3B%0A%20%20ppch%20%3D%20%26pch%3B%0A%20%20%2A%2A%2Apppch%20%3D%20%27A%27%3B%0A%20%20%2A%2Appch%20%3D%20%2Apch%20%2B%201%3B%0A%20%20ch%20%3D%20%2A%2Appch%20%2B%203%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+</section>
+<section id="apuntadores-genericos-y-casts">
+<h2>5. Apuntadores genericos y casts<a class="headerlink" href="#apuntadores-genericos-y-casts" title="Permalink to this headline">#</a></h2>
+<p>Un apuntador generico o void pointer es un tipo especial de apuntador que puede apuntar a cualquier tipo de dato.
+Su unica limitación es que el dato apuntado no puede ser desreferenciado directamente (el operador * no puede ser usado en este tipo de apuntadores) pues para el caso, la longitud del tipo de dato al que se apunta no puede ser determinada lo hace necesario un casting para hacer que el aputador generico pueda apuntar a un tipo de dato concreto (el cual si puede ser referenciado).</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="cm">/* Declaracion de variables*/</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo1</span><span class="w"> </span><span class="n">var1_1</span><span class="p">,</span><span class="w"> </span><span class="n">var1_2</span><span class="p">,...;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"> </span>
+<span class="w">  </span><span class="n">tipoN</span><span class="w"> </span><span class="n">varN_1</span><span class="p">,</span><span class="w"> </span><span class="n">varN_2</span><span class="p">,...;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Declaracion apuntador generico*/</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Referencia a una variable tipo tipo1 */</span><span class="w"></span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">var1_1</span><span class="p">;</span><span class="w"> </span><span class="c1">// var es una variable de cualquier tipo</span>
+<span class="w">  </span><span class="cm">/* Desreferencia a una variable tipo tipo1*/</span><span class="w"></span>
+<span class="w">  </span><span class="n">var1_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">((</span><span class="n">tipo1</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// cast</span>
+<span class="w">  </span><span class="cm">/* Referencia a una variable tipo tipoN */</span><span class="w"></span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">varN_1</span><span class="p">;</span><span class="w"> </span><span class="c1">// var es una variable de cualquier tipo</span>
+<span class="w">  </span><span class="cm">/* Desreferencia a una variable tipo tipo1*/</span><span class="w"></span>
+<span class="w">  </span><span class="n">varN_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">((</span><span class="n">tipoN</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// cast</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+<p>En si el cast es de la forma:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="p">((</span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestran algunos ejemplos para aclarar lo anteriormente mencionado.</p>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Analice el siguiente codigo:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  int a = 5;
+  double b = 3.1415;
+  void *vp;
+  vp = &amp;a;
+  printf(&quot;a = %d\n&quot;, *((int *)vp)); // Cast a (int *)
+  vp = &amp;b;
+  printf(&quot;b = %lf\n&quot;, *((double *)vp)); // Cast (double *)
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20a%20%3D%205%3B%0A%20%20double%20b%20%3D%203.1415%3B%0A%20%20void%20%2Avp%3B%0A%20%20vp%20%3D%20%26a%3B%0A%20%20printf%28%22a%20%3D%20%25d%5Cn%22%2C%20%2A%28%28int%20%2A%29vp%29%29%3B%20//%20Cast%20a%20%28int%20%2A%29%0A%20%20vp%20%3D%20%26b%3B%0A%20%20printf%28%22b%20%3D%20%25lf%5Cn%22%2C%20%2A%28%28double%20%2A%29vp%29%29%3B%20//%20Cast%20%28double%20%2A%29%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<ol class="simple">
+<li><p>Analice el siguiente codigo:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+void swapChar(char *a, char *b);
+void swapFloat(float *a, float *b);
+
+int main() {
+  char w = &#39;w&#39;, x = &#39;a&#39;;
+  float y = 2.3, z = -0.5;
+  printf(&quot;---- Caracteres ----\n&quot;);
+  printf(&quot;Antes: w = %c, x = %c\n&quot;, w, x);
+  swapChar(&amp;w, &amp;x);
+  printf(&quot;Despues: w = %c, x = %c\n&quot;, w, x);
+  printf(&quot;---- Reales ----\n&quot;);
+  printf(&quot;Antes: y = %.2f, z = %.2f\n&quot;, y, z);
+  swapFloat(&amp;y, &amp;z);
+  printf(&quot;Despues: y = %.2f, z = %.2f\n&quot;, y, z);  
+  return 0;
+}
+
+void swapChar(char *a, char *b) {
+  char temp;
+  temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+void swapFloat(float *a, float *b) {
+  float temp;
+  temp = *a;
+  *a = *b;
+  *b = temp;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20swapChar%28char%20%2Aa%2C%20char%20%2Ab%29%3B%0Avoid%20swapFloat%28float%20%2Aa%2C%20float%20%2Ab%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20w%20%3D%20%27w%27%2C%20x%20%3D%20%27a%27%3B%0A%20%20float%20y%20%3D%202.3%2C%20z%20%3D%20-0.5%3B%0A%20%20printf%28%22----%20Caracteres%20----%5Cn%22%29%3B%0A%20%20printf%28%22Antes%3A%20w%20%3D%20%25c%2C%20x%20%3D%20%25c%5Cn%22%2C%20w%2C%20x%29%3B%0A%20%20swapChar%28%26w%2C%20%26x%29%3B%0A%20%20printf%28%22Despues%3A%20w%20%3D%20%25c%2C%20x%20%3D%20%25c%5Cn%22%2C%20w%2C%20x%29%3B%0A%20%20printf%28%22----%20Reales%20----%5Cn%22%29%3B%0A%20%20printf%28%22Antes%3A%20y%20%3D%20%25.2f%2C%20z%20%3D%20%25.2f%5Cn%22%2C%20y%2C%20z%29%3B%0A%20%20swapFloat%28%26y%2C%20%26z%29%3B%0A%20%20printf%28%22Despues%3A%20y%20%3D%20%25.2f%2C%20z%20%3D%20%25.2f%5Cn%22%2C%20y%2C%20z%29%3B%20%20%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20swapChar%28char%20%2Aa%2C%20char%20%2Ab%29%20%7B%0A%20%20char%20temp%3B%0A%20%20temp%20%3D%20%2Aa%3B%0A%20%20%2Aa%20%3D%20%2Ab%3B%0A%20%20%2Ab%20%3D%20temp%3B%0A%7D%0A%0Avoid%20swapFloat%28float%20%2Aa%2C%20float%20%2Ab%29%20%7B%0A%20%20float%20temp%3B%0A%20%20temp%20%3D%20%2Aa%3B%0A%20%20%2Aa%20%3D%20%2Ab%3B%0A%20%20%2Ab%20%3D%20temp%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida del código anterior se muestra a continuación:</p>
+<p><img alt="void_ptr_fun_no_gen" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte2/imagenes/swap_no_generico.png?raw=true" /></p>
+<p><strong>Figura 20</strong>. Funciones por referencia normales.</p>
+<p><strong>Reto</strong>: Hacer la función que permita hacer el intercambio entre dos cadenas de caracteres</p>
+<ol class="simple">
+<li><p>Analice el siguiente código</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+swap2(void *x, void *y, int size);
+
+int main() {
+  char w = &#39;w&#39;, x = &#39;a&#39;;
+  float y = 2.3, z = -0.5;
+  char s1[] = &quot;abcd&quot;, s2[]=&quot;wxyz&quot;;
+  printf(&quot;---- Caracteres ----\n&quot;);
+  printf(&quot;Antes: w = %c, x = %c\n&quot;, w, x);
+  swap2(&amp;w, &amp;x, sizeof(char));
+  printf(&quot;Despues: w = %c, x = %c\n&quot;, w, x);
+  printf(&quot;---- Reales ----\n&quot;);
+  printf(&quot;Antes: y = %.2f, z = %.2f\n&quot;, y, z);
+  swap2(&amp;y, &amp;z, sizeof(float));
+  printf(&quot;Despues: y = %.2f, z = %.2f\n&quot;, y, z); 
+  printf(&quot;---- Cadenas ----\n&quot;);
+  printf(&quot;Antes: s1 = %s, s2 = %s\n&quot;, s1, s2);
+  swap2(s1, s2, sizeof(s1));
+  printf(&quot;Despues: s1 = %s, s2 = %s\n&quot;, s1, s2);   
+  return 0;
+}
+
+int swap2(void *x, void *y, int size) {
+  void *tmp;
+  if ((tmp = malloc(size)) == NULL) {
+    return -1;
+  }
+  memcpy(tmp, x, size); 
+  memcpy(x, y, size); 
+  memcpy(y, tmp, size);
+  free(tmp);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aswap2%28void%20%2Ax%2C%20void%20%2Ay%2C%20int%20size%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20w%20%3D%20%27w%27%2C%20x%20%3D%20%27a%27%3B%0A%20%20float%20y%20%3D%202.3%2C%20z%20%3D%20-0.5%3B%0A%20%20char%20s1%5B%5D%20%3D%20%22abcd%22%2C%20s2%5B%5D%3D%22wxyz%22%3B%0A%20%20printf%28%22----%20Caracteres%20----%5Cn%22%29%3B%0A%20%20printf%28%22Antes%3A%20w%20%3D%20%25c%2C%20x%20%3D%20%25c%5Cn%22%2C%20w%2C%20x%29%3B%0A%20%20swap2%28%26w%2C%20%26x%2C%20sizeof%28char%29%29%3B%0A%20%20printf%28%22Despues%3A%20w%20%3D%20%25c%2C%20x%20%3D%20%25c%5Cn%22%2C%20w%2C%20x%29%3B%0A%20%20printf%28%22----%20Reales%20----%5Cn%22%29%3B%0A%20%20printf%28%22Antes%3A%20y%20%3D%20%25.2f%2C%20z%20%3D%20%25.2f%5Cn%22%2C%20y%2C%20z%29%3B%0A%20%20swap2%28%26y%2C%20%26z%2C%20sizeof%28float%29%29%3B%0A%20%20printf%28%22Despues%3A%20y%20%3D%20%25.2f%2C%20z%20%3D%20%25.2f%5Cn%22%2C%20y%2C%20z%29%3B%20%0A%20%20printf%28%22----%20Cadenas%20----%5Cn%22%29%3B%0A%20%20printf%28%22Antes%3A%20s1%20%3D%20%25s%2C%20s2%20%3D%20%25s%5Cn%22%2C%20s1%2C%20s2%29%3B%0A%20%20swap2%28s1%2C%20s2%2C%20sizeof%28s1%29%29%3B%0A%20%20printf%28%22Despues%3A%20s1%20%3D%20%25s%2C%20s2%20%3D%20%25s%5Cn%22%2C%20s1%2C%20s2%29%3B%20%20%20%0A%20%20return%200%3B%0A%7D%0A%0Aint%20swap2%28void%20%2Ax%2C%20void%20%2Ay%2C%20int%20size%29%20%7B%0A%20%20void%20%2Atmp%3B%0A%20%20if%20%28%28tmp%20%3D%20malloc%28size%29%29%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20return%20-1%3B%0A%20%20%7D%0A%20%20memcpy%28tmp%2C%20x%2C%20size%29%3B%20%0A%20%20memcpy%28x%2C%20y%2C%20size%29%3B%20%0A%20%20memcpy%28y%2C%20tmp%2C%20size%29%3B%0A%20%20free%28tmp%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Notese respecto al codigo del ejemplo 2 que se tiene al usar apuntadores genericos, pues una misma funcion puede soportar diferentes tipos de datos. La función <strong>memcpy</strong> empleada en el ejemplo anterior puede ser estudiada con mas detalle en el siguiente <a class="reference external" href="https://www.tutorialspoint.com/c_standard_library/c_function_memcpy.htm">enlace</a>.</p>
+</section>
+<section id="enlaces-de-interes">
+<h2>6. Enlaces de interés<a class="headerlink" href="#enlaces-de-interes" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/data-types-in-c/">https://www.geeksforgeeks.org/data-types-in-c/</a></p></li>
+<li><p><a class="reference external" href="https://www.programiz.com/c-programming/c-enumeration">https://www.programiz.com/c-programming/c-enumeration</a></p></li>
+<li><p><a class="reference external" href="http://people.duke.edu/~tkb13/courses/ncsu-csc230/lecture/">http://people.duke.edu/~tkb13/courses/ncsu-csc230/lecture/</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/dangling-void-null-wild-pointers/">https://www.geeksforgeeks.org/dangling-void-null-wild-pointers/</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/tag/c-pointers/">https://www.geeksforgeeks.org/tag/c-pointers/</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/double-pointer-pointer-pointer-c/">https://www.geeksforgeeks.org/double-pointer-pointer-pointer-c/</a></p></li>
+<li><p><a class="reference external" href="https://www.eskimo.com/~scs/cclass/int/sx8.html">https://www.eskimo.com/~scs/cclass/int/sx8.html</a></p></li>
+<li><p><a class="reference external" href="https://www.tutorialspoint.com/cprogramming/c_pointer_to_pointer.htm">https://www.tutorialspoint.com/cprogramming/c_pointer_to_pointer.htm</a></p></li>
+<li><p><a class="reference external" href="https://boredzo.org/pointers/">https://boredzo.org/pointers/</a></p></li>
+<li><p><a class="reference external" href="https://beginnersbook.com/2014/01/c-pointer-to-pointer/">https://beginnersbook.com/2014/01/c-pointer-to-pointer/</a></p></li>
+<li><p><a class="reference external" href="https://www.tutorialspoint.com/cprogramming/index.htm">https://www.tutorialspoint.com/cprogramming/index.htm</a></p></li>
+<li><p><a class="reference external" href="http://gsd.web.elte.hu/lectures/c-en/c-lecture-9/">http://gsd.web.elte.hu/lectures/c-en/c-lecture-9/</a></p></li>
+<li><p><a class="reference external" href="http://math.pnw.edu/~rlkraft/cs123-2009/homework/hw3/hw3.html">http://math.pnw.edu/~rlkraft/cs123-2009/homework/hw3/hw3.html</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content\local\code\parte2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

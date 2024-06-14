@@ -1,0 +1,978 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Conceptos previos - Repaso &#8212; Introducción al lenguaje C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/logo_udea.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción al lenguaje C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../CH_00.html">
+   Introducción
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../CH_01.html">
+   Herramientas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../CH_02.html">
+   Lenguaje C
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../CH_02-S01.html">
+     Introducción basica
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../CH_02-S02.html">
+     Segundo tema
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/udea-so/intro-c/blob/master/content/local/code/parte7/intro_estructuras_de_datos_2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/udea-so/intro-c"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/udea-so/intro-c/issues/new?title=Issue%20on%20page%20%2Fcontent/local/code/parte7/intro_estructuras_de_datos_2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/content/local/code/parte7/intro_estructuras_de_datos_2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Conceptos previos - Repaso
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apuntadores">
+     Apuntadores
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reserva-dinamica-de-memoria">
+     Reserva dinámica de memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estructuras-de-datos-dinamicas">
+   Estructuras de datos dinamicas
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#listas-enladas">
+     Listas enladas
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura">
+       Estructura
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#operaciones-elementales">
+       Operaciones elementales
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Conceptos previos - Repaso</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Conceptos previos - Repaso
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apuntadores">
+     Apuntadores
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reserva-dinamica-de-memoria">
+     Reserva dinámica de memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estructuras-de-datos-dinamicas">
+   Estructuras de datos dinamicas
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#listas-enladas">
+     Listas enladas
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura">
+       Estructura
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#operaciones-elementales">
+       Operaciones elementales
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a class="reference external" href="https://colab.research.google.com/github/dannymrock/UdeA-SO-Lab/blob/master/lab0/lab0b/parte7/intro_estructuras_de_datos.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install tutormagic
+<span class="o">%</span><span class="k">load_ext</span> tutormagic
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tutormagic in /home/tigarto/miniconda3/lib/python3.7/site-packages (0.3.0)
+Requirement already satisfied: notebook&gt;=3.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from tutormagic) (6.0.1)
+Requirement already satisfied: ipykernel in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (5.1.3)
+Requirement already satisfied: nbconvert in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (5.6.1)
+Requirement already satisfied: terminado&gt;=0.8.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (0.8.3)
+Requirement already satisfied: jinja2 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (2.10.3)
+Requirement already satisfied: jupyter-core&gt;=4.4.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (4.6.1)
+Requirement already satisfied: prometheus-client in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (0.7.1)
+Requirement already satisfied: jupyter-client&gt;=5.3.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (5.3.3)
+Requirement already satisfied: nbformat in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (4.4.0)
+Requirement already satisfied: traitlets&gt;=4.2.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (4.3.3)
+Requirement already satisfied: ipython-genutils in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (0.2.0)
+Requirement already satisfied: pyzmq&gt;=17 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (18.1.1)
+Requirement already satisfied: tornado&gt;=5.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (6.0.3)
+Requirement already satisfied: Send2Trash in /home/tigarto/miniconda3/lib/python3.7/site-packages (from notebook&gt;=3.0-&gt;tutormagic) (1.5.0)
+Requirement already satisfied: ipython&gt;=5.0.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (7.11.1)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.8.4)
+Requirement already satisfied: testpath in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.4.4)
+Requirement already satisfied: defusedxml in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.6.0)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.3)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (1.4.2)
+Requirement already satisfied: pygments in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (2.5.2)
+Requirement already satisfied: bleach in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (3.1.0)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jinja2-&gt;notebook&gt;=3.0-&gt;tutormagic) (1.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jupyter-client&gt;=5.3.1-&gt;notebook&gt;=3.0-&gt;tutormagic) (2.8.1)
+Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (3.2.0)
+Requirement already satisfied: six in /home/tigarto/miniconda3/lib/python3.7/site-packages (from traitlets&gt;=4.2.1-&gt;notebook&gt;=3.0-&gt;tutormagic) (1.12.0)
+Requirement already satisfied: decorator in /home/tigarto/miniconda3/lib/python3.7/site-packages (from traitlets&gt;=4.2.1-&gt;notebook&gt;=3.0-&gt;tutormagic) (4.4.1)
+Requirement already satisfied: backcall in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.1.0)
+Requirement already satisfied: setuptools&gt;=18.5 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (45.2.0)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (3.0.2)
+Requirement already satisfied: jedi&gt;=0.10 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.15.2)
+Requirement already satisfied: pexpect; sys_platform != &quot;win32&quot; in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (4.7.0)
+Requirement already satisfied: pickleshare in /home/tigarto/miniconda3/lib/python3.7/site-packages (from ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.7.5)
+Requirement already satisfied: webencodings in /home/tigarto/miniconda3/lib/python3.7/site-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.5.1)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.15.6)
+Requirement already satisfied: importlib-metadata; python_version &lt; &quot;3.8&quot; in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (1.3.0)
+Requirement already satisfied: attrs&gt;=17.4.0 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (19.3.0)
+Requirement already satisfied: wcwidth in /home/tigarto/miniconda3/lib/python3.7/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.1.8)
+Requirement already satisfied: parso&gt;=0.5.2 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from jedi&gt;=0.10-&gt;ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.5.2)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from pexpect; sys_platform != &quot;win32&quot;-&gt;ipython&gt;=5.0.0-&gt;ipykernel-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.6.0)
+Requirement already satisfied: zipp&gt;=0.5 in /home/tigarto/miniconda3/lib/python3.7/site-packages (from importlib-metadata; python_version &lt; &quot;3.8&quot;-&gt;jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (0.6.0)
+Requirement already satisfied: more-itertools in /home/tigarto/miniconda3/lib/python3.7/site-packages (from zipp&gt;=0.5-&gt;importlib-metadata; python_version &lt; &quot;3.8&quot;-&gt;jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=3.0-&gt;tutormagic) (8.0.2)
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="conceptos-previos-repaso">
+<h1>Conceptos previos - Repaso<a class="headerlink" href="#conceptos-previos-repaso" title="Permalink to this headline">#</a></h1>
+<section id="apuntadores">
+<h2>Apuntadores<a class="headerlink" href="#apuntadores" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 0;
+    int *aPtr;
+    aPtr = &amp;a;
+    *aPtr = 3;
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20a%20%3D%200%3B%0A%20%20%20%20int%20%2AaPtr%3B%0A%20%20%20%20aPtr%20%3D%20%26a%3B%0A%20%20%20%20%2AaPtr%20%3D%203%3B%0A%20%20%20%20return%200%3B%0A%7D%0A&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+#define NULL 0
+
+int main() {
+    int a = 3, b = 4;
+    int *p = &amp;a;
+    int **pp = &amp;p;
+    int ***ppp = &amp;pp;
+    ***ppp = 5;
+    **ppp = &amp;b;
+    **pp = 6;
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%23define%20NULL%200%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20a%20%3D%203%2C%20b%20%3D%204%3B%0A%20%20%20%20int%20%2Ap%20%3D%20%26a%3B%0A%20%20%20%20int%20%2A%2App%20%3D%20%26p%3B%0A%20%20%20%20int%20%2A%2A%2Appp%20%3D%20%26pp%3B%0A%20%20%20%20%2A%2A%2Appp%20%3D%205%3B%0A%20%20%20%20%2A%2Appp%20%3D%20%26b%3B%0A%20%20%20%20%2A%2App%20%3D%206%3B%0A%20%20%20%20return%200%3B%0A%7D%0A&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+</section>
+<section id="reserva-dinamica-de-memoria">
+<h2>Reserva dinámica de memoria<a class="headerlink" href="#reserva-dinamica-de-memoria" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+#define NULL 0
+int main() {
+    int *ptr1 = (int *)malloc(sizeof(int));
+    int *ptr2 = NULL;
+    ptr2 = (int *)malloc(3*sizeof(int));
+    *ptr1 = 3;
+    *ptr2 = *ptr1 + 1;
+    *(ptr2 + 1) = *ptr1 + 2;
+    *(ptr2 + 2) = *ptr1 + 3;
+    free(ptr1);
+    ptr1 = NULL;
+    free(ptr2); 
+    ptr2 = NULL;
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%23define%20NULL%200%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20%2Aptr1%20%3D%20%28int%20%2A%29malloc%28sizeof%28int%29%29%3B%0A%20%20%20%20int%20%2Aptr2%20%3D%20NULL%3B%0A%20%20%20%20ptr2%20%3D%20%28int%20%2A%29malloc%283%2Asizeof%28int%29%29%3B%0A%20%20%20%20%2Aptr1%20%3D%203%3B%0A%20%20%20%20%2Aptr2%20%3D%20%2Aptr1%20%2B%201%3B%0A%20%20%20%20%2A%28ptr2%20%2B%201%29%20%3D%20%2Aptr1%20%2B%202%3B%0A%20%20%20%20%2A%28ptr2%20%2B%202%29%20%3D%20%2Aptr1%20%2B%203%3B%0A%20%20%20%20free%28ptr1%29%3B%0A%20%20%20%20ptr1%20%3D%20NULL%3B%0A%20%20%20%20free%28ptr2%29%3B%20%0A%20%20%20%20ptr2%20%3D%20NULL%3B%0A%20%20%20%20return%200%3B%0A%7D%0A&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+#define NULL 0
+
+int main() {
+    int *arr[2];
+    arr[0] = (int*)calloc(4,sizeof(int)); 
+    arr[1] = (int*)calloc(5,sizeof(int)); 
+    int **pp;
+    pp = &amp;arr[0];
+    *(arr[0] + 3) = 2;  
+    arr[0][1] = 5;
+    *(*pp + 2) = -3;
+    pp = &amp;arr[1];
+    *(*pp + 1) = 3;
+    *(*(arr + 1) + 4) = 10;
+    free(arr[0]);
+    free(arr[1]);
+    arr[0] = NULL;
+    arr[1] = NULL;
+    pp = NULL;
+    return 0; 
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%23define%20NULL%200%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20%2Aarr%5B2%5D%3B%0A%20%20%20%20arr%5B0%5D%20%3D%20%28int%2A%29calloc%284%2Csizeof%28int%29%29%3B%20%0A%20%20%20%20arr%5B1%5D%20%3D%20%28int%2A%29calloc%285%2Csizeof%28int%29%29%3B%20%0A%20%20%20%20int%20%2A%2App%3B%0A%20%20%20%20pp%20%3D%20%26arr%5B0%5D%3B%0A%20%20%20%20%2A%28arr%5B0%5D%20%2B%203%29%20%3D%202%3B%20%20%0A%20%20%20%20arr%5B0%5D%5B1%5D%20%3D%205%3B%0A%20%20%20%20%2A%28%2App%20%2B%202%29%20%3D%20-3%3B%0A%20%20%20%20pp%20%3D%20%26arr%5B1%5D%3B%0A%20%20%20%20%2A%28%2App%20%2B%201%29%20%3D%203%3B%0A%20%20%20%20%2A%28%2A%28arr%20%2B%201%29%20%2B%204%29%20%3D%2010%3B%0A%20%20%20%20free%28arr%5B0%5D%29%3B%0A%20%20%20%20free%28arr%5B1%5D%29%3B%0A%20%20%20%20arr%5B0%5D%20%3D%20NULL%3B%0A%20%20%20%20arr%5B1%5D%20%3D%20NULL%3B%0A%20%20%20%20pp%20%3D%20NULL%3B%0A%20%20%20%20return%200%3B%20%0A%7D%0A&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+
+#define NULL 0
+
+int main() {
+    int **pp = (int **)malloc(2*sizeof(int**)); 
+    *(pp + 1) = (int *)malloc(3*sizeof(int));
+    pp[0] = (int *)malloc(4*sizeof(int));
+    pp[0][3] = 3;
+    *(*pp + 2) = -2;
+    *(pp[1] + 1) = 10;
+    *(*(pp + 1) + 2) = 30;
+    *(*pp + 1) = -12;  
+    free(pp[0]);
+    pp[0] = NULL;
+    free(*(pp + 1));
+    pp[1] = NULL;
+    pp = NULL;
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%0A%23define%20NULL%200%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20%2A%2App%20%3D%20%28int%20%2A%2A%29malloc%282%2Asizeof%28int%2A%2A%29%29%3B%20%0A%20%20%20%20%2A%28pp%20%2B%201%29%20%3D%20%28int%20%2A%29malloc%283%2Asizeof%28int%29%29%3B%0A%20%20%20%20pp%5B0%5D%20%3D%20%28int%20%2A%29malloc%284%2Asizeof%28int%29%29%3B%0A%20%20%20%20pp%5B0%5D%5B3%5D%20%3D%203%3B%0A%20%20%20%20%2A%28%2App%20%2B%202%29%20%3D%20-2%3B%0A%20%20%20%20%2A%28pp%5B1%5D%20%2B%201%29%20%3D%2010%3B%0A%20%20%20%20%2A%28%2A%28pp%20%2B%201%29%20%2B%202%29%20%3D%2030%3B%0A%20%20%20%20%2A%28%2App%20%2B%201%29%20%3D%20-12%3B%20%20%0A%20%20%20%20free%28pp%5B0%5D%29%3B%0A%20%20%20%20pp%5B0%5D%20%3D%20NULL%3B%0A%20%20%20%20free%28%2A%28pp%20%2B%201%29%29%3B%0A%20%20%20%20pp%5B1%5D%20%3D%20NULL%3B%0A%20%20%20%20pp%20%3D%20NULL%3B%0A%20%20%20%20return%200%3B%0A%7D%0A&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+#define NULL 0
+
+struct nodo{
+    char *cad;
+    struct nodo **next_nodo;    
+};
+
+typedef struct nodo nodo;
+
+int main() {
+    nodo *nodo1 = (nodo *)malloc(sizeof(nodo));
+    nodo1-&gt;cad = (char*)malloc(20*sizeof(char));
+    strcpy(nodo1-&gt;cad, &quot;Lenguaje C&quot;);
+    nodo1-&gt;next_nodo = NULL;
+    nodo *nodo2 = (nodo *)malloc(sizeof(nodo));
+    nodo2-&gt;next_nodo = NULL;
+    nodo1-&gt;next_nodo = &amp;nodo2;
+    nodo2-&gt;cad = (char*)malloc(20*sizeof(char));
+    strcpy(nodo2-&gt;cad, &quot;Lenguaje Java&quot;);
+    nodo *nodo3 = (nodo *)malloc(sizeof(nodo));
+    nodo3-&gt;cad = (char*)malloc(20*sizeof(char));
+    strcpy(nodo3-&gt;cad, &quot;Lenguaje Python&quot;);
+    nodo3-&gt;next_nodo = &amp;nodo2;
+    nodo1-&gt;next_nodo = &amp;nodo3;
+    nodo *temp = nodo1;
+    while(temp-&gt;next_nodo != NULL) {
+        printf(&quot;%s ---&gt; &quot;,temp-&gt;cad);
+        temp = *temp-&gt;next_nodo;      
+    }
+    printf(&quot; %s ---&gt; NULL\n&quot;,temp-&gt;cad);
+    // Eliminando el nodo 3 (Mitad)
+    nodo1-&gt;next_nodo = &amp;nodo2;
+    nodo3-&gt;next_nodo = NULL;    
+    free(nodo3);
+    nodo3 = NULL;
+    // Volviendo a imprimir lo que quedo
+    temp = nodo1;
+    while(temp-&gt;next_nodo != NULL) {
+        printf(&quot;%s ---&gt; &quot;,temp-&gt;cad);
+        temp = *temp-&gt;next_nodo;      
+    }
+    printf(&quot; %s ---&gt; NULL\n&quot;,temp-&gt;cad);
+    // Eliminando los elementos restantes
+    temp = nodo1;
+    while(*temp-&gt;next_nodo != NULL) {
+        free(*temp-&gt;next_nodo); 
+        *temp-&gt;next_nodo = NULL;
+    }
+    temp = nodo1;    
+    free(temp);
+    nodo1 = NULL;
+    temp = NULL;
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%23define%20NULL%200%0A%0Astruct%20nodo%7B%0A%20%20%20%20char%20%2Acad%3B%0A%20%20%20%20struct%20nodo%20%2A%2Anext_nodo%3B%20%20%20%20%0A%7D%3B%0A%0Atypedef%20struct%20nodo%20nodo%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20nodo%20%2Anodo1%20%3D%20%28nodo%20%2A%29malloc%28sizeof%28nodo%29%29%3B%0A%20%20%20%20nodo1-%3Ecad%20%3D%20%28char%2A%29malloc%2820%2Asizeof%28char%29%29%3B%0A%20%20%20%20strcpy%28nodo1-%3Ecad%2C%20%22Lenguaje%20C%22%29%3B%0A%20%20%20%20nodo1-%3Enext_nodo%20%3D%20NULL%3B%0A%20%20%20%20nodo%20%2Anodo2%20%3D%20%28nodo%20%2A%29malloc%28sizeof%28nodo%29%29%3B%0A%20%20%20%20nodo2-%3Enext_nodo%20%3D%20NULL%3B%0A%20%20%20%20nodo1-%3Enext_nodo%20%3D%20%26nodo2%3B%0A%20%20%20%20nodo2-%3Ecad%20%3D%20%28char%2A%29malloc%2820%2Asizeof%28char%29%29%3B%0A%20%20%20%20strcpy%28nodo2-%3Ecad%2C%20%22Lenguaje%20Java%22%29%3B%0A%20%20%20%20nodo%20%2Anodo3%20%3D%20%28nodo%20%2A%29malloc%28sizeof%28nodo%29%29%3B%0A%20%20%20%20nodo3-%3Ecad%20%3D%20%28char%2A%29malloc%2820%2Asizeof%28char%29%29%3B%0A%20%20%20%20strcpy%28nodo3-%3Ecad%2C%20%22Lenguaje%20Python%22%29%3B%0A%20%20%20%20nodo3-%3Enext_nodo%20%3D%20%26nodo2%3B%0A%20%20%20%20nodo1-%3Enext_nodo%20%3D%20%26nodo3%3B%0A%20%20%20%20nodo%20%2Atemp%20%3D%20nodo1%3B%0A%20%20%20%20while%28temp-%3Enext_nodo%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%25s%20---%3E%20%22%2Ctemp-%3Ecad%29%3B%0A%20%20%20%20%20%20%20%20temp%20%3D%20%2Atemp-%3Enext_nodo%3B%20%20%20%20%20%20%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22%20%25s%20---%3E%20NULL%5Cn%22%2Ctemp-%3Ecad%29%3B%0A%20%20%20%20//%20Eliminando%20el%20nodo%203%20%28Mitad%29%0A%20%20%20%20nodo1-%3Enext_nodo%20%3D%20%26nodo2%3B%0A%20%20%20%20nodo3-%3Enext_nodo%20%3D%20NULL%3B%20%20%20%20%0A%20%20%20%20free%28nodo3%29%3B%0A%20%20%20%20nodo3%20%3D%20NULL%3B%0A%20%20%20%20//%20Volviendo%20a%20imprimir%20lo%20que%20quedo%0A%20%20%20%20temp%20%3D%20nodo1%3B%0A%20%20%20%20while%28temp-%3Enext_nodo%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%25s%20---%3E%20%22%2Ctemp-%3Ecad%29%3B%0A%20%20%20%20%20%20%20%20temp%20%3D%20%2Atemp-%3Enext_nodo%3B%20%20%20%20%20%20%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22%20%25s%20---%3E%20NULL%5Cn%22%2Ctemp-%3Ecad%29%3B%0A%20%20%20%20//%20Eliminando%20los%20elementos%20restantes%0A%20%20%20%20temp%20%3D%20nodo1%3B%0A%20%20%20%20while%28%2Atemp-%3Enext_nodo%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20free%28%2Atemp-%3Enext_nodo%29%3B%20%0A%20%20%20%20%20%20%20%20%2Atemp-%3Enext_nodo%20%3D%20NULL%3B%0A%20%20%20%20%7D%0A%20%20%20%20temp%20%3D%20nodo1%3B%20%20%20%20%0A%20%20%20%20free%28temp%29%3B%0A%20%20%20%20nodo1%20%3D%20NULL%3B%0A%20%20%20%20temp%20%3D%20NULL%3B%0A%20%20%20%20return%200%3B%0A%7D%0A&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="estructuras-de-datos-dinamicas">
+<h1>Estructuras de datos dinamicas<a class="headerlink" href="#estructuras-de-datos-dinamicas" title="Permalink to this headline">#</a></h1>
+<section id="listas-enladas">
+<h2>Listas enladas<a class="headerlink" href="#listas-enladas" title="Permalink to this headline">#</a></h2>
+<section id="estructura">
+<h3>Estructura<a class="headerlink" href="#estructura" title="Permalink to this headline">#</a></h3>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">nodo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dato</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">nodo</span><span class="w"> </span><span class="o">**</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">nodo</span><span class="w"> </span><span class="n">nodo</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="operaciones-elementales">
+<h3>Operaciones elementales<a class="headerlink" href="#operaciones-elementales" title="Permalink to this headline">#</a></h3>
+<p><strong>Recorrer la lista enlazada</strong></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">recorrer_lista</span><span class="p">(</span><span class="n">nodo</span><span class="w"> </span><span class="o">**</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">nodo</span><span class="w"> </span><span class="o">**</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d ---&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">dato</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;NULL&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Insertar un elemento al final de la cola</strong></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">insertar_elemento</span><span class="p">(</span><span class="n">nodo</span><span class="w"> </span><span class="o">**</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dato</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">nodo</span><span class="w"> </span><span class="o">*</span><span class="n">new_nodo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">nodo</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">nodo</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">new_nodo</span><span class="o">-&gt;</span><span class="n">dato</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dato</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">new_nodo</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">new_nodo</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">;</span><span class="w">    </span>
+<span class="w">    </span><span class="o">*</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_nodo</span><span class="p">;</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Código tomado del libro de deitel y deitel.</p></li>
+<li><p>Colocar el enlace en la nube.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+
+#define NULL 0
+
+// self-referential structure                       
+struct listNode {                                      
+   char data; // each listNode contains a character 
+   struct listNode *nextPtr; // pointer to next node
+}; 
+
+typedef struct listNode ListNode; // synonym for struct listNode
+typedef ListNode *ListNodePtr; // synonym for ListNode*
+
+// prototypes
+void insert(ListNodePtr *sPtr, char value);
+char delete(ListNodePtr *sPtr, char value);
+int isEmpty(ListNodePtr sPtr);
+void printList(ListNodePtr currentPtr);
+void instructions(void);
+
+int main(void)
+{ 
+   ListNodePtr startPtr = NULL; // initially there are no nodes
+   int empty = isEmpty(startPtr);
+   if(empty == 1) {
+       puts(&quot;Empty List&quot;);
+   }
+   puts(&quot;Add elements to list&quot;);
+   insert(&amp;startPtr, &#39;A&#39;);  // Add A: A
+   insert(&amp;startPtr, &#39;B&#39;);  // Add B: A -- B 
+   insert(&amp;startPtr, &#39;X&#39;);  // Add X: A -- B -- X
+   printList(startPtr);     // Print list&#39;s elements
+   insert(&amp;startPtr, &#39;Z&#39;);  // Add Z: A -- B -- X -- Z
+   printList(startPtr);     // Print list&#39;s elements
+   delete(&amp;startPtr,&#39;B&#39;);   // Delete B: A -- X -- Z 
+   delete(&amp;startPtr,&#39;Z&#39;);   // Delete Z: A -- X  
+   printList(startPtr);     // Print list&#39;s elements
+   return 0;
+} 
+
+
+
+// insert a new value into the list in sorted order
+void insert(ListNodePtr *sPtr, char value)
+{ 
+   ListNodePtr newPtr = malloc(sizeof(ListNode)); // create node
+
+   if (newPtr != NULL) { // is space available
+      newPtr-&gt;data = value; // place value in node
+      newPtr-&gt;nextPtr = NULL; // node does not link to another node
+
+      ListNodePtr previousPtr = NULL;
+      ListNodePtr currentPtr = *sPtr;
+
+      // loop to find the correct location in the list       
+      while (currentPtr != NULL &amp;&amp; value &gt; currentPtr-&gt;data) {
+         previousPtr = currentPtr; // walk to ...               
+         currentPtr = currentPtr-&gt;nextPtr; // ... next node 
+      }                                          
+
+      // insert new node at beginning of list
+      if (previousPtr == NULL) { 
+         newPtr-&gt;nextPtr = *sPtr;
+         *sPtr = newPtr;
+      } 
+      else { // insert new node between previousPtr and currentPtr
+         previousPtr-&gt;nextPtr = newPtr;
+         newPtr-&gt;nextPtr = currentPtr;
+      } 
+   } 
+   else {
+      printf(&quot;%c not inserted. No memory available.\n&quot;, value);
+   } 
+} 
+
+// delete a list element
+char delete(ListNodePtr *sPtr, char value)
+{ 
+   // delete first node if a match is found
+   if (value == (*sPtr)-&gt;data) { 
+      ListNodePtr tempPtr = *sPtr; // hold onto node being removed
+      *sPtr = (*sPtr)-&gt;nextPtr; // de-thread the node
+      free(tempPtr); // free the de-threaded node
+      return value;
+   } 
+   else { 
+      ListNodePtr previousPtr = *sPtr;
+      ListNodePtr currentPtr = (*sPtr)-&gt;nextPtr;
+
+      // loop to find the correct location in the list
+      while (currentPtr != NULL &amp;&amp; currentPtr-&gt;data != value) { 
+         previousPtr = currentPtr; // walk to ...  
+         currentPtr = currentPtr-&gt;nextPtr; // ... next node  
+      } 
+
+      // delete node at currentPtr
+      if (currentPtr != NULL) { 
+         ListNodePtr tempPtr = currentPtr;
+         previousPtr-&gt;nextPtr = currentPtr-&gt;nextPtr;
+         free(tempPtr);
+         return value;
+      } 
+   } 
+
+   return &#39;\0&#39;;
+} 
+
+// return 1 if the list is empty, 0 otherwise
+int isEmpty(ListNodePtr sPtr)
+{ 
+   return sPtr == NULL;
+} 
+
+// print the list
+void printList(ListNodePtr currentPtr)
+{ 
+   // if list is empty
+   if (isEmpty(currentPtr)) {
+      puts(&quot;List is empty.\n&quot;);
+   } 
+   else { 
+      puts(&quot;The list is:&quot;);
+
+      // while not the end of the list
+      while (currentPtr != NULL) { 
+         printf(&quot;%c --&gt; &quot;, currentPtr-&gt;data);
+         currentPtr = currentPtr-&gt;nextPtr;   
+      } 
+
+      puts(&quot;NULL\n&quot;);
+   } 
+} 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%0A%23define%20NULL%200%0A%0A//%20self-referential%20structure%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0Astruct%20listNode%20%7B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20char%20data%3B%20//%20each%20listNode%20contains%20a%20character%20%0A%20%20%20struct%20listNode%20%2AnextPtr%3B%20//%20pointer%20to%20next%20node%0A%7D%3B%20%0A%0Atypedef%20struct%20listNode%20ListNode%3B%20//%20synonym%20for%20struct%20listNode%0Atypedef%20ListNode%20%2AListNodePtr%3B%20//%20synonym%20for%20ListNode%2A%0A%0A//%20prototypes%0Avoid%20insert%28ListNodePtr%20%2AsPtr%2C%20char%20value%29%3B%0Achar%20delete%28ListNodePtr%20%2AsPtr%2C%20char%20value%29%3B%0Aint%20isEmpty%28ListNodePtr%20sPtr%29%3B%0Avoid%20printList%28ListNodePtr%20currentPtr%29%3B%0Avoid%20instructions%28void%29%3B%0A%0Aint%20main%28void%29%0A%7B%20%0A%20%20%20ListNodePtr%20startPtr%20%3D%20NULL%3B%20//%20initially%20there%20are%20no%20nodes%0A%20%20%20int%20empty%20%3D%20isEmpty%28startPtr%29%3B%0A%20%20%20if%28empty%20%3D%3D%201%29%20%7B%0A%20%20%20%20%20%20%20puts%28%22Empty%20List%22%29%3B%0A%20%20%20%7D%0A%20%20%20puts%28%22Add%20elements%20to%20list%22%29%3B%0A%20%20%20insert%28%26startPtr%2C%20%27A%27%29%3B%20%20//%20Add%20A%3A%20A%0A%20%20%20insert%28%26startPtr%2C%20%27B%27%29%3B%20%20//%20Add%20B%3A%20A%20--%20B%20%0A%20%20%20insert%28%26startPtr%2C%20%27X%27%29%3B%20%20//%20Add%20X%3A%20A%20--%20B%20--%20X%0A%20%20%20printList%28startPtr%29%3B%20%20%20%20%20//%20Print%20list%27s%20elements%0A%20%20%20insert%28%26startPtr%2C%20%27Z%27%29%3B%20%20//%20Add%20Z%3A%20A%20--%20B%20--%20X%20--%20Z%0A%20%20%20printList%28startPtr%29%3B%20%20%20%20%20//%20Print%20list%27s%20elements%0A%20%20%20delete%28%26startPtr%2C%27B%27%29%3B%20%20%20//%20Delete%20B%3A%20A%20--%20X%20--%20Z%20%0A%20%20%20delete%28%26startPtr%2C%27Z%27%29%3B%20%20%20//%20Delete%20Z%3A%20A%20--%20X%20%20%0A%20%20%20printList%28startPtr%29%3B%20%20%20%20%20//%20Print%20list%27s%20elements%0A%20%20%20return%200%3B%0A%7D%20%0A%0A%0A%0A//%20insert%20a%20new%20value%20into%20the%20list%20in%20sorted%20order%0Avoid%20insert%28ListNodePtr%20%2AsPtr%2C%20char%20value%29%0A%7B%20%0A%20%20%20ListNodePtr%20newPtr%20%3D%20malloc%28sizeof%28ListNode%29%29%3B%20//%20create%20node%0A%0A%20%20%20if%20%28newPtr%20%21%3D%20NULL%29%20%7B%20//%20is%20space%20available%0A%20%20%20%20%20%20newPtr-%3Edata%20%3D%20value%3B%20//%20place%20value%20in%20node%0A%20%20%20%20%20%20newPtr-%3EnextPtr%20%3D%20NULL%3B%20//%20node%20does%20not%20link%20to%20another%20node%0A%0A%20%20%20%20%20%20ListNodePtr%20previousPtr%20%3D%20NULL%3B%0A%20%20%20%20%20%20ListNodePtr%20currentPtr%20%3D%20%2AsPtr%3B%0A%0A%20%20%20%20%20%20//%20loop%20to%20find%20the%20correct%20location%20in%20the%20list%20%20%20%20%20%20%20%0A%20%20%20%20%20%20while%20%28currentPtr%20%21%3D%20NULL%20%26%26%20value%20%3E%20currentPtr-%3Edata%29%20%7B%0A%20%20%20%20%20%20%20%20%20previousPtr%20%3D%20currentPtr%3B%20//%20walk%20to%20...%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20currentPtr%20%3D%20currentPtr-%3EnextPtr%3B%20//%20...%20next%20node%20%0A%20%20%20%20%20%20%7D%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20//%20insert%20new%20node%20at%20beginning%20of%20list%0A%20%20%20%20%20%20if%20%28previousPtr%20%3D%3D%20NULL%29%20%7B%20%0A%20%20%20%20%20%20%20%20%20newPtr-%3EnextPtr%20%3D%20%2AsPtr%3B%0A%20%20%20%20%20%20%20%20%20%2AsPtr%20%3D%20newPtr%3B%0A%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20else%20%7B%20//%20insert%20new%20node%20between%20previousPtr%20and%20currentPtr%0A%20%20%20%20%20%20%20%20%20previousPtr-%3EnextPtr%20%3D%20newPtr%3B%0A%20%20%20%20%20%20%20%20%20newPtr-%3EnextPtr%20%3D%20currentPtr%3B%0A%20%20%20%20%20%20%7D%20%0A%20%20%20%7D%20%0A%20%20%20else%20%7B%0A%20%20%20%20%20%20printf%28%22%25c%20not%20inserted.%20No%20memory%20available.%5Cn%22%2C%20value%29%3B%0A%20%20%20%7D%20%0A%7D%20%0A%0A//%20delete%20a%20list%20element%0Achar%20delete%28ListNodePtr%20%2AsPtr%2C%20char%20value%29%0A%7B%20%0A%20%20%20//%20delete%20first%20node%20if%20a%20match%20is%20found%0A%20%20%20if%20%28value%20%3D%3D%20%28%2AsPtr%29-%3Edata%29%20%7B%20%0A%20%20%20%20%20%20ListNodePtr%20tempPtr%20%3D%20%2AsPtr%3B%20//%20hold%20onto%20node%20being%20removed%0A%20%20%20%20%20%20%2AsPtr%20%3D%20%28%2AsPtr%29-%3EnextPtr%3B%20//%20de-thread%20the%20node%0A%20%20%20%20%20%20free%28tempPtr%29%3B%20//%20free%20the%20de-threaded%20node%0A%20%20%20%20%20%20return%20value%3B%0A%20%20%20%7D%20%0A%20%20%20else%20%7B%20%0A%20%20%20%20%20%20ListNodePtr%20previousPtr%20%3D%20%2AsPtr%3B%0A%20%20%20%20%20%20ListNodePtr%20currentPtr%20%3D%20%28%2AsPtr%29-%3EnextPtr%3B%0A%0A%20%20%20%20%20%20//%20loop%20to%20find%20the%20correct%20location%20in%20the%20list%0A%20%20%20%20%20%20while%20%28currentPtr%20%21%3D%20NULL%20%26%26%20currentPtr-%3Edata%20%21%3D%20value%29%20%7B%20%0A%20%20%20%20%20%20%20%20%20previousPtr%20%3D%20currentPtr%3B%20//%20walk%20to%20...%20%20%0A%20%20%20%20%20%20%20%20%20currentPtr%20%3D%20currentPtr-%3EnextPtr%3B%20//%20...%20next%20node%20%20%0A%20%20%20%20%20%20%7D%20%0A%0A%20%20%20%20%20%20//%20delete%20node%20at%20currentPtr%0A%20%20%20%20%20%20if%20%28currentPtr%20%21%3D%20NULL%29%20%7B%20%0A%20%20%20%20%20%20%20%20%20ListNodePtr%20tempPtr%20%3D%20currentPtr%3B%0A%20%20%20%20%20%20%20%20%20previousPtr-%3EnextPtr%20%3D%20currentPtr-%3EnextPtr%3B%0A%20%20%20%20%20%20%20%20%20free%28tempPtr%29%3B%0A%20%20%20%20%20%20%20%20%20return%20value%3B%0A%20%20%20%20%20%20%7D%20%0A%20%20%20%7D%20%0A%0A%20%20%20return%20%27%5C0%27%3B%0A%7D%20%0A%0A//%20return%201%20if%20the%20list%20is%20empty%2C%200%20otherwise%0Aint%20isEmpty%28ListNodePtr%20sPtr%29%0A%7B%20%0A%20%20%20return%20sPtr%20%3D%3D%20NULL%3B%0A%7D%20%0A%0A//%20print%20the%20list%0Avoid%20printList%28ListNodePtr%20currentPtr%29%0A%7B%20%0A%20%20%20//%20if%20list%20is%20empty%0A%20%20%20if%20%28isEmpty%28currentPtr%29%29%20%7B%0A%20%20%20%20%20%20puts%28%22List%20is%20empty.%5Cn%22%29%3B%0A%20%20%20%7D%20%0A%20%20%20else%20%7B%20%0A%20%20%20%20%20%20puts%28%22The%20list%20is%3A%22%29%3B%0A%0A%20%20%20%20%20%20//%20while%20not%20the%20end%20of%20the%20list%0A%20%20%20%20%20%20while%20%28currentPtr%20%21%3D%20NULL%29%20%7B%20%0A%20%20%20%20%20%20%20%20%20printf%28%22%25c%20--%3E%20%22%2C%20currentPtr-%3Edata%29%3B%0A%20%20%20%20%20%20%20%20%20currentPtr%20%3D%20currentPtr-%3EnextPtr%3B%20%20%20%0A%20%20%20%20%20%20%7D%20%0A%0A%20%20%20%20%20%20puts%28%22NULL%5Cn%22%29%3B%0A%20%20%20%7D%20%0A%7D%20%0A%0A&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content\local\code\parte7"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

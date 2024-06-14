@@ -7,3 +7,9 @@ chapters:
 - file: markdown
 - file: notebooks
 - file: markdown-notebooks
+- file: content/CH_00
+- file: content/CH_01
+- file: content/CH_02
+  sections:
+  - file: content/CH_02-S01
+  - file: content/CH_02-S02

@@ -1,0 +1,2022 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Estructuras en C &#8212; Introducción al lenguaje C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/logo_udea.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción al lenguaje C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../CH_00.html">
+   Introducción
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../CH_01.html">
+   Herramientas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../CH_02.html">
+   Lenguaje C
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../CH_02-S01.html">
+     Introducción basica
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../CH_02-S02.html">
+     Segundo tema
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/udea-so/intro-c/blob/master/content/local/code/parte4/estructuras.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/udea-so/intro-c"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/udea-so/intro-c/issues/new?title=Issue%20on%20page%20%2Fcontent/local/code/parte4/estructuras.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/content/local/code/parte4/estructuras.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conceptualizacion">
+   1. Conceptualizacion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trabajando-con-estructuras">
+   2. Trabajando con estructuras
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#declaracion-de-una-estructura">
+     2.1. Declaración de una estructura
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definicion-de-variables-tipo-struct">
+     2.2. Definición de variables tipo struct
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inicializacion-de-variables-tipo-struct">
+     2.3. Inicializacion de variables tipo struct
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#usando-una-lista-de-inicializacion">
+       2.3.1. Usando una lista de inicialización
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inicializacion-especifica-de-cada-uno-de-los-miembros">
+       2.3.2. Inicialización específica de cada uno de los miembros
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-en-el-que-no-se-inicializan-todos-lo-miembros">
+       2.3.3. Caso en el que no se inicializan todos lo miembros
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#empleo-de-la-palabra-clave-typedef-para-crear-alias-tocayos">
+     2.4. Empleo de la palabra clave typedef para crear alias (tocayos)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulando-estructuras">
+     2.5. Manipulando estructuras
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#usando-el-operador-punto">
+       2.5.1 Usando el operador punto (.)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructuras-anidadas">
+     2.6. Estructuras anidadas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructuras-y-funciones">
+     2.6. Estructuras y funciones
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-de-estructuras-por-valor">
+     2.6.1. Paso de estructuras por valor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-de-estructuras-por-referencia">
+     2.6.2. Paso de estructuras por referencia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces">
+   3. Enlaces
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Estructuras en C</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conceptualizacion">
+   1. Conceptualizacion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trabajando-con-estructuras">
+   2. Trabajando con estructuras
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#declaracion-de-una-estructura">
+     2.1. Declaración de una estructura
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definicion-de-variables-tipo-struct">
+     2.2. Definición de variables tipo struct
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inicializacion-de-variables-tipo-struct">
+     2.3. Inicializacion de variables tipo struct
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#usando-una-lista-de-inicializacion">
+       2.3.1. Usando una lista de inicialización
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inicializacion-especifica-de-cada-uno-de-los-miembros">
+       2.3.2. Inicialización específica de cada uno de los miembros
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-en-el-que-no-se-inicializan-todos-lo-miembros">
+       2.3.3. Caso en el que no se inicializan todos lo miembros
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#empleo-de-la-palabra-clave-typedef-para-crear-alias-tocayos">
+     2.4. Empleo de la palabra clave typedef para crear alias (tocayos)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulando-estructuras">
+     2.5. Manipulando estructuras
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#usando-el-operador-punto">
+       2.5.1 Usando el operador punto (.)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructuras-anidadas">
+     2.6. Estructuras anidadas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructuras-y-funciones">
+     2.6. Estructuras y funciones
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-de-estructuras-por-valor">
+     2.6.1. Paso de estructuras por valor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-de-estructuras-por-referencia">
+     2.6.2. Paso de estructuras por referencia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces">
+   3. Enlaces
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a class="reference external" href="https://colab.research.google.com/github/dannymrock/UdeA-SO-Lab/blob/master/lab0/lab0b/parte4/estructuras.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip3 install tutormagic
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tutormagic
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The tutormagic extension is already loaded. To reload it, use:
+  %reload_ext tutormagic
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="estructuras-en-c">
+<h1>Estructuras en C<a class="headerlink" href="#estructuras-en-c" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<blockquote>
+<div><p><strong>Objetivos</strong></p>
+<ul class="simple">
+<li><p>xxx.</p></li>
+<li><p>yyy</p></li>
+</ul>
+</div></blockquote>
+<hr class="docutils" />
+<section id="conceptualizacion">
+<h2>1. Conceptualizacion<a class="headerlink" href="#conceptualizacion" title="Permalink to this headline">#</a></h2>
+<p>Anteriormente vimos que los <strong>arrays</strong> esta una coleccion de datos de un mismo tipo agrupados bajo un mismo nombre. C, pese a no ser un lenguaje de programacion orientado a objetos maneja un tipo de dato compuesto conocido como <strong>estructura</strong>. En si, una estructura es lo mas cercano a la definición que conocemos de <strong>clase</strong> en los lenguajes de programación, la unica diferencia respecto a las clases (sin hablar en el sentido estricto de la palabra), es que una estructura es como una clase con miembros pero sin metodos.</p>
+<p>La mayor ventaja de estas, es que permiten la creacion de <strong>nuevos tipos de datos</strong>, liberando al programador de tener que restringirse
+al uso de los tipos de datos tipicos ofrecidos por el lenguaje como tal (int, double, float, etc.) lo cual hace posible organizar datos complicados, particularmente en largos programas.</p>
+<p>Una <strong>estructura</strong>, es una coleccion de uno o más tipos de datos denominados <strong>miembros</strong>, cada uno de los cuales (como se dijo antes) puede ser de un tipo diferente.</p>
+</section>
+<section id="trabajando-con-estructuras">
+<h2>2. Trabajando con estructuras<a class="headerlink" href="#trabajando-con-estructuras" title="Permalink to this headline">#</a></h2>
+<section id="declaracion-de-una-estructura">
+<h3>2.1. Declaración de una estructura<a class="headerlink" href="#declaracion-de-una-estructura" title="Permalink to this headline">#</a></h3>
+<p>La declaración de una estructura tiene la siguiente sintaxis:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">nombre</span><span class="o">-</span><span class="n">estructura</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo_1</span><span class="w"> </span><span class="n">miembro_1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo_2</span><span class="w"> </span><span class="n">miembro_2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo_3</span><span class="w"> </span><span class="n">miembro_3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo_N</span><span class="w"> </span><span class="n">miembro_N</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Definir una estructura asociada a un punto en el plano cartesiano.</p></li>
+</ol>
+<p><img alt="fig1" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/punto.png?raw=true" /></p>
+<p><strong>Figura 1</strong>. Punto.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Punto2D</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Definir una estructura asociada a una fecha.</p></li>
+</ol>
+<p><img alt="fig2" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/fecha.png?raw=true" /></p>
+<p><strong>Figura 2</strong>. Fecha.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Date</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">year</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">month</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">day</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Definir una estructura asociada a una hora.</p></li>
+</ol>
+<p><img alt="fig3" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/hora.png?raw=true" /></p>
+<p><strong>Figura 3</strong>. Tiempo</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Tiempo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">hr</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sec</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Definir una estructura asociada a un album musical</p></li>
+</ol>
+<p><img alt="fig4" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/album.png?raw=true" /></p>
+<p><strong>Figura 4</strong>. Album</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Album</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">titulo</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">artista</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">genero</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">canciones</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Definir una estructura asociada a una cancion.</p></li>
+</ol>
+<p><img alt="fig5" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/cancion.png?raw=true" /></p>
+<p><strong>Figura 5</strong>. Cancion.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Cancion</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">titulo</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">artista</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">compositor</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">short</span><span class="w"> </span><span class="n">duracion</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">fecha</span><span class="w"> </span><span class="n">f_publicacion</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Definir una estructura asociada a un libro.</p></li>
+</ol>
+<p><img alt="fig6" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/libro.png?raw=true" /></p>
+<p><strong>Figura 6</strong>. Libro.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">Book</span><span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">int</span><span class="w">  </span><span class="n">book_id</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="n">title</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span><span class="w"> </span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="n">author</span><span class="p">[</span><span class="mi">40</span><span class="p">];</span><span class="w"> </span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">pages</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">float</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="definicion-de-variables-tipo-struct">
+<h3>2.2. Definición de variables tipo struct<a class="headerlink" href="#definicion-de-variables-tipo-struct" title="Permalink to this headline">#</a></h3>
+<p>Las variables de estructuras se pueden definir de dos formas:</p>
+<ol class="simple">
+<li><p>Listándolas inmediatamente después de la llave de cierre de la llave de cierre de la declaración de la estructura, algo como esto tal y como se muestra en el siguiente codigo en el cual se declaran dos variables (<strong>book1</strong> y <strong>book2</strong>) tipo <strong>struct Book</strong>:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+struct Book  {
+   int  book_id;
+   char title[30]; 
+   char author[20]; 
+   int pages;
+   float price;
+} book1, book2;
+
+int main() {
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=struct%20Book%20%20%7B%0A%20%20%20int%20%20book_id%3B%0A%20%20%20char%20title%5B30%5D%3B%20%0A%20%20%20char%20author%5B20%5D%3B%20%0A%20%20%20int%20pages%3B%0A%20%20%20float%20price%3B%0A%7D%20book1%2C%20book2%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<ol class="simple">
+<li><p>Listando el tipo de la estructura seguida por las variables correspondientes en cualquier lugar del programa antes de utilizarlas, así, asumiendo que la estructura está declarada. El siguiente codigo muestra esto, notese que la declaración de las variables (<strong>book1</strong> y <strong>book2</strong>)  es similar a la declaración para datos no estructurados (<strong>int</strong>, <strong>double</strong>, etc), aquí, la unica difetencia es que estas serán para el caso datos tipo <strong>struct Book</strong>:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+struct Book  {
+   int  book_id;
+   char title[30]; 
+   char author[20]; 
+   int pages;
+   float price;
+};
+
+struct Book book1, book2;
+
+int main() {
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=struct%20Book%20%20%7B%0A%20%20%20int%20%20book_id%3B%0A%20%20%20char%20title%5B30%5D%3B%20%0A%20%20%20char%20author%5B20%5D%3B%20%0A%20%20%20int%20pages%3B%0A%20%20%20float%20price%3B%0A%7D%3B%0A%0Astruct%20Book%20book1%2C%20book2%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida sea para uno u otro caso se muestra a continuación:</p>
+<p><img alt="fig7" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/declaracion_books.png?raw=true" /></p>
+<p><strong>Figura 7</strong>. Estructuras tipo libro.</p>
+<p>Adicionalmente, los conceptos aplicados para los tipos de datos simples aplican para estructuras tambien; esto es, es posible crear variables normales, arrays, matrices y apuntadores de estructuras entre otros. Veamos:</p>
+<p><strong>Ejemplo</strong>:
+Empleando la estructura tipo Punto2D crear las siguientes variables:</p>
+<ul class="simple">
+<li><p>Dos variables llamadas p1 y p2 (local).</p></li>
+<li><p>Un array de 3 elementos llamado vP (local).</p></li>
+<li><p>Un apuntador llamado *ptrP que apunte a p[1] (global).</p></li>
+<li><p>Una matrix de 2x2 llamada mP (global).</p></li>
+</ul>
+<p>La solución se muestra a continuación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+struct Punto2D {
+  float x;
+  float y;
+};
+
+struct Punto2D vP[3];
+struct Punto2D mP[2][2];
+int main() {
+  // Los datos tipo Punto2D seran locales
+  struct Punto2D p1, p2;  
+  struct Punto2D *ptrP = &amp;vP[1];  
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Astruct%20Punto2D%20%7B%0A%20%20float%20x%3B%0A%20%20float%20y%3B%0A%7D%3B%0A%0Astruct%20Punto2D%20vP%5B3%5D%3B%0Astruct%20Punto2D%20mP%5B2%5D%5B2%5D%3B%0Aint%20main%28%29%20%7B%0A%20%20//%20Los%20datos%20tipo%20Punto2D%20seran%20locales%0A%20%20struct%20Punto2D%20p1%2C%20p2%3B%20%20%0A%20%20struct%20Punto2D%20%2AptrP%20%3D%20%26vP%5B1%5D%3B%20%20%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>A continuacion se muestra el resultado en memoria de la ejecución del codigo anterior:</p>
+<p><img alt="fig8" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/declaracion_point.png?raw=true" /></p>
+<p><strong>Figura 8</strong>. Estructuras tipo punto.</p>
+</section>
+<section id="inicializacion-de-variables-tipo-struct">
+<h3>2.3. Inicializacion de variables tipo struct<a class="headerlink" href="#inicializacion-de-variables-tipo-struct" title="Permalink to this headline">#</a></h3>
+<p>Al igual que para el caso de las variables simples, las estructuras pueden tener valores iniciales una vez se declaran. Como estas con estructuras compuestas, lo que se hace para inicializar estas, es inicializar miembro por miembro. A continuacion se describen las dos formas de llevar a cabo esto:</p>
+<section id="usando-una-lista-de-inicializacion">
+<h4>2.3.1. Usando una lista de inicialización<a class="headerlink" href="#usando-una-lista-de-inicializacion" title="Permalink to this headline">#</a></h4>
+<p>Esta es similar a la empleada para los arrays, y lo que se hace es inicializar cada miembro de la estructura con el correspondiente valor inicial asociado. Cada valor inicial es separado por coma (,). Veamos.</p>
+<p><strong>Ejemplo</strong>
+Iniciar la estructura Cancion con la siguiente informacion asociada a una cancion de <a class="reference external" href="https://es.wikipedia.org/wiki/Billie_Holiday">Billie Holiday</a>. A continuacion se muestra el codigo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+
+// Declaracion de la estructura
+struct Cancion {
+  char titulo[20];
+  char artista[32];
+  char compositor[32];
+  short duracion;
+  char URL[32];
+};
+                         
+// Funcion main                         
+int main() {
+  // Inicializacion de la variable (sadSong) tipo struct Cancion 
+  struct Cancion sadSong = {
+                              &quot;Strange fruit&quot;,
+                              &quot;Billie Holiday&quot;,
+                              &quot;Abel Meeropol&quot;,
+                              164,
+                              &quot;http://bit.ly/1mU1gBT&quot;
+                           }; 
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%0A//%20Declaracion%20de%20la%20estructura%0Astruct%20Cancion%20%7B%0A%20%20char%20titulo%5B20%5D%3B%0A%20%20char%20artista%5B32%5D%3B%0A%20%20char%20compositor%5B32%5D%3B%0A%20%20short%20duracion%3B%0A%20%20char%20URL%5B32%5D%3B%0A%7D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A//%20Funcion%20main%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0Aint%20main%28%29%20%7B%0A%20%20//%20Inicializacion%20de%20la%20variable%20%28sadSong%29%20tipo%20struct%20Cancion%20%0A%20%20struct%20Cancion%20sadSong%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Strange%20fruit%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Billie%20Holiday%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Abel%20Meeropol%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20164%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22http%3A//bit.ly/1mU1gBT%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%20%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>A continuacion se muestra como quedan las estructura tipo Cancion (sadSong) al ejecutarse el codigo:</p>
+<p><img alt="fig9" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/var_song1.png?raw=true" /></p>
+<p><strong>Figura 9</strong>. Estructuras tipo cancion (variable sadSong).</p>
+</section>
+<section id="inicializacion-especifica-de-cada-uno-de-los-miembros">
+<h4>2.3.2. Inicialización específica de cada uno de los miembros<a class="headerlink" href="#inicializacion-especifica-de-cada-uno-de-los-miembros" title="Permalink to this headline">#</a></h4>
+<p>Básicamente, consiste en la designación de cada uno de los miembros siguiendo la siguiente forma.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="n">miembro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span><span class="w"> </span><span class="c1">// designador</span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>
+Realizar la misma inicilizacion del caso anterior, pero en este caso emplear la inicializacion especifica de miembros:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+// Declaracion de la estructura
+struct Cancion {
+  char titulo[20];
+  char artista[32];
+  char compositor[32];
+  short duracion;
+  char URL[32];
+};
+                         
+// Funcion main                         
+int main() {
+  // Inicializacion de la variable (sadSong) tipo struct Cancion 
+  struct Cancion sadSong = {
+                             .titulo = &quot;Strange fruit&quot;,
+                             .artista = &quot;Billie Holiday&quot;,
+                             .compositor = &quot;Abel Meeropol&quot;,
+                             .duracion = 164,
+                             .URL = &quot;http://bit.ly/1mU1gBT&quot;
+                           };
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Declaracion%20de%20la%20estructura%0Astruct%20Cancion%20%7B%0A%20%20char%20titulo%5B20%5D%3B%0A%20%20char%20artista%5B32%5D%3B%0A%20%20char%20compositor%5B32%5D%3B%0A%20%20short%20duracion%3B%0A%20%20char%20URL%5B32%5D%3B%0A%7D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A//%20Funcion%20main%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0Aint%20main%28%29%20%7B%0A%20%20//%20Inicializacion%20de%20la%20variable%20%28sadSong%29%20tipo%20struct%20Cancion%20%0A%20%20struct%20Cancion%20sadSong%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.titulo%20%3D%20%22Strange%20fruit%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.artista%20%3D%20%22Billie%20Holiday%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.compositor%20%3D%20%22Abel%20Meeropol%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.duracion%20%3D%20164%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.URL%20%3D%20%22http%3A//bit.ly/1mU1gBT%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>El resultado de ejecutar el codigo anterior, es el mismo que el mostrado en la <strong>figura 9</strong>.</p>
+</section>
+<section id="caso-en-el-que-no-se-inicializan-todos-lo-miembros">
+<h4>2.3.3. Caso en el que no se inicializan todos lo miembros<a class="headerlink" href="#caso-en-el-que-no-se-inicializan-todos-lo-miembros" title="Permalink to this headline">#</a></h4>
+<p>Ya sea que se emplee una u otra de las formas anteriormente mencionadas, es posible inicializar parcialmente una variable tipo estructura, para ello, basta con no pasar todos los elementos que puede contener la lista de inicialización. A continuación se muestra un ejemplo:</p>
+<p><strong>Ejemplo</strong>
+Crear dos variables tipo struct Cancion, estas variables no tendran todos los parametros inicialidos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+// Declaracion de la estructura
+struct Cancion {
+  char titulo[20];
+  char artista[32];
+  char compositor[32];
+  short duracion;
+  char URL[32];
+};
+
+// Variables globales tipo struct Cancion
+struct Cancion song1 = {&quot;Mi cerebro esta boca abajo&quot;};
+struct Cancion song2 = { 
+                         .titulo = &quot;Noches de Hungria&quot;,
+                         .compositor = &quot;Julio Jaramillo&quot;,
+                         .duracion = 127
+};
+
+// Funcion main                         
+int main() {
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Declaracion%20de%20la%20estructura%0Astruct%20Cancion%20%7B%0A%20%20char%20titulo%5B20%5D%3B%0A%20%20char%20artista%5B32%5D%3B%0A%20%20char%20compositor%5B32%5D%3B%0A%20%20short%20duracion%3B%0A%20%20char%20URL%5B32%5D%3B%0A%7D%3B%0A%0A//%20Variables%20globales%20tipo%20struct%20Cancion%0Astruct%20Cancion%20song1%20%3D%20%7B%22Mi%20cerebro%20esta%20boca%20abajo%22%7D%3B%0Astruct%20Cancion%20song2%20%3D%20%7B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.titulo%20%3D%20%22Noches%20de%20Hungria%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.compositor%20%3D%20%22Julio%20Jaramillo%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.duracion%20%3D%20127%0A%7D%3B%0A%0A//%20Funcion%20main%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0Aint%20main%28%29%20%7B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>En la siguiente figura se muestra el resultado del codigo anterior, notese lo que sucede como quedan los miembros que no fueron inicializados.</p>
+<p><img alt="fig10" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/var_song2.png?raw=true" /></p>
+<p><strong>Figura 10</strong>. Variables tipo cancion sin inicializar todos sus miembros.</p>
+</section>
+</section>
+<section id="empleo-de-la-palabra-clave-typedef-para-crear-alias-tocayos">
+<h3>2.4. Empleo de la palabra clave typedef para crear alias (tocayos)<a class="headerlink" href="#empleo-de-la-palabra-clave-typedef-para-crear-alias-tocayos" title="Permalink to this headline">#</a></h3>
+<p>La palabra reservada <code class="docutils literal notranslate"><span class="pre">typedef</span></code> permite a un programador crear un sinónimo de un tipo de dato definido por el usuario o de un tipo ya existente. La sintaxis para usar esta palabra clave es la siguiente:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo_dato</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">nombre_alias</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>
+Dada la siguiente declaracion de variables:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">alto</span><span class="p">,</span><span class="w"> </span><span class="n">ancho</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Teniendo en cuenta que <strong>alto</strong> y <strong>ancho</strong> son medidas de longitud, podemos crear un alias para una variable tipo double llamado <strong>longitud</strong> y el efecto será el mismo que el del caso anterior, el código para el caso sera el siguiente:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">longitud</span><span class="p">;</span><span class="w"></span>
+<span class="n">longitud</span><span class="w"> </span><span class="n">alto</span><span class="p">,</span><span class="w"> </span><span class="n">ancho</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El resultado se muestra a continuacion:</p>
+<p><img alt="fig11" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/type_def1.png?raw=true" /></p>
+<p><strong>Figura 11</strong>. Uso de typedef para la creacion de alias.</p>
+<p><strong>Ejemplo</strong>
+La mayor ventaja del uso de esta palabra clave se ve con las estructuras. A continuación se muestra el resultado:</p>
+<ol class="simple">
+<li><p>Cree dos variables tipo Punto2D llamadas P1 y P2 con valores (2,3) y (-1,6). No emplee typedef:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+// Declaracion de las estructura
+struct Punto2D {
+  float x;
+  float y;
+};
+
+
+// Funcion main                         
+int main() { 
+  // Declaracion de variables
+  struct Punto2D P1 = {
+                        2,
+                        3
+                      };
+
+  struct Punto2D P2 = {
+                        .x = -1,
+                        .y = 6
+                      };
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Declaracion%20de%20las%20estructura%0Astruct%20Punto2D%20%7B%0A%20%20float%20x%3B%0A%20%20float%20y%3B%0A%7D%3B%0A%0A%0A//%20Funcion%20main%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0Aint%20main%28%29%20%7B%20%0A%20%20//%20Declaracion%20de%20variables%0A%20%20struct%20Punto2D%20P1%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%202%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%0A%20%20struct%20Punto2D%20P2%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.x%20%3D%20-1%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.y%20%3D%206%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida del programa anterior es:</p>
+<p><img alt="fig12" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/point_sin_typedef.png?raw=true" /></p>
+<p><strong>Figura 11</strong>. Uso variables tipo struct Punto2D sin usar typedef.</p>
+<ol class="simple">
+<li><p>Realice lo mismo que en el punto anterior, pero esta vez haga uso de la palabra clave <strong>typedef</strong> para crear un alias son <strong>struct Punto2d</strong> llamado <strong>Punto2D</strong>:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+// Declaracion de las estructura
+struct Punto2D {
+  float x;
+  float y;
+};
+
+// Creacion del alias
+typedef struct Punto2D Punto2D;
+
+// Funcion main                         
+int main() { 
+  // Declaracion de variables
+  Punto2D P1 = {
+                        2,
+                        3
+                      };
+
+  Punto2D P2 = {
+                        .x = -1,
+                        .y = 6
+                      };
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Declaracion%20de%20las%20estructura%0Astruct%20Punto2D%20%7B%0A%20%20float%20x%3B%0A%20%20float%20y%3B%0A%7D%3B%0A%0A//%20Creacion%20del%20alias%0Atypedef%20struct%20Punto2D%20Punto2D%3B%0A%0A//%20Funcion%20main%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0Aint%20main%28%29%20%7B%20%0A%20%20//%20Declaracion%20de%20variables%0A%20%20Punto2D%20P1%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%202%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%203%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%0A%20%20Punto2D%20P2%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.x%20%3D%20-1%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.y%20%3D%206%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida del programa anterior (observe en que se diferencia respecto al anterior) es:</p>
+<p><img alt="fig12" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/point_con_typedef.png?raw=true" /></p>
+<p><strong>Figura 12</strong>. Uso variables tipo struct Punto2D usando typedef.</p>
+</section>
+<section id="manipulando-estructuras">
+<h3>2.5. Manipulando estructuras<a class="headerlink" href="#manipulando-estructuras" title="Permalink to this headline">#</a></h3>
+<p>Por manipulacion de la estructuras (dentro de este contexto) nos queremos referir al acceso a los miembros de esta, tal y como sucede cuando se accede a los miembros de un objeto en el caso de la POO. Para el caso de las estructuras en particulas, existen dos formas de acceder:</p>
+<ul class="simple">
+<li><p>Empleando el operador punto (.)</p></li>
+<li><p>Emplenando el operador flecha (-&gt;)</p></li>
+</ul>
+<section id="usando-el-operador-punto">
+<h4>2.5.1 Usando el operador punto (.)<a class="headerlink" href="#usando-el-operador-punto" title="Permalink to this headline">#</a></h4>
+<p>Usado cuando se definen variables del tipo de la estructura. Básicamente tiene la siguiente sintaxis:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">nombre_variable_estructura</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="n">nombre_miembro</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Crear dos puntos P1 y P2. Luego de su declaracion inicialicelos con los siguientes valores: (1,1) y (10,3). En el siguiente <a class="reference external" href="https://goo.gl/XzWLMR">enlace</a> se encuentra el codigo.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Declaracion</span> <span class="n">de</span> <span class="n">las</span> <span class="n">estructura</span>
+<span class="n">struct</span> <span class="n">Punto2D</span> <span class="p">{</span>
+  <span class="o">...</span>
+<span class="p">};</span>
+
+<span class="o">//</span> <span class="n">Creacion</span> <span class="k">del</span> <span class="n">alias</span>
+<span class="n">struct</span> <span class="n">Punto2D</span> <span class="n">Punto2D</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">Declaracion</span> <span class="n">de</span> <span class="n">los</span> <span class="n">puntos</span>
+<span class="n">Punto2D</span> <span class="n">P1</span><span class="p">,</span> <span class="n">P2</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">Manipulacion</span> <span class="p">(</span><span class="n">acceso</span> <span class="n">a</span> <span class="n">los</span> <span class="n">miembros</span><span class="p">)</span>
+<span class="n">P1</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">P1</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">P2</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">P2</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Observe como quedan los campos de las variables P1 y P2 despues de la ejecucion del codigo anterior.</p>
+<p><img alt="fig13" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/acceso_struct_punto.png?raw=true" /></p>
+<p><strong>Figura 13</strong>. Manipulando variables tipo Punto2D.</p>
+<ol class="simple">
+<li><p>Crear una estructura asociada a un libro y porteriormente declarar dos libros (como un array) con la siguiente informacion.</p></li>
+</ol>
+<p><img alt="fig13" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/libros.png?raw=true" /></p>
+<p><strong>Figura 13</strong>. Libros.</p>
+<table style="width: 91px;">
+<tbody>
+<tr>
+<td style="width: 15px;">#</td>
+<td style="width: 15px;">BookID</td>
+<td style="width: 15px;">Title</td>
+<td style="width: 15px;">Author</td>
+<td style="width: 15px;">Pages</td>
+<td style="width: 15px;">Price</td>
+</tr>
+<tr>
+<td style="width: 15px;">1</td>
+<td style="width: 15px;">1211</td>
+<td style="width: 15px;">C Primer Plus</td>
+<td style="width: 15px;">Stephen Prata</td>
+<td style="width: 15px;">984</td>
+<td style="width: 15px;">585.00</td>
+</tr>
+<tr>
+<td style="width: 15px;">2</td>
+<td style="width: 15px;">1212</td>
+<td style="width: 15px;">The ANSI C Programming</td>
+<td style="width: 15px;">Dennis Ritchie</td>
+<td style="width: 15px;">214</td>
+<td style="width: 15px;">125.00</td>
+</tr>
+</tbody>
+</table>
+<p>El <a class="reference external" href="https://goo.gl/dbjcTF">código</a> solucion se muestra a continuación, note que la forma como se accede a la variable tipo <code class="docutils literal notranslate"><span class="pre">Book</span></code> en el correspondiente arreglo es <code class="docutils literal notranslate"><span class="pre">book[i]</span></code> para el caso, por ende la forma de acceder a cada uno de los miembros del array en cuestion será <code class="docutils literal notranslate"><span class="pre">book[i].miembro</span></code></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Declaracion de las estructura</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Book</span><span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">int</span><span class="w">  </span><span class="n">book_id</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="n">title</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span><span class="w"> </span>
+<span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="n">author</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w"> </span>
+<span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">pages</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">float</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Creacion del alias</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="n">Book</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Declaracion del array de libros</span>
+<span class="n">Book</span><span class="w"> </span><span class="n">books</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Manipulacion (acceso a los miembros)</span>
+
+<span class="w">  </span><span class="c1">// Libro # 1</span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1211</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//OJO: books[0].title = &quot;C Primer Plus&quot; es un ERROR </span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">title</span><span class="p">,</span><span class="s">&quot;C Primer Plus&quot;</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">author</span><span class="p">,</span><span class="s">&quot;Stephen Prata&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">pages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">984</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">585.00</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Libro #2</span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1212</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">title</span><span class="p">,</span><span class="s">&quot;The ANSI C Programming&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">author</span><span class="p">,</span><span class="s">&quot;Dennis Ritchie&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">pages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">214</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">125.00</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuacion se muestra el resultado en memoria.:</p>
+<p><img alt="fig14" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/declaracion_books.png?raw=true" /></p>
+<p><strong>Figura 14</strong>. Resultado en memoria para variables asociadas a los libros.</p>
+<p>2.5.2 Usando el operador flecha (-&gt;)
+Es empleado cuando se hace uso de punteros a estructuras, su sintaxis es de la siguiente forma:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">puntero_estructura</span><span class="o">&gt;-&gt;&lt;</span><span class="n">nombre_miembro</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Suponga que se tiene una estructura asociada a las fechas. Tambien, suponga que tiene una variable llamada diaDestino cuyo valor asociado es el 5 de noviembre de 1955 (primer viaje en el tiempo de Marty MacFly). Luego cree una variable tipo apuntador a esta este tipo de estructura y modifique a traves de este el valor de diaDestino al 21 de octubre de 2015 (fecha a la cual viaja Marty MacFly al futuro). Imprima los valores en cada caso.</p></li>
+</ol>
+<p>El código solucion se muestra a continuacion:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+struct Date {
+  unsigned year;
+  unsigned month;
+  unsigned day;
+};
+
+typedef struct Date Fecha;
+
+int main() {
+  /* Declaracion de variables */
+  Fecha diaDestino; // Varible tipo fecha
+  Fecha *diaPtr;    // Variable tipo apuntador a fecha
+  diaPtr = &amp;diaDestino;  // Inicializacion del apuntador
+  
+  /* Viaje al pasado */
+  // Fijando por medio del operador punto (.) los valores 
+  // de dia destino al 5 de noviembre de 1955 
+  diaDestino.year = 1955;
+  diaDestino.month = 11;
+  diaDestino.day = 5;
+  printf(&quot;Destination time: %d/%d/%d\n&quot;, 
+         diaDestino.day, diaDestino.month, diaDestino.year);
+  
+  /*Viaje al futuro */
+  // Fijando por medio del operador flecha (-&gt;) los valores 
+  // de dia destino al 21 de octubre de 2015
+  diaPtr-&gt;year = 2015;
+  diaPtr-&gt;month = 10;
+  diaPtr-&gt;day = 21;
+  printf(&quot;Destination time: %d/%d/%d\n&quot;, 
+         diaPtr-&gt;year, diaPtr-&gt;month, diaPtr-&gt;year);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Astruct%20Date%20%7B%0A%20%20unsigned%20year%3B%0A%20%20unsigned%20month%3B%0A%20%20unsigned%20day%3B%0A%7D%3B%0A%0Atypedef%20struct%20Date%20Fecha%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20/%2A%20Declaracion%20de%20variables%20%2A/%0A%20%20Fecha%20diaDestino%3B%20//%20Varible%20tipo%20fecha%0A%20%20Fecha%20%2AdiaPtr%3B%20%20%20%20//%20Variable%20tipo%20apuntador%20a%20fecha%0A%20%20diaPtr%20%3D%20%26diaDestino%3B%20%20//%20Inicializacion%20del%20apuntador%0A%20%20%0A%20%20/%2A%20Viaje%20al%20pasado%20%2A/%0A%20%20//%20Fijando%20por%20medio%20del%20operador%20punto%20%28.%29%20los%20valores%20%0A%20%20//%20de%20dia%20destino%20al%205%20de%20noviembre%20de%201955%20%0A%20%20diaDestino.year%20%3D%201955%3B%0A%20%20diaDestino.month%20%3D%2011%3B%0A%20%20diaDestino.day%20%3D%205%3B%0A%20%20printf%28%22Destination%20time%3A%20%25d/%25d/%25d%5Cn%22%2C%20%0A%20%20%20%20%20%20%20%20%20diaDestino.day%2C%20diaDestino.month%2C%20diaDestino.year%29%3B%0A%20%20%0A%20%20/%2AViaje%20al%20futuro%20%2A/%0A%20%20//%20Fijando%20por%20medio%20del%20operador%20flecha%20%28-%3E%29%20los%20valores%20%0A%20%20//%20de%20dia%20destino%20al%2021%20de%20octubre%20de%202015%0A%20%20diaPtr-%3Eyear%20%3D%202015%3B%0A%20%20diaPtr-%3Emonth%20%3D%2010%3B%0A%20%20diaPtr-%3Eday%20%3D%2021%3B%0A%20%20printf%28%22Destination%20time%3A%20%25d/%25d/%25d%5Cn%22%2C%20%0A%20%20%20%20%20%20%20%20%20diaPtr-%3Eyear%2C%20diaPtr-%3Emonth%2C%20diaPtr-%3Eyear%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Hay que aclarar que el uso del operador punto (.) tambien puede ser empleado con variables tipo apuntador, para ello se sigue la siguiente forma:</p>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Implemente el mismo ejemplo anterior, pero esta vez use el operador punto (.) para modificar los miembros de la variable tipo Date a traves del apuntador.</p></li>
+</ol>
+<p>El codigo solución se muestra a continuacion:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+struct Date {
+  unsigned year;
+  unsigned month;
+  unsigned day;
+};
+
+typedef struct Date Fecha;
+
+int main() {
+  /* Declaracion de variables */
+  Fecha diaDestino; // Varible tipo fecha
+  Fecha *diaPtr;    // Variable tipo apuntador a fecha
+  diaPtr = &amp;diaDestino;  // Inicializacion del apuntador
+  
+  /* Viaje al pasado */
+  // Fijando por medio del operador punto (.) los valores 
+  // de dia destino al 5 de noviembre de 1955 
+  diaDestino.year = 1955;
+  diaDestino.month = 11;
+  diaDestino.day = 5;
+  printf(&quot;Destination time: %d/%d/%d\n&quot;, 
+         diaDestino.day, diaDestino.month, diaDestino.year);
+  
+  /*Viaje al futuro */
+  // Fijando por medio del operador flecha (-&gt;) los valores 
+  // de dia destino al 21 de octubre de 2015
+  (*diaPtr).year = 2015;
+  (*diaPtr).month = 10;
+  (*diaPtr).day = 21;
+  printf(&quot;Destination time: %d/%d/%d\n&quot;, 
+         diaPtr-&gt;year, diaPtr-&gt;month, diaPtr-&gt;year);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Astruct%20Date%20%7B%0A%20%20unsigned%20year%3B%0A%20%20unsigned%20month%3B%0A%20%20unsigned%20day%3B%0A%7D%3B%0A%0Atypedef%20struct%20Date%20Fecha%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20/%2A%20Declaracion%20de%20variables%20%2A/%0A%20%20Fecha%20diaDestino%3B%20//%20Varible%20tipo%20fecha%0A%20%20Fecha%20%2AdiaPtr%3B%20%20%20%20//%20Variable%20tipo%20apuntador%20a%20fecha%0A%20%20diaPtr%20%3D%20%26diaDestino%3B%20%20//%20Inicializacion%20del%20apuntador%0A%20%20%0A%20%20/%2A%20Viaje%20al%20pasado%20%2A/%0A%20%20//%20Fijando%20por%20medio%20del%20operador%20punto%20%28.%29%20los%20valores%20%0A%20%20//%20de%20dia%20destino%20al%205%20de%20noviembre%20de%201955%20%0A%20%20diaDestino.year%20%3D%201955%3B%0A%20%20diaDestino.month%20%3D%2011%3B%0A%20%20diaDestino.day%20%3D%205%3B%0A%20%20printf%28%22Destination%20time%3A%20%25d/%25d/%25d%5Cn%22%2C%20%0A%20%20%20%20%20%20%20%20%20diaDestino.day%2C%20diaDestino.month%2C%20diaDestino.year%29%3B%0A%20%20%0A%20%20/%2AViaje%20al%20futuro%20%2A/%0A%20%20//%20Fijando%20por%20medio%20del%20operador%20flecha%20%28-%3E%29%20los%20valores%20%0A%20%20//%20de%20dia%20destino%20al%2021%20de%20octubre%20de%202015%0A%20%20%28%2AdiaPtr%29.year%20%3D%202015%3B%0A%20%20%28%2AdiaPtr%29.month%20%3D%2010%3B%0A%20%20%28%2AdiaPtr%29.day%20%3D%2021%3B%0A%20%20printf%28%22Destination%20time%3A%20%25d/%25d/%25d%5Cn%22%2C%20%0A%20%20%20%20%20%20%20%20%20diaPtr-%3Eyear%2C%20diaPtr-%3Emonth%2C%20diaPtr-%3Eyear%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Si lo simula, podrá notar que la salida es exactamente la misma que la del ejemplo anterior.</p>
+</section>
+</section>
+<section id="estructuras-anidadas">
+<h3>2.6. Estructuras anidadas<a class="headerlink" href="#estructuras-anidadas" title="Permalink to this headline">#</a></h3>
+<p>Una estructura puede tener a su vez otra estructura como miembro. A continuacion se muestra un ejemplo para ello.</p>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Suponga que se tiene la siguiente tabla asociada a personajes historicos.</p></li>
+</ol>
+<p><img alt="fig16" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/personajes.png?raw=true" /></p>
+<p><strong>Figura 16</strong>. Personajes</p>
+<table>
+<tbody>
+<tr>
+<td>Nombre</td>
+<td>Nacimiento</td>
+<td>Muerte</td>
+<td>Profesion</td>
+</tr>
+<tr>
+<td>Ernest Hemingway</td>
+<td>21/07/1899</td>
+<td>02/07/1961</td>
+<td>Escritor</td>
+</tr>
+<tr>
+<td>Albert Einstein</td>
+<td>14/03/1879</td>
+<td>18/04/1955</td>
+<td>Fisico</td>
+</tr>
+</tbody>
+</table>
+<p>Note que para el problema podemos crear dos estructuras, una asociada al personaje y otra asociada a las fechas. Asi mismo, podemos ver que las fechas pueden ser tratadas como estructuras del personaje. A continuacion vamos a mostrar el código que define ambas estructuras:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">date</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">year</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">month</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">day</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">date</span><span class="w"> </span><span class="n">fecha</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">personajeHistorico</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">nombre</span><span class="p">[</span><span class="mi">21</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">fecha</span><span class="w"> </span><span class="n">nacimiento</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">fecha</span><span class="w"> </span><span class="n">muerte</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">profesion</span><span class="p">[</span><span class="mi">21</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">personajeHistorico</span><span class="w"> </span><span class="n">personaje</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="n">personaje</span><span class="w"> </span><span class="n">per1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Ernest Hemingway&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">nacimiento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                       </span><span class="p">.</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                       </span><span class="p">.</span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">07</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="p">.</span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mi">1899</span><span class="p">,</span><span class="w"></span>
+<span class="w">                      </span><span class="p">},</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">muerte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mo">02</span><span class="p">,</span><span class="w"> </span><span class="mo">07</span><span class="p">,</span><span class="w"> </span><span class="mi">1961</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">profesion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Escritor&quot;</span><span class="w">                  </span>
+<span class="w">                   </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">personaje</span><span class="w"> </span><span class="n">per2</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">fecha</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mo">03</span><span class="p">,</span><span class="w"> </span><span class="mi">1879</span><span class="p">};</span><span class="w">  </span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">per2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">per2</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span><span class="s">&quot;Albert Einstein&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">profesion</span><span class="p">,</span><span class="s">&quot;Fisico&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">).</span><span class="n">nacimiento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">per2</span><span class="p">.</span><span class="n">muerte</span><span class="p">.</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1955</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">per2</span><span class="p">.</span><span class="n">muerte</span><span class="p">.</span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">per2</span><span class="p">.</span><span class="n">muerte</span><span class="p">.</span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Notese que en el anterior <a class="reference external" href="https://goo.gl/wFkkgf">ejemplo</a>, se combinan varias de las cosas que hemos discutido previamente. El resultado en memoria se muestra a continuacion:</p>
+<p><img alt="fig17" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte4/imagenes/struct_personajes.png?raw=true" /></p>
+<p><strong>Figura 17</strong>. Resultado en memoria cuando existen estructuras anidadas.</p>
+</section>
+<section id="estructuras-y-funciones">
+<h3>2.6. Estructuras y funciones<a class="headerlink" href="#estructuras-y-funciones" title="Permalink to this headline">#</a></h3>
+<p>Los conceptos vistos hasta el momento sobre funciones tambien aplican a las estructuras ya que las estructuras pueden ser usadas como parametros y valores de retorno por citar unos cuantos casos. La unica cosa adicional, respecto a las funciones que trabajan con variables normales, es que las funciones con estructuras hacen uso de los operadores de acceso para la manipulacion y el procesamiento de los datos de acuerdo a lo que se desea que haga la funcion. Como en el caso tradicional, las funciones en las que se emplean estructuras pueden ser pasadas por valor y por referencia. A continuacion se describe cada caso:</p>
+</section>
+<section id="paso-de-estructuras-por-valor">
+<h3>2.6.1. Paso de estructuras por valor<a class="headerlink" href="#paso-de-estructuras-por-valor" title="Permalink to this headline">#</a></h3>
+<p>En este caso la estructura pasada como argumento a la funcion es copiada al parametro de la funcion, de modo que el procesamiento se hace sobre la copia y no sobre la estructura pasada como argumento.</p>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Definir una estructura que este asociada a un numero completo. Luego haga una funcion que imprima el numero complejo en cuestion en la forma <strong>parteReal + parteImaginaria*i</strong>. Luego probar el programa para imprimir los numeros: 2, -3<em>i, -2.3 + 10.5</em>i, 1.23 - 3.67*i</p></li>
+</ol>
+<p>El codigo solucion se muestra a continuación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+/** Declaracion de  estructuras */
+typedef struct complejo {
+  float re;
+  float im;
+} complejo;
+
+/** Declaracion de funciones */
+void imprimirComplejo(complejo); // void imprimirComplejo(complejo num)
+
+/** Funcion main */
+int main() {
+  /* Creando los numeros */
+  complejo n1 = {2, 0}; // 2
+  complejo n2 = {.re = 0, .im = -3}; // -3*i
+  complejo n3, n4;
+  n3.re = -2.3; // -2.3 + 10.5*i
+  n3.im = 10.5;
+  n4.re = 1.23; //  1.23 - 3.67*i
+  n4.im = -3.67;
+  /* Llamando las funciones para imprimir */
+  imprimirComplejo(n1);
+  printf(&quot;\n&quot;);
+  imprimirComplejo(n2);
+  printf(&quot;\n&quot;);
+  imprimirComplejo(n3);
+  printf(&quot;\n&quot;);
+  imprimirComplejo(n4);
+  printf(&quot;\n&quot;);
+  return 0;
+}
+
+/** Definicion de funciones */
+void imprimirComplejo(complejo num) {
+  if (num.im == 0) {
+    // Real puro
+    printf(&quot;%.2f&quot;,num.re);
+  }
+  else if (num.re == 0) {
+    // Imaginario puro
+    printf(&quot;%.2f*i&quot;,num.im);
+  }
+  else if (num.im &lt; 0) {
+    // Complejo con parte imaginaria negativa
+    printf(&quot;%.2f - %.2f*i&quot;,num.re,(-1)*num.im);
+  }
+  else {
+    // Complejo con parte imaginaria positiva
+    printf(&quot;%.2f + %.2f*i&quot;,num.re,num.im);
+  }  
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/%2A%2A%20Declaracion%20de%20%20estructuras%20%2A/%0Atypedef%20struct%20complejo%20%7B%0A%20%20float%20re%3B%0A%20%20float%20im%3B%0A%7D%20complejo%3B%0A%0A/%2A%2A%20Declaracion%20de%20funciones%20%2A/%0Avoid%20imprimirComplejo%28complejo%29%3B%20//%20void%20imprimirComplejo%28complejo%20num%29%0A%0A/%2A%2A%20Funcion%20main%20%2A/%0Aint%20main%28%29%20%7B%0A%20%20/%2A%20Creando%20los%20numeros%20%2A/%0A%20%20complejo%20n1%20%3D%20%7B2%2C%200%7D%3B%20//%202%0A%20%20complejo%20n2%20%3D%20%7B.re%20%3D%200%2C%20.im%20%3D%20-3%7D%3B%20//%20-3%2Ai%0A%20%20complejo%20n3%2C%20n4%3B%0A%20%20n3.re%20%3D%20-2.3%3B%20//%20-2.3%20%2B%2010.5%2Ai%0A%20%20n3.im%20%3D%2010.5%3B%0A%20%20n4.re%20%3D%201.23%3B%20//%20%201.23%20-%203.67%2Ai%0A%20%20n4.im%20%3D%20-3.67%3B%0A%20%20/%2A%20Llamando%20las%20funciones%20para%20imprimir%20%2A/%0A%20%20imprimirComplejo%28n1%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28n2%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28n3%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28n4%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A/%2A%2A%20Definicion%20de%20funciones%20%2A/%0Avoid%20imprimirComplejo%28complejo%20num%29%20%7B%0A%20%20if%20%28num.im%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Real%20puro%0A%20%20%20%20printf%28%22%25.2f%22%2Cnum.re%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.re%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Imaginario%20puro%0A%20%20%20%20printf%28%22%25.2f%2Ai%22%2Cnum.im%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.im%20%3C%200%29%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20negativa%0A%20%20%20%20printf%28%22%25.2f%20-%20%25.2f%2Ai%22%2Cnum.re%2C%28-1%29%2Anum.im%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20positiva%0A%20%20%20%20printf%28%22%25.2f%20%2B%20%25.2f%2Ai%22%2Cnum.re%2Cnum.im%29%3B%0A%20%20%7D%20%20%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Notese que en el anterior codigo se empleo <code class="docutils literal notranslate"><span class="pre">typedef</span></code> al declarar la estructura para definir de una vez el alias. La salida en pantalla y la representacion en memoria del programa anterior se muestra a continuacion.</p>
+<ol class="simple">
+<li><p>En la anterior funcion se un numero complejo como parametro, sin embargo tambien es posible retornar otras estructuras variables de retorno. Para ello en el siguiente ejemplo:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Hacer una funcion que sume dos numeros complejos y retorne el resultado de realizar la suma como otro complejo.</p></li>
+<li><p>Hacer un test sumando los numeros: 2 - 11<em>i y 8 + 9</em>i</p></li>
+</ul>
+</div></blockquote>
+<p>A continuación se muestra el código solución:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+/** Declaracion de  estructuras */
+typedef struct complejo {
+  float re;
+  float im;
+} complejo;
+
+/** Declaracion de las funciones  */
+void imprimirComplejo(complejo);
+complejo sumarComplejos(complejo, complejo);
+void test(void); // Funcion para testing
+
+/** Funcion main */
+int main() {
+  /* Probando todo mediante la funcion test */
+  test();
+  return 0;
+}
+
+/** Definicion de funciones */
+void imprimirComplejo(complejo num) {
+  if (num.im == 0) {
+    // Real puro
+    printf(&quot;%.2f&quot;,num.re);
+  }
+  else if (num.re == 0) {
+    // Imaginario puro
+    printf(&quot;%.2f*i&quot;,num.im);
+  }
+  else if (num.im &lt; 0) {
+    // Complejo con parte imaginaria negativa
+    printf(&quot;%.2f - %.2f*i&quot;,num.re,(-1)*num.im);
+  }
+  else {
+    // Complejo con parte imaginaria positiva
+    printf(&quot;%.2f + %.2f*i&quot;,num.re,num.im);
+  }  
+}
+
+complejo sumarComplejos(complejo c1, complejo c2) {
+    complejo solucion;
+    solucion.re = c1.re + c2.re;
+    solucion.im = c1.im + c2.im;
+    return solucion;
+}
+
+void test(void) {
+  complejo c1 = {2, -11}, c2 = {8, 9};
+  complejo c3 = sumarComplejos(c1,c2);
+  imprimirComplejo(c1);
+  printf(&quot;\n&quot;);
+  imprimirComplejo(c2);
+  printf(&quot; + \n---------\n&quot;);
+  imprimirComplejo(c3);
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/%2A%2A%20Declaracion%20de%20%20estructuras%20%2A/%0Atypedef%20struct%20complejo%20%7B%0A%20%20float%20re%3B%0A%20%20float%20im%3B%0A%7D%20complejo%3B%0A%0A/%2A%2A%20Declaracion%20de%20las%20funciones%20%20%2A/%0Avoid%20imprimirComplejo%28complejo%29%3B%0Acomplejo%20sumarComplejos%28complejo%2C%20complejo%29%3B%0Avoid%20test%28void%29%3B%20//%20Funcion%20para%20testing%0A%0A/%2A%2A%20Funcion%20main%20%2A/%0Aint%20main%28%29%20%7B%0A%20%20/%2A%20Probando%20todo%20mediante%20la%20funcion%20test%20%2A/%0A%20%20test%28%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A/%2A%2A%20Definicion%20de%20funciones%20%2A/%0Avoid%20imprimirComplejo%28complejo%20num%29%20%7B%0A%20%20if%20%28num.im%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Real%20puro%0A%20%20%20%20printf%28%22%25.2f%22%2Cnum.re%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.re%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Imaginario%20puro%0A%20%20%20%20printf%28%22%25.2f%2Ai%22%2Cnum.im%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.im%20%3C%200%29%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20negativa%0A%20%20%20%20printf%28%22%25.2f%20-%20%25.2f%2Ai%22%2Cnum.re%2C%28-1%29%2Anum.im%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20positiva%0A%20%20%20%20printf%28%22%25.2f%20%2B%20%25.2f%2Ai%22%2Cnum.re%2Cnum.im%29%3B%0A%20%20%7D%20%20%0A%7D%0A%0Acomplejo%20sumarComplejos%28complejo%20c1%2C%20complejo%20c2%29%20%7B%0A%20%20%20%20complejo%20solucion%3B%0A%20%20%20%20solucion.re%20%3D%20c1.re%20%2B%20c2.re%3B%0A%20%20%20%20solucion.im%20%3D%20c1.im%20%2B%20c2.im%3B%0A%20%20%20%20return%20solucion%3B%0A%7D%0A%0Avoid%20test%28void%29%20%7B%0A%20%20complejo%20c1%20%3D%20%7B2%2C%20-11%7D%2C%20c2%20%3D%20%7B8%2C%209%7D%3B%0A%20%20complejo%20c3%20%3D%20sumarComplejos%28c1%2Cc2%29%3B%0A%20%20imprimirComplejo%28c1%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28c2%29%3B%0A%20%20printf%28%22%20%2B%20%5Cn---------%5Cn%22%29%3B%0A%20%20imprimirComplejo%28c3%29%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<ol class="simple">
+<li><p>Mejorar el codigo anterior agregando dos funciones que hagan lo siguiente:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Calcule la magnitud de un numero complejo.</p></li>
+<li><p>Calcule el angulo de un numero complejo.</p></li>
+</ul>
+</div></blockquote>
+<p>El codigo anterior se mejoro quedando de la siguiente manera:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+/** Macros */
+#define PI 3.14
+
+// Converts degrees to radians.
+#define degreesToRadians(angleDegrees) (angleDegrees * PI / 180.0)
+
+// Converts radians to degrees.
+#define radiansToDegrees(angleRadians) (angleRadians * 180.0 / PI)
+
+/** Declaracion de  estructuras */
+typedef struct complejo {
+  float re;
+  float im;
+} complejo;
+
+/** Declaracion de funciones */
+void imprimirComplejo(complejo); // void imprimirComplejo(complejo num)
+double calcularMagnitud(complejo);
+complejo sumarComplejos(complejo c1, complejo c2);
+void test1(void);
+void test2(void);
+
+/** Funcion main */
+int main() {
+  /* Creando los numeros */
+  // test1();  ---&gt; Comentado por que ya se probo que dio bien
+  test2();
+  return 0;
+}
+
+/** Definicion de funciones */
+void imprimirComplejo(complejo num) {
+  if (num.im == 0) {
+    // Real puro
+    printf(&quot;%.2f&quot;,num.re);
+  }
+  else if (num.re == 0) {
+    // Imaginario puro
+    printf(&quot;%.2f*i&quot;,num.im);
+  }
+  else if (num.im &lt; 0) {
+    // Complejo con parte imaginaria negativa
+    printf(&quot;%.2f - %.2f*i&quot;,num.re,(-1)*num.im);
+  }
+  else {
+    // Complejo con parte imaginaria positiva
+    printf(&quot;%.2f + %.2f*i&quot;,num.re,num.im);
+  }  
+}
+
+double calcularMagnitud(complejo num) {
+  return sqrt(pow(num.re,2) + pow(num.im,2));
+}
+
+double obtenerAngulo(complejo num) {
+  if (num.re &gt;= 0 &amp; num.im &gt;= 0) {
+    // Cuadrante I
+    return radiansToDegrees(atan2(num.im,num.re));
+  }
+  else if(num.re &lt; 0 &amp; num.im &gt;= 0) {
+    // Cuadrante II
+    return 180 - radiansToDegrees(atan2(-num.im,num.re));
+  }
+  else if(num.re &lt; 0 &amp; num.im &lt; 0) {
+    // Cuadrante III
+    return 180 + radiansToDegrees(atan2(-num.im,-num.re));
+  }
+  else {
+    // Cuadrante IV
+    return 360 - radiansToDegrees(atan2(-num.im,num.re));
+  }  
+}
+
+complejo sumarComplejos(complejo c1, complejo c2) {
+    complejo solucion;
+    solucion.re = c1.re + c2.re;
+    solucion.im = c1.im + c2.im;
+    return solucion;
+}
+
+void test1(void) {
+  complejo c1 = {2, -11}, c2 = {8, 9};
+  complejo c3 = sumarComplejos(c1,c2);
+  imprimirComplejo(c1);
+  printf(&quot;\n&quot;);
+  imprimirComplejo(c2);
+  printf(&quot; + \n-------------------\n&quot;);
+  imprimirComplejo(c3);
+}
+
+void test2(void) {
+  complejo c1 = {sqrt(3),1};
+  complejo c2 = {-1,1};
+  complejo c3 = {-sqrt(3),-1};
+  complejo c4 = {1,-1};
+  printf(&quot;mag(c1) = %.1lf, ang(c1) = %.1lf\n&quot;,calcularMagnitud(c1),obtenerAngulo(c1));
+  printf(&quot;mag(c2) = %.1lf, ang(c2) = %.1lf\n&quot;,calcularMagnitud(c2),obtenerAngulo(c2));
+  printf(&quot;mag(c3) = %.1lf, ang(c3) = %.1lf\n&quot;,calcularMagnitud(c3),obtenerAngulo(c3));
+  printf(&quot;mag(c4) = %.1lf, ang(c4) = %.1lf\n&quot;,calcularMagnitud(c4),obtenerAngulo(c4));
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cmath.h%3E%0A%0A/%2A%2A%20Macros%20%2A/%0A%23define%20PI%203.14%0A%0A//%20Converts%20degrees%20to%20radians.%0A%23define%20degreesToRadians%28angleDegrees%29%20%28angleDegrees%20%2A%20PI%20/%20180.0%29%0A%0A//%20Converts%20radians%20to%20degrees.%0A%23define%20radiansToDegrees%28angleRadians%29%20%28angleRadians%20%2A%20180.0%20/%20PI%29%0A%0A/%2A%2A%20Declaracion%20de%20%20estructuras%20%2A/%0Atypedef%20struct%20complejo%20%7B%0A%20%20float%20re%3B%0A%20%20float%20im%3B%0A%7D%20complejo%3B%0A%0A/%2A%2A%20Declaracion%20de%20funciones%20%2A/%0Avoid%20imprimirComplejo%28complejo%29%3B%20//%20void%20imprimirComplejo%28complejo%20num%29%0Adouble%20calcularMagnitud%28complejo%29%3B%0Acomplejo%20sumarComplejos%28complejo%20c1%2C%20complejo%20c2%29%3B%0Avoid%20test1%28void%29%3B%0Avoid%20test2%28void%29%3B%0A%0A/%2A%2A%20Funcion%20main%20%2A/%0Aint%20main%28%29%20%7B%0A%20%20/%2A%20Creando%20los%20numeros%20%2A/%0A%20%20//%20test1%28%29%3B%20%20---%3E%20Comentado%20por%20que%20ya%20se%20probo%20que%20dio%20bien%0A%20%20test2%28%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A/%2A%2A%20Definicion%20de%20funciones%20%2A/%0Avoid%20imprimirComplejo%28complejo%20num%29%20%7B%0A%20%20if%20%28num.im%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Real%20puro%0A%20%20%20%20printf%28%22%25.2f%22%2Cnum.re%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.re%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Imaginario%20puro%0A%20%20%20%20printf%28%22%25.2f%2Ai%22%2Cnum.im%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.im%20%3C%200%29%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20negativa%0A%20%20%20%20printf%28%22%25.2f%20-%20%25.2f%2Ai%22%2Cnum.re%2C%28-1%29%2Anum.im%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20positiva%0A%20%20%20%20printf%28%22%25.2f%20%2B%20%25.2f%2Ai%22%2Cnum.re%2Cnum.im%29%3B%0A%20%20%7D%20%20%0A%7D%0A%0Adouble%20calcularMagnitud%28complejo%20num%29%20%7B%0A%20%20return%20sqrt%28pow%28num.re%2C2%29%20%2B%20pow%28num.im%2C2%29%29%3B%0A%7D%0A%0Adouble%20obtenerAngulo%28complejo%20num%29%20%7B%0A%20%20if%20%28num.re%20%3E%3D%200%20%26%20num.im%20%3E%3D%200%29%20%7B%0A%20%20%20%20//%20Cuadrante%20I%0A%20%20%20%20return%20radiansToDegrees%28atan2%28num.im%2Cnum.re%29%29%3B%0A%20%20%7D%0A%20%20else%20if%28num.re%20%3C%200%20%26%20num.im%20%3E%3D%200%29%20%7B%0A%20%20%20%20//%20Cuadrante%20II%0A%20%20%20%20return%20180%20-%20radiansToDegrees%28atan2%28-num.im%2Cnum.re%29%29%3B%0A%20%20%7D%0A%20%20else%20if%28num.re%20%3C%200%20%26%20num.im%20%3C%200%29%20%7B%0A%20%20%20%20//%20Cuadrante%20III%0A%20%20%20%20return%20180%20%2B%20radiansToDegrees%28atan2%28-num.im%2C-num.re%29%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20//%20Cuadrante%20IV%0A%20%20%20%20return%20360%20-%20radiansToDegrees%28atan2%28-num.im%2Cnum.re%29%29%3B%0A%20%20%7D%20%20%0A%7D%0A%0Acomplejo%20sumarComplejos%28complejo%20c1%2C%20complejo%20c2%29%20%7B%0A%20%20%20%20complejo%20solucion%3B%0A%20%20%20%20solucion.re%20%3D%20c1.re%20%2B%20c2.re%3B%0A%20%20%20%20solucion.im%20%3D%20c1.im%20%2B%20c2.im%3B%0A%20%20%20%20return%20solucion%3B%0A%7D%0A%0Avoid%20test1%28void%29%20%7B%0A%20%20complejo%20c1%20%3D%20%7B2%2C%20-11%7D%2C%20c2%20%3D%20%7B8%2C%209%7D%3B%0A%20%20complejo%20c3%20%3D%20sumarComplejos%28c1%2Cc2%29%3B%0A%20%20imprimirComplejo%28c1%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28c2%29%3B%0A%20%20printf%28%22%20%2B%20%5Cn-------------------%5Cn%22%29%3B%0A%20%20imprimirComplejo%28c3%29%3B%0A%7D%0A%0Avoid%20test2%28void%29%20%7B%0A%20%20complejo%20c1%20%3D%20%7Bsqrt%283%29%2C1%7D%3B%0A%20%20complejo%20c2%20%3D%20%7B-1%2C1%7D%3B%0A%20%20complejo%20c3%20%3D%20%7B-sqrt%283%29%2C-1%7D%3B%0A%20%20complejo%20c4%20%3D%20%7B1%2C-1%7D%3B%0A%20%20printf%28%22mag%28c1%29%20%3D%20%25.1lf%2C%20ang%28c1%29%20%3D%20%25.1lf%5Cn%22%2CcalcularMagnitud%28c1%29%2CobtenerAngulo%28c1%29%29%3B%0A%20%20printf%28%22mag%28c2%29%20%3D%20%25.1lf%2C%20ang%28c2%29%20%3D%20%25.1lf%5Cn%22%2CcalcularMagnitud%28c2%29%2CobtenerAngulo%28c2%29%29%3B%0A%20%20printf%28%22mag%28c3%29%20%3D%20%25.1lf%2C%20ang%28c3%29%20%3D%20%25.1lf%5Cn%22%2CcalcularMagnitud%28c3%29%2CobtenerAngulo%28c3%29%29%3B%0A%20%20printf%28%22mag%28c4%29%20%3D%20%25.1lf%2C%20ang%28c4%29%20%3D%20%25.1lf%5Cn%22%2CcalcularMagnitud%28c4%29%2CobtenerAngulo%28c4%29%29%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida en pantalla del programa anterior es:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mag</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">30.0</span>                                                                                                  
+<span class="n">mag</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">315.1</span>                                                                                                 
+<span class="n">mag</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span> <span class="o">=</span> <span class="mf">210.0</span>                                                                                                 
+<span class="n">mag</span><span class="p">(</span><span class="n">c4</span><span class="p">)</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c4</span><span class="p">)</span> <span class="o">=</span> <span class="mf">315.0</span>
+</pre></div>
+</div>
+</section>
+<section id="paso-de-estructuras-por-referencia">
+<h3>2.6.2. Paso de estructuras por referencia<a class="headerlink" href="#paso-de-estructuras-por-referencia" title="Permalink to this headline">#</a></h3>
+<p>En este caso, los parametros pasados a la funcion seran apuntadores a la estructura a pasar. El comportamiento es como el que se da en el caso de las funciones con datos tradicionales.</p>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Tome la estructura asociada a los libros y realice una funcion que permita imprimir en pantalla la informacion asociada a un libro. El llamado para la funcion sera por referencia. A continuación se muestra el código solución:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+// Declaracion de las estructura
+struct Book  {
+   int  book_id;
+   char title[24]; 
+   char author[20]; 
+   int pages;
+   float price;
+};
+
+/** Declaracion de funciones */
+void printBookInfo(struct Book *lptr);
+
+// Declaracion del array de libros
+// Notese que no se usaron alias
+struct Book books[2];
+
+/** Funcion principal */
+int main() {
+  // Manipulacion (acceso a los miembros)
+
+  // Libro # 1
+  books[0].book_id = 1211;
+  //OJO: books[0].title = &quot;C Primer Plus&quot; es un ERROR 
+  strcpy(books[0].title,&quot;C Primer Plus&quot;);    
+  strcpy(books[0].author,&quot;Stephen Prata&quot;); 
+  books[0].pages = 984;
+  books[0].price = 585.00;
+
+  // Libro #2
+  books[1].book_id = 1212;
+  strcpy(books[1].title,&quot;The ANSI C Programming&quot;); 
+  strcpy(books[1].author,&quot;Dennis Ritchie&quot;); 
+  books[1].pages = 214;
+  books[1].price = 125.00;
+  
+  // Imprimiendo la informacion de los libros
+  for(int i = 0; i &lt; 2; i++) {
+    printBookInfo(&amp;books[i]);
+    printf(&quot;\n&quot;);
+  } 
+  return 0;
+}
+
+/** Definicion de funciones */
+void printBookInfo(struct Book *lptr) {
+  printf(&quot;Book name: %s\n&quot;, lptr-&gt;title);
+  printf(&quot;Author: %s\n&quot;, lptr-&gt;author);
+  printf(&quot;Pages: %d\n&quot;, lptr-&gt;pages);  
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Declaracion%20de%20las%20estructura%0Astruct%20Book%20%20%7B%0A%20%20%20int%20%20book_id%3B%0A%20%20%20char%20title%5B24%5D%3B%20%0A%20%20%20char%20author%5B20%5D%3B%20%0A%20%20%20int%20pages%3B%0A%20%20%20float%20price%3B%0A%7D%3B%0A%0A/%2A%2A%20Declaracion%20de%20funciones%20%2A/%0Avoid%20printBookInfo%28struct%20Book%20%2Alptr%29%3B%0A%0A//%20Declaracion%20del%20array%20de%20libros%0A//%20Notese%20que%20no%20se%20usaron%20alias%0Astruct%20Book%20books%5B2%5D%3B%0A%0A/%2A%2A%20Funcion%20principal%20%2A/%0Aint%20main%28%29%20%7B%0A%20%20//%20Manipulacion%20%28acceso%20a%20los%20miembros%29%0A%0A%20%20//%20Libro%20%23%201%0A%20%20books%5B0%5D.book_id%20%3D%201211%3B%0A%20%20//OJO%3A%20books%5B0%5D.title%20%3D%20%22C%20Primer%20Plus%22%20es%20un%20ERROR%20%0A%20%20strcpy%28books%5B0%5D.title%2C%22C%20Primer%20Plus%22%29%3B%20%20%20%20%0A%20%20strcpy%28books%5B0%5D.author%2C%22Stephen%20Prata%22%29%3B%20%0A%20%20books%5B0%5D.pages%20%3D%20984%3B%0A%20%20books%5B0%5D.price%20%3D%20585.00%3B%0A%0A%20%20//%20Libro%20%232%0A%20%20books%5B1%5D.book_id%20%3D%201212%3B%0A%20%20strcpy%28books%5B1%5D.title%2C%22The%20ANSI%20C%20Programming%22%29%3B%20%0A%20%20strcpy%28books%5B1%5D.author%2C%22Dennis%20Ritchie%22%29%3B%20%0A%20%20books%5B1%5D.pages%20%3D%20214%3B%0A%20%20books%5B1%5D.price%20%3D%20125.00%3B%0A%20%20%0A%20%20//%20Imprimiendo%20la%20informacion%20de%20los%20libros%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printBookInfo%28%26books%5Bi%5D%29%3B%0A%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%7D%20%0A%20%20return%200%3B%0A%7D%0A%0A/%2A%2A%20Definicion%20de%20funciones%20%2A/%0Avoid%20printBookInfo%28struct%20Book%20%2Alptr%29%20%7B%0A%20%20printf%28%22Book%20name%3A%20%25s%5Cn%22%2C%20lptr-%3Etitle%29%3B%0A%20%20printf%28%22Author%3A%20%25s%5Cn%22%2C%20lptr-%3Eauthor%29%3B%0A%20%20printf%28%22Pages%3A%20%25d%5Cn%22%2C%20lptr-%3Epages%29%3B%20%20%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida en pantalla se muestra a continuacion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Book</span> <span class="n">name</span><span class="p">:</span> <span class="n">C</span> <span class="n">Primer</span> <span class="n">Plus</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Stephen</span> <span class="n">Prata</span>
+<span class="n">Pages</span><span class="p">:</span> <span class="mi">984</span>
+
+<span class="n">Book</span> <span class="n">name</span><span class="p">:</span> <span class="n">The</span> <span class="n">ANSI</span> <span class="n">C</span> <span class="n">Programming</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Dennis</span> <span class="n">Ritchie</span>
+<span class="n">Pages</span><span class="p">:</span> <span class="mi">214</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Hacer un programa que defina un vector tridimensional como una estructura. El programa tambien debera implementar las siguientes funciones para la manipulacion de vectores:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Imprimir vector.</p></li>
+<li><p>Calcular suma.</p></li>
+<li><p>Calcular resta.</p></li>
+<li><p>Calcular producto escalar.</p></li>
+</ul>
+<p>Una vez hecho lo anterior probar el programa con los vectores [1,3,0] y [2,5,-4].</p>
+<p>El codigo solución se muestra a continuacion:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+/** Declaracion de  estructuras */
+typedef struct vector3D {
+  float x;
+  float y;
+  float z;
+} vector3D;
+
+/** Declaracion de las funciones  */
+void imprimirVector3D(vector3D *vPrt); 
+vector3D sumarVector3D(vector3D *v1P, vector3D *v2P);
+vector3D restarVector3D(vector3D *v1P, vector3D *v2P);
+double pEscalar(vector3D *v1P, vector3D *v2P);
+void test(void); // Funcion para testing
+
+/** Funcion main */
+int main() {
+  /* Probando todo mediante la funcion test */
+  test();
+  return 0;
+}
+
+/** Definicion de funciones */
+void imprimirVector3D(vector3D *vPtr) {
+   printf(&quot;[%.1f,%.1f,%.1f]&quot;,(*vPtr).x, (*vPtr).y, (*vPtr).z);   
+}
+
+vector3D sumarVector3D(vector3D *v1P, vector3D *v2P) {
+  vector3D r;
+  r.x = v1P-&gt;x + v2P-&gt;x;
+  r.y = v1P-&gt;y + v2P-&gt;y;
+  r.z = v1P-&gt;z + v2P-&gt;z;
+  return r;
+}
+
+vector3D restarVector3D(vector3D *v1P, vector3D *v2P) {
+  vector3D r;
+  r.x = v1P-&gt;x - v2P-&gt;x;
+  r.y = v1P-&gt;y - v2P-&gt;y;
+  r.z = v1P-&gt;z - v2P-&gt;z;
+  return r;
+}
+
+double pEscalar(vector3D *v1P, vector3D *v2P) {
+  return(v1P-&gt;x*v2P-&gt;x + v1P-&gt;y*v2P-&gt;y + v1P-&gt;z*v2P-&gt;z);
+}
+
+
+void test(void) {
+  vector3D v1 = {1,3,0}, v2 = {2,5,-4}, vSum, vRes;
+  double p_esc;
+  vSum = sumarVector3D(&amp;v1,&amp;v2);
+  vRes = restarVector3D(&amp;v1,&amp;v2);
+  p_esc = pEscalar(&amp;v1,&amp;v2); 
+  printf(&quot;Suma -&gt; \n&quot;);
+  imprimirVector3D(&amp;v1);
+  printf(&quot; + &quot;);
+  imprimirVector3D(&amp;v2);
+  printf(&quot; = &quot;);
+  imprimirVector3D(&amp;vSum);
+  printf(&quot;\n\n&quot;);
+  printf(&quot;Resta -&gt; \n&quot;);
+  imprimirVector3D(&amp;v1);
+  printf(&quot; - &quot;);
+  imprimirVector3D(&amp;v2);
+  printf(&quot; = &quot;);
+  imprimirVector3D(&amp;vRes);
+  printf(&quot;\n\n&quot;);
+  printf(&quot;Producto escalar -&gt; \n&quot;);
+  imprimirVector3D(&amp;v1);
+  printf(&quot; * &quot;);
+  imprimirVector3D(&amp;v2);
+  printf(&quot; = %.1f\n&quot;,p_esc);  
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/%2A%2A%20Declaracion%20de%20%20estructuras%20%2A/%0Atypedef%20struct%20vector3D%20%7B%0A%20%20float%20x%3B%0A%20%20float%20y%3B%0A%20%20float%20z%3B%0A%7D%20vector3D%3B%0A%0A/%2A%2A%20Declaracion%20de%20las%20funciones%20%20%2A/%0Avoid%20imprimirVector3D%28vector3D%20%2AvPrt%29%3B%20%0Avector3D%20sumarVector3D%28vector3D%20%2Av1P%2C%20vector3D%20%2Av2P%29%3B%0Avector3D%20restarVector3D%28vector3D%20%2Av1P%2C%20vector3D%20%2Av2P%29%3B%0Adouble%20pEscalar%28vector3D%20%2Av1P%2C%20vector3D%20%2Av2P%29%3B%0Avoid%20test%28void%29%3B%20//%20Funcion%20para%20testing%0A%0A/%2A%2A%20Funcion%20main%20%2A/%0Aint%20main%28%29%20%7B%0A%20%20/%2A%20Probando%20todo%20mediante%20la%20funcion%20test%20%2A/%0A%20%20test%28%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A/%2A%2A%20Definicion%20de%20funciones%20%2A/%0Avoid%20imprimirVector3D%28vector3D%20%2AvPtr%29%20%7B%0A%20%20%20printf%28%22%5B%25.1f%2C%25.1f%2C%25.1f%5D%22%2C%28%2AvPtr%29.x%2C%20%28%2AvPtr%29.y%2C%20%28%2AvPtr%29.z%29%3B%20%20%20%0A%7D%0A%0Avector3D%20sumarVector3D%28vector3D%20%2Av1P%2C%20vector3D%20%2Av2P%29%20%7B%0A%20%20vector3D%20r%3B%0A%20%20r.x%20%3D%20v1P-%3Ex%20%2B%20v2P-%3Ex%3B%0A%20%20r.y%20%3D%20v1P-%3Ey%20%2B%20v2P-%3Ey%3B%0A%20%20r.z%20%3D%20v1P-%3Ez%20%2B%20v2P-%3Ez%3B%0A%20%20return%20r%3B%0A%7D%0A%0Avector3D%20restarVector3D%28vector3D%20%2Av1P%2C%20vector3D%20%2Av2P%29%20%7B%0A%20%20vector3D%20r%3B%0A%20%20r.x%20%3D%20v1P-%3Ex%20-%20v2P-%3Ex%3B%0A%20%20r.y%20%3D%20v1P-%3Ey%20-%20v2P-%3Ey%3B%0A%20%20r.z%20%3D%20v1P-%3Ez%20-%20v2P-%3Ez%3B%0A%20%20return%20r%3B%0A%7D%0A%0Adouble%20pEscalar%28vector3D%20%2Av1P%2C%20vector3D%20%2Av2P%29%20%7B%0A%20%20return%28v1P-%3Ex%2Av2P-%3Ex%20%2B%20v1P-%3Ey%2Av2P-%3Ey%20%2B%20v1P-%3Ez%2Av2P-%3Ez%29%3B%0A%7D%0A%0A%0Avoid%20test%28void%29%20%7B%0A%20%20vector3D%20v1%20%3D%20%7B1%2C3%2C0%7D%2C%20v2%20%3D%20%7B2%2C5%2C-4%7D%2C%20vSum%2C%20vRes%3B%0A%20%20double%20p_esc%3B%0A%20%20vSum%20%3D%20sumarVector3D%28%26v1%2C%26v2%29%3B%0A%20%20vRes%20%3D%20restarVector3D%28%26v1%2C%26v2%29%3B%0A%20%20p_esc%20%3D%20pEscalar%28%26v1%2C%26v2%29%3B%20%0A%20%20printf%28%22Suma%20-%3E%20%5Cn%22%29%3B%0A%20%20imprimirVector3D%28%26v1%29%3B%0A%20%20printf%28%22%20%2B%20%22%29%3B%0A%20%20imprimirVector3D%28%26v2%29%3B%0A%20%20printf%28%22%20%3D%20%22%29%3B%0A%20%20imprimirVector3D%28%26vSum%29%3B%0A%20%20printf%28%22%5Cn%5Cn%22%29%3B%0A%20%20printf%28%22Resta%20-%3E%20%5Cn%22%29%3B%0A%20%20imprimirVector3D%28%26v1%29%3B%0A%20%20printf%28%22%20-%20%22%29%3B%0A%20%20imprimirVector3D%28%26v2%29%3B%0A%20%20printf%28%22%20%3D%20%22%29%3B%0A%20%20imprimirVector3D%28%26vRes%29%3B%0A%20%20printf%28%22%5Cn%5Cn%22%29%3B%0A%20%20printf%28%22Producto%20escalar%20-%3E%20%5Cn%22%29%3B%0A%20%20imprimirVector3D%28%26v1%29%3B%0A%20%20printf%28%22%20%2A%20%22%29%3B%0A%20%20imprimirVector3D%28%26v2%29%3B%0A%20%20printf%28%22%20%3D%20%25.1f%5Cn%22%2Cp_esc%29%3B%20%20%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida del programa anterior se muestra a continuacion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Suma</span> <span class="o">-&gt;</span> 
+<span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">8.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">]</span>
+
+<span class="n">Resta</span> <span class="o">-&gt;</span> 
+<span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">-</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">]</span>
+
+<span class="n">Producto</span> <span class="n">escalar</span> <span class="o">-&gt;</span> 
+<span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">17.0</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Emplando llamados por referencia es posible pasar a funciones arreglos y matrices tal como se analizo en algun momento. Por ejemplo supongase que un caminante esta registrando las coordenadas (x,y) de diferentes puntos en los cuales realiza su caminata. Supongase, que el sistema de registro de datos registra 5 coordenadas. Teniendo en cuenta la siguiente estructura para las coordenadas:</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">coordenadas2D</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">coord2D</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Implementar las siguientes funciones:</p>
+<ul class="simple">
+<li><p>Una funcion para desplegar una coordenada, esta seguira el siguiente prototipo:</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">printCoord2D</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Una funcion para desplegar el contenido de un vector de coordenadas:</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">printCoord2DVector</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Una funcion que calcule la distancia entre dos coordenadas:</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="nf">calcularDistancia</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">pStart</span><span class="p">,</span><span class="w"> </span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">pEnd</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Obtener la distancia total recorrida (suma de la distancia de todos lo puntos):</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="nf">calcularDistanciaTotal</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Obtener la distancia del tramo mayor y la del tramo menor.</p></li>
+</ul>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">obtenerDistanciasExtremas</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">disMin</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">disMax</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Probar las funciones anteriores con una funcion llamada  <code class="docutils literal notranslate"><span class="pre">caso_de_uso</span></code> para la cual se definen las siguientes coordenadas: P1(0,0), P2(3,2), P3(-4,5), P4(-6,-2) y P5(-6,-3).</p></li>
+</ul>
+<p><strong>Solucion</strong>: En el <a class="reference external" href="https://onlinegdb.com/r13uPE9wM">codigo</a> mostrado abajo se definen los puntos anteriormente mostrados y se verifican que los resultados del programa sean los arrojados anteriormente de manera manual. Si todo esta bien se tendrán resultados simulares a los siguiente:</p>
+<p>Distancia entre los puntos sera:</p>
+<ul class="simple">
+<li><p>d(P1,P2) = 3.61</p></li>
+<li><p>d(P2,P3) = 7.62</p></li>
+<li><p>d(P3,P4) = 7.28</p></li>
+<li><p>d(P4,P5) = 1</p></li>
+</ul>
+<p>Salidas a desplegar:</p>
+<ul class="simple">
+<li><p>d_total = 19.5</p></li>
+<li><p>d_min = 1</p></li>
+<li><p>d_max = 7.62</p></li>
+</ul>
+<p>A continuación se muestra el código:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
+<span class="c1">#include &lt;math.h&gt;</span>
+
+<span class="o">/**</span> <span class="n">Declaracion</span> <span class="n">de</span>  <span class="n">estructuras</span> <span class="o">*/</span>
+<span class="n">typedef</span> <span class="n">struct</span> <span class="n">coordenadas2D</span> <span class="p">{</span>
+  <span class="nb">float</span> <span class="n">x</span><span class="p">;</span>
+  <span class="nb">float</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">coord2D</span><span class="p">;</span>
+
+
+<span class="o">/**</span> <span class="n">Declaracion</span> <span class="n">de</span> <span class="n">las</span> <span class="n">funciones</span>  <span class="o">*/</span>
+<span class="n">void</span> <span class="n">printCoord2D</span><span class="p">(</span><span class="n">coord2D</span> <span class="o">*</span><span class="n">c</span><span class="p">);</span>
+<span class="n">void</span> <span class="n">printCoord2DVector</span><span class="p">(</span><span class="n">coord2D</span> <span class="o">*</span><span class="n">v</span><span class="p">,</span> <span class="nb">int</span> <span class="n">tam</span><span class="p">);</span>
+<span class="n">double</span> <span class="n">calcularDistancia</span><span class="p">(</span><span class="n">coord2D</span> <span class="o">*</span><span class="n">pStart</span><span class="p">,</span> <span class="n">coord2D</span> <span class="o">*</span><span class="n">pEnd</span><span class="p">);</span>
+<span class="n">double</span> <span class="n">calcularDistanciaTotal</span><span class="p">(</span><span class="n">coord2D</span> <span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span> <span class="nb">int</span> <span class="n">N</span><span class="p">);</span>
+<span class="n">void</span> <span class="n">obtenerDistanciasExtremas</span><span class="p">(</span><span class="n">coord2D</span> <span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span> <span class="nb">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">double</span> <span class="o">*</span><span class="n">disMin</span><span class="p">,</span> <span class="n">double</span> <span class="o">*</span><span class="n">disMax</span><span class="p">);</span>
+<span class="n">void</span> <span class="n">caso_de_uso</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>
+
+<span class="o">/**</span> <span class="n">Funcion</span> <span class="n">main</span> <span class="o">*/</span>
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">caso_de_uso</span><span class="p">();</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">/**</span> <span class="n">Definicion</span> <span class="n">de</span> <span class="n">las</span> <span class="n">funciones</span>  <span class="o">*/</span>
+
+<span class="n">void</span> <span class="n">printCoord2D</span><span class="p">(</span><span class="n">coord2D</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;(</span><span class="si">%.2f</span><span class="s2">,</span><span class="si">%.2f</span><span class="s2">)&quot;</span><span class="p">,(</span><span class="o">*</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">x</span><span class="p">,(</span><span class="o">*</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">printCoord2DVector</span><span class="p">(</span><span class="n">coord2D</span> <span class="o">*</span><span class="n">v</span><span class="p">,</span> <span class="nb">int</span> <span class="n">tam</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">tam</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printCoord2D</span><span class="p">(</span><span class="n">v</span><span class="o">++</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">double</span> <span class="n">calcularDistancia</span><span class="p">(</span><span class="n">coord2D</span> <span class="o">*</span><span class="n">pStart</span><span class="p">,</span> <span class="n">coord2D</span> <span class="o">*</span><span class="n">pEnd</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">double</span> <span class="n">dist</span><span class="p">;</span>
+  <span class="n">double</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">pEnd</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">-</span> <span class="n">pStart</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span>
+  <span class="n">double</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">pEnd</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">-</span> <span class="n">pStart</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span>  
+  <span class="n">dist</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">pow</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span>
+  <span class="k">return</span> <span class="n">dist</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="n">double</span> <span class="n">calcularDistanciaTotal</span><span class="p">(</span><span class="n">coord2D</span> <span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span> <span class="nb">int</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="n">Code</span>
+  <span class="n">coord2D</span> <span class="n">pIni</span><span class="p">,</span> <span class="n">pFin</span><span class="p">;</span>
+  <span class="n">double</span> <span class="n">d_total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">pIni</span> <span class="o">=</span> <span class="o">*</span><span class="n">vecPuntos</span><span class="p">;</span> <span class="o">//</span> <span class="o">*</span><span class="n">vecPuntos</span> <span class="o">=</span> <span class="n">vecPuntos</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">pFin</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">vecPuntos</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span> <span class="o">//</span> <span class="o">*</span><span class="p">(</span><span class="n">vecPuntos</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">vecPuntos</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	<span class="o">//</span> <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2lf</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">calcularDistancia</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pIni</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pFin</span><span class="p">));</span>
+	<span class="n">d_total</span> <span class="o">+=</span>  <span class="n">calcularDistancia</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pIni</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pFin</span><span class="p">);</span> 
+	<span class="n">pIni</span> <span class="o">=</span> <span class="n">pFin</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">d_total</span><span class="p">;</span>  
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">obtenerDistanciasExtremas</span><span class="p">(</span><span class="n">coord2D</span> <span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span> <span class="nb">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">double</span> <span class="o">*</span><span class="n">disMin</span><span class="p">,</span> <span class="n">double</span> <span class="o">*</span><span class="n">disMax</span><span class="p">)</span> <span class="p">{</span>
+  <span class="o">//</span> <span class="n">Code</span>
+  <span class="n">coord2D</span> <span class="o">*</span><span class="n">pIni</span><span class="p">,</span> <span class="o">*</span><span class="n">pFin</span><span class="p">;</span>
+  <span class="n">pIni</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">vecPuntos</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">pFin</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">vecPuntos</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">double</span> <span class="n">d</span> <span class="o">=</span> <span class="n">calcularDistancia</span><span class="p">(</span><span class="n">pIni</span><span class="p">,</span> <span class="n">pFin</span><span class="p">);</span>
+  <span class="n">double</span> <span class="n">d_min</span> <span class="o">=</span> <span class="n">d</span><span class="p">,</span> <span class="n">d_max</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+  <span class="n">calcularDistancia</span><span class="p">(</span><span class="n">pIni</span><span class="p">,</span><span class="n">pFin</span><span class="p">);</span>
+  <span class="n">pIni</span> <span class="o">=</span> <span class="n">vecPuntos</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+	  <span class="n">pIni</span> <span class="o">=</span> <span class="n">pFin</span><span class="p">;</span>
+	  <span class="n">pFin</span> <span class="o">=</span> <span class="n">vecPuntos</span> <span class="o">+</span> <span class="n">i</span><span class="p">;</span> <span class="o">//</span> <span class="n">vecPuntos</span> <span class="o">+</span> <span class="n">i</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">vecPuntos</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> 
+	  <span class="n">d</span> <span class="o">=</span> <span class="n">calcularDistancia</span><span class="p">(</span><span class="n">pIni</span><span class="p">,</span> <span class="n">pFin</span><span class="p">);</span>
+	  <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&lt;=</span> <span class="n">d_min</span><span class="p">)</span> <span class="p">{</span>
+		  <span class="n">d_min</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+	  <span class="p">}</span>
+	  <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&gt;=</span> <span class="n">d_max</span><span class="p">)</span> <span class="p">{</span>
+		  <span class="n">d_max</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+	  <span class="p">}</span>	  
+  <span class="p">}</span>
+  <span class="o">*</span><span class="n">disMin</span> <span class="o">=</span> <span class="n">d_min</span><span class="p">;</span>
+  <span class="o">*</span><span class="n">disMax</span> <span class="o">=</span> <span class="n">d_max</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">caso_de_uso</span><span class="p">(</span><span class="n">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Puntos registrados</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="n">double</span> <span class="n">m</span><span class="p">,</span> <span class="n">M</span><span class="p">;</span>
+    <span class="n">coord2D</span> <span class="n">coords</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                         <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span>
+                         <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span>
+                         <span class="p">{</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">},</span>
+                         <span class="p">{</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">},</span>
+                         <span class="p">{</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">}</span>
+                        <span class="p">};</span>
+    <span class="n">printCoord2DVector</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;-&gt; Distancia total: </span><span class="si">%.2lf</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">calcularDistanciaTotal</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span>
+    <span class="n">obtenerDistanciasExtremas</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">M</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;-&gt; Distancia minima: </span><span class="si">%.2lf</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">m</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;-&gt; Distancia maxima: </span><span class="si">%.2lf</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Para el cual la salida en pantalla del programa anterior es la siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Puntos</span> <span class="n">registrados</span>                                                                                                               
+<span class="p">(</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">)</span>                                                                                                                      
+<span class="p">(</span><span class="mf">3.00</span><span class="p">,</span><span class="mf">2.00</span><span class="p">)</span>                                                                                                                      
+<span class="p">(</span><span class="o">-</span><span class="mf">4.00</span><span class="p">,</span><span class="mf">5.00</span><span class="p">)</span>                                                                                                                     
+<span class="p">(</span><span class="o">-</span><span class="mf">6.00</span><span class="p">,</span><span class="o">-</span><span class="mf">2.00</span><span class="p">)</span>                                                                                                                    
+<span class="p">(</span><span class="o">-</span><span class="mf">6.00</span><span class="p">,</span><span class="o">-</span><span class="mf">3.00</span><span class="p">)</span>                                                                                                                    
+                                                                                                                                 
+<span class="o">-&gt;</span> <span class="n">Distancia</span> <span class="n">total</span><span class="p">:</span> <span class="mf">19.50</span>                                                                                                        
+<span class="o">-&gt;</span> <span class="n">Distancia</span> <span class="n">minima</span><span class="p">:</span> <span class="mf">1.00</span>                                                                                                        
+<span class="o">-&gt;</span> <span class="n">Distancia</span> <span class="n">maxima</span><span class="p">:</span> <span class="mf">7.62</span>  
+</pre></div>
+</div>
+</section>
+</section>
+<section id="enlaces">
+<h2>3. Enlaces<a class="headerlink" href="#enlaces" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://computer.howstuffworks.com">https://computer.howstuffworks.com</a></p></li>
+<li><p><a class="reference external" href="https://www.studytonight.com/c/structures-in-c.php">https://www.studytonight.com/c/structures-in-c.php</a></p></li>
+<li><p><a class="reference external" href="https://www.tutorialspoint.com/cprogramming/c_structures.htm">https://www.tutorialspoint.com/cprogramming/c_structures.htm</a></p></li>
+<li><p><a class="reference external" href="https://www.programiz.com/c-programming/c-structures">https://www.programiz.com/c-programming/c-structures</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/structures-c/">https://www.geeksforgeeks.org/structures-c/</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fordea/c-programming-a-modern-approach">https://github.com/fordea/c-programming-a-modern-approach</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content\local\code\parte4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

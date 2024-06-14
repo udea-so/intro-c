@@ -1,0 +1,1550 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Apuntadores y arreglos multidimensionales &#8212; Introducción al lenguaje C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/logo_udea.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción al lenguaje C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../CH_00.html">
+   Introducción
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../CH_01.html">
+   Herramientas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../CH_02.html">
+   Lenguaje C
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../CH_02-S01.html">
+     Introducción basica
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../CH_02-S02.html">
+     Segundo tema
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/udea-so/intro-c/blob/master/content/local/code/parte3/matrices_ptr.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/udea-so/intro-c"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/udea-so/intro-c/issues/new?title=Issue%20on%20page%20%2Fcontent/local/code/parte3/matrices_ptr.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../_sources/content/local/code/parte3/matrices_ptr.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arreglos-multidimensionales-en-c">
+   1. Arreglos multidimensionales en C
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#declaracion">
+     1.1. Declaración
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#procesamiento-de-los-arreglos-multimensionales">
+     1.2. Procesamiento de los arreglos multimensionales
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-y-arreglos-multidimensionales">
+     1.3. Funciones y arreglos multidimensionales
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-y-matrices">
+   2. Apuntadores y matrices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#empleo-de-apuntadores-para-acceder-a-los-elementos-de-una-matrix">
+   3. Empleo de apuntadores para acceder a los elementos de una matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   4. Enlaces de interés
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Apuntadores y arreglos multidimensionales</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arreglos-multidimensionales-en-c">
+   1. Arreglos multidimensionales en C
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#declaracion">
+     1.1. Declaración
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#procesamiento-de-los-arreglos-multimensionales">
+     1.2. Procesamiento de los arreglos multimensionales
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funciones-y-arreglos-multidimensionales">
+     1.3. Funciones y arreglos multidimensionales
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-y-matrices">
+   2. Apuntadores y matrices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#empleo-de-apuntadores-para-acceder-a-los-elementos-de-una-matrix">
+   3. Empleo de apuntadores para acceder a los elementos de una matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   4. Enlaces de interés
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a class="reference external" href="https://colab.research.google.com/github/dannymrock/UdeA-SO-Lab/blob/master/lab0/lab0b/parte3/matrices_ptr.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip3 install tutormagic
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tutormagic
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="apuntadores-y-arreglos-multidimensionales">
+<h1>Apuntadores y arreglos multidimensionales<a class="headerlink" href="#apuntadores-y-arreglos-multidimensionales" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<blockquote>
+<div><p><strong>Objetivos</strong></p>
+<ul class="simple">
+<li><p>Introducir el concepto, manipulacion y uso de los arreglos multidimensionales.</p></li>
+<li><p>Tratar mas aplicaciones de los apuntadores</p></li>
+</ul>
+</div></blockquote>
+<hr class="docutils" />
+<section id="arreglos-multidimensionales-en-c">
+<h2>1. Arreglos multidimensionales en C<a class="headerlink" href="#arreglos-multidimensionales-en-c" title="Permalink to this headline">#</a></h2>
+<p>A diferencia de los vectores, los arreglos multidimensionales (tambien conocidos como) se caracterizan por que manejan mas de un indice. Respecto a la manipulación, no existen considerables diferencias con java, sin embargo, a modo de repaso vamos a introducir algunos conceptos de repaso.</p>
+<section id="declaracion">
+<h3>1.1. Declaración<a class="headerlink" href="#declaracion" title="Permalink to this headline">#</a></h3>
+<p>Aqui se establecen ls dimensiones de cada componente, las formas mas comunes siguen una sintaxis como la siguiente:</p>
+<p><strong>Caso para un arreglo de dos dimensiones</strong></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// Arreglo de dos dimensiones</span>
+<span class="n">arrayType</span><span class="w">  </span><span class="n">arrayName</span><span class="p">[</span><span class="n">Rows</span><span class="p">][</span><span class="n">Columns</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Caso para un arreglo de tres dimensiones</strong></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// Arreglo de tres dimensiones</span>
+<span class="n">arrayType</span><span class="w">  </span><span class="n">arrayName</span><span class="p">[</span><span class="n">Planes</span><span class="p">][</span><span class="n">Rows</span><span class="w"> </span><span class="p">][</span><span class="n">Columns</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Caso para un arreglo de N dimensiones</strong></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// Arreglo de N dimensiones</span>
+<span class="n">arrayType</span><span class="w">  </span><span class="n">arrayName</span><span class="p">[</span><span class="n">Dim1</span><span class="p">][</span><span class="n">Dim2</span><span class="p">]...[</span><span class="n">DimN</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>
+El siguiente codigo  muestra algunas declaraciones:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+int A[2][3];
+float B[3][1];
+
+int main() {
+  char C[2][3][4];
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=int%20A%5B2%5D%5B3%5D%3B%0Afloat%20B%5B3%5D%5B1%5D%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20C%5B2%5D%5B3%5D%5B4%5D%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida es como se muestra a continuacion:</p>
+<p><img alt="matrix_1" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matriz1.png?raw=true" /></p>
+<p><strong>Figura 1</strong>. Declaración de varios arreglos multidimensionales.</p>
+<p>A veces, puede ser util <strong>inicializar</strong> una matrix al declararla, a continuacion se muestran algunos ejemplos:</p>
+<p><strong>Ejemplo</strong>
+El siguiente ćodigo muestra diferentes formas de declarar e inicializar matrices:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int matrix1[][4] = {
+                    {4, 2, 7, 3},
+                    {6, 1, 9, 5},
+                    {8, 5, 0, 1}  
+                  };
+
+
+int main() {
+  int matrix2[2][2] = {{1, 2}, {3, 4}};
+  int matrix3[2][2] = {{1}, {3, 4}}; 
+  int matrix4[3][5]={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+  int matrix5[][3]={1, 2, 3, 4};
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20matrix1%5B%5D%5B4%5D%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B4%2C%202%2C%207%2C%203%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B6%2C%201%2C%209%2C%205%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B8%2C%205%2C%200%2C%201%7D%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20matrix2%5B2%5D%5B2%5D%20%3D%20%7B%7B1%2C%202%7D%2C%20%7B3%2C%204%7D%7D%3B%0A%20%20int%20matrix3%5B2%5D%5B2%5D%20%3D%20%7B%7B1%7D%2C%20%7B3%2C%204%7D%7D%3B%20%0A%20%20int%20matrix4%5B3%5D%5B5%5D%3D%7B1%2C%202%2C%203%2C%204%2C%205%2C%206%2C%207%2C%208%2C%209%2C%2010%2C%2011%2C%2012%2C%2013%2C%2014%2C%2015%7D%3B%0A%20%20int%20matrix5%5B%5D%5B3%5D%3D%7B1%2C%202%2C%203%2C%204%7D%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La representación en memoria de las matrices declaradas en el ejercicio anterior se muestra a continuación</p>
+<p><img alt="matrix_2" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matriz2.png?raw=true" /></p>
+<p><strong>Figura 2</strong>. Declaración e inicialización de varios arreglos multidimensionales.</p>
+<p><strong>Nota</strong>: Al inicializar una matrix se debe pasar como minimo la dimension de las columnas (para el caso de dos dimensiones), si no se hace el compilador no sera capaz de deducir el tamaño de la matriz y se producira un error.</p>
+</section>
+<section id="procesamiento-de-los-arreglos-multimensionales">
+<h3>1.2. Procesamiento de los arreglos multimensionales<a class="headerlink" href="#procesamiento-de-los-arreglos-multimensionales" title="Permalink to this headline">#</a></h3>
+<p>Como en java, el uso de ciclos anidados es fundamentar para el movimiento a traves de cada uno de los elementos de la matrix. Generalmente, las varibles que controlan los ciclos seran empleados como subindices para barrer las matrices. A continuación se muestra un código para refrescar el concepto:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+#define F 3
+#define C 4
+
+
+int main() {
+  int M[F][C] = {
+                  {4, 2, 7, 3},
+                  {6, 1, 9, 5},
+                  {8, 5, 0, 1}  
+                };
+  
+  printf(&quot;Barriendo por filas: \n&quot;);
+  for(int i = 0; i &lt; F; i++) {
+    printf(&quot;Fila %d: &quot;,i);
+    for(int j = 0; j &lt; C; j++) {
+      printf(&quot;%d &quot;,M[i][j]);
+    }
+    printf(&quot;\n&quot;);
+  }
+  printf(&quot;\nBarriendo por columnas: \n&quot;);
+  for(int i = 0; i &lt; C; i++) {
+    printf(&quot;Columna %d: &quot;,i);
+    for(int j = 0; j &lt; F; j++) {
+      printf(&quot;%d &quot;,M[j][i]);
+    }
+    printf(&quot;\n&quot;);
+  }
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%23define%20F%203%0A%23define%20C%204%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20M%5BF%5D%5BC%5D%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B4%2C%202%2C%207%2C%203%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B6%2C%201%2C%209%2C%205%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B8%2C%205%2C%200%2C%201%7D%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%0A%20%20printf%28%22Barriendo%20por%20filas%3A%20%5Cn%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20F%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22Fila%20%25d%3A%20%22%2Ci%29%3B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%20C%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20printf%28%22%25d%20%22%2CM%5Bi%5D%5Bj%5D%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%7D%0A%20%20printf%28%22%5CnBarriendo%20por%20columnas%3A%20%5Cn%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20C%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22Columna%20%25d%3A%20%22%2Ci%29%3B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%20F%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20printf%28%22%25d%20%22%2CM%5Bj%5D%5Bi%5D%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%7D%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>En la siguiente figura se muestra el resultado del código anterior.</p>
+<p><img alt="matrix_3" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matriz3.png?raw=true" /></p>
+<p><strong>Figura 3</strong>. Barriendo un array multidimensional.</p>
+</section>
+<section id="funciones-y-arreglos-multidimensionales">
+<h3>1.3. Funciones y arreglos multidimensionales<a class="headerlink" href="#funciones-y-arreglos-multidimensionales" title="Permalink to this headline">#</a></h3>
+<p>Es posible pasar arreglos multidimensionales como parametros de funciones. Cuando se pasa un array multidimensional, la primera dimension del array no tiene que ser especificada pero la segunda dimension (y cualquier subsecuente) deberá ser dada. A continuacion se muestran diferentes casos de uso cuando se emplean funciones con arreglos multidimensionales.</p>
+<p><strong>Caso 1 - Cuando las dimensiones de la matrix estan disponibles globalmente</strong>: las dimensiones pueden ser constantes globales o macros. A continuación se muestra en caso específico en el que se crea una función para imprimir una matrix 2D. Veamos el código asociado:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+#define M 3
+#define N 3
+ 
+void print(int arr[M][N]);
+ 
+int main()
+{
+    int arr[][N] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    print(arr);
+    return 0;
+}
+
+void print(int arr[M][N]) {
+    int i, j;
+    for (i = 0; i &lt; M; i++) {
+      printf(&quot;[ &quot;);
+      for (j = 0; j &lt; N; j++) {
+        printf(&quot;%d &quot;, arr[i][j]);
+      }
+      printf(&quot;]\n&quot;);
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%23define%20M%203%0A%23define%20N%203%0A%20%0Avoid%20print%28int%20arr%5BM%5D%5BN%5D%29%3B%0A%20%0Aint%20main%28%29%0A%7B%0A%20%20%20%20int%20arr%5B%5D%5BN%5D%20%3D%20%7B%7B1%2C%202%2C%203%7D%2C%20%7B4%2C%205%2C%206%7D%2C%20%7B7%2C%208%2C%209%7D%7D%3B%0A%20%20%20%20print%28arr%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20print%28int%20arr%5BM%5D%5BN%5D%29%20%7B%0A%20%20%20%20int%20i%2C%20j%3B%0A%20%20%20%20for%20%28i%20%3D%200%3B%20i%20%3C%20M%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20%20%20printf%28%22%5B%20%22%29%3B%0A%20%20%20%20%20%20for%20%28j%20%3D%200%3B%20j%20%3C%20N%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%25d%20%22%2C%20arr%5Bi%5D%5Bj%5D%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20printf%28%22%5D%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p><strong>Caso 2 - Cuando solo la segunda dimension de la matrix esta disponible globalmente</strong>: esta puede ser un constante global o una macro. Pese a que se omite la primera dimension de la matrix, esta debe ser usada como un parametro formal de la función con el objetivo de conocer la expención de la primera dimensión. Veamos el mismo ejemplo anterior teniendo en cuenta este caso:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+#define N 3
+ 
+void print(int arr[][N], int m); 
+ 
+int main()
+{
+    int arr[][N] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    print(arr,3);
+    return 0;
+}
+
+void print(int arr[][N], int m) {
+    int i, j;
+    for (i = 0; i &lt; m; i++) {
+      printf(&quot;[ &quot;);
+      for (j = 0; j &lt; N; j++) {
+        printf(&quot;%d &quot;, arr[i][j]);
+      }
+      printf(&quot;]\n&quot;);
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%23define%20N%203%0A%20%0Avoid%20print%28int%20arr%5B%5D%5BN%5D%2C%20int%20m%29%3B%20%0A%20%0Aint%20main%28%29%0A%7B%0A%20%20%20%20int%20arr%5B%5D%5BN%5D%20%3D%20%7B%7B1%2C%202%2C%203%7D%2C%20%7B4%2C%205%2C%206%7D%2C%20%7B7%2C%208%2C%209%7D%7D%3B%0A%20%20%20%20print%28arr%2C3%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20print%28int%20arr%5B%5D%5BN%5D%2C%20int%20m%29%20%7B%0A%20%20%20%20int%20i%2C%20j%3B%0A%20%20%20%20for%20%28i%20%3D%200%3B%20i%20%3C%20m%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20%20%20printf%28%22%5B%20%22%29%3B%0A%20%20%20%20%20%20for%20%28j%20%3D%200%3B%20j%20%3C%20N%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%25d%20%22%2C%20arr%5Bi%5D%5Bj%5D%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20printf%28%22%5D%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p><strong>Caso 3 - Pasando matrices de cualquier dimension</strong>:
+Notese que una de las limitaciones de los dos metodos anteriores, es que el tamaño de ambas (caso 1) o al menos una de las dimensiones de la matrix es fijo (columnas de la matrix para el caso 2). Sin embargo desde C99, C soporta que matrices de tamaño variable puedan ser pasadas al especificar las dimensiones de la variable. A continuacion de muestra el caso para el mismo ejemplo analizado (ver el siguiente código):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+void print(int m, int n, int arr[][n]);
+ 
+int main()
+{
+    int arr[][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int F = 3, C = 3;
+    print(F, C, arr);
+    return 0;
+}
+
+void print(int m, int n, int arr[][n]) {
+    int i, j;
+    for (i = 0; i &lt; m; i++) {
+      printf(&quot;[ &quot;);
+      for (j = 0; j &lt; n; j++) {
+        printf(&quot;%d &quot;, arr[i][j]);
+      }
+      printf(&quot;]\n&quot;);
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20print%28int%20m%2C%20int%20n%2C%20int%20arr%5B%5D%5Bn%5D%29%3B%0A%20%0Aint%20main%28%29%0A%7B%0A%20%20%20%20int%20arr%5B%5D%5B3%5D%20%3D%20%7B%7B1%2C%202%2C%203%7D%2C%20%7B4%2C%205%2C%206%7D%2C%20%7B7%2C%208%2C%209%7D%7D%3B%0A%20%20%20%20int%20F%20%3D%203%2C%20C%20%3D%203%3B%0A%20%20%20%20print%28F%2C%20C%2C%20arr%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20print%28int%20m%2C%20int%20n%2C%20int%20arr%5B%5D%5Bn%5D%29%20%7B%0A%20%20%20%20int%20i%2C%20j%3B%0A%20%20%20%20for%20%28i%20%3D%200%3B%20i%20%3C%20m%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20%20%20printf%28%22%5B%20%22%29%3B%0A%20%20%20%20%20%20for%20%28j%20%3D%200%3B%20j%20%3C%20n%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%25d%20%22%2C%20arr%5Bi%5D%5Bj%5D%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20printf%28%22%5D%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Como anotación importante, de todos los parámetros pasados a la función el último debe ser la matriz, pues como usa como dimensión para las columnas otra variable, si esta no esta previamente declarada se generara un error; de este modo poner la matrix de último evita este problema.</p>
+<p>Finalmante, para todos los casos anteriormente expuestos, la salida es la siguiente:</p>
+<p><img alt="matrix_4" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matriz4.png?raw=true" /></p>
+<p><strong>Figura 4</strong>. Salida del programa.</p>
+<p>Otra forma de pasar matrices a funciones es empleando apuntadores, pero esto ser visto posteriormente.</p>
+</section>
+</section>
+<section id="apuntadores-y-matrices">
+<h2>2. Apuntadores y matrices<a class="headerlink" href="#apuntadores-y-matrices" title="Permalink to this headline">#</a></h2>
+<p>Así como en el caso de los arreglos de una dimensión, es posible representar los arreglos multidimensionales con una notación de punteros equivalente.</p>
+<p>En el caso de las matrices de dos dimensiones, cuando estas se almacenan en memoria, la forma como la memoria se llena es fila por fila, es decir si se tiene una matriz de n filas por m columnas las primeras n posiciones en memoria corresponden a los n elementos de la primera fila, las n posiciones siguientes corresponden a los n elementos de la siguiente fila y así sucesivamente hasta que todas las filas son ocupadas (n*m posiciones de memoria). La siguiente figura muestra esto:</p>
+<table>
+<tbody>
+<tr>
+<td><b>Representacion de la matrix</b></td>
+<td><b>Representacion en memoria</b></td>
+</tr>
+<tr>
+<td><img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/a1.png?raw=true" alt="a"><br>
+<br>
+short a[3][2] = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{101,51},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{102,67},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{103,76}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br><br>
+Para el caso vamos a suponer que cada dato tipo short ocupa 2 bytes.  
+</td>
+<td>
+<img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/mem_a1.png?raw=true" alt="mem_a">  
+</td>    
+</tr>  
+<tbody>  
+</table>
+<p>A continuación se muestra otro ejemplo para reforzar el concepto. Para el caso, dato el siguiente código.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  int matrix[2][5] = {
+                       {1,2,3,4,5},
+                       {6,7,8,9,10}
+                     };
+
+  for(int i = 0; i &lt; 2; i++) {
+    for(int j = 0; j &lt; 5; j++) {
+      printf(&quot;matrix[%d][%d] -&gt; Address: %p, Value: %d\n&quot;,\
+             i,j,&amp;matrix[i][j],matrix[i][j]);
+    }    
+  }
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20matrix%5B2%5D%5B5%5D%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B1%2C2%2C3%2C4%2C5%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B6%2C7%2C8%2C9%2C10%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%205%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20printf%28%22matrix%5B%25d%5D%5B%25d%5D%20-%3E%20Address%3A%20%25p%2C%20Value%3A%20%25d%5Cn%22%2C%5C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20i%2Cj%2C%26matrix%5Bi%5D%5Bj%5D%2Cmatrix%5Bi%5D%5Bj%5D%29%3B%0A%20%20%20%20%7D%20%20%20%20%0A%20%20%7D%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida del programa se muestra a continuación:</p>
+<p><img alt="matrix_5" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matrix_output.png?raw=true" /></p>
+<p><strong>Figura 5</strong>. Salida del programa.</p>
+<p>De modo que segun lo anterior, la representacion en memoria de la matrix será:</p>
+<p><img alt="matrix_6" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matrix_mem.png?raw=true" /></p>
+<p><strong>Figura 6</strong>. Representación de la matrix en memoria.</p>
+<p>Así mismo, un arreglo de dos dimensiones puede ser tratado como un arreglo de una dimensión cuyos elementos son arreglos de una dimensión (las filas). Esto es resaltado en la siguiente figura para la matrix anteriormente definida:</p>
+<p><img alt="matrix_7" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matrix_vector.png?raw=true" /></p>
+<p><strong>Figura 7</strong>. Representación de la matrix como arreglos de una dimension asociada a  cada una de las filas.</p>
+<p><strong>Ejemplo</strong>: Se tiene el siguiente <a class="reference external" href="https://goo.gl/rCTH5C">codigo fuente</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  int mat[][3] = {{1,2,3},{4,5,6},{7,8,9}};
+  /* Analisis del elemento mat[0][0] */
+  printf(&quot;mat: %p\n&quot;, mat); // D
+  printf(&quot;*mat: %p\n&quot;, *mat); // D
+  // -----------------------------------------------------
+  printf(&quot;mat[0]: %p\n&quot;,mat[0]); // D
+  printf(&quot;&amp;mat[0][0]: %p\n&quot;,&amp;mat[0][0]); // D
+  printf(&quot;**mat: %d\n&quot;,**mat); // V
+  printf(&quot;*(mat[0]): %d\n&quot;,*(mat[0])); // V
+  printf(&quot;*(&amp;mat[0][0]): %d\n&quot;,*(&amp;mat[0][0])); // V
+  printf(&quot;---------------------\n&quot;);
+  /* Analisis del elemento mat[1][0] */
+  printf(&quot;mat[1]: %p\n&quot;,mat[1]); // D
+  printf(&quot;&amp;mat[1][0]: %p\n&quot;,&amp;mat[1][0]); // D
+  printf(&quot;mat[1][0]: %d\n&quot;,mat[1][0]); // V
+  printf(&quot;*mat[1]: %d\n&quot;,*mat[1]); // V
+  printf(&quot;*(&amp;mat[1][0]): %d\n&quot;,*(&amp;mat[1][0])); // V
+  printf(&quot;---------------------\n&quot;);
+  /* Analisis del elemento mat[2][1] */
+  printf(&quot;&amp;mat[2][1]: %p\n&quot;,&amp;mat[2][1]); // D
+  printf(&quot;mat[2] + 1: %p\n&quot;,mat[2] + 1); // D
+  printf(&quot;mat[2][1]: %d\n&quot;,mat[2][1]); // V
+  printf(&quot;*(mat[2] + 1): %d\n&quot;,*(mat[2] + 1)); // V
+  printf(&quot;*(*(mat + 2) + 1): %d\n&quot;,*(*(mat + 2) + 1)); // V
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20mat%5B%5D%5B3%5D%20%3D%20%7B%7B1%2C2%2C3%7D%2C%7B4%2C5%2C6%7D%2C%7B7%2C8%2C9%7D%7D%3B%0A%20%20/%2A%20Analisis%20del%20elemento%20mat%5B0%5D%5B0%5D%20%2A/%0A%20%20printf%28%22mat%3A%20%25p%5Cn%22%2C%20mat%29%3B%20//%20D%0A%20%20printf%28%22%2Amat%3A%20%25p%5Cn%22%2C%20%2Amat%29%3B%20//%20D%0A%20%20//%20-----------------------------------------------------%0A%20%20printf%28%22mat%5B0%5D%3A%20%25p%5Cn%22%2Cmat%5B0%5D%29%3B%20//%20D%0A%20%20printf%28%22%26mat%5B0%5D%5B0%5D%3A%20%25p%5Cn%22%2C%26mat%5B0%5D%5B0%5D%29%3B%20//%20D%0A%20%20printf%28%22%2A%2Amat%3A%20%25d%5Cn%22%2C%2A%2Amat%29%3B%20//%20V%0A%20%20printf%28%22%2A%28mat%5B0%5D%29%3A%20%25d%5Cn%22%2C%2A%28mat%5B0%5D%29%29%3B%20//%20V%0A%20%20printf%28%22%2A%28%26mat%5B0%5D%5B0%5D%29%3A%20%25d%5Cn%22%2C%2A%28%26mat%5B0%5D%5B0%5D%29%29%3B%20//%20V%0A%20%20printf%28%22---------------------%5Cn%22%29%3B%0A%20%20/%2A%20Analisis%20del%20elemento%20mat%5B1%5D%5B0%5D%20%2A/%0A%20%20printf%28%22mat%5B1%5D%3A%20%25p%5Cn%22%2Cmat%5B1%5D%29%3B%20//%20D%0A%20%20printf%28%22%26mat%5B1%5D%5B0%5D%3A%20%25p%5Cn%22%2C%26mat%5B1%5D%5B0%5D%29%3B%20//%20D%0A%20%20printf%28%22mat%5B1%5D%5B0%5D%3A%20%25d%5Cn%22%2Cmat%5B1%5D%5B0%5D%29%3B%20//%20V%0A%20%20printf%28%22%2Amat%5B1%5D%3A%20%25d%5Cn%22%2C%2Amat%5B1%5D%29%3B%20//%20V%0A%20%20printf%28%22%2A%28%26mat%5B1%5D%5B0%5D%29%3A%20%25d%5Cn%22%2C%2A%28%26mat%5B1%5D%5B0%5D%29%29%3B%20//%20V%0A%20%20printf%28%22---------------------%5Cn%22%29%3B%0A%20%20/%2A%20Analisis%20del%20elemento%20mat%5B2%5D%5B1%5D%20%2A/%0A%20%20printf%28%22%26mat%5B2%5D%5B1%5D%3A%20%25p%5Cn%22%2C%26mat%5B2%5D%5B1%5D%29%3B%20//%20D%0A%20%20printf%28%22mat%5B2%5D%20%2B%201%3A%20%25p%5Cn%22%2Cmat%5B2%5D%20%2B%201%29%3B%20//%20D%0A%20%20printf%28%22mat%5B2%5D%5B1%5D%3A%20%25d%5Cn%22%2Cmat%5B2%5D%5B1%5D%29%3B%20//%20V%0A%20%20printf%28%22%2A%28mat%5B2%5D%20%2B%201%29%3A%20%25d%5Cn%22%2C%2A%28mat%5B2%5D%20%2B%201%29%29%3B%20//%20V%0A%20%20printf%28%22%2A%28%2A%28mat%20%2B%202%29%20%2B%201%29%3A%20%25d%5Cn%22%2C%2A%28%2A%28mat%20%2B%202%29%20%2B%201%29%29%3B%20//%20V%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida del codigo anterior se muestra a continuación:</p>
+<p><img alt="matrix_8" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matrix_example.png?raw=true" /></p>
+<p><strong>Figura 8</strong>. Salida del codigo anterior.</p>
+<p>Teniendo en cuenta el resultado de la figura anterior y representando la matrix como un vector de arreglos se tiene la siguiente figura (notese que se resaltan los elementos asociados a las salidas en pantalla del programa anterior):</p>
+<p><img alt="matrix_9" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejercicio_matrix.png?raw=true" /></p>
+<p><strong>Figura 9</strong>. Representacion de la matrix como un vector de arrays.</p>
+<p>Teniendo en cuenta lo anterior, la representación en memoria se muestra a continuación:</p>
+<p><img alt="matrix_10" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejercicio_matrix_mem.png?raw=true" /></p>
+<p><strong>Figura 10</strong>. Representacion en memoria de la matrix de la figura anterior.</p>
+<p>La siguiente figura resalta la comparación de la salida en pantalla con el mapa de memoria resaltando las equivalencias a las que se llega:</p>
+<p><img alt="matrix_11" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/comparacion.png?raw=true" /></p>
+<p><strong>Figura 11</strong>. Equivalencias.</p>
+<p>Teniendo en cuenta la figura anterior, se pueden llegar a las siguientes equivalencias mas generales, las cuales se muestran en la siguiente tabla:</p>
+<table>
+<tbody>
+<tr>
+<td><b>Equivalencias</b></td>
+<td><b>Expresión</b></td>
+</tr>
+<tr>
+<td><b>De valor</b></td>
+<td>
+  Obteniendo el valor de una matriz en la posicion (i,j):<br>
+  <br>
+  A[i][j] = *(A+i)[j] = *(*(A+i)+ j) = *(A[i] + j)
+</td>
+</tr>
+<tr>
+<td><b>De dirección</b></td>
+<td>
+  Obteniendo la direccion de una matriz en la posicion (i,j):<br>
+  <br>
+  &A[i][j] = (A+i)[j] = *(A+i) + j = A[i] + j <br>
+  <br>
+  <b>Otra alternativa</b>:<br>
+  &A[i][j] = &A[0][0] + i*N_COLUMNAS + j <br><br>
+  En lo que respecta a obtener el posición de una fila i, lo cual se da cuando j = 0:<br>
+  &A[i][0] = A[i] + 0 = A[i]
+</td>
+</tr>
+<tr>
+<td><b>Anotaciones</b></td>
+<td>
+  &A[0][0] = A = A[0] = &A[0]<br><br>
+  Pero ojo que las anteriores equivalencias no son intercambiables: <br>
+  <ul>
+  <li>&A[0][0] + 1, apunta a A[0][1]</li>
+  <li>A[0] + 1, apunta a A[0][1]</li>
+  <li>A + 1, apunta a A[1][0]</li>
+  <li>&A[0] + 1, apunta a A[1][0]</li>
+  </ul>
+</td>
+</tr>
+</tbody>
+</table>  
+<p>Es posible definir un arreglo de dos dimensiones como un apuntador a un grupo de arreglos de una dimensión, de modo que una declaración de un arreglo bidimensional puede ser hecha de la siguiente manera:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">ptVar</span><span class="p">)[</span><span class="n">m</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Donde <strong>T</strong> está asociado al tipo de dato (el cual puede ser simple o compuesto) y <strong>n</strong> es el número de filas del array bidimensional y <strong>m</strong> es el número de elementos que habrá en la fila. La expresión anterior puede ser por lo tanto una alternativa a la declaración típica de matrices por ejemplo para el caso de una matriz de n filas por n columnas como la siguiente:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">m</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La expresión anterior se puede generalizar a arreglos de más elementos tal de modo que para una matriz de dimensión N:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="n">val1</span><span class="p">]...[</span><span class="n">val_N</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>De modo que la expresión alternativa estará dada por:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">ptVar</span><span class="p">)[</span><span class="n">val_2</span><span class="p">][</span><span class="n">val_3</span><span class="p">]...[</span><span class="n">val_N</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Donde T se refiere al tipo de dato y las expresiones val_1, val_2,…, val_N se refieren al número máximo de elementos asociados con cada uno de los N subíndices del array.</p>
+<p>Otra cosa importante es la presencia del paréntesis, este es necesario ya que si no está, no nos estaríamos refiriendo a un apuntador a un grupo de arrays  sino a un array de apuntadores, esto porque los [] tienen mayor precedencia que el *. Así según lo anterior:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">pz</span><span class="p">)[</span><span class="mi">2</span><span class="p">];</span><span class="w"> </span><span class="c1">// Crea un apuntador a un array de 2 enteros.</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pax</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"> </span><span class="c1">// Crea un array de dos punteros a enteros.</span>
+</pre></div>
+</div>
+<p>Para aterrizar el concepto anterior vamos a analizar el siguiente ejemplo.</p>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Dado el siguiente fragmento de código, hacer el respectivo analisis:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  int A[3][2] = {{1,2},{3,4},{5,6}};
+  int (*pz)[2];
+  pz = A;
+  printf(&quot;A[0][0]: %d\n&quot;, A[0][0]); // V
+  printf(&quot;**pz: %d\n&quot;, **pz); // V
+  printf(&quot;*pz[0]: %d\n&quot;, *pz[0]); // V
+  printf(&quot;(*pz)[0]: %d\n&quot;, (*pz)[0]); // V
+  printf(&quot;&amp;A[0][0]: %p\n&quot;, &amp;A[0][0]); // M
+  printf(&quot;*pz: %p\n&quot;, *pz); // M
+  printf(&quot;pz[0]: %p\n&quot;, pz[0]); // M
+  printf(&quot;---------------------\n&quot;);
+  printf(&quot;A[1][0]: %d\n&quot;, A[1][0]); // V
+  printf(&quot;*pz[1]: %d\n&quot;, *pz[1]); // V
+  printf(&quot;*(pz[1]+0): %d\n&quot;, *(pz[1]+0)); // V
+  printf(&quot;*(*(pz + 1)+0): %d\n&quot;, *(*(pz +1 )+0)); // V
+  printf(&quot;&amp;A[1][0]: %p\n&quot;, &amp;A[1][0]); // M
+  printf(&quot;pz + 1: %p\n&quot;, pz + 1); // M
+  printf(&quot;pz[1]: %p\n&quot;, pz[1]); // M
+  printf(&quot;---------------------\n&quot;);
+  printf(&quot;A[2][1]: %d\n&quot;, A[2][1]);
+  printf(&quot;*(pz[2] + 1): %d\n&quot;, *(pz[2] + 1));
+  printf(&quot;*(*(pz + 2) + 1): %d\n&quot;, *(*(pz + 2) + 1));
+  printf(&quot;&amp;A[2][1]: %p\n&quot;, &amp;A[2][1]);  
+  printf(&quot;pz[2] + 1: %p\n&quot;, pz[2] + 1);
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20A%5B3%5D%5B2%5D%20%3D%20%7B%7B1%2C2%7D%2C%7B3%2C4%7D%2C%7B5%2C6%7D%7D%3B%0A%20%20int%20%28%2Apz%29%5B2%5D%3B%0A%20%20pz%20%3D%20A%3B%0A%20%20printf%28%22A%5B0%5D%5B0%5D%3A%20%25d%5Cn%22%2C%20A%5B0%5D%5B0%5D%29%3B%20//%20V%0A%20%20printf%28%22%2A%2Apz%3A%20%25d%5Cn%22%2C%20%2A%2Apz%29%3B%20//%20V%0A%20%20printf%28%22%2Apz%5B0%5D%3A%20%25d%5Cn%22%2C%20%2Apz%5B0%5D%29%3B%20//%20V%0A%20%20printf%28%22%28%2Apz%29%5B0%5D%3A%20%25d%5Cn%22%2C%20%28%2Apz%29%5B0%5D%29%3B%20//%20V%0A%20%20printf%28%22%26A%5B0%5D%5B0%5D%3A%20%25p%5Cn%22%2C%20%26A%5B0%5D%5B0%5D%29%3B%20//%20M%0A%20%20printf%28%22%2Apz%3A%20%25p%5Cn%22%2C%20%2Apz%29%3B%20//%20M%0A%20%20printf%28%22pz%5B0%5D%3A%20%25p%5Cn%22%2C%20pz%5B0%5D%29%3B%20//%20M%0A%20%20printf%28%22---------------------%5Cn%22%29%3B%0A%20%20printf%28%22A%5B1%5D%5B0%5D%3A%20%25d%5Cn%22%2C%20A%5B1%5D%5B0%5D%29%3B%20//%20V%0A%20%20printf%28%22%2Apz%5B1%5D%3A%20%25d%5Cn%22%2C%20%2Apz%5B1%5D%29%3B%20//%20V%0A%20%20printf%28%22%2A%28pz%5B1%5D%2B0%29%3A%20%25d%5Cn%22%2C%20%2A%28pz%5B1%5D%2B0%29%29%3B%20//%20V%0A%20%20printf%28%22%2A%28%2A%28pz%20%2B%201%29%2B0%29%3A%20%25d%5Cn%22%2C%20%2A%28%2A%28pz%20%2B1%20%29%2B0%29%29%3B%20//%20V%0A%20%20printf%28%22%26A%5B1%5D%5B0%5D%3A%20%25p%5Cn%22%2C%20%26A%5B1%5D%5B0%5D%29%3B%20//%20M%0A%20%20printf%28%22pz%20%2B%201%3A%20%25p%5Cn%22%2C%20pz%20%2B%201%29%3B%20//%20M%0A%20%20printf%28%22pz%5B1%5D%3A%20%25p%5Cn%22%2C%20pz%5B1%5D%29%3B%20//%20M%0A%20%20printf%28%22---------------------%5Cn%22%29%3B%0A%20%20printf%28%22A%5B2%5D%5B1%5D%3A%20%25d%5Cn%22%2C%20A%5B2%5D%5B1%5D%29%3B%0A%20%20printf%28%22%2A%28pz%5B2%5D%20%2B%201%29%3A%20%25d%5Cn%22%2C%20%2A%28pz%5B2%5D%20%2B%201%29%29%3B%0A%20%20printf%28%22%2A%28%2A%28pz%20%2B%202%29%20%2B%201%29%3A%20%25d%5Cn%22%2C%20%2A%28%2A%28pz%20%2B%202%29%20%2B%201%29%29%3B%0A%20%20printf%28%22%26A%5B2%5D%5B1%5D%3A%20%25p%5Cn%22%2C%20%26A%5B2%5D%5B1%5D%29%3B%20%20%0A%20%20printf%28%22pz%5B2%5D%20%2B%201%3A%20%25p%5Cn%22%2C%20pz%5B2%5D%20%2B%201%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida del código anterior se muestra a continuación:</p>
+<p><img alt="matrix_12" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis1.png?raw=true" /></p>
+<p><strong>Figura 12</strong>. Resultado del ejemplo 1.</p>
+<p>Por otro lado, la representacion en memoria y como arreglo de vectores de la matrix, con base en la figura anterior es se muestra a continuacion.</p>
+<p><img alt="matrix_13" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis1_1.png?raw=true" /></p>
+<p><strong>Figura 13</strong>. Representacion en memomria de la matrix analizada en el ejemplo.</p>
+<ol class="simple">
+<li><p>Analizar el siguiente código:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+
+int main() {
+  int B[2][2]= {1, 2, 3, 4};
+  int (*p)[2];
+  p = B;
+  **p = -(*(p[0] + 1));
+  p++;
+  **p = *(*p + 1) + 1;
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%0Aint%20main%28%29%20%7B%0A%20%20int%20B%5B2%5D%5B2%5D%3D%20%7B1%2C%202%2C%203%2C%204%7D%3B%0A%20%20int%20%28%2Ap%29%5B2%5D%3B%0A%20%20p%20%3D%20B%3B%0A%20%20%2A%2Ap%20%3D%20-%28%2A%28p%5B0%5D%20%2B%201%29%29%3B%0A%20%20p%2B%2B%3B%0A%20%20%2A%2Ap%20%3D%20%2A%28%2Ap%20%2B%201%29%20%2B%201%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La siguiente tabla muestra el resultado de realizar la prueba de escritorio paso por paso (resaltando en negrita) la instruccion que esta ejecutandose. Asi mismo, se asumen que las direcciones estan en formato decimal y no hexadecimal.</p>
+<table>
+<tbody>
+<tr>
+<td><b>Instrucciones</b></td>
+<td><b>Representación</b></td>
+<td><b>Efecto en memoria</b></td>
+</tr>
+<tr>
+<td>
+  int B[2][2]= {1, 2, 3, 4};<br>
+  <b>int (*p)[2];</b><br>
+  p = B;<br>
+  **p = -(*(p[0] + 1));<br>
+  p++;<br>
+  **p = *(*p + 1) + 1;<br>
+</td>
+<td> <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis2_1.png?raw=true" alt="2_1"> </td>
+<td> <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis2_mem1.png?raw=true" alt="2_1mem"> </td>
+</tr>
+<tr>
+<td>
+  int B[2][2]= {1, 2, 3, 4};<br>
+  int (*p)[2];<br>
+  <b>p = B;</b><br>
+  **p = -(*(p[0] + 1));<br>
+  p++;<br>
+  **p = *(*p + 1) + 1;<br>
+</td>
+<td> <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis2_2.png?raw=true" alt="2_2"> </td>
+<td> <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis2_mem2.png?raw=true" alt="2_2mem"> </td>
+</tr>
+<tr>
+<td>
+  int B[2][2]= {1, 2, 3, 4};<br>
+  int (*p)[2];<br>
+  p = B;<br>
+  <b>**p = -(*(p[0] + 1));</b><br>
+  p++;<br>
+  **p = *(*p + 1) + 1;<br>
+</td>
+<td> <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis2_3.png?raw=true.png" alt="2_3"> </td>
+<td> <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis2_mem3.png?raw=true" alt="2_3mem"> </td>
+</tr>  
+<tr>
+<td>
+  int B[2][2]= {1, 2, 3, 4};<br>
+  int (*p)[2];<br>
+  p = B;<br>
+  **p = -(*(p[0] + 1));<br>
+  <b>p++;</b><br>
+  **p = *(*p + 1) + 1;<br>
+</td>
+<td> <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis2_4.png?raw=true.png" alt="2_4"> </td>
+<td> <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis2_mem4.png?raw=true.png" alt="2_4mem"> </td>
+</tr>   
+<tr>
+<td>
+  int B[2][2]= {1, 2, 3, 4};<br>
+  int (*p)[2];<br>
+  p = B;<br>
+  **p = -(*(p[0] + 1));<br>
+  p++;<br>
+  <b>**p = *(*p + 1) + 1;</b><br>
+</td>
+<td> <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis2_5.png?raw=true.png" alt="2_5"> </td>
+<td> <img src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_analisis2_mem5.png?raw=true" alt="2_5mem"> </td>
+</tr>    
+</tbody>
+</table>  
+<ol class="simple">
+<li><p>Se desea crear un array de bidimensional de 10 filas por 20 columnas llamado x esto puede ser hecho, así:</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)[</span><span class="mi">20</span><span class="p">];</span><span class="w"> </span><span class="c1">// Apuntador a un grupo de 20 enteros contiguos de un array unidimensional </span>
+</pre></div>
+</div>
+<p>O así:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">20</span><span class="p">];</span><span class="w">  </span>
+</pre></div>
+</div>
+<p>Esto se muestra en la siguiente grafica:</p>
+<p><img alt="matrix_14" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matrix_ptr.png?raw=true" /></p>
+<p><strong>Figura 14</strong>. Array bidimensional asociado a x.</p>
+<p>Basicamente, lo que se quiere dar a entender con la grafica es que x apunta al primer array de 20 elementos, el cual es la primera fila (fila 0), del array original. De manera similar, (x + 1) apunta a los segundos 20 elementos del array (fila 1 del array original) y así sucesivamente hasta la última fila. Para clarificar esto simule el siguiente ejemplo y note lo que implica lo anterior:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k 
+
+int main() {
+  int (*y)[20];
+  int x[10][20];
+  y = x;
+  for(int i = 0; i &lt; 10; i++) {
+    y = x + i;
+  }
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="matrix_15" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matrix_ptr_2.png?raw=true" /></p>
+<p><strong>Figura 15</strong>. Array bidimensional asociado al codigo anterior.</p>
+<ol class="simple">
+<li><p>Considere una matriz de tres dimensiones con la siguiente declaración:</p></li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">];</span><span class="w">   </span>
+</pre></div>
+</div>
+<p>O así:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">t</span><span class="p">)[</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">];</span><span class="w">     </span>
+</pre></div>
+</div>
+<p>En la declaración anterior, se definió a t como un apuntador a un grupo de 4x5 elementos contiguos de una matriz bidimensional. Por lo tanto según lo anterior, t apuntara a los primeros 4x5 elementos, t + 1 apuntara a los segundos 4x5 elementos y así sucesivamente.</p>
+<p>En el siguiente ejemplo se aterriza el concepto:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+
+int main() {
+  float t[3][4][5]; 
+  float (*ptr1)[4][5];
+  float (*ptr2)[4][5];
+  float (*ptr3)[4][5];
+  ptr1 = t;
+  ptr2 = t + 1;
+  ptr3 = t + 2;
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%0Aint%20main%28%29%20%7B%0A%20%20float%20t%5B3%5D%5B4%5D%5B5%5D%3B%20%0A%20%20float%20%28%2Aptr1%29%5B4%5D%5B5%5D%3B%0A%20%20float%20%28%2Aptr2%29%5B4%5D%5B5%5D%3B%0A%20%20float%20%28%2Aptr3%29%5B4%5D%5B5%5D%3B%0A%20%20ptr1%20%3D%20t%3B%0A%20%20ptr2%20%3D%20t%20%2B%201%3B%0A%20%20ptr3%20%3D%20t%20%2B%202%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida de muestra a continuación:</p>
+<p><img alt="matrix_16" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matrix_ptr_3.png?raw=true.png" /></p>
+<p><strong>Figura 16</strong>. Array tridimensional asociado a t.</p>
+</section>
+<section id="empleo-de-apuntadores-para-acceder-a-los-elementos-de-una-matrix">
+<h2>3. Empleo de apuntadores para acceder a los elementos de una matrix<a class="headerlink" href="#empleo-de-apuntadores-para-acceder-a-los-elementos-de-una-matrix" title="Permalink to this headline">#</a></h2>
+<p>Para acceder a un elemento particular dentro de un array particular se emplea el operador indirección (*). A continuación se muestra como 	en el caso de una matriz bidimesional. Para aclarar este concepto miremos el siguiente ejemplo:</p>
+<p><strong>Ejemplo</strong>: Supongase que se tiene un array entero de 10x20 y se desea acceder al elemento perteneciente a la fila 2 y la columna 5 (x[2][5]) . La forma de acceso es la mostrada a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="p">);</span><span class="w">  </span>
+</pre></div>
+</div>
+<p>Cuyo efecto es el mostrado en la siguiente figura:</p>
+<p><img alt="matrix_17" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/acceso_array_ptr.png?raw=true" /></p>
+<p><strong>Figura 17</strong>. Accediendo a una matrix por medio de la notacion apuntador.</p>
+<p>Para acceder a dicho lugar de memoria es necesario tener en cuenta una serie de cosas:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x+2</span></code>: Puntero al vector correspondiente a la fila 2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*(x+2)</span></code>: Apuntador al primer elemento de la fila 2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*(x+2)+5</span></code>: Apuntador al elemento 5 en la fila 2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*(*(x+2)+5)</span></code>: Elemento de la columna 5 y la fila 2, propiamente x[2][5].</p></li>
+</ul>
+<p>Para aterrizar lo anterior, supongamos que declaramos una matrix global x[10][20] y deseamos llevar al elemento x[2][5] el valor de 10. ¿Como seria el procedimiento a seguir empleando la notacion apuntador?</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">20</span><span class="p">];</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// x[2][5] = 10</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La salida del <a class="reference external" href="https://goo.gl/wrmfkY">codido anterior</a> es la siguiente:</p>
+<p><img alt="matrix_18" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ejemplo_matrix_acceso.png?raw=true" /></p>
+<p><strong>Figura 18</strong>. Modificando el valor de una matrix a traves de la notacion apuntador.</p>
+<table>
+<tbody>
+<tr>
+<td><b>Equivalencias</b></td>
+<td><b>Expresión</b></td>
+</tr>
+<tr>
+<td><b>De valor</b></td>
+<td>
+  Obteniendo el valor de una matriz en la posicion (i,j):<br>
+  <br>
+  A[i][j] = *(A+i)[j] = *(*(A+i)+ j) = *(A[i] + j)
+</td>
+</tr>
+<tr>
+<td><b>De dirección</b></td>
+<td>
+  Obteniendo la direccion de una matriz en la posicion (i,j):<br>
+  <br>
+  &A[i][j] = (A+i)[j] = *(A+i) + j = A[i] + j <br>
+  <br>
+  <b>Otra alternativa</b>:<br>
+  &A[i][j] = &A[0][0] + i*N_COLUMNAS + j <br><br>
+  En lo que respecta a obtener el posición de una fila i, lo cual se da cuando j = 0:<br>
+  &A[i][0] = A[i] + 0 = A[i]
+</td>
+</tr>
+<tr>
+<td><b>Anotaciones</b></td>
+<td>
+  &A[0][0] = A = A[0] = &A[0]<br><br>
+  Pero ojo que las anteriores equivalencias no son intercambiables: <br>
+  <ul>
+  <li>&A[0][0] + 1, apunta a A[0][1]</li>
+  <li>A[0] + 1, apunta a A[0][1]</li>
+  <li>A + 1, apunta a A[1][0]</li>
+  <li>&A[0] + 1, apunta a A[1][0]</li>
+  </ul>
+</td>
+</tr>
+</tbody>
+</table>  
+<p><strong>Ejemplo</strong>
+Para comprender bien lo anterior codifique y simule el siguiente programa:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+/* zippo2.c --  zippo infovia a pointer variable */
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int zippo[4][2] = { {2,4} , {6,8} , {1,3} , {5, 7} };
+    int (*pz)[2];
+    pz = zippo;
+    printf(&quot;pz = %p, pz + 1 = %p\n&quot;, pz, pz + 1); // D
+    printf(&quot;pz[0] = %p, pz[0] + 1 = %p\n&quot;, pz[0], pz[0] + 1); // D
+    printf(&quot;*pz = %p, *pz + 1 = %p\n&quot;, *pz, *pz + 1); // D
+    printf(&quot;pz[0][0] = %d\n&quot;, pz[0][0]);  // V
+    printf(&quot;*pz[0] = %d\n&quot;, *pz[0]); // V
+    printf(&quot;**pz = %d\n&quot;, **pz); // V
+    printf(&quot;pz[2][1] = %d\n&quot;, pz[2][1]); // V
+    printf(&quot;*(*(pz + 2) + 1) = %d\n&quot;, *(*(pz + 2) + 1)); // V
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=/%2A%20zippo2.c%20--%20%20zippo%20infovia%20a%20pointer%20variable%20%2A/%0A%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28void%29%0A%7B%0A%20%20%20%20int%20zippo%5B4%5D%5B2%5D%20%3D%20%7B%20%7B2%2C4%7D%20%2C%20%7B6%2C8%7D%20%2C%20%7B1%2C3%7D%20%2C%20%7B5%2C%207%7D%20%7D%3B%0A%20%20%20%20int%20%28%2Apz%29%5B2%5D%3B%0A%20%20%20%20pz%20%3D%20zippo%3B%0A%20%20%20%20printf%28%22pz%20%3D%20%25p%2C%20pz%20%2B%201%20%3D%20%25p%5Cn%22%2C%20pz%2C%20pz%20%2B%201%29%3B%20//%20D%0A%20%20%20%20printf%28%22pz%5B0%5D%20%3D%20%25p%2C%20pz%5B0%5D%20%2B%201%20%3D%20%25p%5Cn%22%2C%20pz%5B0%5D%2C%20pz%5B0%5D%20%2B%201%29%3B%20//%20D%0A%20%20%20%20printf%28%22%2Apz%20%3D%20%25p%2C%20%2Apz%20%2B%201%20%3D%20%25p%5Cn%22%2C%20%2Apz%2C%20%2Apz%20%2B%201%29%3B%20//%20D%0A%20%20%20%20printf%28%22pz%5B0%5D%5B0%5D%20%3D%20%25d%5Cn%22%2C%20pz%5B0%5D%5B0%5D%29%3B%20%20//%20V%0A%20%20%20%20printf%28%22%2Apz%5B0%5D%20%3D%20%25d%5Cn%22%2C%20%2Apz%5B0%5D%29%3B%20//%20V%0A%20%20%20%20printf%28%22%2A%2Apz%20%3D%20%25d%5Cn%22%2C%20%2A%2Apz%29%3B%20//%20V%0A%20%20%20%20printf%28%22pz%5B2%5D%5B1%5D%20%3D%20%25d%5Cn%22%2C%20pz%5B2%5D%5B1%5D%29%3B%20//%20V%0A%20%20%20%20printf%28%22%2A%28%2A%28pz%20%2B%202%29%20%2B%201%29%20%3D%20%25d%5Cn%22%2C%20%2A%28%2A%28pz%20%2B%202%29%20%2B%201%29%29%3B%20//%20V%0A%20%20%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>Lleve a cabo la <strong>prueba de escritorio</strong> y compárela con la salida en pantalla del programa. ¿Cómo queda la matriz después de las instrucciones anteriormente mostradas?</p>
+<ol class="simple">
+<li><p>Arreglos de apuntadores</p></li>
+</ol>
+<p>Un arreglo de apuntadores es un array cuyos elementos son apuntadores a algún tipo de dato. Estos, constituyen una forma alternativa de expresar un arreglo multidimensional. Por ejemplo un array de dos dimensiones:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="n">val_1</span><span class="p">][</span><span class="n">val_2</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Puede ser reescrito como un array de apuntadores de la siguiente manera:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">mat</span><span class="p">[</span><span class="n">val_1</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Luego, generalizando lo anterior para arreglos de N dimensiones tenemos que:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="n">val_2</span><span class="p">][</span><span class="n">val_3</span><span class="p">]...[</span><span class="n">val_N</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La forma alternativa será:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">mat</span><span class="p">[</span><span class="n">val_1</span><span class="p">][</span><span class="n">val_2</span><span class="p">]...[</span><span class="n">val_N</span><span class="mi">-1</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Aquí <strong>T</strong> se refiere al tipo de dato y las expresiones <strong>val_1</strong>, <strong>val_2</strong>, …, <strong>val_N</strong> se refieren al número máximo de elementos asociados con cada uno de los N subíndices del array. Note que a diferencia del caso anterior ya no se emplean paréntesis en este tipo de declaración por lo que el array contendrá apuntadores al tipo específico definido en la declaración.</p>
+<p><strong>Ejemplo</strong>: Supóngase que se tiene una matriz bidimensional x de 10 filas por 20 columnas. Esta definida como un vector de apuntadores sera:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Aquí, <strong>x[0]</strong> apuntara al principio de la primera fila, <strong>x[1]</strong> al principio de la segunda, observe que a diferencia del caso anterior no fue necesario declarar el  número de elementos de cada columna de manera explícita. La siguiente figura muestra el efecto de la anterior declaración con más detalle:</p>
+<p><img alt="matrix_15" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matrix_ptr2.png?raw=true" /></p>
+<p><strong>Figura 19</strong>. Representacion de la matrix.</p>
+<p>Por otro lado, teniendo en cuenta lo anterior, si lo que se desea es acceder a un elemento individual de la matrix, tal como x[2][5]. Una forma equivalente será:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x[2]</span></code>: Es un apuntador al primer elemento de la fila 2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x[2]</span> <span class="pre">+</span> <span class="pre">5</span></code>: Es un apuntador al elemento 5 dentro de la fila 2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*(x[2]+5)</span></code>: Se refiere al contenido del elemento de la fila 2 y la columna 5, es decir x[2][5].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*(*(x</span> <span class="pre">+</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">5)</span></code>: Se refiere al contenido del elemento de la fila 2 y la columna 5, es decir x[2][5].</p></li>
+</ul>
+<p>Lo anterior, se ilustra mas claramente en la siguiente figura:</p>
+<p><img alt="matrix_20" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/acceso_array_ptr2.png?raw=true" /></p>
+<p><strong>Figura 20</strong>. Acceso a la matrix.</p>
+<p><strong>Ejemplo</strong>: Suponga que se tiene un array tridimensional de enteror de dimensiones 2x3x4. La forma de expresar este array como un array de apuntadores bidimensional es:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>En el anterior codigo se genera una matrix de 6 apuntadores cada uno de los cuales esta apuntando a un vector unidimensional. Teniendo en cuenta lo anterior, se se desea acceder a un elemento individual tal como <code class="docutils literal notranslate"><span class="pre">t[1][1][2]</span></code>  la forma de hacerlo empleando esta notación sera:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// Será lo mismo que t[1][1][2]</span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>: a modo de repaso simule y analice el siguiente código:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+/* Matrix */
+int t[2][3][4];
+
+/* Declaracion de las funciones */
+void llenarMatrix(int M[][3][4]); 
+void imprimirMatrix(int M[][3][4]);
+void imprimirDireccionesMatrix(int M[][3][4]);
+
+/* Funcion principal */
+int main() {
+  llenarMatrix(t);
+  *(t[1][1] + 2) = -4; // t[1][1][2] = -4; 
+  // Recorriendo las direcciones de la matrix de apuntadores
+  // asociada
+  int *ptr;
+  for (int i = 0; i &lt; 2; i++) {
+    for (int j = 0; j &lt; 3; j++) {
+      ptr = t[i][j];
+      printf(&quot;t[%d][%d] = %p\n&quot;,i,j,ptr);
+    }
+  }
+  printf(&quot;\nMatrix:\n&quot;);
+  imprimirMatrix(t);
+  printf(&quot;\nDirecciones de la Matrix:\n&quot;);
+  imprimirDireccionesMatrix(t);
+  return 0;   
+}
+
+/* Definicion de las funciones */
+void llenarMatrix(int M[][3][4]) {
+  int val = 1;
+  for(int i = 0; i &lt; 2; i++) {
+    for(int j = 0; j &lt; 3; j++) {
+      for(int k = 0; k &lt; 4; k++) {
+        M[i][j][k] = val++;  
+      }
+    }
+  }  
+}
+
+void imprimirDireccionesMatrix(int M[][3][4]) {
+  for(int i = 0; i &lt; 2; i++) {
+    for(int j = 0; j &lt; 3; j++) {
+      for(int k = 0; k &lt; 4; k++) {
+        printf(&quot;&amp;M[%d][%d][%d] = %p\n&quot;, i, j, k,M[i][j] + k);  
+      }      
+    }
+  }  
+}
+
+void imprimirMatrix(int M[][3][4]) {
+  printf(&quot;-------------------------\n&quot;);
+  for(int i = 0; i &lt; 2; i++) {
+    for(int j = 0; j &lt; 3; j++) {
+      for(int k = 0; k &lt; 4; k++) {
+        printf(&quot;%5d &quot;, M[i][j][k]);  
+      }
+      printf(&quot;\n&quot;);
+    }
+    printf(&quot;------------------------\n&quot;);
+  }  
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/%2A%20Matrix%20%2A/%0Aint%20t%5B2%5D%5B3%5D%5B4%5D%3B%0A%0A/%2A%20Declaracion%20de%20las%20funciones%20%2A/%0Avoid%20llenarMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%3B%20%0Avoid%20imprimirMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%3B%0Avoid%20imprimirDireccionesMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%3B%0A%0A/%2A%20Funcion%20principal%20%2A/%0Aint%20main%28%29%20%7B%0A%20%20llenarMatrix%28t%29%3B%0A%20%20%2A%28t%5B1%5D%5B1%5D%20%2B%202%29%20%3D%20-4%3B%20//%20t%5B1%5D%5B1%5D%5B2%5D%20%3D%20-4%3B%20%0A%20%20//%20Recorriendo%20las%20direcciones%20de%20la%20matrix%20de%20apuntadores%0A%20%20//%20asociada%0A%20%20int%20%2Aptr%3B%0A%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%20%28int%20j%20%3D%200%3B%20j%20%3C%203%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20ptr%20%3D%20t%5Bi%5D%5Bj%5D%3B%0A%20%20%20%20%20%20printf%28%22t%5B%25d%5D%5B%25d%5D%20%3D%20%25p%5Cn%22%2Ci%2Cj%2Cptr%29%3B%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20printf%28%22%5CnMatrix%3A%5Cn%22%29%3B%0A%20%20imprimirMatrix%28t%29%3B%0A%20%20printf%28%22%5CnDirecciones%20de%20la%20Matrix%3A%5Cn%22%29%3B%0A%20%20imprimirDireccionesMatrix%28t%29%3B%0A%20%20return%200%3B%20%20%20%0A%7D%0A%0A/%2A%20Definicion%20de%20las%20funciones%20%2A/%0Avoid%20llenarMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%20%7B%0A%20%20int%20val%20%3D%201%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%203%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20for%28int%20k%20%3D%200%3B%20k%20%3C%204%3B%20k%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20M%5Bi%5D%5Bj%5D%5Bk%5D%20%3D%20val%2B%2B%3B%20%20%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%20%20%0A%7D%0A%0Avoid%20imprimirDireccionesMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%20%7B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%203%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20for%28int%20k%20%3D%200%3B%20k%20%3C%204%3B%20k%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%26M%5B%25d%5D%5B%25d%5D%5B%25d%5D%20%3D%20%25p%5Cn%22%2C%20i%2C%20j%2C%20k%2CM%5Bi%5D%5Bj%5D%20%2B%20k%29%3B%20%20%0A%20%20%20%20%20%20%7D%20%20%20%20%20%20%0A%20%20%20%20%7D%0A%20%20%7D%20%20%0A%7D%0A%0Avoid%20imprimirMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%20%7B%0A%20%20printf%28%22-------------------------%5Cn%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%203%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20for%28int%20k%20%3D%200%3B%20k%20%3C%204%3B%20k%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%255d%20%22%2C%20M%5Bi%5D%5Bj%5D%5Bk%5D%29%3B%20%20%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22------------------------%5Cn%22%29%3B%0A%20%20%7D%20%20%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La siguiente figura muestra la salida del programa y su representacion de la matrix. Notese como se almacena la matrix en memoria.</p>
+<p><img alt="matrix_21" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ptr_matrix3_output2.png?raw=true" /></p>
+<p><strong>Figura 21</strong>. Salida del programa y representacion de la matrix.</p>
+<p>En la siguiente figura, se compara la salida con la representacion de la matrix en el mapa de memoria. Notese, las equivalencias:</p>
+<p><img alt="matrix_22" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ptr_matrix3_output3.png?raw=true" /></p>
+<p><strong>Figura 22</strong>. Salida del programa y representacion en memoria de la matrix.</p>
+<p><strong>Caso de aplicacion</strong>:</p>
+<p>Una de las mayores aplicaciones de los arreglos a apuntadores es que permiten trabajar con jagged arrays (matrices irregulares). Un array de este tipo es un array bidimensional que posee un numero de columnas diferentes por cada fila tal y como se muestra en la siguiente figura:</p>
+<p><img alt="matrix_23" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/irregular_matrix.png?raw=true" /></p>
+<p><strong>Figura 23</strong>. Matrix irregular.</p>
+<p>En el siguiente codigo se define la anterior matrix irregular. Adicionalmente, se imprimen en pantalla algunos de los valores asociados a esta:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  int F0[] = {1,2,3,4};
+  int F1[] = {5,6};
+  int F2[] = {7,8,9};
+  int *P[3];
+  P[0] = F0;
+  P[1] = F1;
+  P[2] = F2;
+  printf(&quot;F0[2]: %d\n&quot;, F0[2]);
+  printf(&quot;*P[0] + 2: %\n&quot;, *P[0] + 2);
+  printf(&quot;**P + 2:  %d\n&quot;, **P + 2);
+  printf(&quot;F2[1]: %d\n&quot;, F2[1]);
+  printf(&quot;*P[2] + 1: %d\n&quot;, *P[2] + 1 );
+  printf(&quot;*(*(P + 2) + 1): %d\n&quot;, *(*(P + 2) + 1));
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20F0%5B%5D%20%3D%20%7B1%2C2%2C3%2C4%7D%3B%0A%20%20int%20F1%5B%5D%20%3D%20%7B5%2C6%7D%3B%0A%20%20int%20F2%5B%5D%20%3D%20%7B7%2C8%2C9%7D%3B%0A%20%20int%20%2AP%5B3%5D%3B%0A%20%20P%5B0%5D%20%3D%20F0%3B%0A%20%20P%5B1%5D%20%3D%20F1%3B%0A%20%20P%5B2%5D%20%3D%20F2%3B%0A%20%20printf%28%22F0%5B2%5D%3A%20%25d%5Cn%22%2C%20F0%5B2%5D%29%3B%0A%20%20printf%28%22%2AP%5B0%5D%20%2B%202%3A%20%25%5Cn%22%2C%20%2AP%5B0%5D%20%2B%202%29%3B%0A%20%20printf%28%22%2A%2AP%20%2B%202%3A%20%20%25d%5Cn%22%2C%20%2A%2AP%20%2B%202%29%3B%0A%20%20printf%28%22F2%5B1%5D%3A%20%25d%5Cn%22%2C%20F2%5B1%5D%29%3B%0A%20%20printf%28%22%2AP%5B2%5D%20%2B%201%3A%20%25d%5Cn%22%2C%20%2AP%5B2%5D%20%2B%201%20%29%3B%0A%20%20printf%28%22%2A%28%2A%28P%20%2B%202%29%20%2B%201%29%3A%20%25d%5Cn%22%2C%20%2A%28%2A%28P%20%2B%202%29%20%2B%201%29%29%3B%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida del programa anterior se muestra en la siguiente figura, el resultado de la figura anterior se muestra en la siguiente figura (para la parte del mapa de memoria asuma las direcciones para las variabled dadas en la figura y que la arquitectura es de 32 bits):</p>
+<p><img alt="matrix_24" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/irregular_matrix2.png?raw=true" /></p>
+<p><strong>Figura 24</strong>. Salida del programa que manipula la Matrix irregular.</p>
+<p><strong>Caso de aplicacion</strong>:</p>
+<p>Los arreglos de apuntadores ofrecen a menudo un método conveniente para almacenar cadenas de caracteres.  En esta situación, cada elemento del array es un apuntador tipo carácter que indica el principio de una cadena de caracteres separada, por lo tanto un array de <strong>n</strong> elementos puede apuntar a diferentes cadenas de caracteres, de tal manera que cada cadena individual puede ser referenciada por su correspondiente apuntador. La siguiente figura muestra este hecho:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">myStrPtr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;If anything can go wrong, it will&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                      </span><span class="s">&quot;Nothing is foolproof&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                      </span><span class="s">&quot;Every solution breeds new problems.&quot;</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La representacion der arreglo de apuntadores tipo char descrito anteriormente se muestra a continuacion:</p>
+<p><img alt="matrix_25" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/arreglos_apuntadores_char.png?raw=true" /></p>
+<p><strong>Figura 25</strong>. Arreglo de apuntadores tipo char.</p>
+<p>Ahora bien, para profundizar analice el siguiente código:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+int main() {
+  char *myStrPtr[5] = { &quot;Universidad de Antioquia&quot;,
+                         &quot;Alma Mater&quot;,
+                         &quot;De la patria.&quot;};
+  int i = 0;
+  while(myStrPtr[i] != NULL) {
+    printf(&quot;%s\n&quot;,myStrPtr[i]);
+    i++;
+  }
+  return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20%2AmyStrPtr%5B5%5D%20%3D%20%7B%20%22Universidad%20de%20Antioquia%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Alma%20Mater%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22De%20la%20patria.%22%7D%3B%0A%20%20int%20i%20%3D%200%3B%0A%20%20while%28myStrPtr%5Bi%5D%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20printf%28%22%25s%5Cn%22%2CmyStrPtr%5Bi%5D%29%3B%0A%20%20%20%20i%2B%2B%3B%0A%20%20%7D%0A%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida del codigo anterio se muestra a continuacion:</p>
+<p><img alt="matrix_27" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/salida_char_ptrs.png?raw=true" /></p>
+<p><strong>Figura 27</strong>. Ejemplo empleando un arreglo de apuntadores tipo char.</p>
+<p><strong>Ejemplo</strong>: A continuacion se muestra como accder y manipular matrices 3D (tomando como base el siguiente <a class="reference external" href="https://www.codeproject.com/Articles/83080/Dynamic-Three-Dimensional-Arrays-in-C-C-C-Java">enlace</a>). Esto se explica por que en algun momento posterior puede ser de extrema utilidad, ademas, por que se resalta el uso de diferentes niveles de apuntadores. El codigo ejemplo se muestra a continución:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">tutor</span> -l c -k
+#include &lt;stdio.h&gt;
+
+/** Dimensiones de la matrix */
+
+const int P = 2; // Planos
+const int F = 2; // Filas
+const int C = 3; // Columnas
+
+/** Declaracion de las funciones */
+
+void imprimirMatrix3D(int *** M3D);
+
+/** Funcion principal */
+
+int main() {
+  /* Vectores: Cada no de los cuales sera una fila de la matrix*/
+  int v0_0[] = {1,2,3};
+  int v0_1[] = {4,5,6};
+  int v1_0[] = {7,8,9};
+  int v1_1[] = {10,11,12};
+  /* Matrices 2D: Cada una sera un plano de la matrix 2D */
+  int *V0[2];  
+  V0[0] = v0_0;
+  V0[1] = v0_1;
+  int *V1[2];
+  V1[0] = v1_0;
+  V1[1] = v1_1;
+  /* Matrix 3D: Formada por 2 matrices 2D */
+  int **M[2];
+  M[0] = V0;
+  M[1] = V1;
+  /* Apuntador a la matrix 3D */
+  int ***Mptr = M;
+  /* Cambio de valores de la matrix a traves del apuntador*/
+  *(*(*(M + 0) + 1) + 2) = 0;  // M[0][1][2] = 0;
+  *(*(*(M + 1) + 0) + 1) = -5; // M[1][0][1] = -5;
+  *(*(M[1]+ 1) + 1) = -15;     // M[1][1][1] = -15;
+  /* Imprimiendo la matrix 3D */
+  imprimirMatrix3D(M);  
+  return 0;
+}
+
+/** Definicion de las funciones */
+void imprimirMatrix3D(int *** M3D) {
+  printf(&quot;-------------------------\n&quot;);
+  for(int i = 0; i &lt; P; i++) {
+    for(int j = 0; j &lt; F; j++) {
+      for(int k = 0; k &lt; C; k++) {
+        printf(&quot;%5d &quot;, *(*(*(M3D + i) + j) + k));  
+      }
+      printf(&quot;\n&quot;);
+    }
+    printf(&quot;------------------------\n&quot;);
+  }      
+}
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/%2A%2A%20Dimensiones%20de%20la%20matrix%20%2A/%0A%0Aconst%20int%20P%20%3D%202%3B%20//%20Planos%0Aconst%20int%20F%20%3D%202%3B%20//%20Filas%0Aconst%20int%20C%20%3D%203%3B%20//%20Columnas%0A%0A/%2A%2A%20Declaracion%20de%20las%20funciones%20%2A/%0A%0Avoid%20imprimirMatrix3D%28int%20%2A%2A%2A%20M3D%29%3B%0A%0A/%2A%2A%20Funcion%20principal%20%2A/%0A%0Aint%20main%28%29%20%7B%0A%20%20/%2A%20Vectores%3A%20Cada%20no%20de%20los%20cuales%20sera%20una%20fila%20de%20la%20matrix%2A/%0A%20%20int%20v0_0%5B%5D%20%3D%20%7B1%2C2%2C3%7D%3B%0A%20%20int%20v0_1%5B%5D%20%3D%20%7B4%2C5%2C6%7D%3B%0A%20%20int%20v1_0%5B%5D%20%3D%20%7B7%2C8%2C9%7D%3B%0A%20%20int%20v1_1%5B%5D%20%3D%20%7B10%2C11%2C12%7D%3B%0A%20%20/%2A%20Matrices%202D%3A%20Cada%20una%20sera%20un%20plano%20de%20la%20matrix%202D%20%2A/%0A%20%20int%20%2AV0%5B2%5D%3B%20%20%0A%20%20V0%5B0%5D%20%3D%20v0_0%3B%0A%20%20V0%5B1%5D%20%3D%20v0_1%3B%0A%20%20int%20%2AV1%5B2%5D%3B%0A%20%20V1%5B0%5D%20%3D%20v1_0%3B%0A%20%20V1%5B1%5D%20%3D%20v1_1%3B%0A%20%20/%2A%20Matrix%203D%3A%20Formada%20por%202%20matrices%202D%20%2A/%0A%20%20int%20%2A%2AM%5B2%5D%3B%0A%20%20M%5B0%5D%20%3D%20V0%3B%0A%20%20M%5B1%5D%20%3D%20V1%3B%0A%20%20/%2A%20Apuntador%20a%20la%20matrix%203D%20%2A/%0A%20%20int%20%2A%2A%2AMptr%20%3D%20M%3B%0A%20%20/%2A%20Cambio%20de%20valores%20de%20la%20matrix%20a%20traves%20del%20apuntador%2A/%0A%20%20%2A%28%2A%28%2A%28M%20%2B%200%29%20%2B%201%29%20%2B%202%29%20%3D%200%3B%20%20//%20M%5B0%5D%5B1%5D%5B2%5D%20%3D%200%3B%0A%20%20%2A%28%2A%28%2A%28M%20%2B%201%29%20%2B%200%29%20%2B%201%29%20%3D%20-5%3B%20//%20M%5B1%5D%5B0%5D%5B1%5D%20%3D%20-5%3B%0A%20%20%2A%28%2A%28M%5B1%5D%2B%201%29%20%2B%201%29%20%3D%20-15%3B%20%20%20%20%20//%20M%5B1%5D%5B1%5D%5B1%5D%20%3D%20-15%3B%0A%20%20/%2A%20Imprimiendo%20la%20matrix%203D%20%2A/%0A%20%20imprimirMatrix3D%28M%29%3B%20%20%0A%20%20return%200%3B%0A%7D%0A%0A/%2A%2A%20Definicion%20de%20las%20funciones%20%2A/%0Avoid%20imprimirMatrix3D%28int%20%2A%2A%2A%20M3D%29%20%7B%0A%20%20printf%28%22-------------------------%5Cn%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20P%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%20F%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20for%28int%20k%20%3D%200%3B%20k%20%3C%20C%3B%20k%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%255d%20%22%2C%20%2A%28%2A%28%2A%28M3D%20%2B%20i%29%20%2B%20j%29%20%2B%20k%29%29%3B%20%20%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22------------------------%5Cn%22%29%3B%0A%20%20%7D%20%20%20%20%20%20%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
+</div>
+<p>La salida en pantalla y las variables se muestran en la siguiente figura, note los niveles jerarquico empleados en los apuntadores:</p>
+<p><img alt="matrix_28" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/ptr_matrix3D_output.png?raw=true" /></p>
+<p><strong>Figura 28</strong>. Matrix 3D y apuntadores.</p>
+</section>
+<section id="enlaces-de-interes">
+<h2>4. Enlaces de interés<a class="headerlink" href="#enlaces-de-interes" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/pass-2d-array-parameter-c/">https://www.geeksforgeeks.org/pass-2d-array-parameter-c/</a></p></li>
+<li><p><a class="reference external" href="https://www.programiz.com/c-programming/c-arrays-functions">https://www.programiz.com/c-programming/c-arrays-functions</a></p></li>
+<li><p><a class="reference external" href="https://www.programiz.com/c-programming/examples/matrix-multiplication-function">https://www.programiz.com/c-programming/examples/matrix-multiplication-function</a></p></li>
+<li><p><a class="reference external" href="https://beginnersbook.com/2014/01/c-passing-array-to-function-example/">https://beginnersbook.com/2014/01/c-passing-array-to-function-example/</a></p></li>
+<li><p><a class="reference external" href="https://www.codeproject.com/Articles/83080/Dynamic-Three-Dimensional-Arrays-in-C-C-C-Java">https://www.codeproject.com/Articles/83080/Dynamic-Three-Dimensional-Arrays-in-C-C-C-Java</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content\local\code\parte3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
