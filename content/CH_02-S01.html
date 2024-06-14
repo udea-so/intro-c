@@ -385,6 +385,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formato-tipico-de-un-programa-en-c">
+   1. Formato típico de un programa en C
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejemplos">
+     Ejemplos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#an-example-cell">
    An example cell
   </a>
@@ -418,6 +430,18 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formato-tipico-de-un-programa-en-c">
+   1. Formato típico de un programa en C
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejemplos">
+     Ejemplos
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#an-example-cell">
    An example cell
@@ -453,9 +477,82 @@ title="Print to PDF"
 <li><p>Introducir el uso de las funciones y establecer cómo se realiza el paso de parámetros a funciones.</p></li>
 </ul>
 </div>
+<section id="formato-tipico-de-un-programa-en-c">
+<h2>1. Formato típico de un programa en C<a class="headerlink" href="#formato-tipico-de-un-programa-en-c" title="Permalink to this headline">#</a></h2>
+<p>En su forma más básica un programa en C tiene la siguiente estructura:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/** Directivas del preprocesador */</span><span class="w"></span>
+<span class="c1">// Librerías </span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;libreriaSistema&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;libreriaUsuario&quot;</span><span class="cp"></span>
+
+<span class="c1">// Macros y constantes con define</span>
+<span class="cp">#define CTE VALOR_CTE</span>
+
+<span class="cm">/* Variables globales*/</span><span class="w"></span>
+<span class="n">tipo1</span><span class="w"> </span><span class="n">varG1_1</span><span class="p">,</span><span class="w"> </span><span class="n">varG2_1</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
+<span class="n">tipo2</span><span class="w"> </span><span class="n">varG1_2</span><span class="p">,</span><span class="w"> </span><span class="n">varG2_2</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+
+<span class="cm">/* Función principal (Primera en ser llamada)*/</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/** Variables locales */</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo1</span><span class="w"> </span><span class="n">varL1_1</span><span class="p">,</span><span class="w"> </span><span class="n">varL2_1</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo2</span><span class="w"> </span><span class="n">varL1_2</span><span class="p">,</span><span class="w"> </span><span class="n">varL2_2</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/** Instrucciones */</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="n">código</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Como se puede notar, la forma es similar a la que se emplea en cualquier otro lenguaje. A continuación se muestra, con un breve ejemplo un caso de aplicación de la plantilla anterior.</p>
+<section id="ejemplos">
+<h3>Ejemplos<a class="headerlink" href="#ejemplos" title="Permalink to this headline">#</a></h3>
+<ol>
+<li><p>Hacer un programa que despliegue Hello world en pantalla:</p>
+<ul class="simple">
+<li><p>Empleando java.</p></li>
+<li><p>Empleando C.</p></li>
+</ul>
+<p><strong>Solución</strong>:</p>
+<ul>
+<li><p><strong>Empleando java</strong>: a continuación se muestra el código solución (<span class="xref myst">ex1_ch2_S01.java</span>) en java:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello world&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Empleando C</strong>: en el enlace solución en C se encuentra el código C (<span class="xref myst">ex1_ch2_S01.c</span>) que implementa lo solicitado:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="s">&quot;Hello, World&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A modo de repaso, se muestran los comandos empleados para compilar y ejecutar el programa en C:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gcc -Wall ex1_ch2_S01.c -o hello.out
+$ ls
+hello.c  hello.out
+$ ./hello.out
+Hello, World
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
 <p>Jupyter Book also lets you write text-based notebooks using MyST Markdown.
 See <a class="reference external" href="https://jupyterbook.org/file-types/myst-notebooks.html">the Notebooks with MyST Markdown documentation</a> for more detailed instructions.
 This page shows off a notebook written in MyST Markdown.</p>
+</section>
+</section>
 <section id="an-example-cell">
 <h2>An example cell<a class="headerlink" href="#an-example-cell" title="Permalink to this headline">#</a></h2>
 <p>With MyST Markdown, you can define code cells with a directive like so:</p>
