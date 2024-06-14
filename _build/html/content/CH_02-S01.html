@@ -472,9 +472,50 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estructuras-de-contro">
-   4. Estructuras de Contro
+  <a class="reference internal nav-link" href="#estructuras-de-control-de-flujo">
+   4. Estructuras de Control de flujo
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-condicional">
+     4.1 Estructura condicional
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura-if-else-if-else">
+       4.1.1. Estructura if/else if/else
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura-switch">
+       4.1.2. Estructura switch
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-repetitiva">
+     4.2 Estructura repetitiva
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura-for">
+       4.2.1. Estructura for
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura-while">
+       4.2.2. Estructura while
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura-do-while">
+       4.2.3. Estructura do-while
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -583,9 +624,50 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estructuras-de-contro">
-   4. Estructuras de Contro
+  <a class="reference internal nav-link" href="#estructuras-de-control-de-flujo">
+   4. Estructuras de Control de flujo
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-condicional">
+     4.1 Estructura condicional
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura-if-else-if-else">
+       4.1.1. Estructura if/else if/else
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura-switch">
+       4.1.2. Estructura switch
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructura-repetitiva">
+     4.2 Estructura repetitiva
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura-for">
+       4.2.1. Estructura for
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura-while">
+       4.2.2. Estructura while
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructura-do-while">
+       4.2.3. Estructura do-while
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1199,9 +1281,429 @@ See <a class="reference external" href="https://jupyterbook.org/file-types/myst-
 This page shows off a notebook written in MyST Markdown.</p>
 </section>
 </section>
-<section id="estructuras-de-contro">
-<h2>4. Estructuras de Contro<a class="headerlink" href="#estructuras-de-contro" title="Permalink to this headline">#</a></h2>
-<p>Las Instrucciones de control en C son similares a las de Java. A continuación se describe la estructura y se muestan algunos ejemplos</p>
+<section id="estructuras-de-control-de-flujo">
+<h2>4. Estructuras de Control de flujo<a class="headerlink" href="#estructuras-de-control-de-flujo" title="Permalink to this headline">#</a></h2>
+<p>Las estructuras de control en C son similares a las de Java. A continuación, se describe la estructura de cada una y se muestan algunos ejemplos.</p>
+<section id="estructura-condicional">
+<h3>4.1 Estructura condicional<a class="headerlink" href="#estructura-condicional" title="Permalink to this headline">#</a></h3>
+<section id="estructura-if-else-if-else">
+<h4>4.1.1. Estructura if/else if/else<a class="headerlink" href="#estructura-if-else-if-else" title="Permalink to this headline">#</a></h4>
+<p>La forma de esta estructura se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">condicion1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones_condicion_1_verdadero</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">condicion2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones_condicion_2_verdadero</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">condicion_N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nl">instrucciones_condicion_N_verdadero</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones_caso_falso</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong></p>
+<p>Se tiene la siguiente tabla en la cual se muestra el equivalente entre números y letras para la calificación de notas en una guardería. Realizar un algoritmo en C que tomando como base dicha tabla y como entrada las notas, imprima la nota en letras correspondiente.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rango</p></th>
+<th class="head"><p>Nota</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>nota &gt;= 4.5</p></td>
+<td><p>E</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.0 &lt;= nota &lt; 4.5</p></td>
+<td><p>B+</p></td>
+</tr>
+<tr class="row-even"><td><p>3.5 &lt;= nota &lt; 4.0</p></td>
+<td><p>B</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.0 &lt;= nota &lt; 3.5</p></td>
+<td><p>B-</p></td>
+</tr>
+<tr class="row-even"><td><p>nota &lt; 3</p></td>
+<td><p>I</p></td>
+</tr>
+</tbody>
+</table>
+<p>Una muestra de la salida del programa se muestra a continuación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Introduzca</span> <span class="n">la</span> <span class="n">nota</span> <span class="n">que</span> <span class="n">saco</span> <span class="n">el</span> <span class="n">pelao</span><span class="p">:</span> <span class="mf">3.2</span>
+<span class="n">La</span> <span class="n">nota</span> <span class="n">es</span><span class="p">:</span> <span class="o">-</span><span class="n">B</span>
+</pre></div>
+</div>
+<p>A continuación se muestra el código de la solución:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">nota</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Introduzca la nota que saco el pelao: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">nota</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Implementacion con if anidados */</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">4.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// nota &gt;= 4.5 --&gt; E</span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La nota es: E</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">4.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// nota &lt; 4.5 y nota &gt;= 4.0 --&gt; 4 &lt;= nota &lt; 4.5 --&gt; B+</span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La nota es: B+</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">3.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// nota &lt; 4.0 y nota &gt;= 3.5 --&gt; 3.5 &lt;= nota &lt; 4 --&gt; B</span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La nota es: B</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">3.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// nota &lt; 3.5 y nota &gt;= 3.0 --&gt; 3.0 &lt;= nota &lt; 3.5 --&gt; B-</span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La nota es: B-</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="c1">// nota &lt; 3.0</span>
+<span class="w">	</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La nota es: I</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuacion se muestran dos casos de ejecución y sus respectivas salidas para el programa anterior:</p>
+<ul>
+<li><p>Introduciendo una nota de 3.6:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Introduzca</span> <span class="n">la</span> <span class="n">nota</span> <span class="n">que</span> <span class="n">saco</span> <span class="n">el</span> <span class="n">pelao</span><span class="p">:</span> <span class="mf">3.6</span>
+<span class="n">La</span> <span class="n">nota</span> <span class="n">es</span><span class="p">:</span> <span class="n">B</span>
+</pre></div>
+</div>
+</li>
+<li><p>Introducciendo una nota de 4.8:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Introduzca</span> <span class="n">la</span> <span class="n">nota</span> <span class="n">que</span> <span class="n">saco</span> <span class="n">el</span> <span class="n">pelao</span><span class="p">:</span> <span class="mf">4.8</span>
+<span class="n">La</span> <span class="n">nota</span> <span class="n">es</span><span class="p">:</span> <span class="n">E</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="estructura-switch">
+<h4>4.1.2. Estructura switch<a class="headerlink" href="#estructura-switch" title="Permalink to this headline">#</a></h4>
+<p>La sintaxis de esta estructura se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">switch</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nl">valor_1</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">instrucciones_1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span><span class="k">break</span><span class="p">;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nl">valor_2</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">instrucciones_2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span><span class="k">break</span><span class="p">;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nl">valor_N</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">instrucciones_N</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span><span class="k">break</span><span class="p">;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">instrucciones_default</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong></p>
+<p>En la siguiente tabla se muestran las categorías a las que pertenecen los signos del zodíaco:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rango</p></th>
+<th class="head"><p>Nota</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Aries</p></td>
+<td><p>Fuego</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tauro</p></td>
+<td><p>Tierra</p></td>
+</tr>
+<tr class="row-even"><td><p>Géminis</p></td>
+<td><p>Agua</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cáncer</p></td>
+<td><p>Aire</p></td>
+</tr>
+<tr class="row-even"><td><p>Leo</p></td>
+<td><p>Fuego</p></td>
+</tr>
+<tr class="row-odd"><td><p>Virgo</p></td>
+<td><p>Tierra</p></td>
+</tr>
+<tr class="row-even"><td><p>Libra</p></td>
+<td><p>Aire</p></td>
+</tr>
+<tr class="row-odd"><td><p>Escorpio</p></td>
+<td><p>Agua</p></td>
+</tr>
+<tr class="row-even"><td><p>Sagitario</p></td>
+<td><p>Fuego</p></td>
+</tr>
+<tr class="row-odd"><td><p>Capricornio</p></td>
+<td><p>Tierra</p></td>
+</tr>
+<tr class="row-even"><td><p>Acuario</p></td>
+<td><p>Aire</p></td>
+</tr>
+<tr class="row-odd"><td><p>Piscis</p></td>
+<td><p>Agua</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo</strong></p>
+<p>Se quiere escribir un programa en C que:</p>
+<ol class="simple">
+<li><p>Muestre el listado de los signos del zodiaco.</p></li>
+<li><p>Pida por teclado un número (dato entero) asociado a un signo del zodiaco.</p></li>
+<li><p>Muestre la categoría a la que pertenece el signo del zodiaco seleccionado.</p></li>
+</ol>
+<p><strong>Nota</strong>: Si el número introducido por el usuario, no está asociado a ningún signo del zodiaco, se mostrará
+el mensaje: <strong>“ERROR: <numero> no está asociado a ningún signo”</strong>. Hacer este problema usando la sentencia switch.</p>
+<p>A continuación se muestra el código de la solución:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define ARIES 1</span>
+<span class="cp">#define TAURO 2</span>
+<span class="cp">#define GEMINIS 3</span>
+<span class="cp">#define CANCER 4</span>
+<span class="cp">#define LEO 5</span>
+<span class="cp">#define VIRGO 6</span>
+<span class="cp">#define LIBRA 7</span>
+<span class="cp">#define ESCORPIO 8</span>
+<span class="cp">#define SAGITARIO 9</span>
+<span class="cp">#define CAPRICORNIO 10</span>
+<span class="cp">#define ACUARIO 11</span>
+<span class="cp">#define PISCIS 12</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">signo</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;SIGNOS DEL ZODIACO</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;1. Aries</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;2. Tauro</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;3. Géminis</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;4. Cáncer</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;5. Leo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;6. Virgo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;7. Libra</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;8. Escorpio</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;9. Sagitario</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;10. Capricornio</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;11. Acuario</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;12. Piscis</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Seleccione el signo del zodiaco de su preferencia: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">signo</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">signo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">ARIES</span><span class="p">:</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">LEO</span><span class="p">:</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">SAGITARIO</span><span class="p">:</span><span class="w"></span>
+<span class="w">	    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Su signo es categoria fuego</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">		</span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">TAURO</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="nl">VIRGO</span><span class="p">:</span><span class="w">	  </span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="nl">CAPRICORNIO</span><span class="p">:</span><span class="w"></span>
+<span class="w">	    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Su signo es categoria tierra</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">	    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">GEMINIS</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="nl">ESCORPIO</span><span class="p">:</span><span class="w">	  </span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">PISCIS</span><span class="p">:</span><span class="w"></span>
+<span class="w">	    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Su signo es categoria agua</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">	    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">CANCER</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="k">case</span><span class="w"> </span><span class="nl">LIBRA</span><span class="p">:</span><span class="w">	  </span>
+<span class="w">	  </span><span class="k">case</span><span class="w"> </span><span class="nl">ACUARIO</span><span class="p">:</span><span class="w"></span>
+<span class="w">	    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Su signo es categoria aire</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">	    </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">	  </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">	    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">ERROR</span><span class="se">\&quot;</span><span class="s">: no está asociado a ningún signo</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestra un caso de test cuando el usuario ingresa un número no válido para un signo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SIGNOS</span> <span class="n">DEL</span> <span class="n">ZODIACO</span>
+<span class="mf">1.</span> <span class="n">Aries</span>
+<span class="mf">2.</span> <span class="n">Tauro</span>
+<span class="mf">3.</span> <span class="n">Géminis</span>
+<span class="mf">4.</span> <span class="n">Cáncer</span>
+<span class="mf">5.</span> <span class="n">Leo</span>
+<span class="mf">6.</span> <span class="n">Virgo</span>
+<span class="mf">7.</span> <span class="n">Libra</span>
+<span class="mf">8.</span> <span class="n">Escorpio</span>
+<span class="mf">9.</span> <span class="n">Sagitario</span>
+<span class="mf">10.</span> <span class="n">Capricornio</span>
+<span class="mf">11.</span> <span class="n">Acuario</span>
+<span class="mf">12.</span> <span class="n">Piscis</span>
+
+<span class="n">Seleccione</span> <span class="n">el</span> <span class="n">signo</span> <span class="k">del</span> <span class="n">zodiaco</span> <span class="n">de</span> <span class="n">su</span> <span class="n">preferencia</span><span class="p">:</span> <span class="mi">13</span>
+<span class="s2">&quot;ERROR&quot;</span><span class="p">:</span> <span class="n">no</span> <span class="n">está</span> <span class="n">asociado</span> <span class="n">a</span> <span class="n">ningún</span> <span class="n">signo</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="estructura-repetitiva">
+<h3>4.2 Estructura repetitiva<a class="headerlink" href="#estructura-repetitiva" title="Permalink to this headline">#</a></h3>
+<section id="estructura-for">
+<h4>4.2.1. Estructura for<a class="headerlink" href="#estructura-for" title="Permalink to this headline">#</a></h4>
+<p>La forma de esta estructura se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="n">expresion_inicializacion</span><span class="p">;</span><span class="w"> </span><span class="n">expresion_test</span><span class="p">;</span><span class="w"> </span><span class="n">expression_modificacion</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong></p>
+<p>Escriba un programa que sume una secuencia de enteros. Suponga que el primer entero que se lee especifica el número de valores que faltan por introducir. Su programa deberá leer un solo valor por instrucción de entrada. Una secuencia de entrada típica podría ser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="mi">100</span> <span class="mi">200</span> <span class="mi">300</span> <span class="mi">400</span> <span class="mi">500</span>
+</pre></div>
+</div>
+<p>Donde 5 indica que deben sumarse los siguientes 5 valores.</p>
+<p>El código del programa se muestra a continuacion:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w">   </span><span class="c1">// Cantidad de numeros</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"> </span><span class="c1">// Numero a leer</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">   </span><span class="c1">// i-esimo numero</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Suma de los numeros</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese la cantidad de numeros a sumar: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">La suma es: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">sum</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestra un caso de ejecución del programa anterior:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ingrese</span> <span class="n">la</span> <span class="n">cantidad</span> <span class="n">de</span> <span class="n">numeros</span> <span class="n">a</span> <span class="n">sumar</span><span class="p">:</span> <span class="mi">3</span>
+<span class="mi">123</span> <span class="mi">3</span> <span class="mi">3</span>
+
+<span class="n">La</span> <span class="n">suma</span> <span class="n">es</span><span class="p">:</span> <span class="mi">129</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Para el caso, la función <code class="docutils literal notranslate"><span class="pre">scanf</span></code> toma el <strong>espacio</strong> como un <strong>enter</strong>.</p>
+</div>
+<p>A continuación, se muestra la salida del programa (para ambos casos):</p>
+<ul>
+<li><p>Usando <strong>enter</strong> como delimitador:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ingrese</span> <span class="n">la</span> <span class="n">cantidad</span> <span class="n">de</span> <span class="n">numeros</span> <span class="n">a</span> <span class="n">sumar</span><span class="p">:</span> <span class="mi">3</span>
+<span class="mi">123</span> 
+<span class="mi">3</span> 
+<span class="mi">3</span>
+
+<span class="n">La</span> <span class="n">suma</span> <span class="n">es</span><span class="p">:</span> <span class="mi">129</span>
+</pre></div>
+</div>
+</li>
+<li><p>Usando <strong>espacio</strong> y como delimitador <strong>enter</strong> al final:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ingrese</span> <span class="n">la</span> <span class="n">cantidad</span> <span class="n">de</span> <span class="n">numeros</span> <span class="n">a</span> <span class="n">sumar</span><span class="p">:</span> <span class="mi">3</span>
+<span class="mi">123</span> <span class="mi">3</span> <span class="mi">3</span>
+
+<span class="n">La</span> <span class="n">suma</span> <span class="n">es</span><span class="p">:</span> <span class="mi">129</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="estructura-while">
+<h4>4.2.2. Estructura while<a class="headerlink" href="#estructura-while" title="Permalink to this headline">#</a></h4>
+<p>La forma de esta estructura se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="p">(</span><span class="n">condicion_control</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong></p>
+<p>Escriba un programa que calcule e imprima el promedio de varios enteros posivos. Suponga que el último valor leído es el centinela 9999. Una secuencia típica de entrada sería:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="mi">8</span> <span class="mi">11</span> <span class="mi">7</span> <span class="mi">9</span> <span class="mi">9999</span>
+</pre></div>
+</div>
+<p>Que indica que el promedio de todos los valores que preceden a 9999 se va a calcular. (<strong>Pista</strong>: Hacer esto con un ciclo <strong>while</strong> dentro del cual se lean los valores a promediar, siempre y cuando la condición de que lo leído no sea 9999, se cumpla).</p>
+<p>La solución se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">CENTINELA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9999</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"> </span><span class="c1">// Numero a leer</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Suma de los numeros</span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%u&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CENTINELA</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">La suma es: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Ingresando los valores 10, 8, 11, 7 y 9 se obtiene 45 como resultado de la suma, veamos el programa en acción para este caso:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="mi">8</span> <span class="mi">11</span> <span class="mi">7</span> <span class="mi">9</span> <span class="mi">9999</span>
+
+<span class="n">La</span> <span class="n">suma</span> <span class="n">es</span><span class="p">:</span> <span class="mi">45</span>
+</pre></div>
+</div>
+</section>
+<section id="estructura-do-while">
+<h4>4.2.3. Estructura do-while<a class="headerlink" href="#estructura-do-while" title="Permalink to this headline">#</a></h4>
+<p>La forma de esta estructura se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">instrucciones</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">condicion_control</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong></p>
+<p>Hacer un programa que solicite un número de tal manera que si este es negativo mostrara un mensaje que diga <code class="docutils literal notranslate"><span class="pre">&quot;Número</span> <span class="pre">negativo</span> <span class="pre">asi</span> <span class="pre">que</span> <span class="pre">suerte&quot;</span></code>, y si es positivo mostrará un mensaje que diga: <code class="docutils literal notranslate"><span class="pre">&quot;Número</span> <span class="pre">positivo,</span> <span class="pre">siga</span> <span class="pre">usted&quot;</span></code> y solicite nuevamente un número.</p>
+<p>La solución se muestra a continuación:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"> </span><span class="c1">// Numero a leer</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Numero positivo, siga usted</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Numero negativo asi que suerte</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Fin del programa</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestra una salida típica al ejecutar el anterior programa:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="n">Numero</span> <span class="n">positivo</span><span class="p">,</span> <span class="n">siga</span> <span class="n">usted</span>
+<span class="mi">2</span>
+<span class="n">Numero</span> <span class="n">positivo</span><span class="p">,</span> <span class="n">siga</span> <span class="n">usted</span>
+<span class="mi">3</span>
+<span class="n">Numero</span> <span class="n">positivo</span><span class="p">,</span> <span class="n">siga</span> <span class="n">usted</span>
+<span class="mi">0</span>
+<span class="n">Numero</span> <span class="n">positivo</span><span class="p">,</span> <span class="n">siga</span> <span class="n">usted</span>
+<span class="o">-</span><span class="mi">7</span>
+<span class="n">Numero</span> <span class="n">negativo</span> <span class="n">asi</span> <span class="n">que</span> <span class="n">suerte</span>
+
+<span class="n">Fin</span> <span class="k">del</span> <span class="n">programa</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 </section>
 
