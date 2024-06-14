@@ -563,12 +563,12 @@ Hello, World
 <section id="tipos-de-datos">
 <h2>2. Tipos de Datos<a class="headerlink" href="#tipos-de-datos" title="Permalink to this headline">#</a></h2>
 <p>Los tipos de datos básicos incorporados en C son los enteros, los reales y los tipo carácter. En la siguiente tabla se resumen éstos:</p>
-<center> {numref}`Tabla 1`. Tipos de datos primitivos en C </center>
+<p style="text-align:center">
 | Tipo de dato             | Tamaño (en bytes) | Rango                     | Especificador de formato |
 |--------------------------|-------------------|---------------------------|--------------------------|
 | ```short (short int)```                   | 2    | -32768 to 32767       | ```%hd```                |
 | ```unsigned short (unsigned short int)``` | 2    | 0 to 65535            | ```%hu```                |
-| ```unsigned (unsigned int)```             | 4    | 0 to 4294967295           | %u                   |
+| ```unsigned (unsigned int)```             | 4    | 0 to 4294967295           | ```%u```             |
 | ```int```                                 | 4    | 2147483648 to 2147483647  | ```%d```             |
 | ```long (long int)```                     | 4    | 2147483648 to 2147483647  | ```%ld```            |
 | ```unsigned long (unsigned long int)```   | 4    | 0 to 4294967295           | ```%lu```            |
@@ -579,12 +579,14 @@ Hello, World
 | ```float```                               | 4     |                          | ```%f```             |
 | ```double```                              | 8     |                          | ```%lf```            |
 | ```long double```                         | 12    |                          | ```%Lf```            |
+{numref}`Tabla 1` Tipos de datos primitivos en C 
+</p>
 <p>El manejo de los tipos de datos en C es muy similar al que se hace en java. Cabe resaltar que de los tipos de datos enteros, el tipo <strong><code class="docutils literal notranslate"><span class="pre">char</span></code></strong> se utiliza para representar caracteres de modo que las constantes tipo <strong><code class="docutils literal notranslate"><span class="pre">char</span></code></strong> pueden ser:</p>
 <ol class="simple">
 <li><p>Caracteres encerrados entre comillas (<code class="docutils literal notranslate"><span class="pre">'A'</span></code>, <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, <code class="docutils literal notranslate"><span class="pre">'p'</span></code>) asociados a un valor ascii.</p></li>
 <li><p>Caracteres no imprimibles (tabulación, avance de página) los cuales se representan con secuencias de escape (<code class="docutils literal notranslate"><span class="pre">'\n'</span></code>, <code class="docutils literal notranslate"><span class="pre">'\t'</span></code>). La siguiente tabla muestra algunos de estos caracteres:</p></li>
 </ol>
-<p><strong>Tabla 2</strong>. Secuencias de escape en C</p>
+<p style="text-align:center">
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Carácter de escape</p></th>
@@ -593,65 +595,70 @@ Hello, World
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>\a</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\a</span></code></p></td>
 <td><p>Carácter de alerta (timbre)</p></td>
-<td><p>7</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">7</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>\b</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\b</span></code></p></td>
 <td><p>Retroceso de espacio</p></td>
-<td><p>8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>\f</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\f</span></code></p></td>
 <td><p>Avance de página</p></td>
-<td><p>12</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">12</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>\n</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\n</span></code></p></td>
 <td><p>Nueva línea</p></td>
-<td><p>10</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>\r</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\r</span></code></p></td>
 <td><p>Retorno de carro</p></td>
-<td><p>13</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">13</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>\t</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\t</span></code></p></td>
 <td><p>Tabulación horizontal</p></td>
-<td><p>9</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">9</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>\v</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\v</span></code></p></td>
 <td><p>Tabulación vertical</p></td>
-<td><p>11</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">11</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>\</p></td>
-<td><p>Backslash ( \ ).</p></td>
-<td><p>92</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\\</span></code></p></td>
+<td><p>Backslash ( <code class="docutils literal notranslate"><span class="pre">\</span></code> ).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">92</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>?</p></td>
-<td><p>Interrogación ( ? ).</p></td>
-<td><p>63</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\?</span></code></p></td>
+<td><p>Interrogación ( <code class="docutils literal notranslate"><span class="pre">?</span></code> ).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">63</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>‘</p></td>
-<td><p>Comilla sencilla ( ‘ ).</p></td>
-<td><p>39</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\'</span></code></p></td>
+<td><p>Comilla sencilla ( <code class="docutils literal notranslate"><span class="pre">'</span></code> ).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">39</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p>“</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\&quot;</span></code></p></td>
 <td><p>Comillas dobles.</p></td>
-<td><p>34</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">34</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>\0nn</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\0nn</span></code></p></td>
 <td><p>Número octal.</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>\Xnn</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\Xnn</span></code></p></td>
 <td><p>Número hexadecimal</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>\0</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\0</span></code></p></td>
 <td><p>Carácter nulo o terminación de cadena</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref std std-numref docutils literal notranslate"><span class="pre">Tabla</span> <span class="pre">2</span></code> Secuencias de escape en C</p></td>
+<td><p></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
-<p>La equivalencia entre un carácter específico y su valor ascii se puede encontrar en una tabla ascii como la mostrada en el siguiente <a class="reference external" href="http://www.fceia.unr.edu.ar/~ifc/apuntes/tascii.pdf">enlace</a>.</p>
+</p>
+La equivalencia entre un carácter específico y su valor ascii se puede encontrar en una tabla ascii como la mostrada en el siguiente [enlace](http://www.fceia.unr.edu.ar/~ifc/apuntes/tascii.pdf).
 <p>Jupyter Book also lets you write text-based notebooks using MyST Markdown.
 See <a class="reference external" href="https://jupyterbook.org/file-types/myst-notebooks.html">the Notebooks with MyST Markdown documentation</a> for more detailed instructions.
 This page shows off a notebook written in MyST Markdown.</p>
