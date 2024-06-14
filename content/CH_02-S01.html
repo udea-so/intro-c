@@ -532,7 +532,22 @@ title="Print to PDF"
      6.1. Paso por valor
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-por-referencia">
+     6.2. Paso por referencia
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejemplos-de-repaso">
+     Ejemplos de repaso
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   7. Enlaces de interes
+  </a>
  </li>
 </ul>
 
@@ -701,7 +716,22 @@ title="Print to PDF"
      6.1. Paso por valor
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-por-referencia">
+     6.2. Paso por referencia
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejemplos-de-repaso">
+     Ejemplos de repaso
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   7. Enlaces de interes
+  </a>
  </li>
 </ul>
 
@@ -1653,7 +1683,7 @@ el mensaje: <strong>“ERROR: <numero> no está asociado a ningún signo”</str
 <section id="estructura-while">
 <h4>4.2.2. Estructura while<a class="headerlink" href="#estructura-while" title="Permalink to this headline">#</a></h4>
 <p>La forma de esta estructura se muestra a continuación:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="p">(</span><span class="n">condicion_control</span><span class="p">){</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="p">(</span><span class="n">condicion_control</span><span class="p">){</span><span class="w"></span>
 <span class="w">  </span><span class="n">instrucciones</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -2005,7 +2035,7 @@ el mensaje: <strong>“ERROR: <numero> no está asociado a ningún signo”</str
 </pre></div>
 </div>
 <p><strong>Ejemplo</strong></p>
-<p>En el siguiente ejemplo se muestra una función que incrementa valor que se pasa al parámetro. Este, como los ejemplos vistos con anterioridad emplean el paso de funciones por argumento. A continuación se muestra el código solución (<span class="xref myst">simulación</span>):</p>
+<p>En el siguiente ejemplo se muestra una función que incrementa valor que se pasa al parámetro. Este, como los ejemplos vistos con anterioridad emplean el paso de funciones por argumento. A continuación se muestra el código solución:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
 <span class="c1">// Prototipo</span>
@@ -2026,6 +2056,7 @@ el mensaje: <strong>“ERROR: <numero> no está asociado a ningún signo”</str
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+<p>A continuación se muestra la simulación del código anterior:</p>
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Prototipo%0Avoid%20incremento%28int%20num%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20N%20%3D%203%3B%0A%20%20printf%28%22Valor%20de%20N%20antes%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22,%20N%29%3B%0A%20%20//%20Invocacion%0A%20%20incremento%28N%29%3B%0A%20%20printf%28%22Valor%20de%20N%20despues%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22,%20N%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A//%20Definicion%0Avoid%20incremento%28int%20num%29%20%7B%0A%20%20num%2B%2B%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 <p><strong>Preguntas</strong></p>
 <ol class="simple">
@@ -2033,6 +2064,188 @@ el mensaje: <strong>“ERROR: <numero> no está asociado a ningún signo”</str
 <li><p>¿Cambian ambas variables?</p></li>
 </ol>
 </section>
+<section id="paso-por-referencia">
+<h3>6.2. Paso por referencia<a class="headerlink" href="#paso-por-referencia" title="Permalink to this headline">#</a></h3>
+<p>Una función por referencia es aquella que emplea como parámetros apuntadores (variables que almacenan direcciones de memoria, este tema se tratará después con más detalle). En este caso particular cuando una función es llamada por referencia lo que se pasa es la dirección de la variable pasada como argumento (anteponiendo el ampersand (<strong><code class="docutils literal notranslate"><span class="pre">&amp;</span></code></strong>) al nombre de esta (<strong><code class="docutils literal notranslate"><span class="pre">&amp;var</span></code></strong> <code class="docutils literal notranslate"><span class="pre">=</span></code> <strong><code class="docutils literal notranslate"><span class="pre">Dirección</span> <span class="pre">de</span> <span class="pre">var</span></code></strong>)), con esto, la función no trabaja sobre una copia local del argumento, sino directamente sobre la variable en sí, pues su contenido en memoria es manipulado a través del apuntador asociado al parámetro de la función. A continuación, se muestra la forma básica de trabajo para llamados por referencia:</p>
+<ul>
+<li><p><strong>Declaración o prototipo</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">type1</span><span class="w"> </span><span class="o">*</span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">type2</span><span class="w">  </span><span class="o">*</span><span class="n">var2</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El siguiente código es un ejemplo de lo anterior:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Definición</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">type1</span><span class="w"> </span><span class="o">*</span><span class="n">var1</span><span class="p">,</span><span class="w"> </span><span class="n">type2</span><span class="w">  </span><span class="o">*</span><span class="n">var2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Intrucciones </span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="n">code</span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El siguiente código es un ejemplo de lo anterior:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">num</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Nota</strong>: Tanto en la declaración como en la definición note que el manejo del parametro se hizo anteponiendo a la variable un simbolo asterisco (<strong><code class="docutils literal notranslate"><span class="pre">*</span></code></strong>), esto se debe a que el parametro es una variable tipo apuntador, este será un tema posterior, por ahora, tenga en cuenta que gracias al asterisco es que se puede cambiar el contenido almacenado en la memoria de la variable a la que el parametro tipo apuntador num apunta.</p>
+<ul class="simple">
+<li><p><strong>Invocacion</strong></p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="w"> </span><span class="n">var_resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">function_name</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">arg1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg2</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>El siguiente código es un ejemplo de lo anterior:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">incremento</span><span class="p">(</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Observe que la invocación para el caso se hizo con el operador ampersand (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>), esto tiene su razón de ser pero será abordado después, por ahora tenga en cuenta que cuando se pasan variables a funciones y el llamado es por referencia se les debe anteponer el operador ampersand (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>) como en el ejemplo anterior y en el caso de la función scanf (analizada previamente).</p>
+</div>
+<p><strong>Ejemplo</strong></p>
+<p>En el siguiente ejemplo se muestra una función que incrementa referencia que se pasa al parámetro, la idea es resumir todo lo expuesto anteriormente, no se preocupe si de entrada no coje el hilo, es el tema más dificil de manejar en C (incluso, personalmente fue algo difícil de entender en nuestro pregrado), pero una vez tenga claridad con esto todo fluirá.</p>
+<p>A continuación se muestra el codigo asociado:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Valor de N antes del llamado a la funcion: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">incremento</span><span class="p">(</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Valor de N despues del llamado a la funcion: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">num</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del codigo anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20incremento%28int%20*num%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20N%20%3D%203%3B%0A%20%20printf%28%22Valor%20de%20N%20antes%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22,%20N%29%3B%0A%20%20incremento%28%26N%29%3B%0A%20%20printf%28%22Valor%20de%20N%20despues%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22,%20N%29%3B%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20incremento%28int%20*num%29%20%7B%0A%20%20*num%20%2B%3D%201%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p><strong>Preguntas</strong>:</p>
+<ol class="simple">
+<li><p>¿Cuál es el valor de <code class="docutils literal notranslate"><span class="pre">N</span></code> antes y después del retorno de la función incremento?</p></li>
+</ol>
+</section>
+<section id="ejemplos-de-repaso">
+<h3>Ejemplos de repaso<a class="headerlink" href="#ejemplos-de-repaso" title="Permalink to this headline">#</a></h3>
+<ol>
+<li><p>Repase los ejemplos anteriormente mostrados y observe las diferencias en su ejecución. Para cada caso: ¿cual es el valor antes y despues de la función de incremento?</p>
+<ul>
+<li><p><strong>Llamada por valor</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Prototipo</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Valor de N antes del llamado a la funcion: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Invocacion</span>
+<span class="w">  </span><span class="n">incremento</span><span class="p">(</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Valor de N despues del llamado a la funcion: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// Definicion</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">num</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestra la simulación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Prototipo%0Avoid%20incremento%28int%20num%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20N%20%3D%203%3B%0A%20%20printf%28%22Valor%20de%20N%20antes%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22,%20N%29%3B%0A%20%20//%20Invocacion%0A%20%20incremento%28N%29%3B%0A%20%20printf%28%22Valor%20de%20N%20despues%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22,%20N%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A//%20Definicion%0Avoid%20incremento%28int%20num%29%20%7B%0A%20%20num%2B%2B%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+<li><p><strong>Lamada por referencia</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Valor de N antes del llamado a la funcion: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">incremento</span><span class="p">(</span><span class="o">&amp;</span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Valor de N despues del llamado a la funcion: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">incremento</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">num</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestra la simulación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20incremento%28int%20*num%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20N%20%3D%203%3B%0A%20%20printf%28%22Valor%20de%20N%20antes%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22,%20N%29%3B%0A%20%20incremento%28%26N%29%3B%0A%20%20printf%28%22Valor%20de%20N%20despues%20del%20llamado%20a%20la%20funcion%3A%20%25d%5Cn%22,%20N%29%3B%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20incremento%28int%20*num%29%20%7B%0A%20%20*num%20%2B%3D%201%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+</ul>
+</li>
+<li><p>Analice y entienda el siguiente código:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">intercambioReferencia</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">intercambioValor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Llamada por valor</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Antes del intercambio: x = %d; y = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">intercambioValor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Despues del intercambio: x = %d; y = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Llamada por referencia</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Antes del intercambio: x = %d; y = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">intercambioReferencia</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Despues del intercambio: x = %d; y = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">intercambioReferencia</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">px</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">py</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">px</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">px</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">py</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">py</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w">    </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">intercambioValor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del programa anterior, se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20intercambioReferencia%28int%20*x,%20int%20*y%29%3B%0Avoid%20intercambioValor%28int%20x,%20int%20y%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20x%20%3D%205,%20y%20%3D%2010%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Llamada%20por%20valor%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Antes%20del%20intercambio%3A%20x%20%3D%20%25d%3B%20y%20%3D%20%25d%5Cn%22,%20x%20,%20y%29%3B%20%20%20%20%0A%20%20%20%20intercambioValor%28x,%20y%29%3B%0A%20%20%20%20printf%28%22Despues%20del%20intercambio%3A%20x%20%3D%20%25d%3B%20y%20%3D%20%25d%5Cn%22,%20x%20,%20y%29%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Llamada%20por%20referencia%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Antes%20del%20intercambio%3A%20x%20%3D%20%25d%3B%20y%20%3D%20%25d%5Cn%22,%20x%20,%20y%29%3B%20%20%20%20%0A%20%20%20%20intercambioReferencia%28%26x,%20%26y%29%3B%0A%20%20%20%20printf%28%22Despues%20del%20intercambio%3A%20x%20%3D%20%25d%3B%20y%20%3D%20%25d%5Cn%22,%20x%20,%20y%29%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20intercambioReferencia%28int%20*px,%20int%20*py%29%20%7B%0A%20%20%20%20int%20temp%3B%0A%20%20%20%20temp%20%3D%20*px%3B%0A%20%20%20%20*px%20%3D%20*py%3B%0A%20%20%20%20*py%20%3D%20temp%3B%20%20%20%20%0A%7D%0A%0Avoid%20intercambioValor%28int%20x,%20int%20y%29%20%7B%0A%20%20%20%20int%20temp%3B%0A%20%20%20%20temp%20%3D%20x%3B%0A%20%20%20%20x%20%3D%20y%3B%0A%20%20%20%20y%20%3D%20temp%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+</ol>
+</section>
+</section>
+<section id="enlaces-de-interes">
+<h2>7. Enlaces de interes<a class="headerlink" href="#enlaces-de-interes" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://www.programiz.com/c-programming">Learn C Programming - The Definitive Guide</a></p></li>
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/c-programming-language/">C Programming Language</a></p></li>
+<li><p><a class="reference external" href="https://www.tutorialspoint.com/cprogramming/">C Tutorial</a></p></li>
+<li><p><a class="reference external" href="http://www.learn-c.org/">learn-c</a></p></li>
+<li><p><a class="reference external" href="https://www.w3schools.in/c-tutorial/">C tutorial - w3schools</a></p></li>
+<li><p><a class="reference external" href="https://hackr.io/">hackr.io</a></p></li>
+<li><p><a class="reference external" href="https://beginnersbook.com/2014/01/c-tutorial-for-beginners-with-examples/">C Tutorial – Learn C Programming with examples
+</a></p></li>
+<li><p><a class="reference external" href="https://alison.com/course/introduction-to-c-programming">Introduction to C Programming</a></p></li>
+<li><p><a class="reference external" href="https://www3.ntu.edu.sg/home/ehchua/programming/index.html">programming notes</a></p></li>
+</ol>
 </section>
 </section>
 
