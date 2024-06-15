@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Segundo tema &#8212; Introducción al lenguaje C</title>
+    <title>Apuntadores y arreglos &#8212; Introducción al lenguaje C</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Introducción basica" href="CH_02-S01.html" />
+    <link rel="prev" title="Introducción al lenguaje C" href="CH_02-S01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -150,12 +150,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="CH_02-S01.html">
-     Introducción basica
+     Introducción al lenguaje C
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Segundo tema
+     Apuntadores y arreglos
     </a>
    </li>
   </ul>
@@ -384,6 +384,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conceptos-previos-que-sucede-cuando-se-declara-una-variable">
+   1. Conceptos previos - ¿Que sucede cuando se declara una variable?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#an-example-cell">
    An example cell
   </a>
@@ -407,7 +412,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Segundo tema</h1>
+                <h1>Apuntadores y arreglos</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -417,6 +422,11 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conceptos-previos-que-sucede-cuando-se-declara-una-variable">
+   1. Conceptos previos - ¿Que sucede cuando se declara una variable?
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#an-example-cell">
    An example cell
@@ -442,11 +452,53 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="segundo-tema">
-<h1>Segundo tema<a class="headerlink" href="#segundo-tema" title="Permalink to this headline">#</a></h1>
-<p>Jupyter Book also lets you write text-based notebooks using MyST Markdown.
-See <a class="reference external" href="https://jupyterbook.org/file-types/myst-notebooks.html">the Notebooks with MyST Markdown documentation</a> for more detailed instructions.
-This page shows off a notebook written in MyST Markdown.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="apuntadores-y-arreglos">
+<h1>Apuntadores y arreglos<a class="headerlink" href="#apuntadores-y-arreglos" title="Permalink to this headline">#</a></h1>
+<div class="admonition-objetivos admonition">
+<p class="admonition-title">Objetivos</p>
+<ul class="simple">
+<li><p>Conocer y utilizar los apuntadores para el uso eficiente de la memoria.</p></li>
+<li><p>Presentar el uso de las funciones y establecer cómo se realiza el paso de parámetros a funciones.</p></li>
+<li><p>Conocer y aplicar el concepto de arreglos de una y más dimensiones en la resolución de problemas mediante algoritmos.</p></li>
+<li><p>Conocer cómo es posible asignar de forma eficiente espacio en memoria.</p></li>
+</ul>
+</div>
+<section id="conceptos-previos-que-sucede-cuando-se-declara-una-variable">
+<h2>1. Conceptos previos - ¿Que sucede cuando se declara una variable?<a class="headerlink" href="#conceptos-previos-que-sucede-cuando-se-declara-una-variable" title="Permalink to this headline">#</a></h2>
+<p>Cuando una variable se declara esta pasa a ocupar un lugar de memoria cuyo tamaño dependerá del número de bytes asociados al tipo de dato con el cual esta se declara. Suponiendo que se tienen las siguientes instrucciones en C:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">35</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La siguiente figura ilustra su representación en memoria:</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/CH_02-S02-fig1.png" src="../_images/CH_02-S02-fig1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Representación de una variable en memoria.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Desde el punto de vista del mapa de memoria y suponiendo que una variable tipo int ocupa 4 bytes tenemos el siguiente resultado por instrucción:</p>
+<table>
+<tbody>
+<tr>
+<td>&nbsp;Instrucción</td>
+<td>Representación en&nbsp;memoria&nbsp;</td>
+</tr>
+<tr>
+<td>int i;</td>
+<td>
+<img src="local/img/CH_02-S02-fig2.png" alt="var_mm1">
+</td>
+<tr>
+<td>i = 35;</td>
+<td>
+<img src="local/img/CH_02-S02-fig3.png" alt="var_mm2">
+</td>
+</tr>
+</tbody>
+</table>
+<p>Como se puede ver en la figura anterior, lo que se modifica cuando se hace manipulación sobre variables es el contenido almacenado en un lugar especifico de memoria. Entender esto es de vital importancia para manejar el próximo tema.</p>
+</section>
 <section id="an-example-cell">
 <h2>An example cell<a class="headerlink" href="#an-example-cell" title="Permalink to this headline">#</a></h2>
 <p>With MyST Markdown, you can define code cells with a directive like so:</p>
@@ -515,7 +567,7 @@ See the YAML at the top of this page for example.</p></li>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introducción basica</p>
+            <p class="prev-next-title">Introducción al lenguaje C</p>
         </div>
     </a>
 </div>
