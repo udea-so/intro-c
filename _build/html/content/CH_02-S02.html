@@ -389,19 +389,21 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#an-example-cell">
-   An example cell
+  <a class="reference internal nav-link" href="#entrando-en-materia-algunos-aspectos-sobre-los-apuntadores">
+   2. Entrando en materia - Algunos aspectos sobre los apuntadores
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">
-   Create a notebook with MyST Markdown
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">
-   Quickly add YAML metadata for MyST Notebooks
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#que-es-un-apuntador">
+     2.1. ¿Que es un apuntador?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#como-se-declara-un-apuntador">
+     2.2. ¿Como se declara un apuntador?
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -428,19 +430,21 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#an-example-cell">
-   An example cell
+  <a class="reference internal nav-link" href="#entrando-en-materia-algunos-aspectos-sobre-los-apuntadores">
+   2. Entrando en materia - Algunos aspectos sobre los apuntadores
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">
-   Create a notebook with MyST Markdown
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">
-   Quickly add YAML metadata for MyST Notebooks
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#que-es-un-apuntador">
+     2.1. ¿Que es un apuntador?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#como-se-declara-un-apuntador">
+     2.2. ¿Como se declara un apuntador?
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -478,61 +482,72 @@ title="Print to PDF"
 </figcaption>
 </figure>
 <p>Desde el punto de vista del mapa de memoria y suponiendo que una variable tipo int ocupa 4 bytes tenemos el siguiente resultado por instrucción:</p>
-<table>
-<tbody>
-<tr>
-<td>&nbsp;Instrucción</td>
-<td>Representación en&nbsp;memoria&nbsp;</td>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Instrucción</p></th>
+<th class="head"><p>Representación en memoria</p></th>
 </tr>
-<tr>
-<td>int i;</td>
-<td>
-<img src="local/img/CH_02-S02-fig2.png" alt="var_mm1">
-</td>
-<tr>
-<td>i = 35;</td>
-<td>
-<img src="local/img/CH_02-S02-fig3.png" alt="var_mm2">
-</td>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">i;</span></code></p></td>
+<td><p><img alt="var_mm1" src="../_images/CH_02-S02-fig2.png" /></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">35;</span></code></p></td>
+<td><p><img alt="var_mm2" src="../_images/CH_02-S02-fig3.png" /></p></td>
 </tr>
 </tbody>
 </table>
 <p>Como se puede ver en la figura anterior, lo que se modifica cuando se hace manipulación sobre variables es el contenido almacenado en un lugar especifico de memoria. Entender esto es de vital importancia para manejar el próximo tema.</p>
 </section>
-<section id="an-example-cell">
-<h2>An example cell<a class="headerlink" href="#an-example-cell" title="Permalink to this headline">#</a></h2>
-<p>With MyST Markdown, you can define code cells with a directive like so:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<section id="entrando-en-materia-algunos-aspectos-sobre-los-apuntadores">
+<h2>2. Entrando en materia - Algunos aspectos sobre los apuntadores<a class="headerlink" href="#entrando-en-materia-algunos-aspectos-sobre-los-apuntadores" title="Permalink to this headline">#</a></h2>
+<section id="que-es-un-apuntador">
+<h3>2.1. ¿Que es un apuntador?<a class="headerlink" href="#que-es-un-apuntador" title="Permalink to this headline">#</a></h3>
+<p>Un apuntador es una variable que almacena una <strong>dirección de memoria y no un valor</strong> como ocurre en el caso de las variables normales. La siguiente tabla resalta este hecho:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Instrucciones</p></th>
+<th class="head"><p>Mapa de memoria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*p;</span></code><br><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">1000;</span></code><br><br><strong>Nota</strong>: Supóngase que el apuntador <code class="docutils literal notranslate"><span class="pre">p</span></code> se encuentra en la posición 500</p></td>
+<td><p><img alt="var_mm1" src="../_images/CH_02-S02-fig4.png" /></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*p;</span></code><br><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">1000;</span></code><br><br><strong>Nota</strong>: Supóngase que la variable <code class="docutils literal notranslate"><span class="pre">p</span></code> se encuentra en la posición 500</p></td>
+<td><p><img alt="var_mm2" src="../_images/CH_02-S02-fig5.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<p>Como se puede notar en la figura anterior, cuando el valor almacenado en el apuntador hará referencia a la dirección 1000 y no al valor de 1000, esto nos permitirá acceder a dicho lugar de memoria desde el apuntador. Más tarde veremos cómo. Así mismo, como un apuntador guarda una dirección de memoria y teniendo en cuenta que para el ejemplo se supone una arquitectura en la cual se manejan 32 bits ( equivalentes a 4 bytes), esto hará que una variable tipo apuntador sin importar el tipo de dato al que apunte tenga un tamaño de 4 bytes. (Este tamaño se define por la arquitectura. Por ejemplo si la maquina es de 64 bits entonces el tamaño ocupado por una variable tipo apuntador será de 8 bytes).</p>
+</section>
+<section id="como-se-declara-un-apuntador">
+<h3>2.2. ¿Como se declara un apuntador?<a class="headerlink" href="#como-se-declara-un-apuntador" title="Permalink to this headline">#</a></h3>
+<p>Un apuntador se declara de la siguiente manera (donde las cosas que se encuentran entre corchetes son opcionales):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="p">[</span><span class="n">modificadores_del_tipo</span><span class="p">]</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="n">valor</span><span class="w"> </span><span class="n">inicial</span><span class="p">];</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
-<p>When your book is built, the contents of any <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> blocks will be
-executed with your default Jupyter kernel, and their outputs will be displayed
-in-line with the rest of your content.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>Jupyter Book uses <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/">Jupytext</a> to convert text-based files to notebooks, and can support <a class="reference external" href="https://jupyterbook.org/file-types/jupytext.html">many other text-based notebook files</a>.</p>
-</div>
+<p>Dónde:</p>
+<ul class="simple">
+<li><p><strong>Tipo</strong>: Tipo de dato al cual se desea apuntar, puede ser un tipo de dato simple (<code class="docutils literal notranslate"><span class="pre">char</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, etc.) o un tipo de dato complejo como una estructura).</p></li>
+<li><p><strong>Modificadores del tipo</strong>: Puede contener cualquier combinación de los modificadores de tipo <code class="docutils literal notranslate"><span class="pre">const</span></code>, <code class="docutils literal notranslate"><span class="pre">volatile</span></code> y <code class="docutils literal notranslate"><span class="pre">restrict</span></code>.</p></li>
+<li><p><strong>Nombre</strong>: Nombre del apuntador.</p></li>
+<li><p><strong>Valor inicial</strong>: Valor inicial del apuntador.</p></li>
+</ul>
+<p>La siguiente figura muestra esto lo anterior en términos del mapa de memoria:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Instrucciones</p></th>
+<th class="head"><p>Mapa de memoria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">short</span> <span class="pre">i</span> <span class="pre">=</span> <span class="pre">5;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">short</span> <span class="pre">*ptr</span> <span class="pre">=</span> <span class="pre">&amp;i;</span></code><br> <br> <strong>Nota</strong>: <ul> <li>El tamaño de una variables short es de 2 bytes.</li> <li>El tamaño de una variable tipo apuntador es de 4 bytes.</li> <li>En el dibujo del mapa de memoria cada dirección aumenta de 1 en 1</li> </ul></p></td>
+<td><p><img alt="mem" src="../_images/CH_02-S02-fig6.png" /></p></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="create-a-notebook-with-myst-markdown">
-<h2>Create a notebook with MyST Markdown<a class="headerlink" href="#create-a-notebook-with-myst-markdown" title="Permalink to this headline">#</a></h2>
-<p>MyST Markdown notebooks are defined by two things:</p>
-<ol class="simple">
-<li><p>YAML metadata that is needed to understand if / how it should convert text files to notebooks (including information about the kernel needed).
-See the YAML at the top of this page for example.</p></li>
-<li><p>The presence of <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> directives, which will be executed with your book.</p></li>
-</ol>
-<p>That’s all that is needed to get started!</p>
-</section>
-<section id="quickly-add-yaml-metadata-for-myst-notebooks">
-<h2>Quickly add YAML metadata for MyST Notebooks<a class="headerlink" href="#quickly-add-yaml-metadata-for-myst-notebooks" title="Permalink to this headline">#</a></h2>
-<p>If you have a markdown file and you’d like to quickly add YAML metadata to it, so that Jupyter Book will treat it as a MyST Markdown Notebook, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">myst</span> <span class="n">init</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">markdownfile</span><span class="o">.</span><span class="n">md</span>
-</pre></div>
-</div>
 </section>
 </section>
 
