@@ -425,6 +425,18 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usos-de-los-apuntadores">
+     2.4. Usos de los apuntadores
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funciones-y-apuntadores">
+       2.4.1. Funciones y apuntadores
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -484,6 +496,18 @@ title="Print to PDF"
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#ejemplos">
        2.3.3. Ejemplos
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usos-de-los-apuntadores">
+     2.4. Usos de los apuntadores
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#funciones-y-apuntadores">
+       2.4.1. Funciones y apuntadores
       </a>
      </li>
     </ul>
@@ -707,6 +731,8 @@ title="Print to PDF"
 </tbody>
 </table>
 <p>Note que en la última instrucción resaltada el cambio del contenido de la sección de memoria asociado a la variable <code class="docutils literal notranslate"><span class="pre">i</span></code> no se realizó desde esta (<code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">5</span></code>) sino desde el apuntador <code class="docutils literal notranslate"><span class="pre">p</span></code> (<code class="docutils literal notranslate"><span class="pre">*p</span> <span class="pre">=</span> <span class="pre">5</span></code>) el cual previamente se puso a apuntar a dicho lugar de memoria (<code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">&amp;i</span></code>).</p>
+<p>La simulación del código anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20i,j%3B%0A%20%20int%20*p%3B%20//Apuntador%20a%20un%20entero%0A%20%20p%20%3D%20%26i%3B%0A%20%20*p%20%3D%205%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 </li>
 <li><p>A continuación se muestra otro ejemplo en el cual se resalta que es posible que varios apuntadores estén apuntando a un mismo lugar de memoria. Tenga en cuenta lo siguientes enunciados:</p>
 <ul class="simple">
@@ -742,8 +768,39 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
+<p>La simulación del código anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20i%3B%0A%20%20int%20*p,*q,*r%3B%0A%20%20p%20%3D%20%26i%3B%0A%20%20q%20%3D%20%26i%3B%0A%20%20r%20%3D%20p%3B%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 </li>
 </ol>
+</section>
+</section>
+<section id="usos-de-los-apuntadores">
+<h3>2.4. Usos de los apuntadores<a class="headerlink" href="#usos-de-los-apuntadores" title="Permalink to this headline">#</a></h3>
+<section id="funciones-y-apuntadores">
+<h4>2.4.1. Funciones y apuntadores<a class="headerlink" href="#funciones-y-apuntadores" title="Permalink to this headline">#</a></h4>
+<p>Como se vio en la primera parte del laboratorio, existen dos maneras de hacer llamados a funciones, por referencia y por valor. Cuando se realiza un <strong>llamado por valor</strong>; se trabaja sobre una copia de la variable pasada como argumento y por lo tanto la variable original (la que se pasó como argumento) no se modifica. Por otro lado, cuando se realiza un <strong>llamado por referencia</strong> al estar accediendo al lugar de memoria en el que se encuentra la variable pasada como argumento es posible modificar el valor original de la variable pasada como argumento. La siguiente tabla compara un poco la diferencia entre referencia y valor:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ítem analizado</p></th>
+<th class="head"><p>Llamada por valor</p></th>
+<th class="head"><p>Llamada por referencia</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Declaración</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">swap(int</span> <span class="pre">i,</span> <span class="pre">int</span> <span class="pre">j);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">swap(int</span> <span class="pre">*i,</span> <span class="pre">int</span> <span class="pre">*j);</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Definición</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">swap(int</span> <span class="pre">i,</span> <span class="pre">int</span> <span class="pre">j)</span> <span class="pre">{</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">int</span> <span class="pre">t;</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">t</span> <span class="pre">=</span> <span class="pre">x;</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">i</span> <span class="pre">=</span> <span class="pre">j;</span></code>  <br>  <code class="docutils literal notranslate">&#160; <span class="pre">j</span> <span class="pre">=</span> <span class="pre">t;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">v1</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">v2</span> <span class="pre">=</span> <span class="pre">2;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">swap(v1,</span> <span class="pre">v2);</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Invocación</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">swap(int</span> <span class="pre">*i,</span> <span class="pre">*int</span> <span class="pre">j)</span> <span class="pre">{</span></code> <br> <code class="docutils literal notranslate">&#160; <span class="pre">int</span> <span class="pre">t;</span></code> <br> <code class="docutils literal notranslate">&#160; <span class="pre">t</span> <span class="pre">=</span> <span class="pre">*i;</span></code> <br> <code class="docutils literal notranslate">&#160; <span class="pre">*i</span> <span class="pre">=</span> <span class="pre">*j;</span></code> <br> <code class="docutils literal notranslate">&#160; <span class="pre">*j</span> <span class="pre">=</span> <span class="pre">t;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">v1</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">v2</span> <span class="pre">=</span> <span class="pre">2;</span></code> <br><code class="docutils literal notranslate"><span class="pre">swap(&amp;v1,</span> <span class="pre">&amp;v2);</span></code></p></td>
+</tr>
+</tbody>
+</table>
 <p><strong>Solución</strong>: Las instrucciones que se están evaluando en un momento dado se resaltan en la siguiente tabla
 1.</p>
 </section>
