@@ -403,6 +403,28 @@ title="Print to PDF"
      2.2. ¿Como se declara un apuntador?
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulacion-de-memoria-mediante-apuntadores">
+     2.3. Manipulación de memoria mediante apuntadores
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#referenciar-un-apuntador">
+       2.3.1. Referenciar un apuntador
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#des-referenciar-un-apuntador">
+       2.3.2. Des-referenciar un apuntador
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplos">
+       2.3.3. Ejemplos
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -444,6 +466,28 @@ title="Print to PDF"
      2.2. ¿Como se declara un apuntador?
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulacion-de-memoria-mediante-apuntadores">
+     2.3. Manipulación de memoria mediante apuntadores
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#referenciar-un-apuntador">
+       2.3.1. Referenciar un apuntador
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#des-referenciar-un-apuntador">
+       2.3.2. Des-referenciar un apuntador
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplos">
+       2.3.3. Ejemplos
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -475,10 +519,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>La siguiente figura ilustra su representación en memoria:</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id2">
 <img alt="../_images/CH_02-S02-fig1.png" src="../_images/CH_02-S02-fig1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Representación de una variable en memoria.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Representación de una variable en memoria.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Desde el punto de vista del mapa de memoria y suponiendo que una variable tipo int ocupa 4 bytes tenemos el siguiente resultado por instrucción:</p>
@@ -547,6 +591,162 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
+<p>Como se puede notar en la figura anterior, lo que se guarda en el apuntador es la dirección base (dirección del byte de menor peso) de la variable a la cual se apunta. Para el caso anterior, la variable <code class="docutils literal notranslate"><span class="pre">i</span></code> ocupa 2 bytes (<code class="docutils literal notranslate"><span class="pre">103</span></code> y <code class="docutils literal notranslate"><span class="pre">104</span></code>) sin embargo, en el apuntador se almacena la parte menos correspondiente al byte pesado (byte <code class="docutils literal notranslate"><span class="pre">103</span></code>).</p>
+<p>Si observa la segunda instrucción anteriormente mostrada, la forma como se obtuvo la dirección de <code class="docutils literal notranslate"><span class="pre">i</span></code> fue por medio del operador dirección (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>) antepuesto a la variable. La siguiente tabla se llena con base en la figura anterior:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Expresión</p></th>
+<th class="head"><p>Significado</p></th>
+<th class="head"><p>Valor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">i</span></code></p></td>
+<td><p>Contenido de <code class="docutils literal notranslate"><span class="pre">i</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;i</span></code></p></td>
+<td><p>Dirección de <code class="docutils literal notranslate"><span class="pre">i</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">103</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p>Contenido del apuntador <code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">103</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;p</span></code></p></td>
+<td><p>Dirección del apuntador <code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">106</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Note en la tabla anterior y la figura previa que con &amp; lo que se obtiene es dirección base de una variable no importa su tipo ya sea una variable normal (<code class="docutils literal notranslate"><span class="pre">char</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, etc), apuntador u otro. A continuación se muestra una forma simplificada (tomada de la sección <strong>Pointers basics</strong> de <a class="reference external" href="https://computer.howstuffworks.com/c22.htm">How Stuff Works</a>) para visualizar los apuntadores y las variables comunes de manera gráfica sin tener que recurrir al bosquejo del mapa de memoria previamente realizado.</p>
+<figure class="align-default" id="mem-ptr">
+<img alt="../_images/CH_02-S02-fig7.png" src="../_images/CH_02-S02-fig7.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Vista simplificada con variables y apuntadores.</span><a class="headerlink" href="#mem-ptr" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note la diferencia en la gráfica, en el dibujo el circulo representa una variable tipo apuntador y como tal almacena una dirección de memoria, la de <code class="docutils literal notranslate"><span class="pre">i</span></code> para el caso (103); por otro lado el vinculo entre el apuntador y la variable se representa por medio de la flecha. Finalmente, el contenido de la variable puede ser accedido o manipulado desde el símbolo <code class="docutils literal notranslate"><span class="pre">i</span></code>, o desde al desreferenciar el apuntador (usando <code class="docutils literal notranslate"><span class="pre">*ptr</span></code>), pero este sera un tema a tratar después.</p>
+<p>Una forma aun mas simplificada e incluso mas conveniente al momento de hacer pruebas de escritorio se muestra a continuación. En esta solo se resalta el vinculo del apuntador con la variable:</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/CH_02-S02-fig8.png" src="../_images/CH_02-S02-fig8.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Vista aun mas simplificada con variables y apuntadores.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="manipulacion-de-memoria-mediante-apuntadores">
+<h3>2.3. Manipulación de memoria mediante apuntadores<a class="headerlink" href="#manipulacion-de-memoria-mediante-apuntadores" title="Permalink to this headline">#</a></h3>
+<p>Una de las aplicaciones más importantes es el acceso directo a memoria para su manipulación. Para ello, se manejan dos operadores importantes los cuales el operador referencia (&amp;) y el operador des-referencia (*).</p>
+<section id="referenciar-un-apuntador">
+<h4>2.3.1. Referenciar un apuntador<a class="headerlink" href="#referenciar-un-apuntador" title="Permalink to this headline">#</a></h4>
+<p>Consiste en asociar el apuntador a una dirección específica (durante la declaración o después de esta), para esto se suele usar el operador &amp; para obtener la dirección de la variable en cuestión. A continuación se muestra la forma como normalmente se hace esto:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">apuntador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">variable</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>También es posible referenciar un apuntador pasándole el valor que se tiene en otro apuntador. Note que no se hizo uso del operador &amp; en este caso:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">apuntador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">variable</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Todo apuntador debe inicializarse antes de usarse. Si esto no se hace, cuando intente usarlo para hacer alguna operación en memoria el programa sacara un error. Un puntero que no ha sido inicializado se conoce como <strong>Wild pointer</strong>.</p>
+</section>
+<section id="des-referenciar-un-apuntador">
+<h4>2.3.2. Des-referenciar un apuntador<a class="headerlink" href="#des-referenciar-un-apuntador" title="Permalink to this headline">#</a></h4>
+<p>Para poder acceder al lugar de memoria que está siendo apuntado por el puntero y realizar operaciones de lectura y escritura sobre esta dirección de memoria se debe des-referenciar el apuntador. Para ello se hace uso del operador des-referencia (*) después de la declaración del apuntador. El contenido del lugar de memoria apuntado (lectura) se obtiene de la siguiente manera:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">apuntador</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Ahora si lo que se desea hacer es escribir en el lugar de memoria apuntado se hace lo siguiente:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">apuntador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">variable</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="ejemplos">
+<h4>2.3.3. Ejemplos<a class="headerlink" href="#ejemplos" title="Permalink to this headline">#</a></h4>
+<ol>
+<li><p>Suponga que se tiene el siguiente fragmento de código fuente:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">//Apuntador a un entero</span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>También tenga en cuenta lo siguientes enunciados:</p>
+<ul class="simple">
+<li><p>Suponga que <code class="docutils literal notranslate"><span class="pre">i</span></code> y <code class="docutils literal notranslate"><span class="pre">j</span></code> son de <code class="docutils literal notranslate"><span class="pre">4</span></code> bytes y ocupan las direcciones base <code class="docutils literal notranslate"><span class="pre">1000</span></code> y <code class="docutils literal notranslate"><span class="pre">1004</span></code>.</p></li>
+<li><p>El apuntador <code class="docutils literal notranslate"><span class="pre">p</span></code> ocupa las direccione base <code class="docutils literal notranslate"><span class="pre">2000</span></code>.</p></li>
+<li><p>Así mismo la arquitectura es de <code class="docutils literal notranslate"><span class="pre">64</span></code> bits por lo que el espacio ocupado por el apuntador sera de <code class="docutils literal notranslate"><span class="pre">8</span></code> bytes.</p></li>
+</ul>
+<p>Muestre la ejecución paso a paso del código anterior resaltando la evolución en memoria.</p>
+<p><strong>Solución</strong>: Las instrucciones que se están evaluando en un momento dado se resaltan en la siguiente tabla:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Instrucciones ejecutadas</p></th>
+<th class="head"><p>Contenido del mapa de memoria</p></th>
+<th class="head"><p>Visualización al estilo HowStuffWorks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">i,j;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*p;</span> <span class="pre">//Apuntador</span> <span class="pre">a</span> <span class="pre">un</span> <span class="pre">entero</span></code> <br> <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">&amp;i;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">*p</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></td>
+<td><p><img alt="fig9a" src="../_images/CH_02-S02-fig9a.png" /></p></td>
+<td><p><img alt="fig9a" src="../_images/CH_02-S02-fig9b.png" /></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">i,j;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*p;</span> <span class="pre">//Apuntador</span> <span class="pre">a</span> <span class="pre">un</span> <span class="pre">entero</span></code> <br>  <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">&amp;i;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">*p</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></td>
+<td><p><img alt="fig10a" src="../_images/CH_02-S02-fig10a.png" /></p></td>
+<td><p><img alt="fig10b" src="../_images/CH_02-S02-fig10b.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">i,j;</span></code> <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*p;</span> <span class="pre">//Apuntador</span> <span class="pre">a</span> <span class="pre">un</span> <span class="pre">entero</span></code> <br> <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">&amp;i;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">*p</span> <span class="pre">=</span> <span class="pre">5;</span></code></p></td>
+<td><p><img alt="fig11a" src="../_images/CH_02-S02-fig11a.png" /></p></td>
+<td><p><img alt="fig11b" src="../_images/CH_02-S02-fig11b.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<p>Note que en la última instrucción resaltada el cambio del contenido de la sección de memoria asociado a la variable <code class="docutils literal notranslate"><span class="pre">i</span></code> no se realizó desde esta (<code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">5</span></code>) sino desde el apuntador <code class="docutils literal notranslate"><span class="pre">p</span></code> (<code class="docutils literal notranslate"><span class="pre">*p</span> <span class="pre">=</span> <span class="pre">5</span></code>) el cual previamente se puso a apuntar a dicho lugar de memoria (<code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">&amp;i</span></code>).</p>
+</li>
+<li><p>A continuación se muestra otro ejemplo en el cual se resalta que es posible que varios apuntadores estén apuntando a un mismo lugar de memoria. Tenga en cuenta lo siguientes enunciados:</p>
+<ul class="simple">
+<li><p>Suponga que <code class="docutils literal notranslate"><span class="pre">i</span></code> y <code class="docutils literal notranslate"><span class="pre">j</span></code> son de <code class="docutils literal notranslate"><span class="pre">4</span></code> bytes y ocupan las direcciones base <code class="docutils literal notranslate"><span class="pre">1000</span></code> y <code class="docutils literal notranslate"><span class="pre">1008</span></code>.</p></li>
+<li><p>Los apuntadores <code class="docutils literal notranslate"><span class="pre">p</span></code>, <code class="docutils literal notranslate"><span class="pre">q</span></code> y <code class="docutils literal notranslate"><span class="pre">r</span></code> ocupan las direcciones base <code class="docutils literal notranslate"><span class="pre">2000</span></code>, <code class="docutils literal notranslate"><span class="pre">3000</span></code> y <code class="docutils literal notranslate"><span class="pre">4000</span></code>.</p></li>
+<li><p>Así mismo la arquitectura es de <code class="docutils literal notranslate"><span class="pre">32</span></code> bits por lo que el espacio ocupado por el apuntador será de <code class="docutils literal notranslate"><span class="pre">4</span></code> bytes.</p></li>
+</ul>
+<p>El codigo asociado se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="o">*</span><span class="n">q</span><span class="p">,</span><span class="o">*</span><span class="n">r</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Solución</strong>: la siguiente tabla muestra con detalle los resultados:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Instrucciones ejecutadas</p></th>
+<th class="head"><p>Contenido del mapa de memoria</p></th>
+<th class="head"><p>Visualización al estilo HowStuffWorks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">i</span> <span class="pre">=</span> <span class="pre">5;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*p,*q,*r;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">&amp;i;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">=</span> <span class="pre">&amp;i;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">p;</span></code></p></td>
+<td><p><img alt="fig12a" src="../_images/CH_02-S02-fig12a.png" /></p></td>
+<td><p><img alt="fig10b" src="../_images/CH_02-S02-fig12a.png" /></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<p><strong>Solución</strong>: Las instrucciones que se están evaluando en un momento dado se resaltan en la siguiente tabla
+1.</p>
+</section>
 </section>
 </section>
 </section>
