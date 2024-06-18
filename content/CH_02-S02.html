@@ -792,7 +792,7 @@ title="Print to PDF"
 <td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">swap(int</span> <span class="pre">*i,</span> <span class="pre">int</span> <span class="pre">*j);</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Definición</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">swap(int</span> <span class="pre">i,</span> <span class="pre">int</span> <span class="pre">j)</span> <span class="pre">{</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">int</span> <span class="pre">t;</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">t</span> <span class="pre">=</span> <span class="pre">x;</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">i</span> <span class="pre">=</span> <span class="pre">j;</span></code>  <br>  <code class="docutils literal notranslate">&#160; <span class="pre">j</span> <span class="pre">=</span> <span class="pre">t;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">swap(int</span> <span class="pre">i,</span> <span class="pre">int</span> <span class="pre">j)</span> <span class="pre">{</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">int</span> <span class="pre">t;</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">t</span> <span class="pre">=</span> <span class="pre">i;</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">i</span> <span class="pre">=</span> <span class="pre">j;</span></code>  <br>  <code class="docutils literal notranslate">&#160; <span class="pre">j</span> <span class="pre">=</span> <span class="pre">t;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">v1</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">v2</span> <span class="pre">=</span> <span class="pre">2;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">swap(v1,</span> <span class="pre">v2);</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Invocación</strong></p></td>
@@ -801,8 +801,172 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p><strong>Solución</strong>: Las instrucciones que se están evaluando en un momento dado se resaltan en la siguiente tabla
-1.</p>
+<p>El paso de funciones por referencia es de extrema utilidad cuando los argumentos que se están pasando a la función son pesados ya que esto evita que se tengan que hacer copias de dichos argumentos que en el peor de los casos pueden ocasionar que el programa colapse por llenar <strong>stack</strong>. También, mediante el uso de apuntadores, es posible superar la restricción que se tiene en la cual una función no puede retornar más de un elemento; así, por medio de referencias es posible retornar un array por ejemplo.</p>
+<p>Para indicar que una función será pasada por referencia, se emplean apuntadores en la cabecera de la función, esto porque lo que se pasa como argumento es la dirección de memoria. Por ejemplo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">tipo_retorno</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">tipo_1</span><span class="w"> </span><span class="o">*</span><span class="n">pName_1</span><span class="p">,</span><span class="n">tipo_2</span><span class="w"> </span><span class="o">*</span><span class="n">pName_2</span><span class="p">,...,</span><span class="n">tipo_N</span><span class="w"> </span><span class="o">*</span><span class="n">pName_N</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Para aterrizar un poco más lo anterior, supongamos esta función:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">j</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Como se pueden notar en la definición de la función anterior, en este caso ambos argumentos son pasados por referencia.</p>
+<p>Ahora en lo que respecta a la invocación si lo que se pasa es como parámetro es una variable como tal se debe hacer uso del operador <strong><code class="docutils literal notranslate"><span class="pre">&amp;</span></code></strong> para obtener la dirección de dicha variable y así inicializar el apuntador que funciona como argumento. Por otro lado si lo que se está pasando es un apuntador a una variable, no es necesario usar el operador <strong><code class="docutils literal notranslate"><span class="pre">&amp;</span></code></strong> ya que el valor almacenado en este será una dirección de memoria. La siguiente tabla ilustra esto:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Caso</p></th>
+<th class="head"><p>Invocación</p></th>
+<th class="head"><p>Observaciones</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Se está pasando una variable a una función que se llama por referencia</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">5,</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">10;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">swap(&amp;a,&amp;b);</span></code></p></td>
+<td><p>Es necesario usar el operador <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> para obtener la dirección de memoria de las variables y así poder inicializar lo apuntadores que funcionan como argumentos.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Se está pasando apuntador a una función que se llama por referencia</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">a</span> <span class="pre">=</span> <span class="pre">5,</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">10;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*px</span> <span class="pre">=</span> <span class="pre">&amp;a,</span> <span class="pre">*py;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">=</span> <span class="pre">&amp;b;</span></code> <br> <code class="docutils literal notranslate"><span class="pre">swap(px,py);</span></code></p></td>
+<td><p>Como lo que se pasan son apuntadores previamente inicializados, estos ya tienen la dirección de memoria de la variable que será pasada como argumento de la función, por lo tanto no es necesario usar el operador <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>La siguiente figura (tomada de <a class="reference external" href="http://computer.howstuffworks.com/c26.htm">HowStuffWorks</a>) muestra cómo trabaja una función por referencia:</p>
+<figure class="align-default" id="call-reff">
+<img alt="../_images/CH_02-S02-fig13.png" src="../_images/CH_02-S02-fig13.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Llamado por referencia.</span><a class="headerlink" href="#call-reff" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Para aclarar un poco observe el siguiente código:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">swap_ref</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">swap_val</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Llamada por valor </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Antes del swap -&gt; x = %d, y = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">swap_val</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Después del swap -&gt; x = %d, y = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Llamada por referencia </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Antes del swap -&gt; x = %d, y = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">swap_ref</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Después del swap -&gt; x = %d, y = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---------------------------------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">swap_val</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w">    </span>
+<span class="w">  </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">    </span>
+<span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w">    </span>
+<span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"> </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">swap_ref</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w">    </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior se puede observar a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20swap_ref%28int%20*x,%20int%20*y%29%3B%0Avoid%20swap_val%28int%20x,%20int%20y%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20x%20%3D%205,%20y%20%3D%2010%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Llamada%20por%20valor%20%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Antes%20del%20swap%20-%3E%20x%20%3D%20%25d,%20y%20%3D%20%25d%5Cn%22,x,y%29%3B%0A%20%20%20%20swap_val%28x,%20y%29%3B%0A%20%20%20%20printf%28%22Despu%C3%A9s%20del%20swap%20-%3E%20x%20%3D%20%25d,%20y%20%3D%20%25d%5Cn%22,x,y%29%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Llamada%20por%20referencia%20%5Cn%22%29%3B%0A%20%20%20%20printf%28%22Antes%20del%20swap%20-%3E%20x%20%3D%20%25d,%20y%20%3D%20%25d%5Cn%22,x,y%29%3B%0A%20%20%20%20swap_ref%28%26x,%20%26y%29%3B%0A%20%20%20%20printf%28%22Despu%C3%A9s%20del%20swap%20-%3E%20x%20%3D%20%25d,%20y%20%3D%20%25d%5Cn%22,x,y%29%3B%0A%20%20%20%20printf%28%22---------------------------------------------------%5Cn%22%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20swap_val%28int%20x,%20int%20y%29%20%7B%20%20%20%20%0A%20%20int%20t%3B%20%20%20%20%0A%20%20t%20%3D%20x%3B%20%20%20%20%0A%20%20x%20%3D%20y%3B%20%20%20%20%0A%20%20y%20%3D%20t%3B%20%0A%7D%0A%0Avoid%20swap_ref%28int%20*x,%20int%20*y%29%20%7B%0A%20%20int%20temp%3B%0A%20%20temp%20%3D%20*x%3B%0A%20%20*x%20%3D%20*y%3B%0A%20%20*y%20%3D%20temp%3B%20%20%20%20%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del código anterior se muestra a continuación.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------</span>
+<span class="n">Llamada</span> <span class="n">por</span> <span class="n">valor</span> 
+<span class="n">Antes</span> <span class="k">del</span> <span class="n">swap</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Después</span> <span class="k">del</span> <span class="n">swap</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="o">---------------------------------------------------</span>
+<span class="n">Llamada</span> <span class="n">por</span> <span class="n">referencia</span> 
+<span class="n">Antes</span> <span class="k">del</span> <span class="n">swap</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Después</span> <span class="k">del</span> <span class="n">swap</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">---------------------------------------------------</span>
+</pre></div>
+</div>
+<p>Una función también puede retornar un apuntador cuando es invocada, para hacer esto, en la definición y declaración de la función se debe indicar que la función retornara un apuntador lo cual se hace precediendo el nombre de la función por un asterisco (Ver parte resaltada e rojo a continuación en la <em>fig 5</em>). A continuación se muestra la forma que debe llevar la función para este caso:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">tipo_retorno</span><span class="w"> </span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">parámetros</span><span class="p">...)</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>Observe el siguiente fragmento de código, el cual consiste en una función que obtiene el valor mayor de un vector mediante apuntadores devolviendo la dirección del elemento mayor mediante un apuntador:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">mayor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="n">m</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La declaración de la función anterior se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">mayor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>Otra forma de declaración puede ser:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">mayor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>Recuerde lo importante en la declaración de la función es indicarle al compilador como van a usarse los parámetros.</p>
+<p>Así mismo, note también, que lo realimente importante es que se declaró un apuntador a un tipo de dato específico, se inicializo, se actualizo y luego se retornó este, en general en la definición de la función se sigue la siguiente plantilla:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="nf">funcion</span><span class="p">(</span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="n">arg1</span><span class="p">,...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w">  </span><span class="c1">// Declaración del apuntador</span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">arg</span><span class="p">;</span><span class="w"> </span><span class="c1">// Inicialización del apuntador</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="cm">/** Operaciones **/</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// Retorno del apuntador</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código descrito por partes anteriormente, se muestra completo a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">mayor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// Declaracion</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">-1</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mayor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span><span class="w"> </span><span class="c1">// Invocación</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;El elemento mayor del vector es: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// Definición</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="nf">mayor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="n">m</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">a</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se puede simular el código anterior:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20*mayor%28int%20*a,int%20n%29%3B%20//%20Declaracion%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20a%5B6%5D%20%3D%20%7B1,2,5,9,-1,3%7D%3B%0A%20%20%20%20int%20*p%3B%0A%20%20%20%20p%20%3D%20mayor%28a,5%29%3B%20//%20Invocaci%C3%B3n%0A%20%20%20%20printf%28%22El%20elemento%20mayor%20del%20vector%20es%3A%20%25d%5Cn%22,*p%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0A//%20Definici%C3%B3n%0Aint%20*mayor%28int%20*a,int%20n%29%20%7B%0A%20%20int%20i%3B%0A%20%20int%20*m%20%3D%20a%3B%0A%20%20a%2B%2B%3B%0A%20%20for%20%28i%20%3D%201%3B%20i%20%3C%20n%3B%20%2B%2Bi%20%29%0A%20%20%20%20if%28*m%20%3C%20*a%29%20%7B%0A%20%20%20%20%20%20m%20%3D%20a%3B%0A%20%20%20%20%20%20a%2B%2B%3B%0A%20%20%20%20%7D%0A%20%20return%20m%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La siguiente figura muestra el estado de ejecución del programa antes de hacer el retorno de la subrutina mayor:</p>
+<figure class="align-default" id="ret-ptr">
+<img alt="../_images/CH_02-S02-fig14.png" src="../_images/CH_02-S02-fig14.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Llamado por referencia.</span><a class="headerlink" href="#ret-ptr" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 </section>
