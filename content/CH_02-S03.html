@@ -398,6 +398,11 @@ title="Print to PDF"
      1.1. Declaración
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulacion-de-los-arreglos-multimensionales">
+     1.2. Manipulación de los arreglos multimensionales
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -427,6 +432,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#declaracion">
      1.1. Declaración
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manipulacion-de-los-arreglos-multimensionales">
+     1.2. Manipulación de los arreglos multimensionales
     </a>
    </li>
   </ul>
@@ -471,54 +481,70 @@ title="Print to PDF"
 <span class="n">arrayType</span><span class="w">  </span><span class="n">arrayName</span><span class="p">[</span><span class="n">Dim1</span><span class="p">][</span><span class="n">Dim2</span><span class="p">]...[</span><span class="n">DimN</span><span class="p">];</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Aca vamos…</p>
-<p>La siguiente figura ilustra su representación en memoria:</p>
-<figure class="align-default" id="id1">
-<img alt="../_images/CH_02-S02-fig1.png" src="../_images/CH_02-S02-fig1.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Representación de una variable en memoria.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Desde el punto de vista del mapa de memoria y suponiendo que una variable tipo int ocupa 4 bytes tenemos el siguiente resultado por instrucción:</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Instrucción</p></th>
-<th class="head"><p>Representación en memoria</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">i;</span></code></p></td>
-<td><p><img alt="var_mm1" src="../_images/CH_02-S02-fig2.png" /></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">35;</span></code></p></td>
-<td><p><img alt="var_mm2" src="../_images/CH_02-S02-fig3.png" /></p></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Instrucciones</p></th>
-<th class="head"><p>Mapa de memoria</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*p;</span></code><br><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">1000;</span></code><br><br><strong>Nota</strong>: Supóngase que el apuntador <code class="docutils literal notranslate"><span class="pre">p</span></code> se encuentra en la posición 500</p></td>
-<td><p><img alt="var_mm1" src="../_images/CH_02-S02-fig4.png" /></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">*p;</span></code><br><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">1000;</span></code><br><br><strong>Nota</strong>: Supóngase que la variable <code class="docutils literal notranslate"><span class="pre">p</span></code> se encuentra en la posición 500</p></td>
-<td><p><img alt="var_mm2" src="../_images/CH_02-S02-fig5.png" /></p></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="p">[</span><span class="n">modificadores_del_tipo</span><span class="p">]</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="n">valor</span><span class="w"> </span><span class="n">inicial</span><span class="p">];</span><span class="w"></span>
+<p><strong>Ejemplos</strong></p>
+<ol>
+<li><p>El siguiente código muestra como crear matrices sin inicializar.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="kt">float</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<figure class="align-default" id="mem-ptr">
-<img alt="../_images/CH_02-S02-fig7.png" src="../_images/CH_02-S02-fig7.png" />
+<p>La simulación se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=int%20A%5B2%5D%5B3%5D%3B%0Afloat%20B%5B3%5D%5B1%5D%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20C%5B2%5D%5B3%5D%5B4%5D%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida es como se muestra a continuacion:</p>
+<figure class="align-default" id="matrix-1">
+<img alt="../_images/CH_02-S03-fig1.png" src="../_images/CH_02-S03-fig1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Vista simplificada con variables y apuntadores.</span><a class="headerlink" href="#mem-ptr" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Declaración de varios arreglos multidimensionales.</span><a class="headerlink" href="#matrix-1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Los valores de los componentes de un arreglo declarado como variable global se inicializan en 0. Cuando la declaración del arreglo se hace local, los valores de los componentes del arreglo si inicializan como valores desconocidos.</p>
+</div>
+</li>
+<li><p>A veces, puede ser util <strong>inicializar</strong> una matrix al declararla, a continuacion se muestran algunos ejemplos. El muestra un ejemplo para este caso.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">matrix1</span><span class="p">[][</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">}</span><span class="w">  </span>
+<span class="w">                   </span><span class="p">};</span><span class="w"></span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">matrix2</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">matrix3</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}};</span><span class="w"> </span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">matrix4</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">matrix5</span><span class="p">[][</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código anterior se puede simular a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20matrix1%5B%5D%5B4%5D%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B4,%202,%207,%203%7D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B6,%201,%209,%205%7D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B8,%205,%200,%201%7D%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20matrix2%5B2%5D%5B2%5D%20%3D%20%7B%7B1,%202%7D,%20%7B3,%204%7D%7D%3B%0A%20%20int%20matrix3%5B2%5D%5B2%5D%20%3D%20%7B%7B1%7D,%20%7B3,%204%7D%7D%3B%20%0A%20%20int%20matrix4%5B3%5D%5B5%5D%3D%7B1,%202,%203,%204,%205,%206,%207,%208,%209,%2010,%2011,%2012,%2013,%2014,%2015%7D%3B%0A%20%20int%20matrix5%5B%5D%5B3%5D%3D%7B1,%202,%203,%204%7D%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La representación en memoria de las matrices declaradas en el ejercicio anterior se muestra a continuación</p>
+<figure class="align-default" id="matrix-2">
+<img alt="../_images/CH_02-S03-fig2.png" src="../_images/CH_02-S03-fig2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Declaración e inicialización de varios arreglos multidimensionales.</span><a class="headerlink" href="#matrix-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Al inicializar una matrix se debe pasar como minimo la dimension de las columnas (para el caso de dos dimensiones), si no se hace el compilador no sera capaz de deducir el tamaño de la matriz y se producira un error.</p>
+</div>
+</li>
+</ol>
+</section>
+<section id="manipulacion-de-los-arreglos-multimensionales">
+<h3>1.2. Manipulación de los arreglos multimensionales<a class="headerlink" href="#manipulacion-de-los-arreglos-multimensionales" title="Permalink to this headline">#</a></h3>
+<p>Como en java, el uso de ciclos anidados es fundamentar para el movimiento a traves de cada uno de los elementos de la matrix. Generalmente, las varibles que controlan los ciclos seran empleados como subindices para barrer las matrices. A continuación se muestra un código para refrescar el concepto:</p>
 </section>
 </section>
 </section>
