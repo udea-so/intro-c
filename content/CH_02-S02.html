@@ -481,6 +481,16 @@ title="Print to PDF"
    5. Apuntadores a apuntadores
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-genericos-y-casts">
+   6. Apuntadores genericos y casts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   7. Enlaces de interés
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -596,6 +606,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#apuntadores-a-apuntadores">
    5. Apuntadores a apuntadores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-genericos-y-casts">
+   6. Apuntadores genericos y casts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   7. Enlaces de interés
   </a>
  </li>
 </ul>
@@ -1700,6 +1720,172 @@ title="Print to PDF"
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+<p>A continuación se muestra la simulación del código anterior:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20ch%3B%0A%20%20char%20*pch,%20**ppch%3B%0A%20%20char%20***pppch%20%3D%20%26ppch%3B%0A%20%20pch%20%3D%20%26ch%3B%0A%20%20ppch%20%3D%20%26pch%3B%0A%20%20***pppch%20%3D%20'A'%3B%0A%20%20**ppch%20%3D%20*pch%20%2B%201%3B%0A%20%20ch%20%3D%20**ppch%20%2B%203%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</section>
+<section id="apuntadores-genericos-y-casts">
+<h2>6. Apuntadores genericos y casts<a class="headerlink" href="#apuntadores-genericos-y-casts" title="Permalink to this headline">#</a></h2>
+<p>Un apuntador generico o void pointer es un tipo especial de apuntador que puede apuntar a cualquier tipo de dato.
+Su unica limitación es que el dato apuntado <strong>no puede ser desreferenciado directamente</strong> (el operador <code class="docutils literal notranslate"><span class="pre">*</span></code> no puede ser usado en este tipo de apuntadores) pues para el caso, la longitud del tipo de dato al que se apunta no puede ser determinada lo hace necesario un casting para hacer que el aputador generico pueda apuntar a un tipo de dato concreto (el cual si puede ser referenciado).</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="cm">/* Declaracion de variables*/</span><span class="w"></span>
+<span class="w">  </span><span class="n">tipo1</span><span class="w"> </span><span class="n">var1_1</span><span class="p">,</span><span class="w"> </span><span class="n">var1_2</span><span class="p">,...;</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"> </span>
+<span class="w">  </span><span class="n">tipoN</span><span class="w"> </span><span class="n">varN_1</span><span class="p">,</span><span class="w"> </span><span class="n">varN_2</span><span class="p">,...;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Declaracion apuntador generico*/</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Referencia a una variable tipo tipo1 */</span><span class="w"></span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">var1_1</span><span class="p">;</span><span class="w">                 </span><span class="c1">// var es una variable de cualquier tipo</span>
+<span class="w">  </span><span class="cm">/* Desreferencia a una variable tipo tipo1*/</span><span class="w"></span>
+<span class="w">  </span><span class="n">var1_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">((</span><span class="n">tipo1</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">);</span><span class="w">      </span><span class="c1">// cast</span>
+<span class="w">  </span><span class="cm">/* Referencia a una variable tipo tipoN */</span><span class="w"></span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">varN_1</span><span class="p">;</span><span class="w">                 </span><span class="c1">// var es una variable de cualquier tipo</span>
+<span class="w">  </span><span class="cm">/* Desreferencia a una variable tipo tipo1*/</span><span class="w"></span>
+<span class="w">  </span><span class="n">varN_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">((</span><span class="n">tipoN</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">);</span><span class="w">      </span><span class="c1">// cast</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+<p>En si el cast es de la forma:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="p">((</span><span class="n">tipo</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">ptr</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestran algunos ejemplos para aclarar lo anteriormente mencionado.</p>
+<p><strong>Ejemplos</strong></p>
+<ol>
+<li><p>Analice el siguiente codigo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1415</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">vp</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">vp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">vp</span><span class="p">));</span><span class="w"> </span><span class="c1">// Cast a (int *)</span>
+<span class="w">  </span><span class="n">vp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;b = %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">((</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">vp</span><span class="p">));</span><span class="w"> </span><span class="c1">// Cast (double *)</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código se puede simular a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20a%20%3D%205%3B%0A%20%20double%20b%20%3D%203.1415%3B%0A%20%20void%20*vp%3B%0A%20%20vp%20%3D%20%26a%3B%0A%20%20printf%28%22a%20%3D%20%25d%5Cn%22,%20*%28%28int%20*%29vp%29%29%3B%20//%20Cast%20a%20%28int%20*%29%0A%20%20vp%20%3D%20%26b%3B%0A%20%20printf%28%22b%20%3D%20%25lf%5Cn%22,%20*%28%28double%20*%29vp%29%29%3B%20//%20Cast%20%28double%20*%29%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+<li><p>Analice el siguiente codigo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">swapChar</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">swapFloat</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">w</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---- Caracteres ----</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Antes: w = %c, x = %c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">swapChar</span><span class="p">(</span><span class="o">&amp;</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Despues: w = %c, x = %c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">z</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-0.5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---- Reales ----</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Antes: y = %.2f, z = %.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">swapFloat</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Despues: y = %.2f, z = %.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">swapChar</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">swapFloat</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código se puede simular a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20swapChar%28char%20*a,%20char%20*b%29%3B%0Avoid%20swapFloat%28float%20*a,%20float%20*b%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20w,%20x%3B%0A%20%20float%20y,%20z%3B%0A%20%20void%20*p1,%20*p2%3B%0A%20%20p1%20%3D%20%26w%3B%0A%20%20*%28char%20*%29p1%20%3D%20'w'%3B%0A%20%20p2%20%3D%20%26x%3B%0A%20%20*%28char%20*%29p2%20%3D%20'a'%3B%0A%20%20printf%28%22----%20Caracteres%20----%5Cn%22%29%3B%0A%20%20printf%28%22Antes%3A%20w%20%3D%20%25c,%20x%20%3D%20%25c%5Cn%22,%20w,%20x%29%3B%0A%20%20swapChar%28%26w,%20%26x%29%3B%0A%20%20printf%28%22Despues%3A%20w%20%3D%20%25c,%20x%20%3D%20%25c%5Cn%22,%20w,%20x%29%3B%0A%20%20p1%20%3D%20%26y%3B%0A%20%20*%28float%20*%29p1%20%3D%202.3%3B%0A%20%20p1%20%3D%20%26z%3B%0A%20%20*%28float%20*%29p1%20%3D%20-0.5%3B%0A%20%20p2%20%3D%20p1%3B%0A%20%20p1%20%3D%20%26y%3B%0A%20%20printf%28%22----%20Reales%20----%5Cn%22%29%3B%0A%20%20printf%28%22Antes%3A%20y%20%3D%20%25.2f,%20z%20%3D%20%25.2f%5Cn%22,%20y,%20z%29%3B%0A%20%20swapFloat%28p1,%20p2%29%3B%0A%20%20printf%28%22Despues%3A%20y%20%3D%20%25.2f,%20z%20%3D%20%25.2f%5Cn%22,%20y,%20z%29%3B%20%20%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20swapChar%28char%20*a,%20char%20*b%29%20%7B%0A%20%20char%20temp%3B%0A%20%20temp%20%3D%20*a%3B%0A%20%20*a%20%3D%20*b%3B%0A%20%20*b%20%3D%20temp%3B%0A%7D%0A%0Avoid%20swapFloat%28float%20*a,%20float%20*b%29%20%7B%0A%20%20float%20temp%3B%0A%20%20temp%20%3D%20*a%3B%0A%20%20*a%20%3D%20*b%3B%0A%20%20*b%20%3D%20temp%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del código anterior se muestra a continuación:</p>
+<figure class="align-default" id="void-ptr-fun-no-gen">
+<img alt="../_images/CH_02-S02-fig29.png" src="../_images/CH_02-S02-fig29.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Funciones por referencia normales.</span><a class="headerlink" href="#void-ptr-fun-no-gen" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Reto</strong>: Hacer la función que permita hacer el intercambio entre dos cadenas de caracteres. Si las cadenas son de diferente tamaño, el intercambio entre las cadenas sera solo de la cantidad de caracteres correspondientes a la longitud de la menor.</p>
+</li>
+<li><p>Analice el siguiente codigo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="n">swap2</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;w&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.3</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-0.5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">s1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;abcd&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">[]</span><span class="o">=</span><span class="s">&quot;wxyz&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---- Caracteres ----</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Antes: w = %c, x = %c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">swap2</span><span class="p">(</span><span class="o">&amp;</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Despues: w = %c, x = %c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---- Reales ----</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Antes: y = %.2f, z = %.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">swap2</span><span class="p">(</span><span class="o">&amp;</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Despues: y = %.2f, z = %.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;---- Cadenas ----</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Antes: s1 = %s, s2 = %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">swap2</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">s1</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Despues: s1 = %s, s2 = %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="w"> </span><span class="n">s2</span><span class="p">);</span><span class="w">   </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">swap2</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">memcpy</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">memcpy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">memcpy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código se puede simular a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aswap2%28void%20*x,%20void%20*y,%20int%20size%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20w%20%3D%20'w',%20x%20%3D%20'a'%3B%0A%20%20float%20y%20%3D%202.3,%20z%20%3D%20-0.5%3B%0A%20%20char%20s1%5B%5D%20%3D%20%22abcd%22,%20s2%5B%5D%3D%22wxyz%22%3B%0A%20%20printf%28%22----%20Caracteres%20----%5Cn%22%29%3B%0A%20%20printf%28%22Antes%3A%20w%20%3D%20%25c,%20x%20%3D%20%25c%5Cn%22,%20w,%20x%29%3B%0A%20%20swap2%28%26w,%20%26x,%20sizeof%28char%29%29%3B%0A%20%20printf%28%22Despues%3A%20w%20%3D%20%25c,%20x%20%3D%20%25c%5Cn%22,%20w,%20x%29%3B%0A%20%20printf%28%22----%20Reales%20----%5Cn%22%29%3B%0A%20%20printf%28%22Antes%3A%20y%20%3D%20%25.2f,%20z%20%3D%20%25.2f%5Cn%22,%20y,%20z%29%3B%0A%20%20swap2%28%26y,%20%26z,%20sizeof%28float%29%29%3B%0A%20%20printf%28%22Despues%3A%20y%20%3D%20%25.2f,%20z%20%3D%20%25.2f%5Cn%22,%20y,%20z%29%3B%20%0A%20%20printf%28%22----%20Cadenas%20----%5Cn%22%29%3B%0A%20%20printf%28%22Antes%3A%20s1%20%3D%20%25s,%20s2%20%3D%20%25s%5Cn%22,%20s1,%20s2%29%3B%0A%20%20swap2%28s1,%20s2,%20sizeof%28s1%29%29%3B%0A%20%20printf%28%22Despues%3A%20s1%20%3D%20%25s,%20s2%20%3D%20%25s%5Cn%22,%20s1,%20s2%29%3B%20%20%20%0A%20%20return%200%3B%0A%7D%0A%0Aint%20swap2%28void%20*x,%20void%20*y,%20int%20size%29%20%7B%0A%20%20void%20*tmp%3B%0A%20%20if%20%28%28tmp%20%3D%20malloc%28size%29%29%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20return%20-1%3B%0A%20%20%7D%0A%20%20memcpy%28tmp,%20x,%20size%29%3B%20%0A%20%20memcpy%28x,%20y,%20size%29%3B%20%0A%20%20memcpy%28y,%20tmp,%20size%29%3B%0A%20%20free%28tmp%29%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Notese respecto al codigo del ejemplo 2 que se tiene al usar apuntadores genericos, pues una misma funcion puede soportar diferentes tipos de datos. La función <strong>memcpy</strong> empleada en el ejemplo anterior puede ser estudiada con mas detalle en el siguiente <a class="reference external" href="https://www.tutorialspoint.com/c_standard_library/c_function_memcpy.htm">enlace</a>.</p>
+</li>
+</ol>
+</section>
+<section id="enlaces-de-interes">
+<h2>7. Enlaces de interés<a class="headerlink" href="#enlaces-de-interes" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>https://www.geeksforgeeks.org/data-types-in-c/</p></li>
+<li><p>https://www.programiz.com/c-programming/c-enumeration</p></li>
+<li><p>http://people.duke.edu/~tkb13/courses/ncsu-csc230/lecture/</p></li>
+<li><p>https://www.geeksforgeeks.org/dangling-void-null-wild-pointers/</p></li>
+<li><p>https://www.geeksforgeeks.org/tag/c-pointers/</p></li>
+<li><p>https://www.geeksforgeeks.org/double-pointer-pointer-pointer-c/</p></li>
+<li><p>https://www.eskimo.com/~scs/cclass/int/sx8.html</p></li>
+<li><p>https://www.tutorialspoint.com/cprogramming/c_pointer_to_pointer.htm</p></li>
+<li><p>https://boredzo.org/pointers/</p></li>
+<li><p>https://beginnersbook.com/2014/01/c-pointer-to-pointer/</p></li>
+<li><p>https://www.tutorialspoint.com/cprogramming/index.htm</p></li>
+<li><p>http://gsd.web.elte.hu/lectures/c-en/c-lecture-9/</p></li>
+<li><p>http://math.pnw.edu/~rlkraft/cs123-2009/homework/hw3/hw3.html</p></li>
+</ul>
 </section>
 </section>
 
