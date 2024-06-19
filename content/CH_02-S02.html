@@ -466,6 +466,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aritmetica-de-punteros">
+   3. Aritmetica de punteros
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -568,6 +573,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aritmetica-de-punteros">
+   3. Aritmetica de punteros
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -597,10 +607,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>La siguiente figura ilustra su representación en memoria:</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id4">
 <img alt="../_images/CH_02-S02-fig1.png" src="../_images/CH_02-S02-fig1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Representación de una variable en memoria.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Representación de una variable en memoria.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Desde el punto de vista del mapa de memoria y suponiendo que una variable tipo int ocupa 4 bytes tenemos el siguiente resultado por instrucción:</p>
@@ -1393,8 +1403,26 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>La simulación del código anterior se muestra a continuación:</p>
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20b%5B%5D%20%3D%20%7B'h',%20'o',%20'l',%20'a','%5C0'%7D%3B%0A%20%20*%28b%2B2%29%20%3D%20*b%3B%0A%20%20char%20*p1%20%3D%20b%3B%0A%20%20char%20*p2%20%3D%20b%20%2B%203%3B%0A%20%20p2%20%3D%20p2%20-%201%3B%0A%20%20p1%20%3D%20p2%20-%201%3B%0A%20%20*p2%20%3D%20*%28b%20%2B%201%29%20%2B%201%3B%0A%20%20p2%20%3D%20%26b%5B1%5D%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></section>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20b%5B%5D%20%3D%20%7B'h',%20'o',%20'l',%20'a','%5C0'%7D%3B%0A%20%20*%28b%2B2%29%20%3D%20*b%3B%0A%20%20char%20*p1%20%3D%20b%3B%0A%20%20char%20*p2%20%3D%20b%20%2B%203%3B%0A%20%20p2%20%3D%20p2%20-%201%3B%0A%20%20p1%20%3D%20p2%20-%201%3B%0A%20%20*p2%20%3D%20*%28b%20%2B%201%29%20%2B%201%3B%0A%20%20p2%20%3D%20%26b%5B1%5D%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 </section>
+</section>
+</section>
+<section id="aritmetica-de-punteros">
+<h2>3. Aritmetica de punteros<a class="headerlink" href="#aritmetica-de-punteros" title="Permalink to this headline">#</a></h2>
+<p>Como se dijo previamente, un apuntador almacena un direccion de memoria asociada a un dato. Tambien, se mostro como es posible hacer uso de apuntadores para barrer y manipular arrays. La existencia diferentes tipos de datos en C (<code class="docutils literal notranslate"><span class="pre">char</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">double</span></code>, …) con un tamaño en bytes asociado repercute en los valores almancenados en el apuntador. Para aclarar esto un poco observemos las siguientes graaficas.</p>
+<p>En la figura 10 se muestra un array de datos tipo <strong><code class="docutils literal notranslate"><span class="pre">short</span></code></strong> comparado con uno tipo <strong><code class="docutils literal notranslate"><span class="pre">char</span></code></strong>. Los datos tipo <code class="docutils literal notranslate"><span class="pre">short</span></code> tienen un tamaño de <code class="docutils literal notranslate"><span class="pre">2</span></code> bytes de modo que cada miembro consecutivo del array tipo <code class="docutils literal notranslate"><span class="pre">short</span></code> (<code class="docutils literal notranslate"><span class="pre">A</span></code>) tendra una direccion aumentada <code class="docutils literal notranslate"><span class="pre">2</span></code> bytes respecto a miembro anterior; segun lo anterior, si la direccion del elemento <code class="docutils literal notranslate"><span class="pre">A[0]</span></code> es <code class="docutils literal notranslate"><span class="pre">0x1000</span></code> (<code class="docutils literal notranslate"><span class="pre">&amp;A[0]</span> <span class="pre">=</span> <span class="pre">0x1000</span></code>), la dirección del miembro <code class="docutils literal notranslate"><span class="pre">A[1]</span></code> será <code class="docutils literal notranslate"><span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">2bytes</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">16bits</span> <span class="pre">=</span> <span class="pre">0x1010</span></code>. Por otro lado, en el caso del arreglo char <code class="docutils literal notranslate"><span class="pre">B</span></code>, la direccion solo cambiar de uno en uno. Asi, si <code class="docutils literal notranslate"><span class="pre">&amp;B[0]</span> <span class="pre">=</span> <span class="pre">0x1000</span></code>, entonces <code class="docutils literal notranslate"><span class="pre">&amp;B[1]</span> <span class="pre">=</span> <span class="pre">0x1008</span></code>. De modo que se puede llegar a una expresión mas general como la siguiente:</p>
+<figure class="align-default" id="id3">
+<img alt="../_images/CH_02-S02-fig24.png" src="../_images/CH_02-S02-fig24.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Arrays y apuntadores.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Con:</p>
+<p><code class="docutils literal notranslate"><span class="pre">dir[i]</span> <span class="pre">=</span> <span class="pre">dir[j]</span> <span class="pre">+/-</span> <span class="pre">n*(sizeof(type)*8)</span> <span class="pre">bits</span></code></p>
+<p>Donde <code class="docutils literal notranslate"><span class="pre">n</span></code> es la diferencia entre los indices <code class="docutils literal notranslate"><span class="pre">j</span></code> e <code class="docutils literal notranslate"><span class="pre">i</span></code></p>
+<p>Tomando nuevamente la grafica anterior, vemos que <code class="docutils literal notranslate"><span class="pre">&amp;A[3]</span> <span class="pre">=</span> <span class="pre">&amp;A[0]</span> <span class="pre">+</span> <span class="pre">3(sizeof(short)8)</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">328</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">48</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">0x30</span> <span class="pre">=</span> <span class="pre">0x1030</span></code>. De modo similar <code class="docutils literal notranslate"><span class="pre">B[1]</span> <span class="pre">=</span> <span class="pre">B[2]</span> <span class="pre">-</span> <span class="pre">1(sizeof(char)8)=</span> <span class="pre">0x1000</span> <span class="pre">-</span> <span class="pre">1(18)</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">8</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">0x0008</span> <span class="pre">=</span> <span class="pre">0x1008</span></code>.</p>
+<p><strong>Ejemplos</strong></p>
+<p>A continuación se muestran unos cuantos ejemplos para clarificar esto:</p>
 </section>
 </section>
 
