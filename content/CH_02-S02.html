@@ -447,6 +447,16 @@ title="Print to PDF"
        2.4.2.1. Vectores
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#manipulacion-de-arreglos">
+       2.4.2.2. Manipulación de arreglos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#arreglos-y-funciones">
+       2.4.2.3. Arreglos y funciones
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -532,6 +542,16 @@ title="Print to PDF"
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#vectores">
        2.4.2.1. Vectores
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#manipulacion-de-arreglos">
+       2.4.2.2. Manipulación de arreglos
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#arreglos-y-funciones">
+       2.4.2.3. Arreglos y funciones
       </a>
      </li>
     </ul>
@@ -1043,10 +1063,8 @@ title="Print to PDF"
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="n">arrayName</span><span class="p">[</span><span class="n">TAM</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">valor1</span><span class="p">,</span><span class="w"> </span><span class="n">valor2</span><span class="p">,</span><span class="w"> </span><span class="p">...};</span><span class="w"></span>
 </pre></div>
 </div>
-</li>
-</ul>
 <p><strong>Nota</strong>: La cantidad de elementos de la lista de inicialización no puede superar el tamaño (TAM) del arreglo.</p>
-<ul>
+</li>
 <li><p><strong>Forma 2</strong>: Pasando el tamaño:</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span><span class="w"> </span><span class="n">arrayName</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">valor1</span><span class="p">,</span><span class="w"> </span><span class="n">valor2</span><span class="p">,</span><span class="w"> </span><span class="p">...};</span><span class="w"></span>
 </pre></div>
@@ -1058,6 +1076,223 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>El siguiente codigo muestra el caso en el que solo se declaran varios vectores de diferentes tipos tanto globales como locales:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Variables globales</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Variables locales</span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Variables%20globales%0Aint%20A%5B3%5D%3B%0Adouble%20B%5B4%5D%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20//%20Variables%20locales%0A%20%20char%20C%5B6%5D%3B%0A%20%20int%20D%5B2%5D%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Observe la diferencia en el valor inicial de los arreglos globales respecto a los locales:</p>
+<figure class="align-default" id="array-no-init">
+<img alt="../_images/CH_02-S02-fig16.png" src="../_images/CH_02-S02-fig16.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Representación en memoria de arreglos no inicializados.</span><a class="headerlink" href="#array-no-init" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="manipulacion-de-arreglos">
+<h4>2.4.2.2. Manipulación de arreglos<a class="headerlink" href="#manipulacion-de-arreglos" title="Permalink to this headline">#</a></h4>
+<p>En lo que respecta a la manipulacion de arreglos, es igual que en java. El uso de estructuras repetitivas para el manejo de los subindices en el arreglo es empleado. En los siguientes ejemplos se tiene ilustra esto de manera rapida.</p>
+<p><strong>Ejemplos</strong></p>
+<ol>
+<li><p>Hacer un progama que llene un arreglo de <code class="docutils literal notranslate"><span class="pre">10</span></code> elementos con los multiplos del <code class="docutils literal notranslate"><span class="pre">10</span></code> (<code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">20</span></code>, etc.).</p>
+<p><strong>Solución</strong>: El código que soluciona el problema se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define TAM 10</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">TAM</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Inicializando el arreglo</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TAM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="o">*</span><span class="n">num</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">num</span><span class="o">++</span><span class="p">;</span><span class="w">     </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Imprimiendo el arreglo</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;A = [ &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TAM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w">     </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%23define%20TAM%2010%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20A%5BTAM%5D%3B%0A%20%20int%20num%20%3D%201%3B%0A%20%20//%20Inicializando%20el%20arreglo%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20A%5Bi%5D%20%3D%2010*num%3B%0A%20%20%20%20num%2B%2B%3B%20%20%20%20%20%0A%20%20%7D%0A%20%20//%20Imprimiendo%20el%20arreglo%0A%20%20printf%28%22A%20%3D%20%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22,%20A%5Bi%5D%29%3B%20%20%20%20%20%0A%20%20%7D%0A%20%20printf%28%22%5D%5Cn%22%29%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La aplicacion arroja el siguiente resultado:</p>
+<figure class="align-default" id="array-ciclos1">
+<img alt="../_images/CH_02-S02-fig17.png" src="../_images/CH_02-S02-fig17.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Empleo de ciclos para manipulación de arrays.</span><a class="headerlink" href="#array-ciclos1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Hacer cree dos arreglos (<code class="docutils literal notranslate"><span class="pre">A</span></code> y <code class="docutils literal notranslate"><span class="pre">B</span></code>), luego, inicialice el arreglo <code class="docutils literal notranslate"><span class="pre">A</span></code> con numeros aleatorios entre el <code class="docutils literal notranslate"><span class="pre">1</span></code> y el <code class="docutils literal notranslate"><span class="pre">20</span></code>, y finalmente lleve al arreglo <code class="docutils literal notranslate"><span class="pre">B</span></code> los elementos del arreglo <code class="docutils literal notranslate"><span class="pre">A</span></code> en orden inverso.</p>
+<p><strong>Solución</strong>: A continuación, se muestra el código solución:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="c1"> // required to use &#39;rand()&#39;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="c1">  // required to use &#39;srand(time(NULL))&#39;</span><span class="cp"></span>
+
+<span class="cp">#define TAM 10</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w"> </span><span class="c1">// required for &quot;randomness&quot;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">TAM</span><span class="p">],</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">TAM</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">limSup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">limInf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="c1">// Inicializando el arreglo</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TAM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="n">limSup</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">limInf</span><span class="p">;</span><span class="w"> </span><span class="c1">// generate a number </span>
+<span class="w">                                   </span><span class="c1">// between limInf and limSup</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Imprimiendo el arreglo A</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;A = [ &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TAM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w">   </span>
+<span class="w">    </span><span class="n">B</span><span class="p">[</span><span class="n">TAM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="c1">// Imprimiendo el arreglo B</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;B = [ &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TAM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w">   </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%20//%20required%20to%20use%20'rand%28%29'%0A%23include%20%3Ctime.h%3E%20%20//%20required%20to%20use%20'srand%28time%28NULL%29%29'%0A%0A%23define%20TAM%2010%0A%0Aint%20main%28%29%20%7B%0A%20%20srand%28time%28NULL%29%29%3B%20//%20required%20for%20%22randomness%22%0A%20%20int%20A%5BTAM%5D,%20B%5BTAM%5D%3B%0A%20%20int%20limSup%20%3D%2020,%20limInf%20%3D%201%3B%20%20%0A%20%20//%20Inicializando%20el%20arreglo%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20A%5Bi%5D%20%3D%20rand%28%29%25limSup%20%2B%20limInf%3B%20//%20generate%20a%20number%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20//%20between%20limInf%20and%20limSup%0A%20%20%20%20%20%0A%20%20%7D%0A%20%20//%20Imprimiendo%20el%20arreglo%20A%0A%20%20printf%28%22A%20%3D%20%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22,%20A%5Bi%5D%29%3B%20%20%20%0A%20%20%20%20B%5BTAM%20-%20%28i%20%2B%201%29%5D%20%3D%20A%5Bi%5D%3B%0A%20%20%7D%0A%20%20printf%28%22%5D%5Cn%22%29%3B%20%0A%20%20//%20Imprimiendo%20el%20arreglo%20B%0A%20%20printf%28%22B%20%3D%20%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22,%20B%5Bi%5D%29%3B%20%20%20%0A%20%20%7D%0A%20%20printf%28%22%5D%5Cn%22%29%3B%0A%20%20return%200%3B%20%20%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>El resultado de la simulación se muestra a continuación:</p>
+<figure class="align-default" id="array-ciclos2">
+<img alt="../_images/CH_02-S02-fig18.png" src="../_images/CH_02-S02-fig18.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Otro ejemplo de empleo de ciclos para manipulación de arrays.</span><a class="headerlink" href="#array-ciclos2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+<section id="arreglos-y-funciones">
+<h4>2.4.2.3. Arreglos y funciones<a class="headerlink" href="#arreglos-y-funciones" title="Permalink to this headline">#</a></h4>
+<p>Es posible pasar <strong>arreglos</strong> como argumentos de funciones. Basicamente para el caso se tienen en cuenta los mismos 3 aspectos que se mencionaron previamente al tratar las funciones de manera introductoria, pero hay una leve diferencia cuando se emplean arreglos y es propiamente en la parte de la declaracion y la definicion donde se nota esto. Veamos la forma:</p>
+<p><strong>Definición de la función</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="nf">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">array</span><span class="p">[],...)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">local</span><span class="w"> </span><span class="n">declarations</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">function</span><span class="w"> </span><span class="n">statements</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Declaración de la función</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">return_type</span><span class="w"> </span><span class="n">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">arrayParam</span><span class="p">[],...)</span><span class="w"> </span>
+</pre></div>
+</div>
+<p><strong>Invocación de la función</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">return_type</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="n">function_name</span><span class="w"> </span><span class="p">(</span><span class="n">arrayArg</span><span class="p">[],...)</span><span class="w"> </span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong></p>
+<ol>
+<li><p>Observe el ejemplo 2 anteriormente analizado, muestra cada uno de los componentes (definición, declaracón e invocación) de lo que sería una función para imprimir entero un vector de cualquier tamaño.</p>
+<ul>
+<li><p><strong>Definición de la función</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Definicion de la funcion para imprimir un array de cualquier tamaño</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirVector</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">[],</span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[ &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w">   </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Declaración de la función</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Declaracion de la funcion para imprimir un array de cualquier tamaño</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirVector</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">[],</span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Invocación de la función</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Invocacion para imprimir </span>
+<span class="kt">int</span><span class="w"> </span><span class="n">X</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span><span class="w"></span>
+<span class="n">imprimirVector</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="c1">// Salida --&gt; [ 1 2 3 4 ]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Observe el ejemplo 1 anteriormente analizado e implementelo en forma modular empleando funciones.</p>
+<p><strong>Solución</strong>: La implementación del código completo se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="c1"> // required to use &#39;rand()&#39;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="c1">  // required to use &#39;srand(time(NULL))&#39;</span><span class="cp"></span>
+<span class="cp">#define TAM 10</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirVector</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">[],</span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">generarVectorAleatorio</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">vInf</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">vSup</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">copiaReversa</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">destino</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">origen</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span><span class="w"> </span><span class="c1">// required for &quot;randomness&quot;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">TAM</span><span class="p">],</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">TAM</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">limSup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="n">limInf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="n">generarVectorAleatorio</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">TAM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">copiaReversa</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">TAM</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Imprimiendo el arreglo A</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;A = &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirVector</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">TAM</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Imprimiendo el arreglo B</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;B = &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirVector</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">TAM</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">generarVectorAleatorio</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">vInf</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">vSup</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="n">vSup</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">vInf</span><span class="p">;</span><span class="w">            </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirVector</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">[],</span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[ &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w">   </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">copiaReversa</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">destino</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">origen</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">destino</span><span class="p">[</span><span class="n">tam</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origen</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w">   </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código anterior puede ser simulado a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%20//%20required%20to%20use%20'rand%28%29'%0A%23include%20%3Ctime.h%3E%20%20//%20required%20to%20use%20'srand%28time%28NULL%29%29'%0A%23define%20TAM%2010%0A%0Avoid%20imprimirVector%28int%20V%5B%5D,int%20tam%29%3B%0Avoid%20generarVectorAleatorio%28int%20V%5B%5D,%20int%20tam,%20int%20vInf,%20int%20vSup%29%3B%0Avoid%20copiaReversa%28int%20destino%5B%5D,%20int%20origen%5B%5D,%20int%20tam%29%20%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20srand%28time%28NULL%29%29%3B%20//%20required%20for%20%22randomness%22%0A%20%20int%20A%5BTAM%5D,%20B%5BTAM%5D%3B%0A%20%20int%20limSup%20%3D%2020,%20limInf%20%3D%201%3B%20%20%0A%20%20generarVectorAleatorio%28A,%20TAM,%201,%2020%29%3B%0A%20%20copiaReversa%28B,%20A,%20TAM%29%3B%0A%20%20//%20Imprimiendo%20el%20arreglo%20A%0A%20%20printf%28%22A%20%3D%20%22%29%3B%0A%20%20imprimirVector%28A,%20TAM%29%3B%0A%20%20//%20Imprimiendo%20el%20arreglo%20B%0A%20%20printf%28%22B%20%3D%20%22%29%3B%0A%20%20imprimirVector%28B,%20TAM%29%3B%0A%20%20return%200%3B%20%20%0A%7D%0A%0Avoid%20generarVectorAleatorio%28int%20V%5B%5D,%20int%20tam,%20int%20vInf,%20int%20vSup%29%20%7B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20tam%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20V%5Bi%5D%20%3D%20rand%28%29%25vSup%20%2B%20vInf%3B%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%7D%0A%7D%0A%0Avoid%20imprimirVector%28int%20V%5B%5D,int%20tam%29%20%7B%0A%20%20printf%28%22%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20tam%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22,%20V%5Bi%5D%29%3B%20%20%20%0A%20%20%7D%0A%20%20printf%28%22%5D%5Cn%22%29%3B%0A%7D%0A%0Avoid%20copiaReversa%28int%20destino%5B%5D,%20int%20origen%5B%5D,%20int%20tam%29%20%7B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20tam%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20destino%5Btam%20-%20%28i%20%2B%201%29%5D%20%3D%20origen%5Bi%5D%3B%20%20%20%0A%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La siguiente figura muestra el resultado del código anterior:</p>
+<figure class="align-default" id="funciones-arrays">
+<img alt="../_images/CH_02-S02-fig19.png" src="../_images/CH_02-S02-fig19.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Manipulando arreglos con funciones.</span><a class="headerlink" href="#funciones-arrays" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
 </section>
 </section>
 </section>
