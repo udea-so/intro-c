@@ -471,6 +471,11 @@ title="Print to PDF"
    3. Aritmetica de punteros
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acceso-a-arrays-a-traves-de-apuntadores">
+   4. Acceso a arrays a traves de apuntadores
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -578,6 +583,11 @@ title="Print to PDF"
    3. Aritmetica de punteros
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acceso-a-arrays-a-traves-de-apuntadores">
+   4. Acceso a arrays a traves de apuntadores
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -607,10 +617,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>La siguiente figura ilustra su representación en memoria:</p>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id5">
 <img alt="../_images/CH_02-S02-fig1.png" src="../_images/CH_02-S02-fig1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Representación de una variable en memoria.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Representación de una variable en memoria.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Desde el punto de vista del mapa de memoria y suponiendo que una variable tipo int ocupa 4 bytes tenemos el siguiente resultado por instrucción:</p>
@@ -1421,9 +1431,167 @@ title="Print to PDF"
 <p><code class="docutils literal notranslate"><span class="pre">dir[i]</span> <span class="pre">=</span> <span class="pre">dir[j]</span> <span class="pre">+/-</span> <span class="pre">n*(sizeof(type)*8)</span> <span class="pre">bits</span></code></p>
 <p>Donde <code class="docutils literal notranslate"><span class="pre">n</span></code> es la diferencia entre los indices <code class="docutils literal notranslate"><span class="pre">j</span></code> e <code class="docutils literal notranslate"><span class="pre">i</span></code></p>
 <p>Tomando nuevamente la grafica anterior, vemos que <code class="docutils literal notranslate"><span class="pre">&amp;A[3]</span> <span class="pre">=</span> <span class="pre">&amp;A[0]</span> <span class="pre">+</span> <span class="pre">3(sizeof(short)8)</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">328</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">48</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">0x30</span> <span class="pre">=</span> <span class="pre">0x1030</span></code>. De modo similar <code class="docutils literal notranslate"><span class="pre">B[1]</span> <span class="pre">=</span> <span class="pre">B[2]</span> <span class="pre">-</span> <span class="pre">1(sizeof(char)8)=</span> <span class="pre">0x1000</span> <span class="pre">-</span> <span class="pre">1(18)</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">8</span> <span class="pre">=</span> <span class="pre">0x1000</span> <span class="pre">+</span> <span class="pre">0x0008</span> <span class="pre">=</span> <span class="pre">0x1008</span></code>.</p>
+<p>A continuación se muestran unos cuantos ejemplos para clarificar lo anteriormente expuesto.</p>
 <p><strong>Ejemplos</strong></p>
-<p>A continuación se muestran unos cuantos ejemplos para clarificar esto:</p>
+<ol>
+<li><p>Supongase que se tiene el siguiente código:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">A</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;h&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">,</span><span class="sc">&#39;\0&#39;</span><span class="p">};</span><span class="w"></span>
+<span class="kt">short</span><span class="w"> </span><span class="n">B</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Asumiendo que un dato tipo <code class="docutils literal notranslate"><span class="pre">short</span></code> ocupa <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">bytes</span></code> de memoria y uno <code class="docutils literal notranslate"><span class="pre">char</span></code> ocupa <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">byte</span></code>. Dibuje en el mapa de memoria los vectores anteriormente resaltados. Las direcciones base son <code class="docutils literal notranslate"><span class="pre">100</span></code> para el vector <code class="docutils literal notranslate"><span class="pre">A</span></code> y <code class="docutils literal notranslate"><span class="pre">200</span></code> para el vector <code class="docutils literal notranslate"><span class="pre">B</span></code>. Asi mismo, para el caso las direcciones serán manejadas en decimal.</p>
+<ul>
+<li><p><strong>Representacion en memoria con un ancho a 4 bytes</strong>: En la siguiente figura se muestra la representacion en memoria en la cual se manejan <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">bytes</span></code> de ancho.</p>
+<figure class="align-default" id="id4">
+<img alt="../_images/CH_02-S02-fig25.png" src="../_images/CH_02-S02-fig25.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Representación a 4 bytes de ancho.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><strong>Representacion en memoria con un ancho a 1 byte</strong>: En la siguiente figura se muestra la representacion en memoria en la cual se manejan <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">byte</span></code> de ancho.</p>
+<figure class="align-default" id="array-hsw2">
+<img alt="../_images/CH_02-S02-fig26.png" src="../_images/CH_02-S02-fig26.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Representación a 1 byte de ancho.</span><a class="headerlink" href="#array-hsw2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p>Supongase que se tiene el siguiente codigo fuente:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">V</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">V</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">p2</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="p">(</span><span class="o">*</span><span class="n">p2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="n">p2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código anterior se puede simular a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20V%5B4%5D%3B%0Aint%20main%28%29%20%7B%0A%20%20printf%28%22%25ld%5Cn%22,sizeof%28int%29%29%3B%0A%20%20printf%28%22%25p%5Cn%22,V%29%3B%0A%20%20int%20*p1%20%3D%20V%3B%0A%20%20*p1%20%3D%203%3B%0A%20%20int%20*p2%20%3D%20%26V%5B0%5D%3B%0A%20%20p2%20%2B%3D%202%3B%0A%20%20*p2%20%3D%201%3B%0A%20%20p1%20%3D%20p2%20-%201%3B%0A%20%20*p1%20%3D%20-%28*p2%29%3B%0A%20%20*%28p2%20%2B%201%29%20%3D%202%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cppShowMemAddrs=true&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Teniendo en cuenta la simulación. Responda las siguientes preguntas:</p>
+<ul class="simple">
+<li><p>¿Cual es la direccion base del vector V y de cada uno de sus elementos?</p></li>
+<li><p>¿Cuando se acaba la ejecucion que valor queda almacenado en los apuntadores <code class="docutils literal notranslate"><span class="pre">p1</span></code> y <code class="docutils literal notranslate"><span class="pre">p2</span></code>?</p></li>
+<li><p>¿Cual es el contenido del vector cuando culmina el programa?</p></li>
+</ul>
+</li>
+</ol>
 </section>
+<section id="acceso-a-arrays-a-traves-de-apuntadores">
+<h2>4. Acceso a arrays a traves de apuntadores<a class="headerlink" href="#acceso-a-arrays-a-traves-de-apuntadores" title="Permalink to this headline">#</a></h2>
+<p>Es posible acceder a cada uno de los elementos del arreglo por medio del índice o de manera alternativa usando apuntadores y es allí donde entra en juego la aritmética de punteros ya que por medio de las operaciones de adición y sustracción nos podemos mover a las diferentes posiciones del array para luego poder acceder a sus elementos. Para entender más esto suponga que tiene la siguiente porción de codigo en la cual se manipula un vector empleando la notación con subíndices:</p>
+<ul>
+<li><p><strong>Usando notación con subindices</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior, se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20a%5B6%5D%20%3D%20%7B1,%200,%204,%207,%208,%2010%7D%3B%0A%20%20int%20i,%20suma%20%3D%200%3B%0A%20%20a%5B0%5D%20%3D%202%3B%0A%20%20a%5B3%5D%20%3D%2010%3B%0A%20%20for%28i%20%3D%201%3B%20i%20%3C%206%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20if%28i%252%20%3D%3D%200%29%20%7B%0A%20%20%20%20%20%20a%5Bi%5D%20%3D%20-a%5Bi%5D%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20a%5Bi%5D%20%3D%20a%5Bi%5D%2B1%3B%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cppShowMemAddrs=true&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+<li><p><strong>Usando notación con apuntadores</strong>: El siguiente código hace exactamente lo mismo que el anterior mediante la notacion de apuntadores:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w">        </span><span class="c1">// Declaracion del apuntador</span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w">     </span><span class="c1">// Inicializacion del apuntador. (ptr = a)</span>
+<span class="w">  </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">        </span><span class="c1">// a[0] = 2</span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span><span class="w">     </span><span class="c1">// Ahora ptr esta apuntando al elemento a[3]</span>
+<span class="w">  </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w">       </span><span class="c1">// a[3] = 10</span>
+<span class="w">  </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w">    </span><span class="c1">// Ahora ptr esta apuntando al elemento a[1]</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">ptr</span><span class="o">++</span><span class="p">;</span><span class="w">    </span><span class="c1">//Cambio del valor del apuntador para barrer el arreglo</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anteriormente mostrado se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20a%5B6%5D%20%3D%20%7B1,%200,%204,%207,%208,%2010%7D%3B%0A%20%20int%20*ptr%3B%20%20%20%20%20%20%20%20//%20Declaracion%20del%20apuntador%0A%20%20ptr%20%3D%20%26a%5B0%5D%3B%20%20%20%20%20//%20Inicializacion%20del%20apuntador.%20%28ptr%20%3D%20a%29%0A%20%20*ptr%20%3D%202%3B%20%20%20%20%20%20%20%20//%20a%5B0%5D%20%3D%202%0A%20%20ptr%20%3D%20%26a%5B3%5D%3B%20%20%20%20%20//%20Ahora%20ptr%20esta%20apuntando%20al%20elemento%20a%5B3%5D%0A%20%20*ptr%20%3D%2010%3B%20%20%20%20%20%20%20//%20a%5B3%5D%20%3D%2010%0A%20%20ptr%20%3D%20%26a%5B1%5D%3B%20%20%20%20//%20Ahora%20ptr%20esta%20apuntando%20al%20elemento%20a%5B1%5D%0A%20%20for%28int%20i%20%3D%201%3B%20i%20%3C%206%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20if%28i%252%20%3D%3D%200%29%20%7B%0A%20%20%20%20%20%20*ptr%20%3D%20-%28*ptr%29%3B%20%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20*ptr%20%3D%20*ptr%20%2B%201%3B%0A%20%20%20%20%7D%0A%20%20%20%20ptr%2B%2B%3B%20%20%20%20//Cambio%20del%20valor%20del%20apuntador%20para%20barrer%20el%20arreglo%0A%20%20%7D%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cppShowMemAddrs=true&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+</ul>
+<p>La conclusión a la que se llega depues de simular es que existe una correspondencia entre como accedo a un vector mediante la notacion con subindices y la notacion con apuntadores. La siguiente tabla muestra esta relación:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Notación subíndice</p></th>
+<th class="head"><p>Notación puntero</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;A[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;A[i]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">+</span> <span class="pre">i</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">A[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*A</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">A[i]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*(A</span> <span class="pre">+</span> <span class="pre">i)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Teniendo en cuenta <strong>la tabla de equivalencia</strong> anteriormente mostrada podemos pasar arreglos como parametros de funciones y manipularlos en las instrucciones del cuerpo de la instruccion, esto en resumen, no es mas que hacer un cambio de los corchetes <strong><code class="docutils literal notranslate"><span class="pre">[]</span></code></strong> por el asterisco (propio de los apuntadores) para la parametro asociado al vector. Veamos esto usando ejemplos.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Notación</p></th>
+<th class="head"><p>Empleando subindices</p></th>
+<th class="head"><p>Empleando apuntadores</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Declaración</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">imprimirVector(int</span> <span class="pre">V[],int</span> <span class="pre">tam);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">imprimirVector(int</span> <span class="pre">*V,int</span> <span class="pre">tam);</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Definición</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">imprimirVector(int</span> <span class="pre">V[],int</span> <span class="pre">tam)</span> <span class="pre">{</span> </code> <br>  <code class="docutils literal notranslate"> <span class="pre">printf(&quot;[</span> <span class="pre">&quot;);</span></code> <br> <code class="docutils literal notranslate">&#160; <span class="pre">for(int</span> <span class="pre">i</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">tam;</span> <span class="pre">i++)</span> <span class="pre">{</span></code> <br> <code class="docutils literal notranslate">&#160;&#160;&#160; <span class="pre">printf(&quot;%d</span> <span class="pre">&quot;,</span> <span class="pre">V[i]);</span></code> <br>   <code class="docutils literal notranslate">&#160; <span class="pre">}</span></code> <br>  <code class="docutils literal notranslate"> <span class="pre">printf(&quot;]\n&quot;);</span></code><br> <code class="docutils literal notranslate"><span class="pre">}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">imprimirVector(int</span> <span class="pre">*V,int</span> <span class="pre">tam)</span> <span class="pre">{</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">printf(&quot;[</span> <span class="pre">&quot;);</span></code>  <br>  <code class="docutils literal notranslate">&#160; <span class="pre">for(int</span> <span class="pre">i</span> <span class="pre">=</span> <span class="pre">0;</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">tam;</span> <span class="pre">i++)</span> <span class="pre">{</span></code>  <br>     <code class="docutils literal notranslate">&#160;&#160; <span class="pre">printf(&quot;%d</span> <span class="pre">&quot;,</span> <span class="pre">*(V</span> <span class="pre">+</span> <span class="pre">i));</span></code> <br>  <code class="docutils literal notranslate">&#160; <span class="pre">}</span></code> <br>  <code class="docutils literal notranslate"> <span class="pre">printf(&quot;]\n&quot;);</span></code> <br> <code class="docutils literal notranslate"><span class="pre">}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Invocación</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">A[]</span> <span class="pre">=</span> <span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3};</span></code> <br> <code class="docutils literal notranslate"><span class="pre">imprimirVector(A,</span> <span class="pre">3);</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">A[]</span> <span class="pre">=</span> <span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3};</span></code> <br> <code class="docutils literal notranslate"><span class="pre">imprimirVector(A,</span> <span class="pre">3);</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>A continuación se muestra la simulación del código anterior. Pordrá notar que los resultados no cambian.</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20imprimirVector%28int%20V%5B%5D,int%20tam%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20A%5B%5D%20%3D%20%7B1,%202,%203%7D%3B%0A%20%20//%20Imprimiendo%20el%20arreglo%20A%0A%20%20printf%28%22A%20%3D%20%22%29%3B%0A%20%20imprimirVector%28A,%203%29%3B%0A%20%20return%200%3B%20%20%0A%7D%0A%0Avoid%20imprimirVector%28int%20*V,int%20tam%29%20%7B%0A%20%20printf%28%22%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20tam%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22,%20*%28V%20%2B%20i%29%29%3B%20%20%20%0A%20%20%7D%0A%20%20printf%28%22%5D%5Cn%22%29%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></section>
 </section>
 
     <script type="text/x-thebe-config">
