@@ -427,6 +427,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-y-matrices">
+   2. Apuntadores y matrices
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -484,6 +489,11 @@ title="Print to PDF"
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-y-matrices">
+   2. Apuntadores y matrices
+  </a>
  </li>
 </ul>
 
@@ -574,7 +584,7 @@ title="Print to PDF"
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20matrix1%5B%5D%5B4%5D%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B4,%202,%207,%203%7D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B6,%201,%209,%205%7D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B8,%205,%200,%201%7D%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20matrix2%5B2%5D%5B2%5D%20%3D%20%7B%7B1,%202%7D,%20%7B3,%204%7D%7D%3B%0A%20%20int%20matrix3%5B2%5D%5B2%5D%20%3D%20%7B%7B1%7D,%20%7B3,%204%7D%7D%3B%20%0A%20%20int%20matrix4%5B3%5D%5B5%5D%3D%7B1,%202,%203,%204,%205,%206,%207,%208,%209,%2010,%2011,%2012,%2013,%2014,%2015%7D%3B%0A%20%20int%20matrix5%5B%5D%5B3%5D%3D%7B1,%202,%203,%204%7D%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 <p>La representación en memoria de las matrices declaradas en el ejercicio anterior se muestra a continuación</p>
 <figure class="align-default" id="matrix-2">
-<img alt="../_images/CH_02-S03-fig2.png" src="../_images/CH_02-S03-fig2.png" />
+<img alt="../_images/CH_02-S03-fig1.png" src="../_images/CH_02-S03-fig1.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">Declaración e inicialización de varios arreglos multidimensionales.</span><a class="headerlink" href="#matrix-2" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -626,7 +636,7 @@ title="Print to PDF"
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A%23define%20F%203%0A%23define%20C%204%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20M%5BF%5D%5BC%5D%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B4,%202,%207,%203%7D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B6,%201,%209,%205%7D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B8,%205,%200,%201%7D%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%0A%20%20printf%28%22Barriendo%20por%20filas%3A%20%5Cn%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20F%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22Fila%20%25d%3A%20%22,i%29%3B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%20C%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20printf%28%22%25d%20%22,M%5Bi%5D%5Bj%5D%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%7D%0A%20%20printf%28%22%5CnBarriendo%20por%20columnas%3A%20%5Cn%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20C%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22Columna%20%25d%3A%20%22,i%29%3B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%20F%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20printf%28%22%25d%20%22,M%5Bj%5D%5Bi%5D%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%7D%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 <p>En la siguiente figura se muestra el resultado del código anterior.</p>
 <figure class="align-default" id="matrix-3">
-<img alt="../_images/CH_02-S03-fig3.png" src="../_images/CH_02-S03-fig3.png" />
+<img alt="../_images/CH_02-S03-fig2.png" src="../_images/CH_02-S03-fig2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 22 </span><span class="caption-text">Recorrido de un array multidimensional.</span><a class="headerlink" href="#matrix-3" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -726,8 +736,39 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>A continuación, se muestra la simulación del codigo anterior:</p>
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20print%28int%20m,%20int%20n,%20int%20arr%5B%5D%5Bn%5D%29%3B%0A%20%0Aint%20main%28%29%0A%7B%0A%20%20%20%20int%20arr%5B%5D%5B3%5D%20%3D%20%7B%7B1,%202,%203%7D,%20%7B4,%205,%206%7D,%20%7B7,%208,%209%7D%7D%3B%0A%20%20%20%20int%20F%20%3D%203,%20C%20%3D%203%3B%0A%20%20%20%20print%28F,%20C,%20arr%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20print%28int%20m,%20int%20n,%20int%20arr%5B%5D%5Bn%5D%29%20%7B%0A%20%20%20%20int%20i,%20j%3B%0A%20%20%20%20for%20%28i%20%3D%200%3B%20i%20%3C%20m%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20%20%20printf%28%22%5B%20%22%29%3B%0A%20%20%20%20%20%20for%20%28j%20%3D%200%3B%20j%20%3C%20n%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%25d%20%22,%20arr%5Bi%5D%5Bj%5D%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20printf%28%22%5D%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></section>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20print%28int%20m,%20int%20n,%20int%20arr%5B%5D%5Bn%5D%29%3B%0A%20%0Aint%20main%28%29%0A%7B%0A%20%20%20%20int%20arr%5B%5D%5B3%5D%20%3D%20%7B%7B1,%202,%203%7D,%20%7B4,%205,%206%7D,%20%7B7,%208,%209%7D%7D%3B%0A%20%20%20%20int%20F%20%3D%203,%20C%20%3D%203%3B%0A%20%20%20%20print%28F,%20C,%20arr%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20print%28int%20m,%20int%20n,%20int%20arr%5B%5D%5Bn%5D%29%20%7B%0A%20%20%20%20int%20i,%20j%3B%0A%20%20%20%20for%20%28i%20%3D%200%3B%20i%20%3C%20m%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20%20%20printf%28%22%5B%20%22%29%3B%0A%20%20%20%20%20%20for%20%28j%20%3D%200%3B%20j%20%3C%20n%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%25d%20%22,%20arr%5Bi%5D%5Bj%5D%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20printf%28%22%5D%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Finalmante, para todos los casos anteriormente expuestos, la salida es la siguiente:</p>
+<p><img alt="matrix_4" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/matriz4.png?raw=true" /></p>
+<figure class="align-default" id="matrix-4">
+<img alt="../_images/CH_02-S03-fig3.png" src="../_images/CH_02-S03-fig3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Salida de todos los casos previamente tratados.</span><a class="headerlink" href="#matrix-4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Como anotación importante, de todos los parámetros pasados a la función el último debe ser la matriz, pues como usa como dimensión para las columnas otra variable, si esta no esta previamente declarada se generara un error; de este modo poner la matrix de último evita este problema.</p>
+</div>
+<p>Otra forma de pasar matrices a funciones es empleando apuntadores, pero esto ser visto posteriormente.</p>
 </section>
+</section>
+</section>
+<section id="apuntadores-y-matrices">
+<h2>2. Apuntadores y matrices<a class="headerlink" href="#apuntadores-y-matrices" title="Permalink to this headline">#</a></h2>
+<p>Así como en el caso de los arreglos de una dimensión, es posible representar los arreglos multidimensionales con una notación de punteros equivalente.</p>
+<p>En el caso de las matrices de dos dimensiones, cuando estas se almacenan en memoria, la forma como la memoria se llena es fila por fila, es decir si se tiene una matriz de <code class="docutils literal notranslate"><span class="pre">n</span></code> filas por <code class="docutils literal notranslate"><span class="pre">m</span></code> columnas las primeras <code class="docutils literal notranslate"><span class="pre">m</span></code> posiciones en memoria corresponden a los <code class="docutils literal notranslate"><span class="pre">m</span></code> elementos de la primera fila, las <code class="docutils literal notranslate"><span class="pre">m</span></code> posiciones siguientes corresponden a los <code class="docutils literal notranslate"><span class="pre">m</span></code> elementos de la siguiente fila y así sucesivamente hasta que todas las filas son ocupadas (<code class="docutils literal notranslate"><span class="pre">n*m</span></code> posiciones de memoria). La siguiente figura muestra esto:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Representacion de la matrix</p></th>
+<th class="head"><p>Representacion en memoria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="matrix_rep" src="../_images/CH_02-S03-fig4a.png" /> <br><code class="docutils literal notranslate"><span class="pre">short</span> <span class="pre">a[3][2]</span> <span class="pre">=</span> <span class="pre">{</span></code><br><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">{101,51},</span></code><br><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">{102,67},</span></code><br><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">{103,76}</span></code><br><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">};</span></code> <br><br>Para el caso vamos a suponer que cada dato tipo short ocupa <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">bytes</span></code>.</p></td>
+<td><p><img alt="matrix_mem" src="../_images/CH_02-S03-fig4b.png" /></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
