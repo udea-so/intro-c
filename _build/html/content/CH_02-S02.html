@@ -476,6 +476,11 @@ title="Print to PDF"
    4. Acceso a arrays a traves de apuntadores
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-a-apuntadores">
+   5. Apuntadores a apuntadores
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -586,6 +591,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acceso-a-arrays-a-traves-de-apuntadores">
    4. Acceso a arrays a traves de apuntadores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apuntadores-a-apuntadores">
+   5. Apuntadores a apuntadores
   </a>
  </li>
 </ul>
@@ -1591,7 +1601,106 @@ title="Print to PDF"
 </tbody>
 </table>
 <p>A continuación se muestra la simulación del código anterior. Pordrá notar que los resultados no cambian.</p>
-<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20imprimirVector%28int%20V%5B%5D,int%20tam%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20A%5B%5D%20%3D%20%7B1,%202,%203%7D%3B%0A%20%20//%20Imprimiendo%20el%20arreglo%20A%0A%20%20printf%28%22A%20%3D%20%22%29%3B%0A%20%20imprimirVector%28A,%203%29%3B%0A%20%20return%200%3B%20%20%0A%7D%0A%0Avoid%20imprimirVector%28int%20*V,int%20tam%29%20%7B%0A%20%20printf%28%22%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20tam%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22,%20*%28V%20%2B%20i%29%29%3B%20%20%20%0A%20%20%7D%0A%20%20printf%28%22%5D%5Cn%22%29%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></section>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Avoid%20imprimirVector%28int%20V%5B%5D,int%20tam%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20A%5B%5D%20%3D%20%7B1,%202,%203%7D%3B%0A%20%20//%20Imprimiendo%20el%20arreglo%20A%0A%20%20printf%28%22A%20%3D%20%22%29%3B%0A%20%20imprimirVector%28A,%203%29%3B%0A%20%20return%200%3B%20%20%0A%7D%0A%0Avoid%20imprimirVector%28int%20*V,int%20tam%29%20%7B%0A%20%20printf%28%22%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20tam%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22,%20*%28V%20%2B%20i%29%29%3B%20%20%20%0A%20%20%7D%0A%20%20printf%28%22%5D%5Cn%22%29%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</section>
+<section id="apuntadores-a-apuntadores">
+<h2>5. Apuntadores a apuntadores<a class="headerlink" href="#apuntadores-a-apuntadores" title="Permalink to this headline">#</a></h2>
+<p>Es posible poner apuntar un apuntador a un apuntador, lo cual se indica con la cantidad de asteriscos colocados en la declaración del apuntador, así la declaración realizada en las siguientes líneas de código:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w"> </span><span class="cm">/*Un caracter*/</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pch</span><span class="p">;</span><span class="w"> </span><span class="cm">/*Un apuntado a un dato tipo caracter*/</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">pch</span><span class="p">;</span><span class="w"> </span><span class="cm">/*Un apuntador a un apuntador a un caracter*/</span><span class="w"></span>
+</pre></div>
+</div>
+<p>suponiendo que:</p>
+<ul class="simple">
+<li><p>El tamaño de ocupado por una variable apuntador es de <code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">bytes</span></code>.</p></li>
+<li><p>El tamaño ocupado por una variable tipo <code class="docutils literal notranslate"><span class="pre">char</span></code> es de <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">byte</span></code>.</p></li>
+<li><p>Las direcciones de las variables <code class="docutils literal notranslate"><span class="pre">ch</span></code>, <code class="docutils literal notranslate"><span class="pre">pch</span></code> y <code class="docutils literal notranslate"><span class="pre">ppch</span></code> son <code class="docutils literal notranslate"><span class="pre">0xFFF000BCC</span></code>, <code class="docutils literal notranslate"><span class="pre">0xFFF000BD0</span></code> y <code class="docutils literal notranslate"><span class="pre">0xFFF000BD8</span> <span class="pre">respectivamente</span></code>.</p></li>
+</ul>
+<p>El resultado de ejecutar las instrucciones anteriores muestra un resultado similar al de la siguiente figura:</p>
+<figure class="align-default" id="ptr-to-ptr">
+<img alt="../_images/CH_02-S02-fig27.png" src="../_images/CH_02-S02-fig27.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Resultado de la ejecución del codigo anterior.</span><a class="headerlink" href="#ptr-to-ptr" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Notese que aun no se han inicializado las variables (variable normal, apuntador y apuntador a apuntador). A continuación de muestra un código de inicializacion y su respectivo efecto:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ch</span><span class="p">;</span><span class="w"> </span><span class="cm">/*Inicializacion del apuntador*/</span><span class="w"></span>
+<span class="n">ppch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pch</span><span class="p">;</span><span class="w"> </span><span class="cm">/*Inicializacion del apuntador al apuntador*/</span><span class="w"></span>
+</pre></div>
+</div>
+<figure class="align-default" id="ptr-to-ptr-mem-2-3">
+<img alt="../_images/CH_02-S02-fig28.png" src="../_images/CH_02-S02-fig28.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Resultado de la ejecución del codigo anterior.</span><a class="headerlink" href="#ptr-to-ptr-mem-2-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Notese del codigo anterior que a un apuntador a un apuntador se le debe pasar la dirección de memoria del apuntador al que está siendo inicializado.</p>
+<p>La siguiente tabla muestra una lista de equivalencias entre los valores almacenados en las variables anteriormente creadas:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ítem</p></th>
+<th class="head"><p>Equivalencia en código</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Lugar de memoria accedido (variable <code class="docutils literal notranslate"><span class="pre">ch</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ch</span> <span class="pre">=</span> <span class="pre">*pch</span> <span class="pre">=</span> <span class="pre">**ppch</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Dirección de la variable <code class="docutils literal notranslate"><span class="pre">ch</span></code> (<code class="docutils literal notranslate"><span class="pre">&amp;ch</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;ch</span> <span class="pre">=</span> <span class="pre">pch</span> <span class="pre">=</span> <span class="pre">*ppch</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Dirección de memoria del apuntador (<code class="docutils literal notranslate"><span class="pre">&amp;pch</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;pch</span> <span class="pre">=</span> <span class="pre">ppch</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Dirección de memoria del apuntador al apuntador (<code class="docutils literal notranslate"><span class="pre">&amp;ppch</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;ppch</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Aplicando la anterior equivalencia en la figura anterior tenemos (Tenga muy claro el operador direccion (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>)):</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ch</span> <span class="pre">=</span> <span class="pre">*pch</span> <span class="pre">=</span> <span class="pre">**ppch</span> <span class="pre">=</span> <span class="pre">?</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;ch</span> <span class="pre">=</span> <span class="pre">pch</span> <span class="pre">=</span> <span class="pre">*ppch</span> <span class="pre">=</span> <span class="pre">0xFFF000BCC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;pch</span> <span class="pre">=</span> <span class="pre">ppch</span> <span class="pre">=</span> <span class="pre">0xFFF000BD0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;ppch</span> <span class="pre">=</span> <span class="pre">0xFFF000BD8</span></code></p></li>
+</ol>
+<p>La anterior tabla implica que si yo quiero cambiar el valor de ch lo puedo hacer ya modificando la variable como tal (<code class="docutils literal notranslate"><span class="pre">ch</span> <span class="pre">=</span> <span class="pre">valor</span></code>) o desreferenciando el apuntador que la apunta (<code class="docutils literal notranslate"><span class="pre">*pch</span> <span class="pre">=</span> <span class="pre">valor</span></code>)  o desreferenciando el apuntador del apuntador que la apunta (<code class="docutils literal notranslate"><span class="pre">**ppch</span> <span class="pre">=</span> <span class="pre">valor</span></code>), a continuación se muestran las tres equivalencias. A continuación se muestra esto:</p>
+<ul>
+<li><p><strong>Forma 1</strong>: modificando la variable directamente</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Forma 2</strong>: modificando la variable por medio del apuntador</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Forma 3</strong>: modificando la variable por medio del apuntador al apuntador</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">**</span><span class="n">ppch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Ejemplo</strong></p>
+<p>Simule el siguiente codigo y saque conclusiones:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">pch</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">ppch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">***</span><span class="n">pppch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ppch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ppch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">***</span><span class="n">pppch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">**</span><span class="n">ppch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">pch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">**</span><span class="n">ppch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
