@@ -60,9 +60,6 @@ get_ipython().run_line_magic('load_ext', 'tutormagic')
 # </table>
 # 
 # Como se puede ver en la figura anterior, lo que se modifica cuando se hace manipulación sobre variables es el contenido almacenado en un lugar especifico de memoria. Entender esto es de vital importancia para manejar el próximo tema.
-# 
-# 
-# 
 
 # ## 2. Entrando en materia - Algunos aspectos sobre los apuntadores
 # 
@@ -629,6 +626,7 @@ get_ipython().run_cell_magic('tutor', '-l c -k', '#include <stdio.h>\n#include <
 # // Invocacion para imprimir 
 # int X[] = {1, 2, 3, 4};
 # imprimirVector(X, 4); // Salida --> [ 1 2 3 4 ]
+# ```
 # 
 # 2. Observe el ejemplo 2 anteriormente analizado e implementelo en forma modular empleando funciones.
 # 
