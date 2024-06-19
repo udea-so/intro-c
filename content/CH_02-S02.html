@@ -457,6 +457,11 @@ title="Print to PDF"
        2.4.2.3. Arreglos y funciones
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       2.4.2.4. Apuntadores y vectores
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -554,6 +559,11 @@ title="Print to PDF"
        2.4.2.3. Arreglos y funciones
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       2.4.2.4. Apuntadores y vectores
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -587,10 +597,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>La siguiente figura ilustra su representación en memoria:</p>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id3">
 <img alt="../_images/CH_02-S02-fig1.png" src="../_images/CH_02-S02-fig1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Representación de una variable en memoria.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Representación de una variable en memoria.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Desde el punto de vista del mapa de memoria y suponiendo que una variable tipo int ocupa 4 bytes tenemos el siguiente resultado por instrucción:</p>
@@ -1294,6 +1304,96 @@ title="Print to PDF"
 </li>
 </ol>
 </section>
+<section id="id2">
+<h4>2.4.2.4. Apuntadores y vectores<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<p>Como los apuntadores son variables es posible realizar operaciones matemáticas sobre ellos, sin embargo debido a que lo almacenado en  estos son direcciones de memoria no todas las operaciones convencionales que se podrían hacer sobre una variable normal son posibles. La siguiente tabla muestra las operaciones validas:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operación</p></th>
+<th class="head"><p>Anotaciones</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Añadir o sustraer un entero de un apuntador.</p></td>
+<td><p>Esto hace que el puntero apunte a otro lugar de memoria diferente al que inicialmente estaba apuntando esto debido a la modificación de lo que se encuentra almacenado en este.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sustraer un apuntador de otro.</p></td>
+<td><p>Cuando se realiza esta operación, los dos apuntadores deben ser del mismo tipo.</p></td>
+</tr>
+<tr class="row-even"><td><p>Comparar dos apuntadores.</p></td>
+<td><p>La comparación es comúnmente empleada para comparar cualquier puntero con el puntero a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> usando los operadores de igualdad (<code class="docutils literal notranslate"><span class="pre">==</span></code> o <code class="docutils literal notranslate"><span class="pre">!=</span></code>).</p></td>
+</tr>
+</tbody>
+</table>
+<p>Las tres operaciones anteriormente descritas son generalmente útiles para apuntadores que se refieren a los elementos de un array. Recordemos que un array consiste de un conjunto de variables del mismo tipo las cuales pueden ser accedidas bajo un mismo nombre usando subíndices. Cuando se declara un array lo que sucede en memoria es que se reservan un conjunto de posiciones contiguas en memoria tal y como se muestra en la siguiente figura:</p>
+<figure class="align-default" id="array-hsw">
+<img alt="../_images/CH_02-S02-fig20.png" src="../_images/CH_02-S02-fig20.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Diferencia entre una variable normal y un vector.</span><a class="headerlink" href="#array-hsw" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Para ilustrar lo anterior suponga lo que tiene dos apuntadores, <code class="docutils literal notranslate"><span class="pre">p1</span></code> y <code class="docutils literal notranslate"><span class="pre">p2</span></code> los cuales están apuntando a los elementos de un array a como el siguiente:</p>
+<figure class="align-default" id="array-a">
+<img alt="../_images/CH_02-S02-fig21.png" src="../_images/CH_02-S02-fig21.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Arreglo <code class="docutils literal notranslate"><span class="pre">a</span></code>.</span><a class="headerlink" href="#array-a" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">p1</span></code> apunta al elemento <code class="docutils literal notranslate"><span class="pre">i</span></code> del array (<code class="docutils literal notranslate"><span class="pre">a[i]</span></code>).</p>
+<figure class="align-default" id="array-a-p1">
+<img alt="../_images/CH_02-S02-fig22.png" src="../_images/CH_02-S02-fig22.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Arreglo <code class="docutils literal notranslate"><span class="pre">a</span></code> y apuntador <code class="docutils literal notranslate"><span class="pre">p1</span></code>.</span><a class="headerlink" href="#array-a-p1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Si <code class="docutils literal notranslate"><span class="pre">n</span></code> es un entero, entonces la expresión <strong><code class="docutils literal notranslate"><span class="pre">p2</span> <span class="pre">=</span> <span class="pre">p1</span> <span class="pre">+</span> <span class="pre">n</span></code></strong> hace que <strong><code class="docutils literal notranslate"><span class="pre">p2</span></code></strong> apunta al elemento <strong><code class="docutils literal notranslate"><span class="pre">a[i</span> <span class="pre">+</span> <span class="pre">n]</span></code></strong>. Ojo que <strong><code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">+</span> <span class="pre">n</span></code></strong> debe estar dentro del índice del array (es decir <strong><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">i+n</span> <span class="pre">&lt;=</span> <span class="pre">Tamaño</span> <span class="pre">del</span> <span class="pre">array</span> <span class="pre">-</span> <span class="pre">1</span></code></strong>). La siguiente figura muestra el caso para <strong><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">2</span></code></strong>, es decir que <strong><code class="docutils literal notranslate"><span class="pre">p2</span></code></strong> apuntara al elemento <strong><code class="docutils literal notranslate"><span class="pre">a[i</span> <span class="pre">+</span> <span class="pre">2]</span></code></strong></p>
+<figure class="align-default" id="array-a-p1-p2">
+<img alt="../_images/CH_02-S02-fig23.png" src="../_images/CH_02-S02-fig23.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Arreglo <code class="docutils literal notranslate"><span class="pre">a</span></code> y apuntadores <code class="docutils literal notranslate"><span class="pre">p1</span></code> y <code class="docutils literal notranslate"><span class="pre">p2</span></code>.</span><a class="headerlink" href="#array-a-p1-p2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<p>Lo anterior muestra que existe una relación entre la forma de escribir un array con subíndices y escribirlo con apuntadores aritmética de apuntadores. Para aterrizar un poco lo anterior analicemos la siguiente tabla:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Relación entre índices y array</p></th>
+<th class="head"><p>En resumen</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>El nombre de un arreglo es realmente un apuntador al primer elemento en el array, así si a es un arreglo unidimensional entonces la dirección del primer elemento del array es <code class="docutils literal notranslate"><span class="pre">&amp;a[0]</span></code> o simplemente <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;a[0]</span> <span class="pre">↔</span> <span class="pre">a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>La dirección del elemento <strong><code class="docutils literal notranslate"><span class="pre">i</span></code></strong> del array puede ser expresada como <code class="docutils literal notranslate"><span class="pre">&amp;a[i]</span></code> o como <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">i</span></code>, por lo tanto existen dos manera de escribir la dirección de cualquier elemento del array.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;a[i]</span> <span class="pre">↔</span> <span class="pre">a+i</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a[i]</span></code> o <code class="docutils literal notranslate"><span class="pre">*(a</span> <span class="pre">+</span> <span class="pre">i)</span></code> representan el contenido que hay en la dirección en cuestión</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a[i]</span> <span class="pre">↔</span> <span class="pre">*(a+i)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Para entender un poco lo anterior suponga que se ejecutan las siguientes instrucciones:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;h&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">,</span><span class="sc">&#39;\0&#39;</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20b%5B%5D%20%3D%20%7B'h',%20'o',%20'l',%20'a','%5C0'%7D%3B%0A%20%20*%28b%2B2%29%20%3D%20*b%3B%0A%20%20char%20*p1%20%3D%20b%3B%0A%20%20char%20*p2%20%3D%20b%20%2B%203%3B%0A%20%20p2%20%3D%20p2%20-%201%3B%0A%20%20p1%20%3D%20p2%20-%201%3B%0A%20%20*p2%20%3D%20*%28b%20%2B%201%29%20%2B%201%3B%0A%20%20p2%20%3D%20%26b%5B1%5D%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></section>
 </section>
 </section>
 </section>
