@@ -452,6 +452,11 @@ title="Print to PDF"
        Ejemplo 3
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-4">
+       Ejemplo 4
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -537,6 +542,11 @@ title="Print to PDF"
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#ejemplo-3">
        Ejemplo 3
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-4">
+       Ejemplo 4
       </a>
      </li>
     </ul>
@@ -1010,11 +1020,33 @@ title="Print to PDF"
 </figure>
 <p>Por otro lado, la representacion en memoria y como arreglo de vectores de la matrix, con base en la figura anterior es se muestra a continuacion.</p>
 <figure class="align-default" id="matrix-13">
-<img alt="../_images/CH_02-S03-fig13.png" src="../_images/CH_02-S03-fig13.png" />
+<img alt="../_images/CH_02-S03-fig14.png" src="../_images/CH_02-S03-fig14.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 32 </span><span class="caption-text">Representacion en memomria de la matrix analizada en el ejemplo 3.</span><a class="headerlink" href="#matrix-13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="ejemplo-4">
+<h4>Ejemplo 4<a class="headerlink" href="#ejemplo-4" title="Permalink to this headline">#</a></h4>
+<p>Analizar el siguiente código (<a class="reference external" href="https://pythontutor.com/render.html#code=int%20main%28%29%20%7B%0A%20%20int%20B%5B2%5D%5B2%5D%3D%20%7B1,%202,%203,%204%7D%3B%0A%20%20int%20%28*p%29%5B2%5D%3B%0A%20%20p%20%3D%20B%3B%0A%20%20**p%20%3D%20-%28*%28p%5B0%5D%20%2B%201%29%29%3B%0A%20%20p%2B%2B%3B%0A%20%20**p%20%3D%20*%28*p%20%2B%201%29%20%2B%201%3B%0A%20%20return%200%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulación</a>):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>int main() {
+  int B[2][2]= {1, 2, 3, 4};
+  int (*p)[2];
+  p = B;
+  **p = -(*(p[0] + 1));
+  p++;
+  **p = *(*p + 1) + 1;
+  return 0;
+}
+```
+
+La siguiente tabla muestra el resultado de realizar la prueba de escritorio paso por paso (resaltando en negrita) la instruccion que esta ejecutandose. Asi mismo, se asumen que las direcciones estan en formato decimal y no hexadecimal.
+
+|Instrucciones |	Representación |	Efecto en memoria |
+|----|----|----|
+|`int B[2][2]= {1, 2, 3, 4};` &lt;br&gt; **`int (*p)[2];`** &lt;br&gt;`p = B;` &lt;br&gt;`**p = -(*(p[0] + 1));` &lt;br&gt;`p++;` &lt;br&gt; `**p = *(*p + 1) + 1;`|![](./local/img/CH_02-S03-fig15a.png)||
+</pre></div>
+</div>
 </section>
 </section>
 </section>
