@@ -1248,7 +1248,29 @@ title="Print to PDF"
 <p><span class="caption-number">Fig. 37 </span><span class="caption-text">Modificando el valor de una matrix a traves de la notacion apuntador.</span><a class="headerlink" href="#matrix-18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
+<p>En la siguiente tabla se resaltan las equivalencias entre las notaciones:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Equivalencias</p></th>
+<th class="head"><p>Expresión</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>De valor</strong></p></td>
+<td><p>Obteniendo el valor de una matriz en la posicion <code class="docutils literal notranslate"><span class="pre">(i,j)</span></code>: <br><br><code class="docutils literal notranslate"><span class="pre">A[i][j]</span> <span class="pre">=</span> <span class="pre">*(A+i)[j]</span> <span class="pre">=</span> <span class="pre">*(*(A+i)+</span> <span class="pre">j)</span> <span class="pre">=</span> <span class="pre">*(A[i]</span> <span class="pre">+</span> <span class="pre">j)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>De dirección</strong></p></td>
+<td><p>Obteniendo la direccion de una matriz en la posicion <code class="docutils literal notranslate"><span class="pre">(i,j)</span></code>:<br><br><code class="docutils literal notranslate"><span class="pre">&amp;A[i][j]</span> <span class="pre">=</span> <span class="pre">(A+i)[j]</span> <span class="pre">=</span> <span class="pre">*(A+i)</span> <span class="pre">+</span> <span class="pre">j</span> <span class="pre">=</span> <span class="pre">A[i]</span> <span class="pre">+</span> <span class="pre">j</span></code><br><br>Otra alternativa:<br><br><code class="docutils literal notranslate"><span class="pre">&amp;A[i][j]</span> <span class="pre">=</span> <span class="pre">&amp;A[0][0]</span> <span class="pre">+</span> <span class="pre">i*N_COLUMNAS</span> <span class="pre">+</span> <span class="pre">j</span></code><br><br>En lo que respecta a obtener el posición de una fila <code class="docutils literal notranslate"><span class="pre">i</span></code>, lo cual se da cuando <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">=</span> <span class="pre">0</span></code>:<br><br><code class="docutils literal notranslate"><span class="pre">&amp;A[i][0]</span> <span class="pre">=</span> <span class="pre">A[i]</span> <span class="pre">+</span> <span class="pre">0</span> <span class="pre">=</span> <span class="pre">A[i]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Anotaciones</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;A[0][0]</span> <span class="pre">=</span> <span class="pre">A</span> <span class="pre">=</span> <span class="pre">A[0]</span> <span class="pre">=</span> <span class="pre">&amp;A[0]</span></code><br><br></p></td>
+</tr>
+<tr class="row-odd"><td><p>Pero ojo que las anteriores equivalencias no son intercambiables:<ul><li><code class="docutils literal notranslate"><span class="pre">&amp;A[0][0]</span> <span class="pre">+</span> <span class="pre">1</span></code>, apunta a <code class="docutils literal notranslate"><span class="pre">A[0][1]</span></code></li></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<li>`A[0] + 1`, apunta a `A[0][1]`</li><li>`A + 1`, apunta a `A[1][0]`</li><li>`&A[0] + 1`, apunta a `A[1][0]`</li></ul>|</section>
 </section>
 </section>
 </section>
