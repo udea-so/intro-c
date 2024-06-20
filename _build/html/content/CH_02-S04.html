@@ -427,6 +427,28 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inicializacion-de-variables-tipo-struct">
+     2.3. Inicializacion de variables tipo struct
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#usando-una-lista-de-inicializacion">
+       2.3.1. Usando una lista de inicialización
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inicializacion-especifica-de-cada-uno-de-los-miembros">
+       2.3.2. Inicialización específica de cada uno de los miembros
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-en-el-que-no-se-inicializan-todos-lo-miembros">
+       2.3.3. Caso en el que no se inicializan todos lo miembros
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -478,6 +500,28 @@ title="Print to PDF"
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
        Ejemplos
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inicializacion-de-variables-tipo-struct">
+     2.3. Inicializacion de variables tipo struct
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#usando-una-lista-de-inicializacion">
+       2.3.1. Usando una lista de inicialización
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inicializacion-especifica-de-cada-uno-de-los-miembros">
+       2.3.2. Inicialización específica de cada uno de los miembros
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#caso-en-el-que-no-se-inicializan-todos-lo-miembros">
+       2.3.3. Caso en el que no se inicializan todos lo miembros
       </a>
      </li>
     </ul>
@@ -720,6 +764,124 @@ title="Print to PDF"
 <img alt="../_images/CH_02-S04-fig7.png" src="../_images/CH_02-S04-fig7.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 54 </span><span class="caption-text">Estructuras tipo punto.</span><a class="headerlink" href="#fig8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="inicializacion-de-variables-tipo-struct">
+<h3>2.3. Inicializacion de variables tipo struct<a class="headerlink" href="#inicializacion-de-variables-tipo-struct" title="Permalink to this headline">#</a></h3>
+<p>Al igual que para el caso de las variables simples, las estructuras pueden tener valores iniciales una vez se declaran. Como estas con estructuras compuestas, lo que se hace para inicializarlas, es inicializar miembro por miembro. A continuacion se describen las dos formas de llevar a cabo esto.</p>
+<section id="usando-una-lista-de-inicializacion">
+<h4>2.3.1. Usando una lista de inicialización<a class="headerlink" href="#usando-una-lista-de-inicializacion" title="Permalink to this headline">#</a></h4>
+<p>Esta es similar a la empleada para los arrays, y lo que se hace es inicializar cada miembro de la estructura con el correspondiente valor inicial asociado. Cada valor inicial es separado por coma (<code class="docutils literal notranslate"><span class="pre">,</span></code>). Veamos.</p>
+<p><strong>Ejemplo</strong>: Iniciar la estructura Cancion con la siguiente informacion asociada a una cancion de <a class="reference external" href="https://es.wikipedia.org/wiki/Billie_Holiday">Billie Holiday</a>. A continuacion se muestra el codigo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Declaracion de la estructura</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Cancion</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">titulo</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">artista</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">compositor</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">short</span><span class="w"> </span><span class="n">duracion</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">URL</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="w">                         </span>
+<span class="c1">// Funcion main                         </span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Inicializacion de la variable (sadSong) tipo struct Cancion </span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Cancion</span><span class="w"> </span><span class="n">sadSong</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                              </span><span class="s">&quot;Strange fruit&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                              </span><span class="s">&quot;Billie Holiday&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                              </span><span class="s">&quot;Abel Meeropol&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                              </span><span class="mi">164</span><span class="p">,</span><span class="w"></span>
+<span class="w">                              </span><span class="s">&quot;http://bit.ly/1mU1gBT&quot;</span><span class="w"></span>
+<span class="w">                           </span><span class="p">};</span><span class="w"> </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior, se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=//%20Declaracion%20de%20la%20estructura%0Astruct%20Cancion%20%7B%0A%20%20char%20titulo%5B20%5D%3B%0A%20%20char%20artista%5B32%5D%3B%0A%20%20char%20compositor%5B32%5D%3B%0A%20%20short%20duracion%3B%0A%20%20char%20URL%5B32%5D%3B%0A%7D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A//%20Funcion%20main%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0Aint%20main%28%29%20%7B%0A%20%20//%20Inicializacion%20de%20la%20variable%20%28sadSong%29%20tipo%20struct%20Cancion%20%0A%20%20struct%20Cancion%20sadSong%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Strange%20fruit%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Billie%20Holiday%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Abel%20Meeropol%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20164,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22http%3A//bit.ly/1mU1gBT%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>A continuacion se muestra como quedan las estructura tipo Cancion (<code class="docutils literal notranslate"><span class="pre">sadSong</span></code>) al ejecutarse el codigo:</p>
+<figure class="align-default" id="fig9">
+<img alt="../_images/CH_02-S04-fig8.png" src="../_images/CH_02-S04-fig8.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Estructuras tipo cancion (variable <code class="docutils literal notranslate"><span class="pre">sadSong</span></code>).</span><a class="headerlink" href="#fig9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="inicializacion-especifica-de-cada-uno-de-los-miembros">
+<h4>2.3.2. Inicialización específica de cada uno de los miembros<a class="headerlink" href="#inicializacion-especifica-de-cada-uno-de-los-miembros" title="Permalink to this headline">#</a></h4>
+<p>Básicamente, consiste en la designación de cada uno de los miembros siguiendo la siguiente forma.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="n">miembro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor</span><span class="p">;</span><span class="w"> </span><span class="c1">// designador</span>
+</pre></div>
+</div>
+<p><strong>Ejemplo</strong>: Realizar la misma inicilizacion del caso anterior, pero en este caso emplear la inicializacion especifica de miembros:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Declaracion de la estructura</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Cancion</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">titulo</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">artista</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">compositor</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">short</span><span class="w"> </span><span class="n">duracion</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">URL</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="w">                         </span>
+<span class="c1">// Funcion main                         </span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Inicializacion de la variable (sadSong) tipo struct Cancion </span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Cancion</span><span class="w"> </span><span class="n">sadSong</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                             </span><span class="p">.</span><span class="n">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Strange fruit&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                             </span><span class="p">.</span><span class="n">artista</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Billie Holiday&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                             </span><span class="p">.</span><span class="n">compositor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Abel Meeropol&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                             </span><span class="p">.</span><span class="n">duracion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">164</span><span class="p">,</span><span class="w"></span>
+<span class="w">                             </span><span class="p">.</span><span class="n">URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://bit.ly/1mU1gBT&quot;</span><span class="w"></span>
+<span class="w">                           </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior, se puede realizar a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Declaracion%20de%20la%20estructura%0Astruct%20Cancion%20%7B%0A%20%20char%20titulo%5B20%5D%3B%0A%20%20char%20artista%5B32%5D%3B%0A%20%20char%20compositor%5B32%5D%3B%0A%20%20short%20duracion%3B%0A%20%20char%20URL%5B32%5D%3B%0A%7D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A//%20Funcion%20main%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0Aint%20main%28%29%20%7B%0A%20%20//%20Inicializacion%20de%20la%20variable%20%28sadSong%29%20tipo%20struct%20Cancion%20%0A%20%20struct%20Cancion%20sadSong%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.titulo%20%3D%20%22Strange%20fruit%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.artista%20%3D%20%22Billie%20Holiday%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.compositor%20%3D%20%22Abel%20Meeropol%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.duracion%20%3D%20164,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.URL%20%3D%20%22http%3A//bit.ly/1mU1gBT%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Note, que el resultado es el mismo que el mostrado para el ejemplo de inicializacón anteriormente realizado.</p>
+</section>
+<section id="caso-en-el-que-no-se-inicializan-todos-lo-miembros">
+<h4>2.3.3. Caso en el que no se inicializan todos lo miembros<a class="headerlink" href="#caso-en-el-que-no-se-inicializan-todos-lo-miembros" title="Permalink to this headline">#</a></h4>
+<p>Ya sea que se emplee una u otra de las formas anteriormente mencionadas, es posible inicializar parcialmente una variable tipo estructura, para ello, basta con no pasar todos los elementos que puede contener la lista de inicialización. A continuación se muestra un ejemplo:</p>
+<p><strong>Ejemplo</strong>: Crear dos variables tipo <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Cancion</span></code>, estas variables no tendran todos los parametros inicialidos:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Declaracion de la estructura</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Cancion</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">titulo</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">artista</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">compositor</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">short</span><span class="w"> </span><span class="n">duracion</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">URL</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Variables globales tipo struct Cancion</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Cancion</span><span class="w"> </span><span class="n">song1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Mi cerebro esta boca abajo&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Cancion</span><span class="w"> </span><span class="n">song2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">                         </span><span class="p">.</span><span class="n">titulo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Noches de Hungria&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                         </span><span class="p">.</span><span class="n">compositor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Julio Jaramillo&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                         </span><span class="p">.</span><span class="n">duracion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">127</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Funcion main                         </span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Declaracion%20de%20la%20estructura%0Astruct%20Cancion%20%7B%0A%20%20char%20titulo%5B20%5D%3B%0A%20%20char%20artista%5B32%5D%3B%0A%20%20char%20compositor%5B32%5D%3B%0A%20%20short%20duracion%3B%0A%20%20char%20URL%5B32%5D%3B%0A%7D%3B%0A%0A//%20Variables%20globales%20tipo%20struct%20Cancion%0Astruct%20Cancion%20song1%20%3D%20%7B%22Mi%20cerebro%20esta%20boca%20abajo%22%7D%3B%0Astruct%20Cancion%20song2%20%3D%20%7B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.titulo%20%3D%20%22Noches%20de%20Hungria%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.compositor%20%3D%20%22Julio%20Jaramillo%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.duracion%20%3D%20127%0A%7D%3B%0A%0A//%20Funcion%20main%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0Aint%20main%28%29%20%7B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>En la siguiente figura se muestra el resultado del codigo anterior, notese lo que sucede como quedan los miembros que no fueron inicializados.</p>
+<figure class="align-default" id="fig10">
+<img alt="../_images/CH_02-S04-fig9.png" src="../_images/CH_02-S04-fig9.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Variables tipo cancion sin inicializar todos sus miembros.</span><a class="headerlink" href="#fig10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
