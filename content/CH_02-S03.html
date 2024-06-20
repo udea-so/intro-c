@@ -520,9 +520,29 @@ title="Print to PDF"
        Ejemplo 3
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       Ejemplo 4
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       Ejemplo 5
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       Ejemplo 6
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   5. Enlaces de interés
+  </a>
  </li>
 </ul>
 
@@ -675,9 +695,29 @@ title="Print to PDF"
        Ejemplo 3
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       Ejemplo 4
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       Ejemplo 5
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       Ejemplo 6
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces-de-interes">
+   5. Enlaces de interés
+  </a>
  </li>
 </ul>
 
@@ -1511,7 +1551,167 @@ title="Print to PDF"
 </figcaption>
 </figure>
 </section>
+<section id="id8">
+<h4>Ejemplo 4<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h4>
+<p>Una de las mayores aplicaciones de los arreglos a apuntadores es que permiten trabajar con <strong>matrices irregulares</strong> (<strong>jagged arrays</strong>). Un array de este tipo es un array bidimensional que posee un numero de columnas diferentes por cada fila tal y como se muestra en la siguiente figura:</p>
+<figure class="align-default" id="matrix-23">
+<img alt="../_images/CH_02-S03-fig29.png" src="../_images/CH_02-S03-fig29.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Matrix irregular.</span><a class="headerlink" href="#matrix-23" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>En el siguiente codigo se define la anterior matrix irregular. Adicionalmente, se imprimen en pantalla algunos de los valores asociados a esta:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">F0</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">F1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">F2</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">F0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">F1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">F2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;F0[2]: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">F0</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*P[0] + 2: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;**P + 2:  %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">P</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;F2[1]: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">F2</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*P[2] + 1: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">P</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*(*(P + 2) + 1): %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del codigo anterior, se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20F0%5B%5D%20%3D%20%7B1,2,3,4%7D%3B%0A%20%20int%20F1%5B%5D%20%3D%20%7B5,6%7D%3B%0A%20%20int%20F2%5B%5D%20%3D%20%7B7,8,9%7D%3B%0A%20%20int%20*P%5B3%5D%3B%0A%20%20P%5B0%5D%20%3D%20F0%3B%0A%20%20P%5B1%5D%20%3D%20F1%3B%0A%20%20P%5B2%5D%20%3D%20F2%3B%0A%20%20printf%28%22F0%5B2%5D%3A%20%25d%5Cn%22,%20F0%5B2%5D%29%3B%0A%20%20printf%28%22*P%5B0%5D%20%2B%202%3A%20%25d%5Cn%22,%20*P%5B0%5D%20%2B%202%29%3B%0A%20%20printf%28%22**P%20%2B%202%3A%20%20%25d%5Cn%22,%20**P%20%2B%202%29%3B%0A%20%20printf%28%22F2%5B1%5D%3A%20%25d%5Cn%22,%20F2%5B1%5D%29%3B%0A%20%20printf%28%22*P%5B2%5D%20%2B%201%3A%20%25d%5Cn%22,%20*P%5B2%5D%20%2B%201%20%29%3B%0A%20%20printf%28%22*%28*%28P%20%2B%202%29%20%2B%201%29%3A%20%25d%5Cn%22,%20*%28*%28P%20%2B%202%29%20%2B%201%29%29%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del programa anterior se muestra en la siguiente figura, el resultado de la figura anterior se muestra en la siguiente figura (para la parte del mapa de memoria asuma las direcciones para las variabled dadas en la figura y que la arquitectura es de 32 bits):</p>
+<p><img alt="matrix_24" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte3/imagenes/irregular_matrix2.png?raw=true" /></p>
+<figure class="align-default" id="matrix-24">
+<img alt="../_images/CH_02-S03-fig30.png" src="../_images/CH_02-S03-fig30.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Salida del programa que manipula la Matrix irregular.</span><a class="headerlink" href="#matrix-24" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
+<section id="id9">
+<h4>Ejemplo 5<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
+<p>Los arreglos de apuntadores ofrecen a menudo un método conveniente para almacenar cadenas de caracteres.  En esta situación, cada elemento del array es un apuntador tipo carácter que indica el principio de una cadena de caracteres separada, por lo tanto un array de <strong><code class="docutils literal notranslate"><span class="pre">n</span></code></strong> elementos puede apuntar a diferentes cadenas de caracteres, de tal manera que cada cadena individual puede ser referenciada por su correspondiente apuntador. La siguiente figura muestra este hecho:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">myStrPtr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;If anything can go wrong, it will&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                      </span><span class="s">&quot;Nothing is foolproof&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                      </span><span class="s">&quot;Every solution breeds new problems.&quot;</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La representacion der arreglo de apuntadores tipo char descrito anteriormente se muestra a continuacion:</p>
+<figure class="align-default" id="matrix-25">
+<img alt="../_images/CH_02-S03-fig31.png" src="../_images/CH_02-S03-fig31.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Arreglo de apuntadores tipo char.</span><a class="headerlink" href="#matrix-25" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ahora bien, para profundizar analice el siguiente código:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">myStrPtr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Universidad de Antioquia&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                         </span><span class="s">&quot;Alma Mater&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                         </span><span class="s">&quot;De la patria.&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">myStrPtr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">myStrPtr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">i</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20char%20*myStrPtr%5B5%5D%20%3D%20%7B%20%22Universidad%20de%20Antioquia%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Alma%20Mater%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22De%20la%20patria.%22%7D%3B%0A%20%20int%20i%20%3D%200%3B%0A%20%20while%28myStrPtr%5Bi%5D%20!%3D%20NULL%29%20%7B%0A%20%20%20%20printf%28%22%25s%5Cn%22,myStrPtr%5Bi%5D%29%3B%0A%20%20%20%20i%2B%2B%3B%0A%20%20%7D%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Finalmente, la salida del codigo anterio se muestra a continuacion:</p>
+<figure class="align-default" id="matrix-27">
+<img alt="../_images/CH_02-S03-fig32.png" src="../_images/CH_02-S03-fig32.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Ejemplo empleando un arreglo de apuntadores tipo char.</span><a class="headerlink" href="#matrix-27" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id10">
+<h4>Ejemplo 6<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h4>
+<p>A continuacion se muestra como accder y manipular matrices 3D (tomando como base el siguiente <a class="reference external" href="https://www.codeproject.com/Articles/83080/Dynamic-Three-Dimensional-Arrays-in-C-C-C-Java">enlace</a>). Esto se explica por que en algun momento posterior puede ser de extrema utilidad, ademas, por que se resalta el uso de diferentes niveles de apuntadores. El codigo ejemplo se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/** Dimensiones de la matrix */</span><span class="w"></span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Planos</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// Filas</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// Columnas</span>
+
+<span class="cm">/** Declaracion de las funciones */</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirMatrix3D</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">***</span><span class="w"> </span><span class="n">M3D</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/** Funcion principal */</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Vectores: Cada no de los cuales sera una fila de la matrix*/</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">v0_0</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">v0_1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">v1_0</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">v1_1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Matrices 2D: Cada una sera un plano de la matrix 2D */</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">V0</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w">  </span>
+<span class="w">  </span><span class="n">V0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v0_0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">V0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v0_1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">V1</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">V1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v1_0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">V1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v1_1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Matrix 3D: Formada por 2 matrices 2D */</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">**</span><span class="n">M</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Apuntador a la matrix 3D */</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">***</span><span class="n">Mptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Cambio de valores de la matrix a traves del apuntador*/</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">M</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// M[0][1][2] = 0;</span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">M</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-5</span><span class="p">;</span><span class="w"> </span><span class="c1">// M[1][0][1] = -5;</span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-15</span><span class="p">;</span><span class="w">     </span><span class="c1">// M[1][1][1] = -15;</span>
+<span class="w">  </span><span class="cm">/* Imprimiendo la matrix 3D */</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirMatrix3D</span><span class="p">(</span><span class="n">M</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Definicion de las funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirMatrix3D</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">***</span><span class="w"> </span><span class="n">M3D</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">P</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">C</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%5d &quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">M3D</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="p">));</span><span class="w">  </span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">      </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La salida en pantalla al simular (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%0A/**%20Dimensiones%20de%20la%20matrix%20*/%0A%0Aconst%20int%20P%20%3D%202%3B%20//%20Planos%0Aconst%20int%20F%20%3D%202%3B%20//%20Filas%0Aconst%20int%20C%20%3D%203%3B%20//%20Columnas%0A%0A/**%20Declaracion%20de%20las%20funciones%20*/%0A%0Avoid%20imprimirMatrix3D%28int%20***%20M3D%29%3B%0A%0A/**%20Funcion%20principal%20*/%0A%0Aint%20main%28%29%20%7B%0A%20%20/*%20Vectores%3A%20Cada%20no%20de%20los%20cuales%20sera%20una%20fila%20de%20la%20matrix*/%0A%20%20int%20v0_0%5B%5D%20%3D%20%7B1,2,3%7D%3B%0A%20%20int%20v0_1%5B%5D%20%3D%20%7B4,5,6%7D%3B%0A%20%20int%20v1_0%5B%5D%20%3D%20%7B7,8,9%7D%3B%0A%20%20int%20v1_1%5B%5D%20%3D%20%7B10,11,12%7D%3B%0A%20%20/*%20Matrices%202D%3A%20Cada%20una%20sera%20un%20plano%20de%20la%20matrix%202D%20*/%0A%20%20int%20*V0%5B2%5D%3B%20%20%0A%20%20V0%5B0%5D%20%3D%20v0_0%3B%0A%20%20V0%5B1%5D%20%3D%20v0_1%3B%0A%20%20int%20*V1%5B2%5D%3B%0A%20%20V1%5B0%5D%20%3D%20v1_0%3B%0A%20%20V1%5B1%5D%20%3D%20v1_1%3B%0A%20%20/*%20Matrix%203D%3A%20Formada%20por%202%20matrices%202D%20*/%0A%20%20int%20**M%5B2%5D%3B%0A%20%20M%5B0%5D%20%3D%20V0%3B%0A%20%20M%5B1%5D%20%3D%20V1%3B%0A%20%20/*%20Apuntador%20a%20la%20matrix%203D%20*/%0A%20%20int%20***Mptr%20%3D%20M%3B%0A%20%20/*%20Cambio%20de%20valores%20de%20la%20matrix%20a%20traves%20del%20apuntador*/%0A%20%20*%28*%28*%28M%20%2B%200%29%20%2B%201%29%20%2B%202%29%20%3D%200%3B%20%20//%20M%5B0%5D%5B1%5D%5B2%5D%20%3D%200%3B%0A%20%20*%28*%28*%28M%20%2B%201%29%20%2B%200%29%20%2B%201%29%20%3D%20-5%3B%20//%20M%5B1%5D%5B0%5D%5B1%5D%20%3D%20-5%3B%0A%20%20*%28*%28M%5B1%5D%2B%201%29%20%2B%201%29%20%3D%20-15%3B%20%20%20%20%20//%20M%5B1%5D%5B1%5D%5B1%5D%20%3D%20-15%3B%0A%20%20/*%20Imprimiendo%20la%20matrix%203D%20*/%0A%20%20imprimirMatrix3D%28M%29%3B%20%20%0A%20%20return%200%3B%0A%7D%0A%0A/**%20Definicion%20de%20las%20funciones%20*/%0Avoid%20imprimirMatrix3D%28int%20***%20M3D%29%20%7B%0A%20%20printf%28%22-------------------------%5Cn%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20P%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%20F%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20for%28int%20k%20%3D%200%3B%20k%20%3C%20C%3B%20k%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%255d%20%22,%20*%28*%28*%28M3D%20%2B%20i%29%20%2B%20j%29%20%2B%20k%29%29%3B%20%20%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22------------------------%5Cn%22%29%3B%0A%20%20%7D%20%20%20%20%20%20%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">link</a>) y las variables se muestran en la siguiente figura, note los niveles jerarquico empleados en los apuntadores:</p>
+<figure class="align-default" id="matrix-28">
+<img alt="content/local/img/CH_02-S03-fig34.png" src="content/local/img/CH_02-S03-fig34.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Matrix 3D y apuntadores.</span><a class="headerlink" href="#matrix-28" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="enlaces-de-interes">
+<h2>5. Enlaces de interés<a class="headerlink" href="#enlaces-de-interes" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>https://www.geeksforgeeks.org/pass-2d-array-parameter-c/</p></li>
+<li><p>https://www.programiz.com/c-programming/c-arrays-functions</p></li>
+<li><p>https://www.programiz.com/c-programming/examples/matrix-multiplication-function</p></li>
+<li><p>https://beginnersbook.com/2014/01/c-passing-array-to-function-example/</p></li>
+<li><p>https://www.codeproject.com/Articles/83080/Dynamic-Three-Dimensional-Arrays-in-C-C-C-Java</p></li>
+</ul>
 </section>
 </section>
 
