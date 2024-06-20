@@ -574,7 +574,7 @@ get_ipython().run_cell_magic('tutor', '-l c -k', '/* zippo2.c --  zippo infovia 
 
 # Lleve a cabo la **prueba de escritorio** y compárela con la salida en pantalla del programa. ¿Cómo queda la matriz después de las instrucciones anteriormente mostradas?
 # 
-# 4. Arreglos de apuntadores
+# ## 4. Arreglos de apuntadores
 # 
 # Un arreglo de apuntadores es un array cuyos elementos son apuntadores a algún tipo de dato. Estos, constituyen una forma alternativa de expresar un arreglo multidimensional. Por ejemplo un array de dos dimensiones:
 # 
