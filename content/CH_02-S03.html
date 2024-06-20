@@ -510,6 +510,16 @@ title="Print to PDF"
        Ejemplo 1
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       Ejemplo 2
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       Ejemplo 3
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -653,6 +663,16 @@ title="Print to PDF"
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id5">
        Ejemplo 1
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       Ejemplo 2
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       Ejemplo 3
       </a>
      </li>
     </ul>
@@ -1366,6 +1386,130 @@ title="Print to PDF"
 <h3>Ejemplos<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <section id="id5">
 <h4>Ejemplo 1<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<p>Supóngase que se tiene una matriz bidimensional <code class="docutils literal notranslate"><span class="pre">x</span></code> de <code class="docutils literal notranslate"><span class="pre">10</span></code> filas por <code class="docutils literal notranslate"><span class="pre">20</span></code> columnas. Esta definida como un vector de apuntadores sera:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Aquí, <strong><code class="docutils literal notranslate"><span class="pre">x[0]</span></code></strong> apuntara al principio de la primera fila, <strong><code class="docutils literal notranslate"><span class="pre">x[1]</span></code></strong> al principio de la segunda, observe que a diferencia del caso anterior no fue necesario declarar el  número de elementos de cada columna de manera explícita. La siguiente figura muestra el efecto de la anterior declaración con más detalle:</p>
+<figure class="align-default" id="matrix-19">
+<img alt="../_images/CH_02-S03-fig25.png" src="../_images/CH_02-S03-fig25.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Representacion de la matrix.</span><a class="headerlink" href="#matrix-19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Por otro lado, teniendo en cuenta lo anterior, si lo que se desea es acceder a un elemento individual de la matrix, tal como <code class="docutils literal notranslate"><span class="pre">x[2][5]</span></code>. Una forma equivalente será:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">x[2]</span></code></strong>: Es un apuntador al primer elemento de la fila <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">x[2]</span> <span class="pre">+</span> <span class="pre">5</span></code></strong>: Es un apuntador al elemento <code class="docutils literal notranslate"><span class="pre">5</span></code> dentro de la fila <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">*(x[2]+5)</span></code></strong>: Se refiere al contenido del elemento de la fila <code class="docutils literal notranslate"><span class="pre">2</span></code> y la columna <code class="docutils literal notranslate"><span class="pre">5</span></code>, es decir <code class="docutils literal notranslate"><span class="pre">x[2][5]</span></code>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">*(*(x</span> <span class="pre">+</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">5)</span></code></strong>: Se refiere al contenido del elemento de la fila <code class="docutils literal notranslate"><span class="pre">2</span></code> y la columna <code class="docutils literal notranslate"><span class="pre">5</span></code>, es decir <code class="docutils literal notranslate"><span class="pre">x[2][5]</span></code>.</p></li>
+</ul>
+<p>Lo anterior, se ilustra mas claramente en la siguiente figura:</p>
+<figure class="align-default" id="matrix-20">
+<img alt="../_images/CH_02-S03-fig26.png" src="../_images/CH_02-S03-fig26.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Acceso a la matrix.</span><a class="headerlink" href="#matrix-20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id6">
+<h4>Ejemplo 2<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
+<p>Suponga que se tiene un array tridimensional de enteror de dimensiones <code class="docutils literal notranslate"><span class="pre">2x3x4</span></code>. La forma de expresar este array como un array de apuntadores bidimensional es:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>En el anterior codigo se genera una matrix de 6 apuntadores cada uno de los cuales esta apuntando a un vector unidimensional. Teniendo en cuenta lo anterior, se se desea acceder a un elemento individual tal como <code class="docutils literal notranslate"><span class="pre">t[1][1][2]</span> </code>  la forma de hacerlo empleando esta notación sera:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// Será lo mismo que t[1][1][2]</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h4>Ejemplo 3<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h4>
+<p>Simule (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%0A/*%20Matrix%20*/%0Aint%20t%5B2%5D%5B3%5D%5B4%5D%3B%0A%0A/*%20Declaracion%20de%20las%20funciones%20*/%0Avoid%20llenarMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%3B%20%0Avoid%20imprimirMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%3B%0Avoid%20imprimirDireccionesMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%3B%0A%0A/*%20Funcion%20principal%20*/%0Aint%20main%28%29%20%7B%0A%20%20llenarMatrix%28t%29%3B%0A%20%20*%28t%5B1%5D%5B1%5D%20%2B%202%29%20%3D%20-4%3B%20//%20t%5B1%5D%5B1%5D%5B2%5D%20%3D%20-4%3B%20%0A%20%20//%20Recorriendo%20las%20direcciones%20de%20la%20matrix%20de%20apuntadores%0A%20%20//%20asociada%0A%20%20int%20*ptr%3B%0A%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%20%28int%20j%20%3D%200%3B%20j%20%3C%203%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20ptr%20%3D%20t%5Bi%5D%5Bj%5D%3B%0A%20%20%20%20%20%20printf%28%22t%5B%25d%5D%5B%25d%5D%20%3D%20%25p%5Cn%22,i,j,ptr%29%3B%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20printf%28%22%5CnMatrix%3A%5Cn%22%29%3B%0A%20%20imprimirMatrix%28t%29%3B%0A%20%20printf%28%22%5CnDirecciones%20de%20la%20Matrix%3A%5Cn%22%29%3B%0A%20%20imprimirDireccionesMatrix%28t%29%3B%0A%20%20return%200%3B%20%20%20%0A%7D%0A%0A/*%20Definicion%20de%20las%20funciones%20*/%0Avoid%20llenarMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%20%7B%0A%20%20int%20val%20%3D%201%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%203%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20for%28int%20k%20%3D%200%3B%20k%20%3C%204%3B%20k%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20M%5Bi%5D%5Bj%5D%5Bk%5D%20%3D%20val%2B%2B%3B%20%20%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%20%20%0A%7D%0A%0Avoid%20imprimirDireccionesMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%20%7B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%203%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20for%28int%20k%20%3D%200%3B%20k%20%3C%204%3B%20k%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%26M%5B%25d%5D%5B%25d%5D%5B%25d%5D%20%3D%20%25p%5Cn%22,%20i,%20j,%20k,M%5Bi%5D%5Bj%5D%20%2B%20k%29%3B%20%20%0A%20%20%20%20%20%20%7D%20%20%20%20%20%20%0A%20%20%20%20%7D%0A%20%20%7D%20%20%0A%7D%0A%0Avoid%20imprimirMatrix%28int%20M%5B%5D%5B3%5D%5B4%5D%29%20%7B%0A%20%20printf%28%22-------------------------%5Cn%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%203%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20for%28int%20k%20%3D%200%3B%20k%20%3C%204%3B%20k%2B%2B%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%255d%20%22,%20M%5Bi%5D%5Bj%5D%5Bk%5D%29%3B%20%20%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22------------------------%5Cn%22%29%3B%0A%20%20%7D%20%20%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">link</a>) y analice el siguiente código:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Matrix */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+
+<span class="cm">/* Declaracion de las funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">llenarMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">M</span><span class="p">[][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]);</span><span class="w"> </span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">M</span><span class="p">[][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirDireccionesMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">M</span><span class="p">[][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
+
+<span class="cm">/* Funcion principal */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">llenarMatrix</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-4</span><span class="p">;</span><span class="w"> </span><span class="c1">// t[1][1][2] = -4; </span>
+<span class="w">  </span><span class="c1">// Recorriendo las direcciones de la matrix de apuntadores</span>
+<span class="w">  </span><span class="c1">// asociada</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;t[%d][%d] = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">ptr</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Matrix:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirMatrix</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Direcciones de la Matrix:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirDireccionesMatrix</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">   </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/* Definicion de las funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">llenarMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">M</span><span class="p">[][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="o">++</span><span class="p">;</span><span class="w">  </span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirDireccionesMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">M</span><span class="p">[][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;&amp;M[%d][%d][%d] = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="p">);</span><span class="w">  </span>
+<span class="w">      </span><span class="p">}</span><span class="w">      </span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">M</span><span class="p">[][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%5d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">]);</span><span class="w">  </span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La siguiente figura muestra la salida del programa y su representacion de la matrix. Notese como se almacena la matrix en memoria.</p>
+<figure class="align-default" id="matrix-21">
+<img alt="../_images/CH_02-S03-fig27.png" src="../_images/CH_02-S03-fig27.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Salida del programa y representacion de la matrix.</span><a class="headerlink" href="#matrix-21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>En la siguiente figura, se compara la salida con la representacion de la matrix en el mapa de memoria. Notese, las equivalencias:</p>
+<figure class="align-default" id="matrix-22">
+<img alt="../_images/CH_02-S03-fig28.png" src="../_images/CH_02-S03-fig28.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Salida del programa y representacion en memoria de la matrix.</span><a class="headerlink" href="#matrix-22" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 </section>
