@@ -734,7 +734,7 @@ get_ipython().run_cell_magic('tutor', '-l c -k', '#include <stdio.h>\n\n/** Dime
 # **Figura 28**. Matrix 3D y apuntadores.
 # 
 
-# ## 4. Enlaces de interés
+# ## 5. Enlaces de interés
 # * https://www.geeksforgeeks.org/pass-2d-array-parameter-c/
 # * https://www.programiz.com/c-programming/c-arrays-functions
 # * https://www.programiz.com/c-programming/examples/matrix-multiplication-function
