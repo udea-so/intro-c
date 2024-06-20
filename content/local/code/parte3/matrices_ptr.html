@@ -157,6 +157,11 @@ const thebe_selector_output = ".output, .cell_output"
      Apuntadores y arreglos
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../CH_02-S03.html">
+     Apuntadores y arreglos multidimensionales
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -398,6 +403,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arreglos-de-apuntadores">
+   4. Arreglos de apuntadores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#enlaces-de-interes">
    4. Enlaces de interés
   </a>
@@ -451,6 +461,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#empleo-de-apuntadores-para-acceder-a-los-elementos-de-una-matrix">
    3. Empleo de apuntadores para acceder a los elementos de una matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arreglos-de-apuntadores">
+   4. Arreglos de apuntadores
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1214,9 +1229,9 @@ int main(void)
 <div class="output text_html"><div class="text-center"><strong><a style="box-sizing: border-box; padding: 0 5px; border: 1px solid #CFCFCF;" target="_" href=http://pythontutor.com/iframe-embed.html#code=/%2A%20zippo2.c%20--%20%20zippo%20infovia%20a%20pointer%20variable%20%2A/%0A%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28void%29%0A%7B%0A%20%20%20%20int%20zippo%5B4%5D%5B2%5D%20%3D%20%7B%20%7B2%2C4%7D%20%2C%20%7B6%2C8%7D%20%2C%20%7B1%2C3%7D%20%2C%20%7B5%2C%207%7D%20%7D%3B%0A%20%20%20%20int%20%28%2Apz%29%5B2%5D%3B%0A%20%20%20%20pz%20%3D%20zippo%3B%0A%20%20%20%20printf%28%22pz%20%3D%20%25p%2C%20pz%20%2B%201%20%3D%20%25p%5Cn%22%2C%20pz%2C%20pz%20%2B%201%29%3B%20//%20D%0A%20%20%20%20printf%28%22pz%5B0%5D%20%3D%20%25p%2C%20pz%5B0%5D%20%2B%201%20%3D%20%25p%5Cn%22%2C%20pz%5B0%5D%2C%20pz%5B0%5D%20%2B%201%29%3B%20//%20D%0A%20%20%20%20printf%28%22%2Apz%20%3D%20%25p%2C%20%2Apz%20%2B%201%20%3D%20%25p%5Cn%22%2C%20%2Apz%2C%20%2Apz%20%2B%201%29%3B%20//%20D%0A%20%20%20%20printf%28%22pz%5B0%5D%5B0%5D%20%3D%20%25d%5Cn%22%2C%20pz%5B0%5D%5B0%5D%29%3B%20%20//%20V%0A%20%20%20%20printf%28%22%2Apz%5B0%5D%20%3D%20%25d%5Cn%22%2C%20%2Apz%5B0%5D%29%3B%20//%20V%0A%20%20%20%20printf%28%22%2A%2Apz%20%3D%20%25d%5Cn%22%2C%20%2A%2Apz%29%3B%20//%20V%0A%20%20%20%20printf%28%22pz%5B2%5D%5B1%5D%20%3D%20%25d%5Cn%22%2C%20pz%5B2%5D%5B1%5D%29%3B%20//%20V%0A%20%20%20%20printf%28%22%2A%28%2A%28pz%20%2B%202%29%20%2B%201%29%20%3D%20%25d%5Cn%22%2C%20%2A%28%2A%28pz%20%2B%202%29%20%2B%201%29%29%3B%20//%20V%0A%20%20%20%20return%200%3B%0A%7D&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&curInstr=0&&verticalStack=false&py=c&rawInputLstJSON=%5B%5D&codeDivWidth=50%25&codeDivHeight=100%25>Python Tutor</a></strong></div></div></div>
 </div>
 <p>Lleve a cabo la <strong>prueba de escritorio</strong> y compárela con la salida en pantalla del programa. ¿Cómo queda la matriz después de las instrucciones anteriormente mostradas?</p>
-<ol class="simple">
-<li><p>Arreglos de apuntadores</p></li>
-</ol>
+</section>
+<section id="arreglos-de-apuntadores">
+<h2>4. Arreglos de apuntadores<a class="headerlink" href="#arreglos-de-apuntadores" title="Permalink to this headline">#</a></h2>
 <p>Un arreglo de apuntadores es un array cuyos elementos son apuntadores a algún tipo de dato. Estos, constituyen una forma alternativa de expresar un arreglo multidimensional. Por ejemplo un array de dos dimensiones:</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="n">val_1</span><span class="p">][</span><span class="n">val_2</span><span class="p">];</span><span class="w"></span>
 </pre></div>

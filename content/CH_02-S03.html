@@ -486,6 +486,30 @@ title="Print to PDF"
        Ejemplo 1
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Ejemplo 2
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arreglos-de-apuntadores">
+   4. Arreglos de apuntadores
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Ejemplos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Ejemplo 1
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -604,6 +628,30 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id2">
+       Ejemplo 1
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Ejemplo 2
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arreglos-de-apuntadores">
+   4. Arreglos de apuntadores
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Ejemplos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
        Ejemplo 1
       </a>
      </li>
@@ -1267,6 +1315,57 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
+</section>
+<section id="id3">
+<h4>Ejemplo 2<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<p>Codifique el siguiente programa:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">zippo</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">}</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">}</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">}</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">pz</span><span class="p">)[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">pz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zippo</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;pz = %p, pz + 1 = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pz</span><span class="p">,</span><span class="w"> </span><span class="n">pz</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// D</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;pz[0] = %p, pz[0] + 1 = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pz</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">pz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// D</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*pz = %p, *pz + 1 = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pz</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pz</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// D</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;pz[0][0] = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pz</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span><span class="w">  </span><span class="c1">// V</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*pz[0] = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pz</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"> </span><span class="c1">// V</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;**pz = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">pz</span><span class="p">);</span><span class="w"> </span><span class="c1">// V</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;pz[2][1] = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pz</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]);</span><span class="w"> </span><span class="c1">// V</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*(*(pz + 2) + 1) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">pz</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="c1">// V</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Realice la simulación del programa:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28void%29%20%7B%0A%20%20int%20zippo%5B4%5D%5B2%5D%20%3D%20%7B%20%7B2,4%7D%20,%20%7B6,8%7D%20,%20%7B1,3%7D%20,%20%7B5,%207%7D%20%7D%3B%0A%20%20int%20%28*pz%29%5B2%5D%3B%0A%20%20pz%20%3D%20zippo%3B%0A%20%20printf%28%22pz%20%3D%20%25p,%20pz%20%2B%201%20%3D%20%25p%5Cn%22,%20pz,%20pz%20%2B%201%29%3B%20//%20D%0A%20%20printf%28%22pz%5B0%5D%20%3D%20%25p,%20pz%5B0%5D%20%2B%201%20%3D%20%25p%5Cn%22,%20pz%5B0%5D,%20pz%5B0%5D%20%2B%201%29%3B%20//%20D%0A%20%20printf%28%22*pz%20%3D%20%25p,%20*pz%20%2B%201%20%3D%20%25p%5Cn%22,%20*pz,%20*pz%20%2B%201%29%3B%20//%20D%0A%20%20printf%28%22pz%5B0%5D%5B0%5D%20%3D%20%25d%5Cn%22,%20pz%5B0%5D%5B0%5D%29%3B%20%20//%20V%0A%20%20printf%28%22*pz%5B0%5D%20%3D%20%25d%5Cn%22,%20*pz%5B0%5D%29%3B%20//%20V%0A%20%20printf%28%22**pz%20%3D%20%25d%5Cn%22,%20**pz%29%3B%20//%20V%0A%20%20printf%28%22pz%5B2%5D%5B1%5D%20%3D%20%25d%5Cn%22,%20pz%5B2%5D%5B1%5D%29%3B%20//%20V%0A%20%20printf%28%22*%28*%28pz%20%2B%202%29%20%2B%201%29%20%3D%20%25d%5Cn%22,%20*%28*%28pz%20%2B%202%29%20%2B%201%29%29%3B%20//%20V%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Lleve a cabo la <strong>prueba de escritorio</strong> y compárela con la salida en pantalla del programa. ¿Cómo queda la matriz después de las instrucciones anteriormente mostradas?</p>
+</section>
+</section>
+</section>
+<section id="arreglos-de-apuntadores">
+<h2>4. Arreglos de apuntadores<a class="headerlink" href="#arreglos-de-apuntadores" title="Permalink to this headline">#</a></h2>
+<p>Un arreglo de apuntadores es un array cuyos elementos son apuntadores a algún tipo de dato. Estos, constituyen una forma alternativa de expresar un arreglo multidimensional. Por ejemplo un array de dos dimensiones:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="n">val_1</span><span class="p">][</span><span class="n">val_2</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Puede ser reescrito como un array de apuntadores de la siguiente manera:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">mat</span><span class="p">[</span><span class="n">val_1</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Luego, generalizando lo anterior para arreglos de <code class="docutils literal notranslate"><span class="pre">N</span></code> dimensiones tenemos que:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="n">mat</span><span class="p">[</span><span class="n">val_2</span><span class="p">][</span><span class="n">val_3</span><span class="p">]...[</span><span class="n">val_N</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La forma alternativa será:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">mat</span><span class="p">[</span><span class="n">val_1</span><span class="p">][</span><span class="n">val_2</span><span class="p">]...[</span><span class="n">val_N</span><span class="mi">-1</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Aquí <strong><code class="docutils literal notranslate"><span class="pre">T</span></code></strong> se refiere al tipo de dato y las expresiones <strong><code class="docutils literal notranslate"><span class="pre">val_1</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">val_2</span></code></strong>, …, <strong><code class="docutils literal notranslate"><span class="pre">val_N</span></code></strong> se refieren al número máximo de elementos asociados con cada uno de los <code class="docutils literal notranslate"><span class="pre">N</span></code> subíndices del array. Note que a diferencia del caso anterior ya no se emplean paréntesis en este tipo de declaración por lo que el array contendrá apuntadores al tipo específico definido en la declaración.</p>
+<section id="id4">
+<h3>Ejemplos<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<section id="id5">
+<h4>Ejemplo 1<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
 </section>
 </section>
 </section>
