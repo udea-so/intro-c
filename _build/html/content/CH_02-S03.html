@@ -457,6 +457,16 @@ title="Print to PDF"
        Ejemplo 4
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-5">
+       Ejemplo 5
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-6">
+       Ejemplo 6
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -547,6 +557,16 @@ title="Print to PDF"
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#ejemplo-4">
        Ejemplo 4
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-5">
+       Ejemplo 5
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-6">
+       Ejemplo 6
       </a>
      </li>
     </ul>
@@ -1071,6 +1091,79 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
+</section>
+<section id="ejemplo-5">
+<h4>Ejemplo 5<a class="headerlink" href="#ejemplo-5" title="Permalink to this headline">#</a></h4>
+<p>Se desea crear un array de bidimensional de <code class="docutils literal notranslate"><span class="pre">10</span></code> filas por <code class="docutils literal notranslate"><span class="pre">20</span></code> columnas llamado <code class="docutils literal notranslate"><span class="pre">x</span></code> esto puede ser hecho, así:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)[</span><span class="mi">20</span><span class="p">];</span><span class="w"> </span><span class="c1">// Apuntador a un grupo de 20 enteros contiguos de un array unidimensional</span>
+</pre></div>
+</div>
+<p>O así:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">20</span><span class="p">];</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Esto se muestra en la siguiente grafica:</p>
+<figure class="align-default" id="matrix-14">
+<img alt="../_images/CH_02-S03-fig20.png" src="../_images/CH_02-S03-fig20.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Array bidimensional asociado a <code class="docutils literal notranslate"><span class="pre">x</span></code>.</span><a class="headerlink" href="#matrix-14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Basicamente, lo que se quiere dar a entender con la grafica es que <code class="docutils literal notranslate"><span class="pre">x</span></code> apunta al primer array de <code class="docutils literal notranslate"><span class="pre">20</span></code> elementos, el cual es la primera fila (fila 0), del array original. De manera similar, <code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">+</span> <span class="pre">1)</span></code> apunta a los segundos <code class="docutils literal notranslate"><span class="pre">20</span></code> elementos del array (fila 1 del array original) y así sucesivamente hasta la última fila. Observe el siguiente código:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">y</span><span class="p">)[</span><span class="mi">20</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">20</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Para clarificar lo anterior ejecute la siguiente simulación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=int%20main%28%29%20%7B%0A%20%20int%20%28*y%29%5B20%5D%3B%0A%20%20int%20x%5B10%5D%5B20%5D%3B%0A%20%20y%20%3D%20x%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%2010%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20y%20%3D%20x%20%2B%20i%3B%0A%20%20%7D%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La siguiente figura, muestra una de las salidas que se obtiene al simular:</p>
+<figure class="align-default" id="matrix-15">
+<img alt="../_images/CH_02-S03-fig21.png" src="../_images/CH_02-S03-fig21.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Array bidimensional asociado al codigo anterior.</span><a class="headerlink" href="#matrix-15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ejemplo-6">
+<h4>Ejemplo 6<a class="headerlink" href="#ejemplo-6" title="Permalink to this headline">#</a></h4>
+<p>Considere una matriz de tres dimensiones con la siguiente declaración:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">];</span><span class="w">   </span>
+</pre></div>
+</div>
+<p>O así:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">t</span><span class="p">)[</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">];</span><span class="w">     </span>
+</pre></div>
+</div>
+<p>En la declaración anterior, se definió a <code class="docutils literal notranslate"><span class="pre">t</span></code> como un apuntador a un grupo de <code class="docutils literal notranslate"><span class="pre">4x5</span></code> elementos contiguos de una matriz bidimensional. Por lo tanto según lo anterior, <code class="docutils literal notranslate"><span class="pre">t</span></code> apuntara a los primeros <code class="docutils literal notranslate"><span class="pre">4x5</span></code> elementos, <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">+</span> <span class="pre">1</span></code> apuntara a los segundos <code class="docutils literal notranslate"><span class="pre">4x5</span></code> elementos y así sucesivamente.</p>
+<p>En el siguiente código se aterriza el concepto:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">];</span><span class="w"> </span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">ptr1</span><span class="p">)[</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">ptr2</span><span class="p">)[</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">ptr3</span><span class="p">)[</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">ptr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ptr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ptr3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior, puede ser realizada a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%0Aint%20main%28%29%20%7B%0A%20%20float%20t%5B3%5D%5B4%5D%5B5%5D%3B%20%0A%20%20float%20%28*ptr1%29%5B4%5D%5B5%5D%3B%0A%20%20float%20%28*ptr2%29%5B4%5D%5B5%5D%3B%0A%20%20float%20%28*ptr3%29%5B4%5D%5B5%5D%3B%0A%20%20ptr1%20%3D%20t%3B%0A%20%20ptr2%20%3D%20t%20%2B%201%3B%0A%20%20ptr3%20%3D%20t%20%2B%202%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida de muestra a continuación:</p>
+<figure class="align-default" id="matrix-16">
+<img alt="../_images/CH_02-S03-fig22.png" src="../_images/CH_02-S03-fig22.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Array tridimensional asociado a <code class="docutils literal notranslate"><span class="pre">t</span></code>.</span><a class="headerlink" href="#matrix-16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 </section>
