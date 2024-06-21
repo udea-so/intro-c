@@ -1341,6 +1341,80 @@ title="Print to PDF"
 <p><span class="caption-number">Fig. 63 </span><span class="caption-text">Personajes.</span><a class="headerlink" href="#fig16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>La siguiente tabla muestra información relacionada con los personajes mostrados anteriormente:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nombre</p></th>
+<th class="head"><p>Nacimiento</p></th>
+<th class="head"><p>Muerte</p></th>
+<th class="head"><p>Profesion</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ernest Hemingway</p></td>
+<td><p>21/07/1899</p></td>
+<td><p>02/07/1961</p></td>
+<td><p>Escritor</p></td>
+</tr>
+<tr class="row-odd"><td><p>Albert Einstein</p></td>
+<td><p>14/03/1879</p></td>
+<td><p>18/04/1955</p></td>
+<td><p>Fisico</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note que para el problema podemos crear dos estructuras, una asociada al personaje y otra asociada a las fechas. Asi mismo, podemos ver que las fechas pueden ser tratadas como estructuras del personaje. A continuacion vamos a mostrar el código que define ambas estructuras:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">date</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">year</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">month</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">day</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">date</span><span class="w"> </span><span class="n">fecha</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">personajeHistorico</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">nombre</span><span class="p">[</span><span class="mi">21</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">fecha</span><span class="w"> </span><span class="n">nacimiento</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">fecha</span><span class="w"> </span><span class="n">muerte</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">profesion</span><span class="p">[</span><span class="mi">21</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">personajeHistorico</span><span class="w"> </span><span class="n">personaje</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">personaje</span><span class="w"> </span><span class="n">per1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Ernest Hemingway&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">nacimiento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                       </span><span class="p">.</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                       </span><span class="p">.</span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">07</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="p">.</span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mi">1899</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="p">},</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">muerte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mo">02</span><span class="p">,</span><span class="w"> </span><span class="mo">07</span><span class="p">,</span><span class="w"> </span><span class="mi">1961</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">profesion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Escritor&quot;</span><span class="w">                  </span>
+<span class="w">                   </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">personaje</span><span class="w"> </span><span class="n">per2</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">fecha</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mo">03</span><span class="p">,</span><span class="w"> </span><span class="mi">1879</span><span class="p">};</span><span class="w">  </span>
+<span class="w">   </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">per2</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">strcpy</span><span class="p">(</span><span class="n">per2</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span><span class="s">&quot;Albert Einstein&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">strcpy</span><span class="p">(</span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">profesion</span><span class="p">,</span><span class="s">&quot;Fisico&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">).</span><span class="n">nacimiento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">per2</span><span class="p">.</span><span class="n">muerte</span><span class="p">.</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1955</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">per2</span><span class="p">.</span><span class="n">muerte</span><span class="p">.</span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">per2</span><span class="p">.</span><span class="n">muerte</span><span class="p">.</span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=struct%20date%20%7B%0A%20%20unsigned%20year%3B%0A%20%20unsigned%20month%3B%0A%20%20unsigned%20day%3B%0A%7D%3B%0A%0Atypedef%20struct%20date%20fecha%3B%0A%0Astruct%20personajeHistorico%20%7B%0A%20%20char%20nombre%5B21%5D%3B%0A%20%20fecha%20nacimiento%3B%0A%20%20fecha%20muerte%3B%0A%20%20char%20profesion%5B21%5D%3B%0A%7D%3B%0A%0Atypedef%20struct%20personajeHistorico%20personaje%3B%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20%0A%20%20personaje%20per1%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.nombre%20%3D%20%22Ernest%20Hemingway%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.nacimiento%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.year%20%3D%2021,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.month%20%3D%2007,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.day%20%3D%20%201899,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.muerte%20%3D%20%7B%2002,%2007,%201961%20%7D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.profesion%20%3D%20%22Escritor%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20personaje%20per2,%20*ptr%3B%0A%20%20fecha%20d%20%3D%20%7B14,%2003,%201879%7D%3B%20%20%0A%20%20ptr%20%3D%20%26per2%3B%0A%20%20strcpy%28per2.nombre,%22Albert%20Einstein%22%29%3B%0A%20%20strcpy%28ptr-%3Eprofesion,%22Fisico%22%29%3B%0A%20%20%28*ptr%29.nacimiento%20%3D%20d%3B%0A%20%20per2.muerte.year%20%3D%201955%3B%0A%20%20per2.muerte.month%20%3D%204%3B%0A%20%20per2.muerte.day%20%3D%2018%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Notese que en el ejemplo anterior, se combinan varias de las cosas que hemos discutido previamente. El resultado en memoria se muestra a continuacion:</p>
+<figure class="align-default" id="fig17">
+<img alt="../_images/CH_02-S04-fig17.png" src="../_images/CH_02-S04-fig17.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Resultado en memoria cuando existen estructuras anidadas.</span><a class="headerlink" href="#fig17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ol>
 </section>
