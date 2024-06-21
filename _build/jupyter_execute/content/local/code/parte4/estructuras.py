@@ -442,7 +442,8 @@ get_ipython().run_cell_magic('tutor', '-l c -k', '#include <stdio.h>\n\n// Decla
 # 
 # **Figura 14**. Resultado en memoria para variables asociadas a los libros.
 
-# 2.5.2 Usando el operador flecha (->)
+# #### 2.5.2 Usando el operador flecha (->)
+# 
 # Es empleado cuando se hace uso de punteros a estructuras, su sintaxis es de la siguiente forma:
 # 
 # ```C

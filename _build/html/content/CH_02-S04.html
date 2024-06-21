@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Apuntadores y arreglos multidimensionales" href="CH_02-S03.html" />
@@ -474,7 +476,7 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#usando-el-operador-punto">
-       2.5.1 Usando el operador punto (
+       2.5.1. Usando el operador punto (
        <code class="docutils literal notranslate">
         <span class="pre">
          .
@@ -485,13 +487,30 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#usando-el-operador-flecha">
-       2.5.2 Usando el operador flecha (
+       2.5.2. Usando el operador flecha (
        <code class="docutils literal notranslate">
         <span class="pre">
          -&gt;
         </span>
        </code>
        )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructuras-anidadas">
+       2.5.3. Estructuras anidadas
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructuras-y-funciones">
+     2.6. Estructuras y funciones
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#paso-de-estructuras-por-valor">
+       2.6.1. Paso de estructuras por valor
       </a>
      </li>
     </ul>
@@ -598,7 +617,7 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#usando-el-operador-punto">
-       2.5.1 Usando el operador punto (
+       2.5.1. Usando el operador punto (
        <code class="docutils literal notranslate">
         <span class="pre">
          .
@@ -609,13 +628,30 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#usando-el-operador-flecha">
-       2.5.2 Usando el operador flecha (
+       2.5.2. Usando el operador flecha (
        <code class="docutils literal notranslate">
         <span class="pre">
          -&gt;
         </span>
        </code>
        )
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructuras-anidadas">
+       2.5.3. Estructuras anidadas
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estructuras-y-funciones">
+     2.6. Estructuras y funciones
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#paso-de-estructuras-por-valor">
+       2.6.1. Paso de estructuras por valor
       </a>
      </li>
     </ul>
@@ -1094,7 +1130,7 @@ title="Print to PDF"
 <li><p>Emplenando el operador flecha (<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>)</p></li>
 </ul>
 <section id="usando-el-operador-punto">
-<h4>2.5.1 Usando el operador punto (<code class="docutils literal notranslate"><span class="pre">.</span></code>)<a class="headerlink" href="#usando-el-operador-punto" title="Permalink to this headline">#</a></h4>
+<h4>2.5.1. Usando el operador punto (<code class="docutils literal notranslate"><span class="pre">.</span></code>)<a class="headerlink" href="#usando-el-operador-punto" title="Permalink to this headline">#</a></h4>
 <p>Usado cuando se definen variables del tipo de la estructura. Básicamente tiene la siguiente sintaxis:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">nombre_variable_estructura</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="n">nombre_miembro</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span><span class="w"></span>
 </pre></div>
@@ -1136,7 +1172,7 @@ title="Print to PDF"
 </li>
 <li><p>Crear una estructura asociada a un <code class="docutils literal notranslate"><span class="pre">libro</span></code> y posteriormente declarar dos libros (como un array) con la siguiente informacion.</p>
 <figure class="align-default" id="fig14">
-<img alt="../_images/CH_02-S04-fig13.png" src="../_images/CH_02-S04-fig13.png" />
+<img alt="../_images/CH_02-S04-fig14.png" src="../_images/CH_02-S04-fig14.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 61 </span><span class="caption-text">Libros.</span><a class="headerlink" href="#fig14" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1169,7 +1205,7 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p>El código solucion se muestra a continuación, note que la forma como se accede a la variable tipo <code class="docutils literal notranslate"><span class="pre">Book</span></code> en el correspondiente arreglo es <code class="docutils literal notranslate"><span class="pre">book[i]v</span> <span class="pre">para</span> <span class="pre">el</span> <span class="pre">caso,</span> <span class="pre">por</span> <span class="pre">ende</span> <span class="pre">la</span> <span class="pre">forma</span> <span class="pre">de</span> <span class="pre">acceder</span> <span class="pre">a</span> <span class="pre">cada</span> <span class="pre">uno</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">miembros</span> <span class="pre">del</span> <span class="pre">array</span> <span class="pre">en</span> <span class="pre">cuestion</span> <span class="pre">será</span> </code>book[i].miembro`:</p>
+<p>El código solucion se muestra a continuación, note que la forma como se accede a la variable tipo <code class="docutils literal notranslate"><span class="pre">Book</span></code> en el correspondiente arreglo es <code class="docutils literal notranslate"><span class="pre">book[i]v</span></code> para el caso, por ende la forma de acceder a cada uno de los miembros del array en cuestion será <code class="docutils literal notranslate"><span class="pre">book[i].miembro</span></code>:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
 
@@ -1213,21 +1249,456 @@ title="Print to PDF"
 <p>El código anterior puede ser simulado a continuación:</p>
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstring.h%3E%0A%0A//%20Declaracion%20de%20las%20estructura%0Astruct%20Book%20%20%7B%0A%20%20%20int%20%20book_id%3B%0A%20%20%20char%20title%5B24%5D%3B%20%0A%20%20%20char%20author%5B20%5D%3B%20%0A%20%20%20int%20pages%3B%0A%20%20%20float%20price%3B%0A%7D%3B%0A%0A//%20Creacion%20del%20alias%0Atypedef%20struct%20Book%20Book%3B%0A%0A//%20Declaracion%20del%20array%20de%20libros%0ABook%20books%5B2%5D%3B%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20//%20Manipulacion%20%28acceso%20a%20los%20miembros%29%0A%0A%20%20//%20Libro%20%23%201%0A%20%20books%5B0%5D.book_id%20%3D%201211%3B%0A%20%20//OJO%3A%20books%5B0%5D.title%20%3D%20%22C%20Primer%20Plus%22%20es%20un%20ERROR%20%0A%20%20strcpy%28books%5B0%5D.title,%22C%20Primer%20Plus%22%29%3B%20%20%20%20%0A%20%20strcpy%28books%5B0%5D.author,%22Stephen%20Prata%22%29%3B%20%0A%20%20books%5B0%5D.pages%20%3D%20984%3B%0A%20%20books%5B0%5D.price%20%3D%20585.00%3B%0A%0A%20%20//%20Libro%20%232%0A%20%20books%5B1%5D.book_id%20%3D%201212%3B%0A%20%20strcpy%28books%5B1%5D.title,%22The%20ANSI%20C%20Programming%22%29%3B%20%0A%20%20strcpy%28books%5B1%5D.author,%22Dennis%20Ritchie%22%29%3B%20%0A%20%20books%5B1%5D.pages%20%3D%20214%3B%0A%20%20books%5B1%5D.price%20%3D%20125.00%3B%0A%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 <p>A continuacion se muestra el resultado en memoria:</p>
-<figure class="align-default" id="id5">
-<img alt="../_images/CH_02-S04-fig13.png" src="../_images/CH_02-S04-fig13.png" />
+<figure class="align-default" id="fig15">
+<img alt="../_images/CH_02-S04-fig15.png" src="../_images/CH_02-S04-fig15.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Resultado en memoria para variables asociadas a los libros.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Resultado en memoria para variables asociadas a los libros.</span><a class="headerlink" href="#fig15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ol>
 </section>
 <section id="usando-el-operador-flecha">
-<h4>2.5.2 Usando el operador flecha (<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>)<a class="headerlink" href="#usando-el-operador-flecha" title="Permalink to this headline">#</a></h4>
+<h4>2.5.2. Usando el operador flecha (<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>)<a class="headerlink" href="#usando-el-operador-flecha" title="Permalink to this headline">#</a></h4>
 <p>El operador flecha (<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>) es empleado cuando se hace uso de punteros a estructuras, su sintaxis es de la siguiente forma:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">puntero_estructura</span><span class="o">&gt;-&gt;&lt;</span><span class="n">nombre_miembro</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
+<p><strong>Ejemplos</strong></p>
+<ol>
+<li><p>Suponga que se tiene una estructura asociada a las fechas. Tambien, suponga que tiene una variable llamada <code class="docutils literal notranslate"><span class="pre">diaDestino</span></code> cuyo valor asociado es el <em>5 de noviembre de 1955</em> (primer viaje en el tiempo de Marty MacFly). Luego cree una variable tipo apuntador a esta este tipo de estructura y modifique a traves de este el valor de <code class="docutils literal notranslate"><span class="pre">diaDestino</span></code> al <em>21 de octubre de 2015</em> (fecha a la cual viaja Marty MacFly al futuro). Imprima los valores en cada caso.</p>
+<p>El código solucion se muestra a continuacion:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Date</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">year</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">month</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">day</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Date</span><span class="w"> </span><span class="n">Fecha</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Declaracion de variables */</span><span class="w"></span>
+<span class="w">  </span><span class="n">Fecha</span><span class="w"> </span><span class="n">diaDestino</span><span class="p">;</span><span class="w"> </span><span class="c1">// Varible tipo fecha</span>
+<span class="w">  </span><span class="n">Fecha</span><span class="w"> </span><span class="o">*</span><span class="n">diaPtr</span><span class="p">;</span><span class="w">    </span><span class="c1">// Variable tipo apuntador a fecha</span>
+<span class="w">  </span><span class="n">diaPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">diaDestino</span><span class="p">;</span><span class="w">  </span><span class="c1">// Inicializacion del apuntador</span>
+
+<span class="w">  </span><span class="cm">/* Viaje al pasado */</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Fijando por medio del operador punto (.) los valores </span>
+<span class="w">  </span><span class="c1">// de dia destino al 5 de noviembre de 1955 </span>
+<span class="w">  </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1955</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Destination time: %d/%d/%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">         </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">year</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="cm">/*Viaje al futuro */</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Fijando por medio del operador flecha (-&gt;) los valores </span>
+<span class="w">  </span><span class="c1">// de dia destino al 21 de octubre de 2015</span>
+<span class="w">  </span><span class="n">diaPtr</span><span class="o">-&gt;</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2015</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">diaPtr</span><span class="o">-&gt;</span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">diaPtr</span><span class="o">-&gt;</span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Destination time: %d/%d/%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">         </span><span class="n">diaPtr</span><span class="o">-&gt;</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">diaPtr</span><span class="o">-&gt;</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">diaPtr</span><span class="o">-&gt;</span><span class="n">year</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Astruct%20Date%20%7B%0A%20%20unsigned%20year%3B%0A%20%20unsigned%20month%3B%0A%20%20unsigned%20day%3B%0A%7D%3B%0A%0Atypedef%20struct%20Date%20Fecha%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20/*%20Declaracion%20de%20variables%20*/%0A%20%20Fecha%20diaDestino%3B%20//%20Varible%20tipo%20fecha%0A%20%20Fecha%20*diaPtr%3B%20%20%20%20//%20Variable%20tipo%20apuntador%20a%20fecha%0A%20%20diaPtr%20%3D%20%26diaDestino%3B%20%20//%20Inicializacion%20del%20apuntador%0A%20%20%0A%20%20/*%20Viaje%20al%20pasado%20*/%0A%20%20//%20Fijando%20por%20medio%20del%20operador%20punto%20%28.%29%20los%20valores%20%0A%20%20//%20de%20dia%20destino%20al%205%20de%20noviembre%20de%201955%20%0A%20%20diaDestino.year%20%3D%201955%3B%0A%20%20diaDestino.month%20%3D%2011%3B%0A%20%20diaDestino.day%20%3D%205%3B%0A%20%20printf%28%22Destination%20time%3A%20%25d/%25d/%25d%5Cn%22,%20%0A%20%20%20%20%20%20%20%20%20diaDestino.day,%20diaDestino.month,%20diaDestino.year%29%3B%0A%20%20%0A%20%20/*Viaje%20al%20futuro%20*/%0A%20%20//%20Fijando%20por%20medio%20del%20operador%20flecha%20%28-%3E%29%20los%20valores%20%0A%20%20//%20de%20dia%20destino%20al%2021%20de%20octubre%20de%202015%0A%20%20diaPtr-%3Eyear%20%3D%202015%3B%0A%20%20diaPtr-%3Emonth%20%3D%2010%3B%0A%20%20diaPtr-%3Eday%20%3D%2021%3B%0A%20%20printf%28%22Destination%20time%3A%20%25d/%25d/%25d%5Cn%22,%20%0A%20%20%20%20%20%20%20%20%20diaPtr-%3Eyear,%20diaPtr-%3Emonth,%20diaPtr-%3Eyear%29%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Hay que aclarar que el uso del operador punto (<code class="docutils literal notranslate"><span class="pre">.</span></code>) tambien puede ser empleado con variables tipo apuntador, para ello se sigue la siguiente forma:</p>
+</li>
+<li><p>Implemente el mismo ejemplo anterior, pero esta vez use el operador punto (<code class="docutils literal notranslate"><span class="pre">.</span></code>) para modificar los miembros de la variable tipo Date a traves del apuntador.</p>
+<p>El codigo solución se muestra a continuacion:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Date</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">year</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">month</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">day</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Date</span><span class="w"> </span><span class="n">Fecha</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Declaracion de variables */</span><span class="w"></span>
+<span class="w">  </span><span class="n">Fecha</span><span class="w"> </span><span class="n">diaDestino</span><span class="p">;</span><span class="w"> </span><span class="c1">// Varible tipo fecha</span>
+<span class="w">  </span><span class="n">Fecha</span><span class="w"> </span><span class="o">*</span><span class="n">diaPtr</span><span class="p">;</span><span class="w">    </span><span class="c1">// Variable tipo apuntador a fecha</span>
+<span class="w">  </span><span class="n">diaPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">diaDestino</span><span class="p">;</span><span class="w">  </span><span class="c1">// Inicializacion del apuntador</span>
+
+<span class="w">  </span><span class="cm">/* Viaje al pasado */</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Fijando por medio del operador punto (.) los valores </span>
+<span class="w">  </span><span class="c1">// de dia destino al 5 de noviembre de 1955 </span>
+<span class="w">  </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1955</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Destination time: %d/%d/%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">         </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">diaDestino</span><span class="p">.</span><span class="n">year</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="cm">/*Viaje al futuro */</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Fijando por medio del operador flecha (-&gt;) los valores </span>
+<span class="w">  </span><span class="c1">// de dia destino al 21 de octubre de 2015</span>
+<span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">diaPtr</span><span class="p">).</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2015</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">diaPtr</span><span class="p">).</span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">diaPtr</span><span class="p">).</span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Destination time: %d/%d/%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">         </span><span class="n">diaPtr</span><span class="o">-&gt;</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">diaPtr</span><span class="o">-&gt;</span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">diaPtr</span><span class="o">-&gt;</span><span class="n">year</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Astruct%20Date%20%7B%0A%20%20unsigned%20year%3B%0A%20%20unsigned%20month%3B%0A%20%20unsigned%20day%3B%0A%7D%3B%0A%0Atypedef%20struct%20Date%20Fecha%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20/*%20Declaracion%20de%20variables%20*/%0A%20%20Fecha%20diaDestino%3B%20//%20Varible%20tipo%20fecha%0A%20%20Fecha%20*diaPtr%3B%20%20%20%20//%20Variable%20tipo%20apuntador%20a%20fecha%0A%20%20diaPtr%20%3D%20%26diaDestino%3B%20%20//%20Inicializacion%20del%20apuntador%0A%20%20%0A%20%20/*%20Viaje%20al%20pasado%20*/%0A%20%20//%20Fijando%20por%20medio%20del%20operador%20punto%20%28.%29%20los%20valores%20%0A%20%20//%20de%20dia%20destino%20al%205%20de%20noviembre%20de%201955%20%0A%20%20diaDestino.year%20%3D%201955%3B%0A%20%20diaDestino.month%20%3D%2011%3B%0A%20%20diaDestino.day%20%3D%205%3B%0A%20%20printf%28%22Destination%20time%3A%20%25d/%25d/%25d%5Cn%22,%20%0A%20%20%20%20%20%20%20%20%20diaDestino.day,%20diaDestino.month,%20diaDestino.year%29%3B%0A%20%20%0A%20%20/*Viaje%20al%20futuro%20*/%0A%20%20//%20Fijando%20por%20medio%20del%20operador%20flecha%20%28-%3E%29%20los%20valores%20%0A%20%20//%20de%20dia%20destino%20al%2021%20de%20octubre%20de%202015%0A%20%20%28*diaPtr%29.year%20%3D%202015%3B%0A%20%20%28*diaPtr%29.month%20%3D%2010%3B%0A%20%20%28*diaPtr%29.day%20%3D%2021%3B%0A%20%20printf%28%22Destination%20time%3A%20%25d/%25d/%25d%5Cn%22,%20%0A%20%20%20%20%20%20%20%20%20diaPtr-%3Eyear,%20diaPtr-%3Emonth,%20diaPtr-%3Eyear%29%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Si realiza la simulación, podrá notar que la salida es exactamente la misma que la del ejemplo anterior.</p>
+</li>
+</ol>
+</section>
+<section id="estructuras-anidadas">
+<h4>2.5.3. Estructuras anidadas<a class="headerlink" href="#estructuras-anidadas" title="Permalink to this headline">#</a></h4>
+<p>Una estructura puede tener a su vez otra estructura como miembro. A continuacion se muestra un ejemplo para ello.</p>
+<p><strong>Ejemplos</strong></p>
+<ol>
+<li><p>Suponga que se tiene la siguiente tabla asociada a personajes historicos.</p>
+<figure class="align-default" id="fig16">
+<img alt="../_images/CH_02-S04-fig16.png" src="../_images/CH_02-S04-fig16.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Personajes.</span><a class="headerlink" href="#fig16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>La siguiente tabla muestra información relacionada con los personajes mostrados anteriormente:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nombre</p></th>
+<th class="head"><p>Nacimiento</p></th>
+<th class="head"><p>Muerte</p></th>
+<th class="head"><p>Profesion</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ernest Hemingway</p></td>
+<td><p>21/07/1899</p></td>
+<td><p>02/07/1961</p></td>
+<td><p>Escritor</p></td>
+</tr>
+<tr class="row-odd"><td><p>Albert Einstein</p></td>
+<td><p>14/03/1879</p></td>
+<td><p>18/04/1955</p></td>
+<td><p>Fisico</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note que para el problema podemos crear dos estructuras, una asociada al personaje y otra asociada a las fechas. Asi mismo, podemos ver que las fechas pueden ser tratadas como estructuras del personaje. A continuacion vamos a mostrar el código que define ambas estructuras:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">date</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">year</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">month</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">day</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">date</span><span class="w"> </span><span class="n">fecha</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">personajeHistorico</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">nombre</span><span class="p">[</span><span class="mi">21</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">fecha</span><span class="w"> </span><span class="n">nacimiento</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">fecha</span><span class="w"> </span><span class="n">muerte</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">profesion</span><span class="p">[</span><span class="mi">21</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">personajeHistorico</span><span class="w"> </span><span class="n">personaje</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">personaje</span><span class="w"> </span><span class="n">per1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Ernest Hemingway&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">nacimiento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                       </span><span class="p">.</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                       </span><span class="p">.</span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">07</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="p">.</span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mi">1899</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="p">},</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">muerte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mo">02</span><span class="p">,</span><span class="w"> </span><span class="mo">07</span><span class="p">,</span><span class="w"> </span><span class="mi">1961</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">                     </span><span class="p">.</span><span class="n">profesion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Escritor&quot;</span><span class="w">                  </span>
+<span class="w">                   </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">personaje</span><span class="w"> </span><span class="n">per2</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">fecha</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mo">03</span><span class="p">,</span><span class="w"> </span><span class="mi">1879</span><span class="p">};</span><span class="w">  </span>
+<span class="w">   </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">per2</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">strcpy</span><span class="p">(</span><span class="n">per2</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span><span class="s">&quot;Albert Einstein&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="n">strcpy</span><span class="p">(</span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">profesion</span><span class="p">,</span><span class="s">&quot;Fisico&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">).</span><span class="n">nacimiento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">per2</span><span class="p">.</span><span class="n">muerte</span><span class="p">.</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1955</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">per2</span><span class="p">.</span><span class="n">muerte</span><span class="p">.</span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">per2</span><span class="p">.</span><span class="n">muerte</span><span class="p">.</span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=struct%20date%20%7B%0A%20%20unsigned%20year%3B%0A%20%20unsigned%20month%3B%0A%20%20unsigned%20day%3B%0A%7D%3B%0A%0Atypedef%20struct%20date%20fecha%3B%0A%0Astruct%20personajeHistorico%20%7B%0A%20%20char%20nombre%5B21%5D%3B%0A%20%20fecha%20nacimiento%3B%0A%20%20fecha%20muerte%3B%0A%20%20char%20profesion%5B21%5D%3B%0A%7D%3B%0A%0Atypedef%20struct%20personajeHistorico%20personaje%3B%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20%0A%20%20personaje%20per1%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.nombre%20%3D%20%22Ernest%20Hemingway%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.nacimiento%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.year%20%3D%2021,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.month%20%3D%2007,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.day%20%3D%20%201899,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.muerte%20%3D%20%7B%2002,%2007,%201961%20%7D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.profesion%20%3D%20%22Escritor%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20personaje%20per2,%20*ptr%3B%0A%20%20fecha%20d%20%3D%20%7B14,%2003,%201879%7D%3B%20%20%0A%20%20ptr%20%3D%20%26per2%3B%0A%20%20strcpy%28per2.nombre,%22Albert%20Einstein%22%29%3B%0A%20%20strcpy%28ptr-%3Eprofesion,%22Fisico%22%29%3B%0A%20%20%28*ptr%29.nacimiento%20%3D%20d%3B%0A%20%20per2.muerte.year%20%3D%201955%3B%0A%20%20per2.muerte.month%20%3D%204%3B%0A%20%20per2.muerte.day%20%3D%2018%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Notese que en el ejemplo anterior, se combinan varias de las cosas que hemos discutido previamente. El resultado en memoria se muestra a continuacion:</p>
+<figure class="align-default" id="fig17">
+<img alt="../_images/CH_02-S04-fig17.png" src="../_images/CH_02-S04-fig17.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Resultado en memoria cuando existen estructuras anidadas.</span><a class="headerlink" href="#fig17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+</section>
+</section>
+<section id="estructuras-y-funciones">
+<h3>2.6. Estructuras y funciones<a class="headerlink" href="#estructuras-y-funciones" title="Permalink to this headline">#</a></h3>
+<p>Los conceptos vistos hasta el momento sobre funciones tambien aplican a las estructuras ya que las estructuras pueden ser usadas como parametros y valores de retorno por citar unos cuantos casos. La unica cosa adicional, respecto a las funciones que trabajan con variables normales, es que las funciones con estructuras hacen uso de los operadores de acceso para la manipulacion y el procesamiento de los datos de acuerdo a lo que se desea que haga la funcion. Como en el caso tradicional, las funciones en las que se emplean estructuras pueden ser pasadas por valor y por referencia. A continuacion se describe cada caso:</p>
+<section id="paso-de-estructuras-por-valor">
+<h4>2.6.1. Paso de estructuras por valor<a class="headerlink" href="#paso-de-estructuras-por-valor" title="Permalink to this headline">#</a></h4>
+<p>En este caso la estructura pasada como argumento a la funcion es copiada al parametro de la funcion, de modo que el procesamiento se hace sobre la copia y no sobre la estructura pasada como argumento.</p>
+<p><strong>Ejemplos</strong></p>
+<ol>
+<li><p>Definir una estructura que este asociada a un numero completo. Luego haga una funcion que imprima el numero complejo en cuestion en la forma <span class="math notranslate nohighlight">\(parteReal + parteImaginaria*i\)</span>. Luego probar el programa para imprimir los numeros: <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(-3i\)</span>, <span class="math notranslate nohighlight">\(-2.3 + 10.5i\)</span>, <span class="math notranslate nohighlight">\(1.23 - 3.67i\)</span></p>
+<p>El codigo solucion se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/** Declaracion de  estructuras */</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">complejo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">re</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">im</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">complejo</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/** Declaracion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="p">);</span><span class="w"> </span><span class="c1">// void imprimirComplejo(complejo num)</span>
+
+<span class="cm">/** Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Creando los numeros */</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c1">// 2</span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-3</span><span class="p">};</span><span class="w"> </span><span class="c1">// -3*i</span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">n3</span><span class="p">,</span><span class="w"> </span><span class="n">n4</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">n3</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-2.3</span><span class="p">;</span><span class="w"> </span><span class="c1">// -2.3 + 10.5*i</span>
+<span class="w">  </span><span class="n">n3</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">n4</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.23</span><span class="p">;</span><span class="w"> </span><span class="c1">//  1.23 - 3.67*i</span>
+<span class="w">  </span><span class="n">n4</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-3.67</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Llamando las funciones para imprimir */</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">n1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">n2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">n3</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">n4</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Definicion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Real puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Imaginario puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria negativa</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f - %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,(</span><span class="mi">-1</span><span class="p">)</span><span class="o">*</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria positiva</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f + %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación puede realizar la simulación del código anterior:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/**%20Declaracion%20de%20%20estructuras%20*/%0Atypedef%20struct%20complejo%20%7B%0A%20%20float%20re%3B%0A%20%20float%20im%3B%0A%7D%20complejo%3B%0A%0A/**%20Declaracion%20de%20funciones%20*/%0Avoid%20imprimirComplejo%28complejo%29%3B%20//%20void%20imprimirComplejo%28complejo%20num%29%0A%0A/**%20Funcion%20main%20*/%0Aint%20main%28%29%20%7B%0A%20%20/*%20Creando%20los%20numeros%20*/%0A%20%20complejo%20n1%20%3D%20%7B2,%200%7D%3B%20//%202%0A%20%20complejo%20n2%20%3D%20%7B.re%20%3D%200,%20.im%20%3D%20-3%7D%3B%20//%20-3*i%0A%20%20complejo%20n3,%20n4%3B%0A%20%20n3.re%20%3D%20-2.3%3B%20//%20-2.3%20%2B%2010.5*i%0A%20%20n3.im%20%3D%2010.5%3B%0A%20%20n4.re%20%3D%201.23%3B%20//%20%201.23%20-%203.67*i%0A%20%20n4.im%20%3D%20-3.67%3B%0A%20%20/*%20Llamando%20las%20funciones%20para%20imprimir%20*/%0A%20%20imprimirComplejo%28n1%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28n2%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28n3%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28n4%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A/**%20Definicion%20de%20funciones%20*/%0Avoid%20imprimirComplejo%28complejo%20num%29%20%7B%0A%20%20if%20%28num.im%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Real%20puro%0A%20%20%20%20printf%28%22%25.2f%22,num.re%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.re%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Imaginario%20puro%0A%20%20%20%20printf%28%22%25.2f*i%22,num.im%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.im%20%3C%200%29%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20negativa%0A%20%20%20%20printf%28%22%25.2f%20-%20%25.2f*i%22,num.re,%28-1%29*num.im%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20positiva%0A%20%20%20%20printf%28%22%25.2f%20%2B%20%25.2f*i%22,num.re,num.im%29%3B%0A%20%20%7D%20%20%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Notese que en el anterior codigo se empleo <code class="docutils literal notranslate"><span class="pre">typedef</span></code> al declarar la estructura para definir de una vez el alias.</p>
+</li>
+<li><p>En la anterior funcion se un numero complejo como parametro, sin embargo tambien es posible retornar otras estructuras variables de retorno. Para ello en el siguiente ejemplo:</p>
+<ul class="simple">
+<li><p>Hacer una funcion que sume dos numeros complejos y retorne el resultado de realizar la suma como otro complejo.</p></li>
+<li><p>Hacer un test sumando los numeros: <span class="math notranslate nohighlight">\(2 - 11i\)</span> y <span class="math notranslate nohighlight">\(8 + 9i\)</span></p></li>
+</ul>
+<p>A continuación se muestra el código solución:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/** Declaracion de  estructuras */</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">complejo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">re</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">im</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">complejo</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/** Declaracion de las funciones  */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="p">);</span><span class="w"></span>
+<span class="n">complejo</span><span class="w"> </span><span class="nf">sumarComplejos</span><span class="p">(</span><span class="n">complejo</span><span class="p">,</span><span class="w"> </span><span class="n">complejo</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"> </span><span class="c1">// Funcion para testing</span>
+
+<span class="cm">/** Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Probando todo mediante la funcion test */</span><span class="w"></span>
+<span class="w">  </span><span class="n">test</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Definicion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Real puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Imaginario puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria negativa</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f - %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,(</span><span class="mi">-1</span><span class="p">)</span><span class="o">*</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria positiva</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f + %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">complejo</span><span class="w"> </span><span class="nf">sumarComplejos</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">complejo</span><span class="w"> </span><span class="n">c2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">solucion</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">solucion</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">re</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">solucion</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">im</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">solucion</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">-11</span><span class="p">},</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sumarComplejos</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; + </span><span class="se">\n</span><span class="s">---------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c3</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/**%20Declaracion%20de%20%20estructuras%20*/%0Atypedef%20struct%20complejo%20%7B%0A%20%20float%20re%3B%0A%20%20float%20im%3B%0A%7D%20complejo%3B%0A%0A/**%20Declaracion%20de%20las%20funciones%20%20*/%0Avoid%20imprimirComplejo%28complejo%29%3B%0Acomplejo%20sumarComplejos%28complejo,%20complejo%29%3B%0Avoid%20test%28void%29%3B%20//%20Funcion%20para%20testing%0A%0A/**%20Funcion%20main%20*/%0Aint%20main%28%29%20%7B%0A%20%20/*%20Probando%20todo%20mediante%20la%20funcion%20test%20*/%0A%20%20test%28%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A/**%20Definicion%20de%20funciones%20*/%0Avoid%20imprimirComplejo%28complejo%20num%29%20%7B%0A%20%20if%20%28num.im%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Real%20puro%0A%20%20%20%20printf%28%22%25.2f%22,num.re%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.re%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Imaginario%20puro%0A%20%20%20%20printf%28%22%25.2f*i%22,num.im%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.im%20%3C%200%29%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20negativa%0A%20%20%20%20printf%28%22%25.2f%20-%20%25.2f*i%22,num.re,%28-1%29*num.im%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20positiva%0A%20%20%20%20printf%28%22%25.2f%20%2B%20%25.2f*i%22,num.re,num.im%29%3B%0A%20%20%7D%20%20%0A%7D%0A%0Acomplejo%20sumarComplejos%28complejo%20c1,%20complejo%20c2%29%20%7B%0A%20%20%20%20complejo%20solucion%3B%0A%20%20%20%20solucion.re%20%3D%20c1.re%20%2B%20c2.re%3B%0A%20%20%20%20solucion.im%20%3D%20c1.im%20%2B%20c2.im%3B%0A%20%20%20%20return%20solucion%3B%0A%7D%0A%0Avoid%20test%28void%29%20%7B%0A%20%20complejo%20c1%20%3D%20%7B2,%20-11%7D,%20c2%20%3D%20%7B8,%209%7D%3B%0A%20%20complejo%20c3%20%3D%20sumarComplejos%28c1,c2%29%3B%0A%20%20imprimirComplejo%28c1%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28c2%29%3B%0A%20%20printf%28%22%20%2B%20%5Cn---------%5Cn%22%29%3B%0A%20%20imprimirComplejo%28c3%29%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+<li><p>Mejorar el codigo anterior agregando dos funciones que hagan lo siguiente:</p>
+<ul class="simple">
+<li><p>Calcule la magnitud de un numero complejo.</p></li>
+<li><p>Calcule el angulo de un numero complejo.</p></li>
+</ul>
+<p>El codigo anterior se mejoro quedando de la siguiente manera:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/** Macros */</span><span class="w"></span>
+<span class="cp">#define PI 3.14</span>
+
+<span class="c1">// Converts degrees to radians.</span>
+<span class="cp">#define degreesToRadians(angleDegrees) (angleDegrees * PI / 180.0)</span>
+
+<span class="c1">// Converts radians to degrees.</span>
+<span class="cp">#define radiansToDegrees(angleRadians) (angleRadians * 180.0 / PI)</span>
+
+<span class="cm">/** Declaracion de  estructuras */</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">complejo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">re</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">im</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">complejo</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/** Declaracion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="p">);</span><span class="w"> </span><span class="c1">// void imprimirComplejo(complejo num)</span>
+<span class="kt">double</span><span class="w"> </span><span class="nf">calcularMagnitud</span><span class="p">(</span><span class="n">complejo</span><span class="p">);</span><span class="w"></span>
+<span class="n">complejo</span><span class="w"> </span><span class="nf">sumarComplejos</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">complejo</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test1</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test2</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/** Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Creando los numeros */</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// test1();  ---&gt; Comentado por que ya se probo que dio bien</span>
+<span class="w">  </span><span class="n">test2</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Definicion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Real puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Imaginario puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria negativa</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f - %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,(</span><span class="mi">-1</span><span class="p">)</span><span class="o">*</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria positiva</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f + %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">calcularMagnitud</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">pow</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pow</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">obtenerAngulo</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Cuadrante I</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">radiansToDegrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Cuadrante II</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">radiansToDegrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Cuadrante III</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">radiansToDegrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="o">-</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Cuadrante IV</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">360</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">radiansToDegrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">complejo</span><span class="w"> </span><span class="nf">sumarComplejos</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">complejo</span><span class="w"> </span><span class="n">c2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">solucion</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">solucion</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">re</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">solucion</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">im</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">solucion</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">test1</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">-11</span><span class="p">},</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sumarComplejos</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; + </span><span class="se">\n</span><span class="s">-------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c3</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">test2</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">-1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="mi">-1</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">-1</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;mag(c1) = %.1lf, ang(c1) = %.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">calcularMagnitud</span><span class="p">(</span><span class="n">c1</span><span class="p">),</span><span class="n">obtenerAngulo</span><span class="p">(</span><span class="n">c1</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;mag(c2) = %.1lf, ang(c2) = %.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">calcularMagnitud</span><span class="p">(</span><span class="n">c2</span><span class="p">),</span><span class="n">obtenerAngulo</span><span class="p">(</span><span class="n">c2</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;mag(c3) = %.1lf, ang(c3) = %.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">calcularMagnitud</span><span class="p">(</span><span class="n">c3</span><span class="p">),</span><span class="n">obtenerAngulo</span><span class="p">(</span><span class="n">c3</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;mag(c4) = %.1lf, ang(c4) = %.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">calcularMagnitud</span><span class="p">(</span><span class="n">c4</span><span class="p">),</span><span class="n">obtenerAngulo</span><span class="p">(</span><span class="n">c4</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La salida en pantalla del programa anterior es:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mag</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">30.0</span>
+<span class="n">mag</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">315.1</span>
+<span class="n">mag</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span> <span class="o">=</span> <span class="mf">210.0</span>
+<span class="n">mag</span><span class="p">(</span><span class="n">c4</span><span class="p">)</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c4</span><span class="p">)</span> <span class="o">=</span> <span class="mf">315.0</span>
+</pre></div>
+</div>
+</li>
+</ol>
 </section>
 </section>
 </section>
