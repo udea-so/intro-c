@@ -1452,8 +1452,251 @@ title="Print to PDF"
 <p>En este caso la estructura pasada como argumento a la funcion es copiada al parametro de la funcion, de modo que el procesamiento se hace sobre la copia y no sobre la estructura pasada como argumento.</p>
 <p><strong>Ejemplos</strong></p>
 <ol>
-<li><p>Definir una estructura que este asociada a un numero completo. Luego haga una funcion que imprima el numero complejo en cuestion en la forma $parteReal + parteImaginaria*i$. Luego probar el programa para imprimir los numeros: <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(-3i\)</span>, <span class="math notranslate nohighlight">\(-2.3 + 10.5i\)</span>, <span class="math notranslate nohighlight">\(1.23 - 3.67i\)</span></p>
+<li><p>Definir una estructura que este asociada a un numero completo. Luego haga una funcion que imprima el numero complejo en cuestion en la forma <span class="math notranslate nohighlight">\(parteReal + parteImaginaria*i\)</span>. Luego probar el programa para imprimir los numeros: <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(-3i\)</span>, <span class="math notranslate nohighlight">\(-2.3 + 10.5i\)</span>, <span class="math notranslate nohighlight">\(1.23 - 3.67i\)</span></p>
 <p>El codigo solucion se muestra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/** Declaracion de  estructuras */</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">complejo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">re</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">im</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">complejo</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/** Declaracion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="p">);</span><span class="w"> </span><span class="c1">// void imprimirComplejo(complejo num)</span>
+
+<span class="cm">/** Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Creando los numeros */</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">n1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c1">// 2</span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">n2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-3</span><span class="p">};</span><span class="w"> </span><span class="c1">// -3*i</span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">n3</span><span class="p">,</span><span class="w"> </span><span class="n">n4</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">n3</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-2.3</span><span class="p">;</span><span class="w"> </span><span class="c1">// -2.3 + 10.5*i</span>
+<span class="w">  </span><span class="n">n3</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">n4</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.23</span><span class="p">;</span><span class="w"> </span><span class="c1">//  1.23 - 3.67*i</span>
+<span class="w">  </span><span class="n">n4</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">-3.67</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Llamando las funciones para imprimir */</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">n1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">n2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">n3</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">n4</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Definicion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Real puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Imaginario puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria negativa</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f - %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,(</span><span class="mi">-1</span><span class="p">)</span><span class="o">*</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria positiva</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f + %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación puede realizar la simulación del código anterior:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/**%20Declaracion%20de%20%20estructuras%20*/%0Atypedef%20struct%20complejo%20%7B%0A%20%20float%20re%3B%0A%20%20float%20im%3B%0A%7D%20complejo%3B%0A%0A/**%20Declaracion%20de%20funciones%20*/%0Avoid%20imprimirComplejo%28complejo%29%3B%20//%20void%20imprimirComplejo%28complejo%20num%29%0A%0A/**%20Funcion%20main%20*/%0Aint%20main%28%29%20%7B%0A%20%20/*%20Creando%20los%20numeros%20*/%0A%20%20complejo%20n1%20%3D%20%7B2,%200%7D%3B%20//%202%0A%20%20complejo%20n2%20%3D%20%7B.re%20%3D%200,%20.im%20%3D%20-3%7D%3B%20//%20-3*i%0A%20%20complejo%20n3,%20n4%3B%0A%20%20n3.re%20%3D%20-2.3%3B%20//%20-2.3%20%2B%2010.5*i%0A%20%20n3.im%20%3D%2010.5%3B%0A%20%20n4.re%20%3D%201.23%3B%20//%20%201.23%20-%203.67*i%0A%20%20n4.im%20%3D%20-3.67%3B%0A%20%20/*%20Llamando%20las%20funciones%20para%20imprimir%20*/%0A%20%20imprimirComplejo%28n1%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28n2%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28n3%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28n4%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A/**%20Definicion%20de%20funciones%20*/%0Avoid%20imprimirComplejo%28complejo%20num%29%20%7B%0A%20%20if%20%28num.im%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Real%20puro%0A%20%20%20%20printf%28%22%25.2f%22,num.re%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.re%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Imaginario%20puro%0A%20%20%20%20printf%28%22%25.2f*i%22,num.im%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.im%20%3C%200%29%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20negativa%0A%20%20%20%20printf%28%22%25.2f%20-%20%25.2f*i%22,num.re,%28-1%29*num.im%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20positiva%0A%20%20%20%20printf%28%22%25.2f%20%2B%20%25.2f*i%22,num.re,num.im%29%3B%0A%20%20%7D%20%20%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Notese que en el anterior codigo se empleo <code class="docutils literal notranslate"><span class="pre">typedef</span></code> al declarar la estructura para definir de una vez el alias.</p>
+</li>
+<li><p>En la anterior funcion se un numero complejo como parametro, sin embargo tambien es posible retornar otras estructuras variables de retorno. Para ello en el siguiente ejemplo:</p>
+<ul class="simple">
+<li><p>Hacer una funcion que sume dos numeros complejos y retorne el resultado de realizar la suma como otro complejo.</p></li>
+<li><p>Hacer un test sumando los numeros: <span class="math notranslate nohighlight">\(2 - 11i\)</span> y <span class="math notranslate nohighlight">\(8 + 9i\)</span></p></li>
+</ul>
+<p>A continuación se muestra el código solución:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/** Declaracion de  estructuras */</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">complejo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">re</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">im</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">complejo</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/** Declaracion de las funciones  */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="p">);</span><span class="w"></span>
+<span class="n">complejo</span><span class="w"> </span><span class="nf">sumarComplejos</span><span class="p">(</span><span class="n">complejo</span><span class="p">,</span><span class="w"> </span><span class="n">complejo</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"> </span><span class="c1">// Funcion para testing</span>
+
+<span class="cm">/** Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Probando todo mediante la funcion test */</span><span class="w"></span>
+<span class="w">  </span><span class="n">test</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Definicion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Real puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Imaginario puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria negativa</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f - %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,(</span><span class="mi">-1</span><span class="p">)</span><span class="o">*</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria positiva</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f + %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">complejo</span><span class="w"> </span><span class="nf">sumarComplejos</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">complejo</span><span class="w"> </span><span class="n">c2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">solucion</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">solucion</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">re</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">solucion</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">im</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">solucion</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">-11</span><span class="p">},</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sumarComplejos</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; + </span><span class="se">\n</span><span class="s">---------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c3</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/**%20Declaracion%20de%20%20estructuras%20*/%0Atypedef%20struct%20complejo%20%7B%0A%20%20float%20re%3B%0A%20%20float%20im%3B%0A%7D%20complejo%3B%0A%0A/**%20Declaracion%20de%20las%20funciones%20%20*/%0Avoid%20imprimirComplejo%28complejo%29%3B%0Acomplejo%20sumarComplejos%28complejo,%20complejo%29%3B%0Avoid%20test%28void%29%3B%20//%20Funcion%20para%20testing%0A%0A/**%20Funcion%20main%20*/%0Aint%20main%28%29%20%7B%0A%20%20/*%20Probando%20todo%20mediante%20la%20funcion%20test%20*/%0A%20%20test%28%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A/**%20Definicion%20de%20funciones%20*/%0Avoid%20imprimirComplejo%28complejo%20num%29%20%7B%0A%20%20if%20%28num.im%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Real%20puro%0A%20%20%20%20printf%28%22%25.2f%22,num.re%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.re%20%3D%3D%200%29%20%7B%0A%20%20%20%20//%20Imaginario%20puro%0A%20%20%20%20printf%28%22%25.2f*i%22,num.im%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28num.im%20%3C%200%29%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20negativa%0A%20%20%20%20printf%28%22%25.2f%20-%20%25.2f*i%22,num.re,%28-1%29*num.im%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20//%20Complejo%20con%20parte%20imaginaria%20positiva%0A%20%20%20%20printf%28%22%25.2f%20%2B%20%25.2f*i%22,num.re,num.im%29%3B%0A%20%20%7D%20%20%0A%7D%0A%0Acomplejo%20sumarComplejos%28complejo%20c1,%20complejo%20c2%29%20%7B%0A%20%20%20%20complejo%20solucion%3B%0A%20%20%20%20solucion.re%20%3D%20c1.re%20%2B%20c2.re%3B%0A%20%20%20%20solucion.im%20%3D%20c1.im%20%2B%20c2.im%3B%0A%20%20%20%20return%20solucion%3B%0A%7D%0A%0Avoid%20test%28void%29%20%7B%0A%20%20complejo%20c1%20%3D%20%7B2,%20-11%7D,%20c2%20%3D%20%7B8,%209%7D%3B%0A%20%20complejo%20c3%20%3D%20sumarComplejos%28c1,c2%29%3B%0A%20%20imprimirComplejo%28c1%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20imprimirComplejo%28c2%29%3B%0A%20%20printf%28%22%20%2B%20%5Cn---------%5Cn%22%29%3B%0A%20%20imprimirComplejo%28c3%29%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+<li><p>Mejorar el codigo anterior agregando dos funciones que hagan lo siguiente:</p>
+<ul class="simple">
+<li><p>Calcule la magnitud de un numero complejo.</p></li>
+<li><p>Calcule el angulo de un numero complejo.</p></li>
+</ul>
+<p>El codigo anterior se mejoro quedando de la siguiente manera:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/** Macros */</span><span class="w"></span>
+<span class="cp">#define PI 3.14</span>
+
+<span class="c1">// Converts degrees to radians.</span>
+<span class="cp">#define degreesToRadians(angleDegrees) (angleDegrees * PI / 180.0)</span>
+
+<span class="c1">// Converts radians to degrees.</span>
+<span class="cp">#define radiansToDegrees(angleRadians) (angleRadians * 180.0 / PI)</span>
+
+<span class="cm">/** Declaracion de  estructuras */</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">complejo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">re</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">im</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">complejo</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/** Declaracion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="p">);</span><span class="w"> </span><span class="c1">// void imprimirComplejo(complejo num)</span>
+<span class="kt">double</span><span class="w"> </span><span class="nf">calcularMagnitud</span><span class="p">(</span><span class="n">complejo</span><span class="p">);</span><span class="w"></span>
+<span class="n">complejo</span><span class="w"> </span><span class="nf">sumarComplejos</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">complejo</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test1</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test2</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/** Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Creando los numeros */</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// test1();  ---&gt; Comentado por que ya se probo que dio bien</span>
+<span class="w">  </span><span class="n">test2</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Definicion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirComplejo</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Real puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Imaginario puro</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria negativa</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f - %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,(</span><span class="mi">-1</span><span class="p">)</span><span class="o">*</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Complejo con parte imaginaria positiva</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f + %.2f*i&quot;</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">calcularMagnitud</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">pow</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pow</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">obtenerAngulo</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Cuadrante I</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">radiansToDegrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Cuadrante II</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">radiansToDegrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Cuadrante III</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">180</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">radiansToDegrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="o">-</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Cuadrante IV</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">360</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">radiansToDegrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">.</span><span class="n">im</span><span class="p">,</span><span class="n">num</span><span class="p">.</span><span class="n">re</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">complejo</span><span class="w"> </span><span class="nf">sumarComplejos</span><span class="p">(</span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">complejo</span><span class="w"> </span><span class="n">c2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">solucion</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">solucion</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">re</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">re</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">solucion</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">im</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">im</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">solucion</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">test1</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">-11</span><span class="p">},</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sumarComplejos</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; + </span><span class="se">\n</span><span class="s">-------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirComplejo</span><span class="p">(</span><span class="n">c3</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">test2</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">-1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="mi">-1</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">complejo</span><span class="w"> </span><span class="n">c4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">-1</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;mag(c1) = %.1lf, ang(c1) = %.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">calcularMagnitud</span><span class="p">(</span><span class="n">c1</span><span class="p">),</span><span class="n">obtenerAngulo</span><span class="p">(</span><span class="n">c1</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;mag(c2) = %.1lf, ang(c2) = %.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">calcularMagnitud</span><span class="p">(</span><span class="n">c2</span><span class="p">),</span><span class="n">obtenerAngulo</span><span class="p">(</span><span class="n">c2</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;mag(c3) = %.1lf, ang(c3) = %.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">calcularMagnitud</span><span class="p">(</span><span class="n">c3</span><span class="p">),</span><span class="n">obtenerAngulo</span><span class="p">(</span><span class="n">c3</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;mag(c4) = %.1lf, ang(c4) = %.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">calcularMagnitud</span><span class="p">(</span><span class="n">c4</span><span class="p">),</span><span class="n">obtenerAngulo</span><span class="p">(</span><span class="n">c4</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La salida en pantalla del programa anterior es:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mag</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">30.0</span>
+<span class="n">mag</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span> <span class="o">=</span> <span class="mf">315.1</span>
+<span class="n">mag</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c3</span><span class="p">)</span> <span class="o">=</span> <span class="mf">210.0</span>
+<span class="n">mag</span><span class="p">(</span><span class="n">c4</span><span class="p">)</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">,</span> <span class="n">ang</span><span class="p">(</span><span class="n">c4</span><span class="p">)</span> <span class="o">=</span> <span class="mf">315.0</span>
+</pre></div>
+</div>
 </li>
 </ol>
 </section>
