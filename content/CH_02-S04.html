@@ -474,7 +474,7 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#usando-el-operador-punto">
-       2.5.1 Usando el operador punto (
+       2.5.1. Usando el operador punto (
        <code class="docutils literal notranslate">
         <span class="pre">
          .
@@ -485,7 +485,7 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#usando-el-operador-flecha">
-       2.5.2 Usando el operador flecha (
+       2.5.2. Usando el operador flecha (
        <code class="docutils literal notranslate">
         <span class="pre">
          -&gt;
@@ -494,12 +494,24 @@ title="Print to PDF"
        )
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructuras-anidadas">
+       2.5.3. Estructuras anidadas
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#estructuras-anidadas">
-     2.6. Estructuras anidadas
+    <a class="reference internal nav-link" href="#estructuras-y-funciones">
+     2.6. Estructuras y funciones
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#paso-de-estructuras-por-valor">
+       2.6.1. Paso de estructuras por valor
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -603,7 +615,7 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#usando-el-operador-punto">
-       2.5.1 Usando el operador punto (
+       2.5.1. Usando el operador punto (
        <code class="docutils literal notranslate">
         <span class="pre">
          .
@@ -614,7 +626,7 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#usando-el-operador-flecha">
-       2.5.2 Usando el operador flecha (
+       2.5.2. Usando el operador flecha (
        <code class="docutils literal notranslate">
         <span class="pre">
          -&gt;
@@ -623,12 +635,24 @@ title="Print to PDF"
        )
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estructuras-anidadas">
+       2.5.3. Estructuras anidadas
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#estructuras-anidadas">
-     2.6. Estructuras anidadas
+    <a class="reference internal nav-link" href="#estructuras-y-funciones">
+     2.6. Estructuras y funciones
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#paso-de-estructuras-por-valor">
+       2.6.1. Paso de estructuras por valor
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -1104,7 +1128,7 @@ title="Print to PDF"
 <li><p>Emplenando el operador flecha (<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>)</p></li>
 </ul>
 <section id="usando-el-operador-punto">
-<h4>2.5.1 Usando el operador punto (<code class="docutils literal notranslate"><span class="pre">.</span></code>)<a class="headerlink" href="#usando-el-operador-punto" title="Permalink to this headline">#</a></h4>
+<h4>2.5.1. Usando el operador punto (<code class="docutils literal notranslate"><span class="pre">.</span></code>)<a class="headerlink" href="#usando-el-operador-punto" title="Permalink to this headline">#</a></h4>
 <p>Usado cuando se definen variables del tipo de la estructura. Básicamente tiene la siguiente sintaxis:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">nombre_variable_estructura</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="n">nombre_miembro</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span><span class="w"></span>
 </pre></div>
@@ -1233,7 +1257,7 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="usando-el-operador-flecha">
-<h4>2.5.2 Usando el operador flecha (<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>)<a class="headerlink" href="#usando-el-operador-flecha" title="Permalink to this headline">#</a></h4>
+<h4>2.5.2. Usando el operador flecha (<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>)<a class="headerlink" href="#usando-el-operador-flecha" title="Permalink to this headline">#</a></h4>
 <p>El operador flecha (<code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>) es empleado cuando se hace uso de punteros a estructuras, su sintaxis es de la siguiente forma:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">puntero_estructura</span><span class="o">&gt;-&gt;&lt;</span><span class="n">nombre_miembro</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">datos</span><span class="p">;</span><span class="w"></span>
 </pre></div>
@@ -1328,9 +1352,8 @@ title="Print to PDF"
 </li>
 </ol>
 </section>
-</section>
 <section id="estructuras-anidadas">
-<h3>2.6. Estructuras anidadas<a class="headerlink" href="#estructuras-anidadas" title="Permalink to this headline">#</a></h3>
+<h4>2.5.3. Estructuras anidadas<a class="headerlink" href="#estructuras-anidadas" title="Permalink to this headline">#</a></h4>
 <p>Una estructura puede tener a su vez otra estructura como miembro. A continuacion se muestra un ejemplo para ello.</p>
 <p><strong>Ejemplos</strong></p>
 <ol>
@@ -1417,6 +1440,20 @@ title="Print to PDF"
 </figure>
 </li>
 </ol>
+</section>
+</section>
+<section id="estructuras-y-funciones">
+<h3>2.6. Estructuras y funciones<a class="headerlink" href="#estructuras-y-funciones" title="Permalink to this headline">#</a></h3>
+<p>Los conceptos vistos hasta el momento sobre funciones tambien aplican a las estructuras ya que las estructuras pueden ser usadas como parametros y valores de retorno por citar unos cuantos casos. La unica cosa adicional, respecto a las funciones que trabajan con variables normales, es que las funciones con estructuras hacen uso de los operadores de acceso para la manipulacion y el procesamiento de los datos de acuerdo a lo que se desea que haga la funcion. Como en el caso tradicional, las funciones en las que se emplean estructuras pueden ser pasadas por valor y por referencia. A continuacion se describe cada caso:</p>
+<section id="paso-de-estructuras-por-valor">
+<h4>2.6.1. Paso de estructuras por valor<a class="headerlink" href="#paso-de-estructuras-por-valor" title="Permalink to this headline">#</a></h4>
+<p>En este caso la estructura pasada como argumento a la funcion es copiada al parametro de la funcion, de modo que el procesamiento se hace sobre la copia y no sobre la estructura pasada como argumento.</p>
+<p><strong>Ejemplos</strong></p>
+<ol class="simple">
+<li><p>Definir una estructura que este asociada a un numero completo. Luego haga una funcion que imprima el numero complejo en cuestion en la forma $parteReal + parteImaginaria*i$. Luego probar el programa para imprimir los numeros: $2$, $-3i$, $-2.3 + 10.5i$, $1.23 - 3.67i$</p></li>
+</ol>
+<p>El codigo solucion se muestra a continuación:</p>
+</section>
 </section>
 </section>
 </section>
