@@ -1146,7 +1146,7 @@ title="Print to PDF"
 </li>
 <li><p>Crear una estructura asociada a un <code class="docutils literal notranslate"><span class="pre">libro</span></code> y posteriormente declarar dos libros (como un array) con la siguiente informacion.</p>
 <figure class="align-default" id="fig14">
-<img alt="../_images/CH_02-S04-fig13.png" src="../_images/CH_02-S04-fig13.png" />
+<img alt="../_images/CH_02-S04-fig14.png" src="../_images/CH_02-S04-fig14.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 61 </span><span class="caption-text">Libros.</span><a class="headerlink" href="#fig14" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1179,7 +1179,7 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p>El código solucion se muestra a continuación, note que la forma como se accede a la variable tipo <code class="docutils literal notranslate"><span class="pre">Book</span></code> en el correspondiente arreglo es <code class="docutils literal notranslate"><span class="pre">book[i]v</span> <span class="pre">para</span> <span class="pre">el</span> <span class="pre">caso,</span> <span class="pre">por</span> <span class="pre">ende</span> <span class="pre">la</span> <span class="pre">forma</span> <span class="pre">de</span> <span class="pre">acceder</span> <span class="pre">a</span> <span class="pre">cada</span> <span class="pre">uno</span> <span class="pre">de</span> <span class="pre">los</span> <span class="pre">miembros</span> <span class="pre">del</span> <span class="pre">array</span> <span class="pre">en</span> <span class="pre">cuestion</span> <span class="pre">será</span> </code>book[i].miembro`:</p>
+<p>El código solucion se muestra a continuación, note que la forma como se accede a la variable tipo <code class="docutils literal notranslate"><span class="pre">Book</span></code> en el correspondiente arreglo es <code class="docutils literal notranslate"><span class="pre">book[i]v</span></code> para el caso, por ende la forma de acceder a cada uno de los miembros del array en cuestion será <code class="docutils literal notranslate"><span class="pre">book[i].miembro</span></code>:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
 
@@ -1223,10 +1223,10 @@ title="Print to PDF"
 <p>El código anterior puede ser simulado a continuación:</p>
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstring.h%3E%0A%0A//%20Declaracion%20de%20las%20estructura%0Astruct%20Book%20%20%7B%0A%20%20%20int%20%20book_id%3B%0A%20%20%20char%20title%5B24%5D%3B%20%0A%20%20%20char%20author%5B20%5D%3B%20%0A%20%20%20int%20pages%3B%0A%20%20%20float%20price%3B%0A%7D%3B%0A%0A//%20Creacion%20del%20alias%0Atypedef%20struct%20Book%20Book%3B%0A%0A//%20Declaracion%20del%20array%20de%20libros%0ABook%20books%5B2%5D%3B%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20//%20Manipulacion%20%28acceso%20a%20los%20miembros%29%0A%0A%20%20//%20Libro%20%23%201%0A%20%20books%5B0%5D.book_id%20%3D%201211%3B%0A%20%20//OJO%3A%20books%5B0%5D.title%20%3D%20%22C%20Primer%20Plus%22%20es%20un%20ERROR%20%0A%20%20strcpy%28books%5B0%5D.title,%22C%20Primer%20Plus%22%29%3B%20%20%20%20%0A%20%20strcpy%28books%5B0%5D.author,%22Stephen%20Prata%22%29%3B%20%0A%20%20books%5B0%5D.pages%20%3D%20984%3B%0A%20%20books%5B0%5D.price%20%3D%20585.00%3B%0A%0A%20%20//%20Libro%20%232%0A%20%20books%5B1%5D.book_id%20%3D%201212%3B%0A%20%20strcpy%28books%5B1%5D.title,%22The%20ANSI%20C%20Programming%22%29%3B%20%0A%20%20strcpy%28books%5B1%5D.author,%22Dennis%20Ritchie%22%29%3B%20%0A%20%20books%5B1%5D.pages%20%3D%20214%3B%0A%20%20books%5B1%5D.price%20%3D%20125.00%3B%0A%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 <p>A continuacion se muestra el resultado en memoria:</p>
-<figure class="align-default" id="id5">
-<img alt="../_images/CH_02-S04-fig13.png" src="../_images/CH_02-S04-fig13.png" />
+<figure class="align-default" id="fig15">
+<img alt="../_images/CH_02-S04-fig15.png" src="../_images/CH_02-S04-fig15.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Resultado en memoria para variables asociadas a los libros.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Resultado en memoria para variables asociadas a los libros.</span><a class="headerlink" href="#fig15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1335,10 +1335,10 @@ title="Print to PDF"
 <p><strong>Ejemplos</strong></p>
 <ol>
 <li><p>Suponga que se tiene la siguiente tabla asociada a personajes historicos.</p>
-<figure class="align-default" id="fig15">
-<img alt="../_images/CH_02-S04-fig15.png" src="../_images/CH_02-S04-fig15.png" />
+<figure class="align-default" id="fig16">
+<img alt="../_images/CH_02-S04-fig16.png" src="../_images/CH_02-S04-fig16.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Personajes.</span><a class="headerlink" href="#fig15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Personajes.</span><a class="headerlink" href="#fig16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
