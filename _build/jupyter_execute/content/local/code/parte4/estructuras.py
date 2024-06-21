@@ -729,7 +729,7 @@ get_ipython().run_cell_magic('tutor', '-l c -k', '#include <stdio.h>\n\n/** Decl
 # 
 # A continuación se muestra el código:
 # 
-# ```
+# ```c
 # #include <stdio.h>
 # #include <math.h>
 # 
