@@ -513,9 +513,19 @@ title="Print to PDF"
        2.6.1. Paso de estructuras por valor
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#paso-de-estructuras-por-referencia">
+       2.6.2. Paso de estructuras por referencia
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces">
+   3. Enlaces
+  </a>
  </li>
 </ul>
 
@@ -654,9 +664,19 @@ title="Print to PDF"
        2.6.1. Paso de estructuras por valor
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#paso-de-estructuras-por-referencia">
+       2.6.2. Paso de estructuras por referencia
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces">
+   3. Enlaces
+  </a>
  </li>
 </ul>
 
@@ -1700,7 +1720,358 @@ title="Print to PDF"
 </li>
 </ol>
 </section>
+<section id="paso-de-estructuras-por-referencia">
+<h4>2.6.2. Paso de estructuras por referencia<a class="headerlink" href="#paso-de-estructuras-por-referencia" title="Permalink to this headline">#</a></h4>
+<p>En este caso, los parametros pasados a la funcion seran apuntadores a la estructura a pasar. El comportamiento es como el que se da en el caso de las funciones con datos tradicionales.</p>
+<p><strong>Ejemplos</strong></p>
+<ol>
+<li><p>Tome la estructura asociada a los libros y realice una funcion que permita imprimir en pantalla la informacion asociada a un libro. El llamado para la funcion sera por referencia. A continuación se muestra el código solución:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Declaracion de las estructura</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Book</span><span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w">  </span><span class="n">book_id</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">title</span><span class="p">[</span><span class="mi">24</span><span class="p">];</span><span class="w"> </span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">author</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w"> </span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">pages</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="cm">/** Declaracion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">printBookInfo</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="o">*</span><span class="n">lptr</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Declaracion del array de libros</span>
+<span class="c1">// Notese que no se usaron alias</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="n">books</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+
+<span class="cm">/** Funcion principal */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Manipulacion (acceso a los miembros)</span>
+
+<span class="w">  </span><span class="c1">// Libro # 1</span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1211</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//OJO: books[0].title = &quot;C Primer Plus&quot; es un ERROR </span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">title</span><span class="p">,</span><span class="s">&quot;C Primer Plus&quot;</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">author</span><span class="p">,</span><span class="s">&quot;Stephen Prata&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">pages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">984</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">585.00</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Libro #2</span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">book_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1212</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">title</span><span class="p">,</span><span class="s">&quot;The ANSI C Programming&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">author</span><span class="p">,</span><span class="s">&quot;Dennis Ritchie&quot;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">pages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">214</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">books</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">125.00</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Imprimiendo la informacion de los libros</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printBookInfo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">books</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Definicion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">printBookInfo</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="o">*</span><span class="n">lptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Book name: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lptr</span><span class="o">-&gt;</span><span class="n">title</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Author: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lptr</span><span class="o">-&gt;</span><span class="n">author</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Pages: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lptr</span><span class="o">-&gt;</span><span class="n">pages</span><span class="p">);</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código anterior puede ser simulado a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Declaracion%20de%20las%20estructura%0Astruct%20Book%20%20%7B%0A%20%20%20int%20%20book_id%3B%0A%20%20%20char%20title%5B24%5D%3B%20%0A%20%20%20char%20author%5B20%5D%3B%20%0A%20%20%20int%20pages%3B%0A%20%20%20float%20price%3B%0A%7D%3B%0A%0A/**%20Declaracion%20de%20funciones%20*/%0Avoid%20printBookInfo%28struct%20Book%20*lptr%29%3B%0A%0A//%20Declaracion%20del%20array%20de%20libros%0A//%20Notese%20que%20no%20se%20usaron%20alias%0Astruct%20Book%20books%5B2%5D%3B%0A%0A/**%20Funcion%20principal%20*/%0Aint%20main%28%29%20%7B%0A%20%20//%20Manipulacion%20%28acceso%20a%20los%20miembros%29%0A%0A%20%20//%20Libro%20%23%201%0A%20%20books%5B0%5D.book_id%20%3D%201211%3B%0A%20%20//OJO%3A%20books%5B0%5D.title%20%3D%20%22C%20Primer%20Plus%22%20es%20un%20ERROR%20%0A%20%20strcpy%28books%5B0%5D.title,%22C%20Primer%20Plus%22%29%3B%20%20%20%20%0A%20%20strcpy%28books%5B0%5D.author,%22Stephen%20Prata%22%29%3B%20%0A%20%20books%5B0%5D.pages%20%3D%20984%3B%0A%20%20books%5B0%5D.price%20%3D%20585.00%3B%0A%0A%20%20//%20Libro%20%232%0A%20%20books%5B1%5D.book_id%20%3D%201212%3B%0A%20%20strcpy%28books%5B1%5D.title,%22The%20ANSI%20C%20Programming%22%29%3B%20%0A%20%20strcpy%28books%5B1%5D.author,%22Dennis%20Ritchie%22%29%3B%20%0A%20%20books%5B1%5D.pages%20%3D%20214%3B%0A%20%20books%5B1%5D.price%20%3D%20125.00%3B%0A%20%20%0A%20%20//%20Imprimiendo%20la%20informacion%20de%20los%20libros%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%202%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printBookInfo%28%26books%5Bi%5D%29%3B%0A%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%7D%20%0A%20%20return%200%3B%0A%7D%0A%0A/**%20Definicion%20de%20funciones%20*/%0Avoid%20printBookInfo%28struct%20Book%20*lptr%29%20%7B%0A%20%20printf%28%22Book%20name%3A%20%25s%5Cn%22,%20lptr-%3Etitle%29%3B%0A%20%20printf%28%22Author%3A%20%25s%5Cn%22,%20lptr-%3Eauthor%29%3B%0A%20%20printf%28%22Pages%3A%20%25d%5Cn%22,%20lptr-%3Epages%29%3B%20%20%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>Finalmente, la salida en pantalla se muestra a continuacion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Book</span> <span class="n">name</span><span class="p">:</span> <span class="n">C</span> <span class="n">Primer</span> <span class="n">Plus</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Stephen</span> <span class="n">Prata</span>
+<span class="n">Pages</span><span class="p">:</span> <span class="mi">984</span>
+
+<span class="n">Book</span> <span class="n">name</span><span class="p">:</span> <span class="n">The</span> <span class="n">ANSI</span> <span class="n">C</span> <span class="n">Programming</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Dennis</span> <span class="n">Ritchie</span>
+<span class="n">Pages</span><span class="p">:</span> <span class="mi">214</span>
+</pre></div>
+</div>
+</li>
+<li><p>Hacer un programa que defina un vector tridimensional como una estructura. El programa tambien debera implementar las siguientes funciones para la manipulacion de vectores:</p>
+<ul class="simple">
+<li><p>Imprimir vector.</p></li>
+<li><p>Calcular suma.</p></li>
+<li><p>Calcular resta.</p></li>
+<li><p>Calcular producto escalar.</p></li>
+</ul>
+<p>Una vez hecho lo anterior probar el programa con los vectores <code class="docutils literal notranslate"><span class="pre">[1,3,0]</span></code> y <code class="docutils literal notranslate"><span class="pre">[2,5,-4]</span></code>.</p>
+<p>El codigo solución se muestra a continuacion:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/** Declaracion de  estructuras */</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">vector3D</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">vector3D</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/** Declaracion de las funciones  */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirVector3D</span><span class="p">(</span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">vPrt</span><span class="p">);</span><span class="w"> </span>
+<span class="n">vector3D</span><span class="w"> </span><span class="nf">sumarVector3D</span><span class="p">(</span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v1P</span><span class="p">,</span><span class="w"> </span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v2P</span><span class="p">);</span><span class="w"></span>
+<span class="n">vector3D</span><span class="w"> </span><span class="nf">restarVector3D</span><span class="p">(</span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v1P</span><span class="p">,</span><span class="w"> </span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v2P</span><span class="p">);</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="nf">pEscalar</span><span class="p">(</span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v1P</span><span class="p">,</span><span class="w"> </span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v2P</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"> </span><span class="c1">// Funcion para testing</span>
+
+<span class="cm">/** Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/* Probando todo mediante la funcion test */</span><span class="w"></span>
+<span class="w">  </span><span class="n">test</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Definicion de funciones */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">imprimirVector3D</span><span class="p">(</span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">vPtr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[%.1f,%.1f,%.1f]&quot;</span><span class="p">,(</span><span class="o">*</span><span class="n">vPtr</span><span class="p">).</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">vPtr</span><span class="p">).</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">vPtr</span><span class="p">).</span><span class="n">z</span><span class="p">);</span><span class="w">   </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">vector3D</span><span class="w"> </span><span class="nf">sumarVector3D</span><span class="p">(</span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v1P</span><span class="p">,</span><span class="w"> </span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v2P</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">vector3D</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">r</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v1P</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v2P</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">r</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v1P</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v2P</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">r</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v1P</span><span class="o">-&gt;</span><span class="n">z</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v2P</span><span class="o">-&gt;</span><span class="n">z</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">vector3D</span><span class="w"> </span><span class="nf">restarVector3D</span><span class="p">(</span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v1P</span><span class="p">,</span><span class="w"> </span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v2P</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">vector3D</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">r</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v1P</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">v2P</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">r</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v1P</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">v2P</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">r</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v1P</span><span class="o">-&gt;</span><span class="n">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">v2P</span><span class="o">-&gt;</span><span class="n">z</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">pEscalar</span><span class="p">(</span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v1P</span><span class="p">,</span><span class="w"> </span><span class="n">vector3D</span><span class="w"> </span><span class="o">*</span><span class="n">v2P</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="p">(</span><span class="n">v1P</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">*</span><span class="n">v2P</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v1P</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">*</span><span class="n">v2P</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v1P</span><span class="o">-&gt;</span><span class="n">z</span><span class="o">*</span><span class="n">v2P</span><span class="o">-&gt;</span><span class="n">z</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">vector3D</span><span class="w"> </span><span class="n">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">-4</span><span class="p">},</span><span class="w"> </span><span class="n">vSum</span><span class="p">,</span><span class="w"> </span><span class="n">vRes</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">p_esc</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">vSum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sumarVector3D</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">v2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">vRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restarVector3D</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">v2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">p_esc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pEscalar</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">v2</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Suma -&gt; </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirVector3D</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; + &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirVector3D</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; = &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirVector3D</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vSum</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Resta -&gt; </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirVector3D</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; - &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirVector3D</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; = &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirVector3D</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vRes</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Producto escalar -&gt; </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirVector3D</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; * &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imprimirVector3D</span><span class="p">(</span><span class="o">&amp;</span><span class="n">v2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; = %.1f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">p_esc</span><span class="p">);</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del programa se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0A/**%20Declaracion%20de%20%20estructuras%20*/%0Atypedef%20struct%20vector3D%20%7B%0A%20%20float%20x%3B%0A%20%20float%20y%3B%0A%20%20float%20z%3B%0A%7D%20vector3D%3B%0A%0A/**%20Declaracion%20de%20las%20funciones%20%20*/%0Avoid%20imprimirVector3D%28vector3D%20*vPrt%29%3B%20%0Avector3D%20sumarVector3D%28vector3D%20*v1P,%20vector3D%20*v2P%29%3B%0Avector3D%20restarVector3D%28vector3D%20*v1P,%20vector3D%20*v2P%29%3B%0Adouble%20pEscalar%28vector3D%20*v1P,%20vector3D%20*v2P%29%3B%0Avoid%20test%28void%29%3B%20//%20Funcion%20para%20testing%0A%0A/**%20Funcion%20main%20*/%0Aint%20main%28%29%20%7B%0A%20%20/*%20Probando%20todo%20mediante%20la%20funcion%20test%20*/%0A%20%20test%28%29%3B%0A%20%20return%200%3B%0A%7D%0A%0A/**%20Definicion%20de%20funciones%20*/%0Avoid%20imprimirVector3D%28vector3D%20*vPtr%29%20%7B%0A%20%20%20printf%28%22%5B%25.1f,%25.1f,%25.1f%5D%22,%28*vPtr%29.x,%20%28*vPtr%29.y,%20%28*vPtr%29.z%29%3B%20%20%20%0A%7D%0A%0Avector3D%20sumarVector3D%28vector3D%20*v1P,%20vector3D%20*v2P%29%20%7B%0A%20%20vector3D%20r%3B%0A%20%20r.x%20%3D%20v1P-%3Ex%20%2B%20v2P-%3Ex%3B%0A%20%20r.y%20%3D%20v1P-%3Ey%20%2B%20v2P-%3Ey%3B%0A%20%20r.z%20%3D%20v1P-%3Ez%20%2B%20v2P-%3Ez%3B%0A%20%20return%20r%3B%0A%7D%0A%0Avector3D%20restarVector3D%28vector3D%20*v1P,%20vector3D%20*v2P%29%20%7B%0A%20%20vector3D%20r%3B%0A%20%20r.x%20%3D%20v1P-%3Ex%20-%20v2P-%3Ex%3B%0A%20%20r.y%20%3D%20v1P-%3Ey%20-%20v2P-%3Ey%3B%0A%20%20r.z%20%3D%20v1P-%3Ez%20-%20v2P-%3Ez%3B%0A%20%20return%20r%3B%0A%7D%0A%0Adouble%20pEscalar%28vector3D%20*v1P,%20vector3D%20*v2P%29%20%7B%0A%20%20return%28v1P-%3Ex*v2P-%3Ex%20%2B%20v1P-%3Ey*v2P-%3Ey%20%2B%20v1P-%3Ez*v2P-%3Ez%29%3B%0A%7D%0A%0A%0Avoid%20test%28void%29%20%7B%0A%20%20vector3D%20v1%20%3D%20%7B1,3,0%7D,%20v2%20%3D%20%7B2,5,-4%7D,%20vSum,%20vRes%3B%0A%20%20double%20p_esc%3B%0A%20%20vSum%20%3D%20sumarVector3D%28%26v1,%26v2%29%3B%0A%20%20vRes%20%3D%20restarVector3D%28%26v1,%26v2%29%3B%0A%20%20p_esc%20%3D%20pEscalar%28%26v1,%26v2%29%3B%20%0A%20%20printf%28%22Suma%20-%3E%20%5Cn%22%29%3B%0A%20%20imprimirVector3D%28%26v1%29%3B%0A%20%20printf%28%22%20%2B%20%22%29%3B%0A%20%20imprimirVector3D%28%26v2%29%3B%0A%20%20printf%28%22%20%3D%20%22%29%3B%0A%20%20imprimirVector3D%28%26vSum%29%3B%0A%20%20printf%28%22%5Cn%5Cn%22%29%3B%0A%20%20printf%28%22Resta%20-%3E%20%5Cn%22%29%3B%0A%20%20imprimirVector3D%28%26v1%29%3B%0A%20%20printf%28%22%20-%20%22%29%3B%0A%20%20imprimirVector3D%28%26v2%29%3B%0A%20%20printf%28%22%20%3D%20%22%29%3B%0A%20%20imprimirVector3D%28%26vRes%29%3B%0A%20%20printf%28%22%5Cn%5Cn%22%29%3B%0A%20%20printf%28%22Producto%20escalar%20-%3E%20%5Cn%22%29%3B%0A%20%20imprimirVector3D%28%26v1%29%3B%0A%20%20printf%28%22%20*%20%22%29%3B%0A%20%20imprimirVector3D%28%26v2%29%3B%0A%20%20printf%28%22%20%3D%20%25.1f%5Cn%22,p_esc%29%3B%20%20%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del programa anterior se muestra a continuacion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Suma</span> <span class="o">-&gt;</span> 
+<span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">8.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">]</span>
+
+<span class="n">Resta</span> <span class="o">-&gt;</span> 
+<span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">-</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">]</span>
+
+<span class="n">Producto</span> <span class="n">escalar</span> <span class="o">-&gt;</span> 
+<span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">17.0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Emplando llamados por referencia es posible pasar a funciones arreglos y matrices tal como se analizo en algun momento. Por ejemplo supongase que un caminante esta registrando las coordenadas (x,y) de diferentes puntos en los cuales realiza su caminata. Supongase, que el sistema de registro de datos registra 5 coordenadas. Teniendo en cuenta la siguiente estructura para las coordenadas:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">coordenadas2D</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">coord2D</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Implementar las siguientes funciones:</p>
+<ul>
+<li><p>Una funcion para desplegar una coordenada, esta seguira el siguiente prototipo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">printCoord2D</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Una funcion para desplegar el contenido de un vector de coordenadas:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">printCoord2DVector</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Una funcion que calcule la distancia entre dos coordenadas:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="nf">calcularDistancia</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">pStart</span><span class="p">,</span><span class="w"> </span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">pEnd</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Obtener la distancia total recorrida (suma de la distancia de todos lo puntos):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="nf">calcularDistanciaTotal</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Obtener la distancia del tramo mayor y la del tramo menor.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">obtenerDistanciasExtremas</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">disMin</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">disMax</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Probar las funciones anteriores con una funcion llamada  <code class="docutils literal notranslate"><span class="pre">caso_de_uso</span></code> para la cual se definen las siguientes coordenadas: <code class="docutils literal notranslate"><span class="pre">P1(0,0)</span></code>, <code class="docutils literal notranslate"><span class="pre">P2(3,2)</span></code>, <code class="docutils literal notranslate"><span class="pre">P3(-4,5)</span></code>, <code class="docutils literal notranslate"><span class="pre">P4(-6,-2)</span></code> y <code class="docutils literal notranslate"><span class="pre">P5(-6,-3)</span></code>.</p></li>
+</ul>
+<p><strong>Solucion</strong>: En el <a class="reference external" href="https://onlinegdb.com/r13uPE9wM">codigo</a> mostrado abajo se definen los puntos anteriormente mostrados y se verifican que los resultados del programa sean los arrojados anteriormente de manera manual. Si todo esta bien se tendrán resultados simulares a los siguiente:</p>
+<p>Distancia entre los puntos sera:</p>
+<ul class="simple">
+<li><p>d(P1,P2) = 3.61</p></li>
+<li><p>d(P2,P3) = 7.62</p></li>
+<li><p>d(P3,P4) = 7.28</p></li>
+<li><p>d(P4,P5) = 1</p></li>
+</ul>
+<p>Salidas a desplegar:</p>
+<ul class="simple">
+<li><p>d_total = 19.5</p></li>
+<li><p>d_min = 1</p></li>
+<li><p>d_max = 7.62</p></li>
+</ul>
+<p>A continuación se muestra el código:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/** Declaracion de  estructuras */</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">coordenadas2D</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">coord2D</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/** Declaracion de las funciones  */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">printCoord2D</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">printCoord2DVector</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">);</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="nf">calcularDistancia</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">pStart</span><span class="p">,</span><span class="w"> </span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">pEnd</span><span class="p">);</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="nf">calcularDistanciaTotal</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">obtenerDistanciasExtremas</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">disMin</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">disMax</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">caso_de_uso</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/** Funcion main */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">caso_de_uso</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/** Definicion de las funciones  */</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">printCoord2D</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;(%.2f,%.2f)&quot;</span><span class="p">,(</span><span class="o">*</span><span class="n">c</span><span class="p">).</span><span class="n">x</span><span class="p">,(</span><span class="o">*</span><span class="n">c</span><span class="p">).</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">printCoord2DVector</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printCoord2D</span><span class="p">(</span><span class="n">v</span><span class="o">++</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">calcularDistancia</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">pStart</span><span class="p">,</span><span class="w"> </span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">pEnd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">dist</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pEnd</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pStart</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pEnd</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pStart</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span><span class="w">  </span>
+<span class="w">  </span><span class="n">dist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">pow</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pow</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">dist</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">calcularDistanciaTotal</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Code</span>
+<span class="w">  </span><span class="n">coord2D</span><span class="w"> </span><span class="n">pIni</span><span class="p">,</span><span class="w"> </span><span class="n">pFin</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">d_total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pIni</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">vecPuntos</span><span class="p">;</span><span class="w"> </span><span class="c1">// *vecPuntos = vecPuntos[0];</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">pFin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">vecPuntos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"> </span><span class="c1">// *(vecPuntos + i) = vecPuntos[i];</span>
+<span class="w">      </span><span class="c1">// printf(&quot;%.2lf\n&quot;,calcularDistancia(&amp;pIni, &amp;pFin));</span>
+<span class="w">      </span><span class="n">d_total</span><span class="w"> </span><span class="o">+=</span><span class="w">  </span><span class="n">calcularDistancia</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pIni</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pFin</span><span class="p">);</span><span class="w"> </span>
+<span class="w">      </span><span class="n">pIni</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pFin</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">d_total</span><span class="p">;</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">obtenerDistanciasExtremas</span><span class="p">(</span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">vecPuntos</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">disMin</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">disMax</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Code</span>
+<span class="w">  </span><span class="n">coord2D</span><span class="w"> </span><span class="o">*</span><span class="n">pIni</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pFin</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pIni</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vecPuntos</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">pFin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vecPuntos</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calcularDistancia</span><span class="p">(</span><span class="n">pIni</span><span class="p">,</span><span class="w"> </span><span class="n">pFin</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">d_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">d_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">calcularDistancia</span><span class="p">(</span><span class="n">pIni</span><span class="p">,</span><span class="n">pFin</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pIni</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vecPuntos</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">pIni</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pFin</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">pFin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vecPuntos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="c1">// vecPuntos + i = &amp;vecPuntos[i]; </span>
+<span class="w">      </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calcularDistancia</span><span class="p">(</span><span class="n">pIni</span><span class="p">,</span><span class="w"> </span><span class="n">pFin</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">d_min</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> 	     </span><span class="n">d_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">d</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">d_max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> 	     </span><span class="n">d_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w">	  </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">disMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d_min</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">disMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d_max</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">caso_de_uso</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Puntos registrados</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">coord2D</span><span class="w"> </span><span class="n">coords</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                       </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">},</span><span class="w"></span>
+<span class="w">                       </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span><span class="w"></span>
+<span class="w">                       </span><span class="p">{</span><span class="mi">-4</span><span class="p">,</span><span class="mi">5</span><span class="p">},</span><span class="w"></span>
+<span class="w">                       </span><span class="p">{</span><span class="mi">-6</span><span class="p">,</span><span class="mi">-2</span><span class="p">},</span><span class="w"></span>
+<span class="w">                       </span><span class="p">{</span><span class="mi">-6</span><span class="p">,</span><span class="mi">-3</span><span class="p">}</span><span class="w"></span>
+<span class="w">                      </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">printCoord2DVector</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Distancia total: %.2lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">calcularDistanciaTotal</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">obtenerDistanciasExtremas</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">M</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Distancia minima: %.2lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">m</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;-&gt; Distancia maxima: %.2lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Para el cual la salida en pantalla del programa anterior es la siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Puntos</span> <span class="n">registrados</span> 
+<span class="p">(</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">)</span> 
+<span class="p">(</span><span class="mf">3.00</span><span class="p">,</span><span class="mf">2.00</span><span class="p">)</span>
+<span class="p">(</span><span class="o">-</span><span class="mf">4.00</span><span class="p">,</span><span class="mf">5.00</span><span class="p">)</span>
+<span class="p">(</span><span class="o">-</span><span class="mf">6.00</span><span class="p">,</span><span class="o">-</span><span class="mf">2.00</span><span class="p">)</span>
+<span class="p">(</span><span class="o">-</span><span class="mf">6.00</span><span class="p">,</span><span class="o">-</span><span class="mf">3.00</span><span class="p">)</span>     
+  
+<span class="o">-&gt;</span> <span class="n">Distancia</span> <span class="n">total</span><span class="p">:</span> <span class="mf">19.50</span>
+<span class="o">-&gt;</span> <span class="n">Distancia</span> <span class="n">minima</span><span class="p">:</span> <span class="mf">1.00</span>
+<span class="o">-&gt;</span> <span class="n">Distancia</span> <span class="n">maxima</span><span class="p">:</span> <span class="mf">7.62</span>  
+</pre></div>
+</div>
 </section>
+</section>
+</section>
+<section id="enlaces">
+<h2>3. Enlaces<a class="headerlink" href="#enlaces" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>https://computer.howstuffworks.com</p></li>
+<li><p>https://www.studytonight.com/c/structures-in-c.php</p></li>
+<li><p>https://www.tutorialspoint.com/cprogramming/c_structures.htm</p></li>
+<li><p>https://www.programiz.com/c-programming/c-structures</p></li>
+<li><p>https://www.geeksforgeeks.org/structures-c/</p></li>
+<li><p>https://github.com/fordea/c-programming-a-modern-approach</p></li>
+</ul>
 </section>
 </section>
 
