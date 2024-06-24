@@ -428,9 +428,31 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#enlaces">
-   3. Enlaces
+  <a class="reference internal nav-link" href="#asignando-memoria">
+   3. Asignando memoria
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-1">
+     Forma 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-2">
+     Forma 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-3">
+     Forma 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Ejemplos
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -481,9 +503,31 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#enlaces">
-   3. Enlaces
+  <a class="reference internal nav-link" href="#asignando-memoria">
+   3. Asignando memoria
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-1">
+     Forma 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-2">
+     Forma 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-3">
+     Forma 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Ejemplos
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -653,24 +697,162 @@ title="Print to PDF"
 </section>
 </section>
 </section>
-<section id="enlaces">
-<h2>3. Enlaces<a class="headerlink" href="#enlaces" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>https://bytesoftheday.wordpress.com/2014/07/04/q14/</p></li>
-<li><p>https://embeddedwala.com/Blogs/embedded-c/memory-layout-of-c-program</p></li>
-<li><p>https://www.cs.mtsu.edu/~cs2170/C++labs/lab18/OSmemlayout.pdf</p></li>
-<li><p>https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf</p></li>
-<li><p>https://ocw.mit.edu/courses/6-s096-introduction-to-c-and-c-january-iap-2013/bba9056d5290198d563edc47dfcff0e9_MIT6_S096_IAP13_lec3.pdf</p></li>
-<li><p>https://cs61c.org/su24/</p></li>
-<li><p>http://wla.berkeley.edu/~cs61c/fa17/</p></li>
-<li><p>https://www.cs.princeton.edu/courses/archive/fall07/cos217/index.html</p></li>
-<li><p>https://web2.qatar.cmu.edu/~mhhammou/15122-s23/lectures/21-cmem/writeup/pdf/main.pdf</p></li>
-<li><p>https://cs.gmu.edu/~zduric/cs262/Slides/teoX.pdf</p></li>
-<li><p>https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf</p></li>
-<li><p>https://www.cs.princeton.edu/courses/archive/fall07/cos217/</p></li>
-<li><p>https://www.cs.mtsu.edu/~cs2170/C++labs/lab18/OSmemlayout.pdf</p></li>
-<li><p>https://web2.qatar.cmu.edu/~mhhammou/15122-s23/lectures/21-cmem/writeup/pdf/main.pdf</p></li>
-</ul>
+<section id="asignando-memoria">
+<h2>3. Asignando memoria<a class="headerlink" href="#asignando-memoria" title="Permalink to this headline">#</a></h2>
+<p>Para tratar esta parte abordemos un problema tipico para ver las diferentes formas de solucion desde el punto de vista del manejo de memoria. Supongase que se desean ingresar un conjunto de datos asociados con la temperatura a lo largo del dia, el ingreso de estos datos se hace de manera manual leyendo el numero de registros manuales existentes en una planilla para luego ingresarlos al sistema. Hacer un programa que facilite esta tarea.</p>
+<p>Existen diferentes maneras de asignar memoria.</p>
+<section id="forma-1">
+<h3>Forma 1<a class="headerlink" href="#forma-1" title="Permalink to this headline">#</a></h3>
+<p>Declarar un arreglo estatico de tamaño fijo asumiento que el numero de registros a ingresar nunca va a ser mayor que el tamaño fijo previamente definido. Esta forma de declaración es <strong>estatica</strong> por que la reserva de memoria (arreglo) se hace en tiempo de compilación. A continuación se muestra el código:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define NUM_MAX_REG 100</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">datos</span><span class="p">[</span><span class="n">NUM_MAX_REG</span><span class="p">];</span><span class="w"> </span><span class="c1">// Se supone que no se van a ingresar mas de 100 registros</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese la cantidad de registros a leer: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;&amp;d&quot;</span><span class="p">,</span><span class="n">numReg</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numReg</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">NUM_MAX_REG</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: se pierden %d datos</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">numReg</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">NUM_MAX_REG</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">numReg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NUM_MAX_REG</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato[%d]: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reg</span><span class="p">);</span><span class="w">    </span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">datos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Como se podra notar, la forma anterior es ineficiente por razones similares a las expuestas en la introducción.</p>
+</section>
+<section id="forma-2">
+<h3>Forma 2<a class="headerlink" href="#forma-2" title="Permalink to this headline">#</a></h3>
+<p>Declarar un arreglo dinamico (automatico) de un tamaño especificado en tiempo de ejecución. El siguiente codigo ilustra esta idea:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese la cantidad de registros a leer: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;&amp;d&quot;</span><span class="p">,</span><span class="n">numReg</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">datos</span><span class="p">[</span><span class="n">numReg</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato[%d]: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reg</span><span class="p">);</span><span class="w">    </span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">datos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El problema de la forma anterior es que el compilador es previo a C99, no permite declarar un arreglo definiendo su tamaño a partir de una variable (siendo <strong>numReg</strong>) para el caso.</p>
+</section>
+<section id="forma-3">
+<h3>Forma 3<a class="headerlink" href="#forma-3" title="Permalink to this headline">#</a></h3>
+<p>Declarar un arreglo dinamico de un tamaño especificado en tiempo de ejecución empleando las funciones propias de la libreria estandar para tal caso (<code class="docutils literal notranslate"><span class="pre">malloc</span></code> y <code class="docutils literal notranslate"><span class="pre">calloc</span></code>). En lo que respecta al caso, esta es la mejor forma. La descripción y uso de estas funciones sera tratada en breve. Por ahora veamos el codigo asociado.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">datos</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese la cantidad de registros a leer: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;&amp;d&quot;</span><span class="p">,</span><span class="n">numReg</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">numReg</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pF</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato[%d]: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reg</span><span class="p">);</span><span class="w">    </span>
+<span class="w">      </span><span class="o">*</span><span class="p">(</span><span class="n">datos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">datos</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Ejemplos<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>En los siguientes ejemplos se muestra la diferencia entre declarar una variable en el <strong>stack</strong> y declararla en el <strong>heap</strong> usando reserva dinamica de memoria.</p>
+<ol>
+<li><p><strong>Creando una variable en el stack</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*p = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código anterior se puede simular a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20a%3B%0A%20%20int%20*p%20%3D%20%26a%3B%0A%20%20*p%20%3D%205%3B%0A%20%20printf%28%22*p%20%3D%20%25d%5Cn%22,%20*p%29%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La siguiente figura muestre el efecto del codigo anterior:</p>
+<figure class="align-default" id="fig6">
+<img alt="../_images/CH_02-S05-fig6.png" src="../_images/CH_02-S05-fig6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Accediendo desde un apuntador a una variable definida en el <strong>stack</strong>.</span><a class="headerlink" href="#fig6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>La siguiente figura muestre el efecto del codigo anterior:</p>
+<p><img alt="mem_heap" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte5/imagenes/malloc_help.png?raw=true" />
+<strong>Figura 4</strong>. Asignacion dinamica de una variable usando malloc</p>
+</li>
+<li><p><strong>Creando una variable en el heap</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Out of memory</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*p = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación, se puede simular el código anteriormente mostrado:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p%3B%0A%20%20p%20%3D%20%28int%20*%29malloc%28sizeof%28int%29%29%3B%0A%20%20if%28p%20%3D%3D%200%29%20%7B%0A%20%20%20%20printf%28%22ERROR%3A%20Out%20of%20memory%5Cn%22%29%3B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20*p%20%3D%205%3B%0A%20%20printf%28%22*p%20%3D%20%25d%5Cn%22,%20*p%29%3B%0A%20%20free%28p%29%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La siguiente figura muestre el efecto del codigo anterior:</p>
+<figure class="align-default" id="fig7">
+<img alt="../_images/CH_02-S05-fig7.png" src="../_images/CH_02-S05-fig7.png" />
+</figure>
+</li>
+</ol>
+<p>Asignacion dinamica de una variable en el <strong>heap</strong> usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+
+
+<span class="c1">## x. Enlaces</span>
+
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">bytesoftheday</span><span class="o">.</span><span class="n">wordpress</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="mi">2014</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">04</span><span class="o">/</span><span class="n">q14</span><span class="o">/</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">embeddedwala</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Blogs</span><span class="o">/</span><span class="n">embedded</span><span class="o">-</span><span class="n">c</span><span class="o">/</span><span class="n">memory</span><span class="o">-</span><span class="n">layout</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">c</span><span class="o">-</span><span class="n">program</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">mtsu</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">cs2170</span><span class="o">/</span><span class="n">C</span><span class="o">++</span><span class="n">labs</span><span class="o">/</span><span class="n">lab18</span><span class="o">/</span><span class="n">OSmemlayout</span><span class="o">.</span><span class="n">pdf</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">d1b10bmlvqabco</span><span class="o">.</span><span class="n">cloudfront</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">attach</span><span class="o">/</span><span class="n">j6fe5friemd22w</span><span class="o">/</span><span class="n">hzd1madqsie3ts</span><span class="o">/</span><span class="n">j7kw6i4tmqf8</span><span class="o">/</span><span class="mi">61</span><span class="n">C_Note_1_Memory</span><span class="o">.</span><span class="n">pdf</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ocw</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">courses</span><span class="o">/</span><span class="mi">6</span><span class="o">-</span><span class="n">s096</span><span class="o">-</span><span class="n">introduction</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">c</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">c</span><span class="o">-</span><span class="n">january</span><span class="o">-</span><span class="n">iap</span><span class="o">-</span><span class="mi">2013</span><span class="o">/</span><span class="n">bba9056d5290198d563edc47dfcff0e9_MIT6_S096_IAP13_lec3</span><span class="o">.</span><span class="n">pdf</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cs61c</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">su24</span><span class="o">/</span>
+<span class="o">*</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">wla</span><span class="o">.</span><span class="n">berkeley</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">cs61c</span><span class="o">/</span><span class="n">fa17</span><span class="o">/</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">princeton</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">courses</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">fall07</span><span class="o">/</span><span class="n">cos217</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">web2</span><span class="o">.</span><span class="n">qatar</span><span class="o">.</span><span class="n">cmu</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">mhhammou</span><span class="o">/</span><span class="mi">15122</span><span class="o">-</span><span class="n">s23</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="mi">21</span><span class="o">-</span><span class="n">cmem</span><span class="o">/</span><span class="n">writeup</span><span class="o">/</span><span class="n">pdf</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">pdf</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cs</span><span class="o">.</span><span class="n">gmu</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">zduric</span><span class="o">/</span><span class="n">cs262</span><span class="o">/</span><span class="n">Slides</span><span class="o">/</span><span class="n">teoX</span><span class="o">.</span><span class="n">pdf</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">d1b10bmlvqabco</span><span class="o">.</span><span class="n">cloudfront</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">attach</span><span class="o">/</span><span class="n">j6fe5friemd22w</span><span class="o">/</span><span class="n">hzd1madqsie3ts</span><span class="o">/</span><span class="n">j7kw6i4tmqf8</span><span class="o">/</span><span class="mi">61</span><span class="n">C_Note_1_Memory</span><span class="o">.</span><span class="n">pdf</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">princeton</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">courses</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">fall07</span><span class="o">/</span><span class="n">cos217</span><span class="o">/</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">mtsu</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">cs2170</span><span class="o">/</span><span class="n">C</span><span class="o">++</span><span class="n">labs</span><span class="o">/</span><span class="n">lab18</span><span class="o">/</span><span class="n">OSmemlayout</span><span class="o">.</span><span class="n">pdf</span>
+<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">web2</span><span class="o">.</span><span class="n">qatar</span><span class="o">.</span><span class="n">cmu</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">mhhammou</span><span class="o">/</span><span class="mi">15122</span><span class="o">-</span><span class="n">s23</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="mi">21</span><span class="o">-</span><span class="n">cmem</span><span class="o">/</span><span class="n">writeup</span><span class="o">/</span><span class="n">pdf</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">pdf</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
