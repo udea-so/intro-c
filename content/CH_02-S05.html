@@ -918,9 +918,10 @@ title="Print to PDF"
 <section id="operador-sizeof">
 <h3>4.1. Operador <code class="docutils literal notranslate"><span class="pre">sizeof</span></code><a class="headerlink" href="#operador-sizeof" title="Permalink to this headline">#</a></h3>
 <p>Este es un operador (no una funcion) que devielve la cantidad en bytes ocupada por una variable o algun tipo de dato. La sintaxis basica de este operador se muestra a continuacion:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">sizeof</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="p">)</span><span class="w">  </span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">size_t</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="p">)</span><span class="w">  </span>
 </pre></div>
 </div>
+<p>El <code class="docutils literal notranslate"><span class="pre">size_t</span></code> es un tipo de dato <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code> retornado por el operador <code class="docutils literal notranslate"><span class="pre">sizeof()</span></code></p>
 <p><strong>Ejemplo</strong></p>
 <p>En el siguiente codigo ejemplo se muestran algunos ejemplos del uso de este operador:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
@@ -952,6 +953,8 @@ title="Print to PDF"
 </section>
 <section id="manejo-dinamico-de-memoria">
 <h3>4.2. Manejo dinamico de memoria<a class="headerlink" href="#manejo-dinamico-de-memoria" title="Permalink to this headline">#</a></h3>
+<p>El manejo de la memoria en el <strong>heap</strong> consiste basicamente en reservar y liberar memoria en este segmento. Para reservar memoria se emplea la función <code class="docutils literal notranslate"><span class="pre">malloc</span></code> (o similares), mientras que para liberar (una porción de memoria previamente asignada) se emplea la función <code class="docutils literal notranslate"><span class="pre">free</span></code>. A diferencia de java, en C el proceso de gestion de memoria es manual por lo que es fundamental, despues de reservar memoria usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code>, llamar a la función <code class="docutils literal notranslate"><span class="pre">free</span></code> si no se necesita usar mas la porción previamente reservada. Olvidar esto ultimo genera <strong>fugar de memoria</strong> (memory leaks) haciendo que se consuman recursos de memoria innecesariamente y degradando el funcionamiento de la aplicación.</p>
+<p>A continuación vamos a ver con mas detalle las diferentes funciones para la gestión de memoria en el <strong>heap</strong>.</p>
 <section id="asignacion-de-memoria-memory-allocation-o-malloc">
 <h4>4.2.1. Asignación de memoria: Memory Allocation o Malloc<a class="headerlink" href="#asignacion-de-memoria-memory-allocation-o-malloc" title="Permalink to this headline">#</a></h4>
 <p>La función <code class="docutils literal notranslate"><span class="pre">malloc</span></code> permite reservar un bloque de memoria (sin inicializar) en el heap. El prototipo de esta función se muestra a continuación:</p>
@@ -965,6 +968,7 @@ title="Print to PDF"
 </ul>
 <p>La funcion retorna la direccion en el heap a partir de la cual se reservó el tamaño de memoria solicitado o retorna <strong><code class="docutils literal notranslate"><span class="pre">NULL</span></code></strong> si no es posible reservar la cantidad de memoria. Cabe recordar que <code class="docutils literal notranslate"><span class="pre">void*</span></code> indica que la dirección retornada es genérica, es decir, en esa dirección se puede almacenar cualquier tipo de variable.</p>
 </div>
+<p>Usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code> tambien es posible declarar arrays en memoria dinamica pasando el tamaño del array en bytes. Asi por ejemplo, para declara un array de <code class="docutils literal notranslate"><span class="pre">N</span></code> elementos, el valor pasado como parametro a la funcion <code class="docutils literal notranslate"><span class="pre">malloc</span></code> sera <code class="docutils literal notranslate"><span class="pre">N*sizeof(dataTipe)</span></code>.</p>
 </section>
 <section id="liberacion-de-memoria-free">
 <h4>4.2.2. Liberación de memoria: free<a class="headerlink" href="#liberacion-de-memoria-free" title="Permalink to this headline">#</a></h4>
@@ -978,6 +982,134 @@ title="Print to PDF"
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">pointer</span></code></strong>: apuntador con la dirección del bloque de memoria (previamente reservado con <strong><code class="docutils literal notranslate"><span class="pre">malloc</span></code></strong> o con <strong><code class="docutils literal notranslate"><span class="pre">calloc</span></code></strong>) a liberar.</p></li>
 </ul>
 </div>
+<p><strong>Ejemplos</strong></p>
+<p>Para comprender el uso del par de funciones anteriormente mencioadas se muestran algunos códigos a continuación:</p>
+<ol>
+<li><p>Hacer un programa que reserve y libere una variable tipo <code class="docutils literal notranslate"><span class="pre">int</span></code> en el <strong>heap</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">  </span><span class="c1">// Tambien para el caso puede ser q</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del programa anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p,%20*q%3B%0A%20%20p%20%3D%20%28int%20*%29malloc%28sizeof%28int%29%29%3B%0A%20%20q%20%3D%20p%3B%0A%20%20*p%20%3D%2010%3B%0A%20%20printf%28%22%25d%5Cn%22,*q%29%3B%0A%20%20*q%20%3D%2020%3B%0A%20%20printf%28%22%25d%5Cn%22,*q%29%3B%0A%20%20free%28p%29%3B%20%20//%20Tambien%20para%20el%20caso%20puede%20ser%20q%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del codigo anterior se muestra a continuacion:</p>
+<figure class="align-default" id="fig9">
+<img alt="../_images/CH_02-S05-fig9.png" src="../_images/CH_02-S05-fig9.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Funcionamiento código ejemplo 1</span><a class="headerlink" href="#fig9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Hacer un programa que reserve y libere dos variables tipo <code class="docutils literal notranslate"><span class="pre">int</span></code> en el <strong>heap</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*p = %d; *q = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*p = %d; *q = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">q</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p,%20*q%3B%0A%20%20p%20%3D%20%28int%20*%29%20malloc%28sizeof%28int%29%29%3B%0A%20%20q%20%3D%20%28int%20*%29%20malloc%28sizeof%28int%29%29%3B%0A%20%20*p%20%3D%2010%3B%0A%20%20*q%20%3D%2020%3B%0A%20%20printf%28%22*p%20%3D%20%25d%3B%20*q%20%3D%20%25d%5Cn%22,%20*p,%20*q%29%3B%0A%20%20*p%20%3D%20*q%3B%0A%20%20printf%28%22*p%20%3D%20%25d%3B%20*q%20%3D%20%25d%5Cn%22,%20*p,%20*q%29%3B%0A%20%20free%28p%29%3B%20%20%0A%20%20free%28q%29%3B%20%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida de ejemplo se puede ver en la siguiente figura:</p>
+<figure class="align-default" id="fig10">
+<img alt="../_images/CH_02-S05-fig10.png" src="../_images/CH_02-S05-fig10.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Funcionamiento código ejemplo 2</span><a class="headerlink" href="#fig10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Crear dinamicamente un array de 10 elementos y llenarlo de ceros.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define TAM 10 </span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">TAM</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TAM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// p[i] = 0</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0A%23define%20TAM%2010%20%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p,%20*q%3B%0A%20%20p%20%3D%20malloc%28TAM*sizeof%28int%29%29%3B%0A%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20*%28p%20%2B%20i%29%20%3D%200%3B%20//%20p%5Bi%5D%20%3D%200%0A%20%20%7D%0A%20%20free%28p%29%3B%20%20%20%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del codigo anterior se muestra a continuacion:</p>
+<figure class="align-default" id="fig11">
+<img alt="../_images/CH_02-S05-fig11.png" src="../_images/CH_02-S05-fig11.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Salida del código del ejemplo 3</span><a class="headerlink" href="#fig11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Asignar <code class="docutils literal notranslate"><span class="pre">NULL</span></code> a un apuntador no es obligatorio, pero es buena practica. Esto para evitar algun error si el apuntador es erroneamente utilizado despues de que la memoria ha sido liberada.</p>
+</div>
+<ol>
+<li><p>Crear dinamicamente un array de 10 elementos y llenarlo de ceros, pero esta vez haga uso de la buena practica de programacion para entenderla.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define TAM 10 </span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">TAM</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TAM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// p[i] = 0</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0A%23define%20TAM%2010%20%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p,%20*q%3B%0A%20%20p%20%3D%20%28int%20*%29%20malloc%28TAM*sizeof%28int%29%29%3B%0A%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20*%28p%20%2B%20i%29%20%3D%200%3B%20//%20p%5Bi%5D%20%3D%200%0A%20%20%7D%0A%20%20free%28p%29%3B%20%0A%20%20p%20%3D%20NULL%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del codigo anterior se muestra a continuacion cuando se hace la reserva dinamica de memoria:</p>
+<figure class="align-default" id="fig12">
+<img alt="../_images/CH_02-S05-fig12.png" src="../_images/CH_02-S05-fig12.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Salida codigo 4 tras la reserva con <code class="docutils literal notranslate"><span class="pre">malloc</span></code>.</span><a class="headerlink" href="#fig12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>El efecto despues de liberar memoria y poner el apuntador a <code class="docutils literal notranslate"><span class="pre">NULL</span></code>:</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/CH_02-S05-fig13.png" src="../_images/CH_02-S05-fig13.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Salida codigo tras aplicar del <code class="docutils literal notranslate"><span class="pre">free</span></code> y poner el apuntador en valor <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
 </section>
 </section>
 </section>
