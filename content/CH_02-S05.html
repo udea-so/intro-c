@@ -976,24 +976,23 @@ title="Print to PDF"
 <p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*</span> <span class="pre">malloc</span> <span class="pre">(size_t</span> <span class="pre">size)</span></code></p>
 <p><strong>Donde</strong>:</p>
 <ul class="simple">
-<li><p><strong>size</strong>: Numero de bytes que seran reservados</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">size</span></code></strong>: Numero de bytes que seran reservados</p></li>
 </ul>
-<p>La funcion retorna la direccion en el heap a partir de la cual se reservó el tamaño de memoria solicitado o retorna <strong>NULL</strong> si no es posible reservar la cantidad de memoria. Cabe recordar que <code class="docutils literal notranslate"><span class="pre">void*</span></code> indica que la dirección retornada es genérica, es decir, en esa dirección se puede almacenar cualquier tipo de variable.</p>
+<p>La funcion retorna la direccion en el heap a partir de la cual se reservó el tamaño de memoria solicitado o retorna <strong><code class="docutils literal notranslate"><span class="pre">NULL</span></code></strong> si no es posible reservar la cantidad de memoria. Cabe recordar que <code class="docutils literal notranslate"><span class="pre">void*</span></code> indica que la dirección retornada es genérica, es decir, en esa dirección se puede almacenar cualquier tipo de variable.</p>
 </div>
 </section>
 <section id="liberacion-de-memoria-free">
 <h4>4.2.2. Liberación de memoria: free<a class="headerlink" href="#liberacion-de-memoria-free" title="Permalink to this headline">#</a></h4>
 <p>La función <code class="docutils literal notranslate"><span class="pre">free</span></code> libera un bloque de memoria previamente reservado en el heap. El prototipo de esta función se muestra a continuación:</p>
-<blockquote>
-<div><p><strong>Sintaxis</strong>:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">free</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">pointer</span><span class="p">);</span><span class="w"></span>
-</pre></div>
-</div>
+<div class="tip admonition">
+<p class="admonition-title">free</p>
+<p><strong>Sintaxis</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">free(void*</span> <span class="pre">pointer);</span></code></p>
 <p><strong>Donde</strong>:</p>
 <ul class="simple">
-<li><p><strong>pointer</strong>: apuntador con la dirección del bloque de memoria (previamente reservado con <strong>malloc</strong> o con <strong>calloc</strong>) a liberar.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pointer</span></code></strong>: apuntador con la dirección del bloque de memoria (previamente reservado con <strong><code class="docutils literal notranslate"><span class="pre">malloc</span></code></strong> o con <strong><code class="docutils literal notranslate"><span class="pre">calloc</span></code></strong>) a liberar.</p></li>
 </ul>
-</div></blockquote>
+</div>
 </section>
 </section>
 </section>
