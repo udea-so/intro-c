@@ -454,6 +454,52 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manejo-dinamico-de-memoria-mediante-c">
+   4. Manejo dinamico de memoria mediante C
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operador-sizeof">
+     4.1. Operador
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sizeof
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#name-fig8">
+   name: fig8
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manejo-dinamico-de-memoria">
+     4.2. Manejo dinamico de memoria
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asignacion-de-memoria-memory-allocation-o-malloc">
+       4.2.1. Asignación de memoria: Memory Allocation o Malloc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#liberacion-de-memoria-free">
+       4.2.2. Liberación de memoria: free
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x-enlaces">
+   x. Enlaces
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -528,6 +574,52 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manejo-dinamico-de-memoria-mediante-c">
+   4. Manejo dinamico de memoria mediante C
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operador-sizeof">
+     4.1. Operador
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sizeof
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#name-fig8">
+   name: fig8
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manejo-dinamico-de-memoria">
+     4.2. Manejo dinamico de memoria
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asignacion-de-memoria-memory-allocation-o-malloc">
+       4.2.1. Asignación de memoria: Memory Allocation o Malloc
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#liberacion-de-memoria-free">
+       4.2.2. Liberación de memoria: free
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x-enlaces">
+   x. Enlaces
+  </a>
  </li>
 </ul>
 
@@ -827,32 +919,106 @@ title="Print to PDF"
 <p>La siguiente figura muestre el efecto del codigo anterior:</p>
 <figure class="align-default" id="fig7">
 <img alt="../_images/CH_02-S05-fig7.png" src="../_images/CH_02-S05-fig7.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Asignacion dinamica de una variable en el <strong>heap</strong> usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code></span><a class="headerlink" href="#fig7" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 </li>
 </ol>
-<p>Asignacion dinamica de una variable en el <strong>heap</strong> usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-
-
-<span class="c1">## x. Enlaces</span>
-
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">bytesoftheday</span><span class="o">.</span><span class="n">wordpress</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="mi">2014</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">04</span><span class="o">/</span><span class="n">q14</span><span class="o">/</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">embeddedwala</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Blogs</span><span class="o">/</span><span class="n">embedded</span><span class="o">-</span><span class="n">c</span><span class="o">/</span><span class="n">memory</span><span class="o">-</span><span class="n">layout</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">c</span><span class="o">-</span><span class="n">program</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">mtsu</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">cs2170</span><span class="o">/</span><span class="n">C</span><span class="o">++</span><span class="n">labs</span><span class="o">/</span><span class="n">lab18</span><span class="o">/</span><span class="n">OSmemlayout</span><span class="o">.</span><span class="n">pdf</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">d1b10bmlvqabco</span><span class="o">.</span><span class="n">cloudfront</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">attach</span><span class="o">/</span><span class="n">j6fe5friemd22w</span><span class="o">/</span><span class="n">hzd1madqsie3ts</span><span class="o">/</span><span class="n">j7kw6i4tmqf8</span><span class="o">/</span><span class="mi">61</span><span class="n">C_Note_1_Memory</span><span class="o">.</span><span class="n">pdf</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ocw</span><span class="o">.</span><span class="n">mit</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">courses</span><span class="o">/</span><span class="mi">6</span><span class="o">-</span><span class="n">s096</span><span class="o">-</span><span class="n">introduction</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">c</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">c</span><span class="o">-</span><span class="n">january</span><span class="o">-</span><span class="n">iap</span><span class="o">-</span><span class="mi">2013</span><span class="o">/</span><span class="n">bba9056d5290198d563edc47dfcff0e9_MIT6_S096_IAP13_lec3</span><span class="o">.</span><span class="n">pdf</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cs61c</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">su24</span><span class="o">/</span>
-<span class="o">*</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">wla</span><span class="o">.</span><span class="n">berkeley</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">cs61c</span><span class="o">/</span><span class="n">fa17</span><span class="o">/</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">princeton</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">courses</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">fall07</span><span class="o">/</span><span class="n">cos217</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">web2</span><span class="o">.</span><span class="n">qatar</span><span class="o">.</span><span class="n">cmu</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">mhhammou</span><span class="o">/</span><span class="mi">15122</span><span class="o">-</span><span class="n">s23</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="mi">21</span><span class="o">-</span><span class="n">cmem</span><span class="o">/</span><span class="n">writeup</span><span class="o">/</span><span class="n">pdf</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">pdf</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cs</span><span class="o">.</span><span class="n">gmu</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">zduric</span><span class="o">/</span><span class="n">cs262</span><span class="o">/</span><span class="n">Slides</span><span class="o">/</span><span class="n">teoX</span><span class="o">.</span><span class="n">pdf</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">d1b10bmlvqabco</span><span class="o">.</span><span class="n">cloudfront</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">attach</span><span class="o">/</span><span class="n">j6fe5friemd22w</span><span class="o">/</span><span class="n">hzd1madqsie3ts</span><span class="o">/</span><span class="n">j7kw6i4tmqf8</span><span class="o">/</span><span class="mi">61</span><span class="n">C_Note_1_Memory</span><span class="o">.</span><span class="n">pdf</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">princeton</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">courses</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">fall07</span><span class="o">/</span><span class="n">cos217</span><span class="o">/</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">mtsu</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">cs2170</span><span class="o">/</span><span class="n">C</span><span class="o">++</span><span class="n">labs</span><span class="o">/</span><span class="n">lab18</span><span class="o">/</span><span class="n">OSmemlayout</span><span class="o">.</span><span class="n">pdf</span>
-<span class="o">*</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">web2</span><span class="o">.</span><span class="n">qatar</span><span class="o">.</span><span class="n">cmu</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">mhhammou</span><span class="o">/</span><span class="mi">15122</span><span class="o">-</span><span class="n">s23</span><span class="o">/</span><span class="n">lectures</span><span class="o">/</span><span class="mi">21</span><span class="o">-</span><span class="n">cmem</span><span class="o">/</span><span class="n">writeup</span><span class="o">/</span><span class="n">pdf</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">pdf</span>
+</section>
+</section>
+<section id="manejo-dinamico-de-memoria-mediante-c">
+<h2>4. Manejo dinamico de memoria mediante C<a class="headerlink" href="#manejo-dinamico-de-memoria-mediante-c" title="Permalink to this headline">#</a></h2>
+<section id="operador-sizeof">
+<h3>4.1. Operador <code class="docutils literal notranslate"><span class="pre">sizeof</span></code><a class="headerlink" href="#operador-sizeof" title="Permalink to this headline">#</a></h3>
+<p>Este es un operador (no una funcion) que devielve la cantidad en bytes ocupada por una variable o algun tipo de dato. La sintaxis basica de este operador se muestra a continuacion:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">sizeof</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="p">)</span><span class="w">  </span>
 </pre></div>
 </div>
+<p><strong>Ejemplo</strong></p>
+<p>En el siguiente codigo ejemplo se muestran algunos ejemplos del uso de este operador:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">short</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(short*) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">short</span><span class="o">*</span><span class="p">));</span><span class="w">  </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(p1) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">p</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando una variable</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(short) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">short</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(long long) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(long long) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando una variable</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(double*) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(char*) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(char) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código anterior puede ser simulado a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20short%20*p%3B%0A%20%20long%20long%20a%3B%0A%20%20printf%28%22sizeof%28short*%29%20%3D%20%25d%5Cn%22,sizeof%28short*%29%29%3B%20%20%0A%20%20printf%28%22sizeof%28p1%29%20%3D%20%25d%5Cn%22,sizeof%28p%29%29%3B%20%0A%20%20printf%28%22sizeof%28short%29%20%3D%20%25d%5Cn%22,sizeof%28short%29%29%3B%20%0A%20%20printf%28%22sizeof%28long%20long%29%20%3D%20%25d%5Cn%22,sizeof%28long%20long%29%29%3B%20%0A%20%20printf%28%22sizeof%28long%20long%29%20%3D%20%25d%5Cn%22,sizeof%28a%29%29%3B%20%0A%20%20printf%28%22sizeof%28double*%29%20%3D%20%25d%5Cn%22,sizeof%28double*%29%29%3B%0A%20%20printf%28%22sizeof%28char*%29%20%3D%20%25d%5Cn%22,sizeof%28char*%29%29%3B%20%0A%20%20printf%28%22sizeof%28char%29%20%3D%20%25d%5Cn%22,sizeof%28char%29%29%3B%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cppShowMemAddrs=true&cumulative=false&curInstr=9&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>A continuacion se muestra la salida en el simulador para diferentes tipos de datos:</p>
+<figure class="align-default">
+<img alt="../_images/CH_02-S05-fig8.png" src="../_images/CH_02-S05-fig8.png" />
+</figure>
 </section>
+</section>
+<section id="name-fig8">
+<h2>name: fig8<a class="headerlink" href="#name-fig8" title="Permalink to this headline">#</a></h2>
+<p>Tamaño de diferentes tipos de datos.</p>
+<section id="manejo-dinamico-de-memoria">
+<h3>4.2. Manejo dinamico de memoria<a class="headerlink" href="#manejo-dinamico-de-memoria" title="Permalink to this headline">#</a></h3>
+<section id="asignacion-de-memoria-memory-allocation-o-malloc">
+<h4>4.2.1. Asignación de memoria: Memory Allocation o Malloc<a class="headerlink" href="#asignacion-de-memoria-memory-allocation-o-malloc" title="Permalink to this headline">#</a></h4>
+<p>La función <code class="docutils literal notranslate"><span class="pre">malloc</span></code> permite reservar un bloque de memoria (sin inicializar) en el heap. El prototipo de esta función se muestra a continuación:</p>
+<p>:::{admonition} malloc
+<strong>Sintaxis</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">malloc</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>size</strong>: Numero de bytes que seran reservados</p></li>
+</ul>
+<p>La funcion retorna la direccion en el heap a partir de la cual se reservó el tamaño de memoria solicitado o retorna <strong>NULL</strong> si no es posible reservar la cantidad de memoria. Cabe recordar que <code class="docutils literal notranslate"><span class="pre">void*</span></code> indica que la dirección retornada es genérica, es decir, en esa dirección se puede almacenar cualquier tipo de variable.
+:::</p>
+</section>
+<section id="liberacion-de-memoria-free">
+<h4>4.2.2. Liberación de memoria: free<a class="headerlink" href="#liberacion-de-memoria-free" title="Permalink to this headline">#</a></h4>
+<p>La función <code class="docutils literal notranslate"><span class="pre">free</span></code> libera un bloque de memoria previamente reservado en el heap. El prototipo de esta función se muestra a continuación:</p>
+<blockquote>
+<div><p><strong>Sintaxis</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">free</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">pointer</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>pointer</strong>: apuntador con la dirección del bloque de memoria (previamente reservado con <strong>malloc</strong> o con <strong>calloc</strong>) a liberar.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+</section>
+<section id="x-enlaces">
+<h2>x. Enlaces<a class="headerlink" href="#x-enlaces" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>https://bytesoftheday.wordpress.com/2014/07/04/q14/</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/spring20/cos217/</p></li>
+<li><p>https://embeddedwala.com/Blogs/embedded-c/memory-layout-of-c-program</p></li>
+<li><p>https://www.cs.mtsu.edu/~cs2170/C++labs/lab18/OSmemlayout.pdf</p></li>
+<li><p>https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf</p></li>
+<li><p>https://ocw.mit.edu/courses/6-s096-introduction-to-c-and-c-january-iap-2013/bba9056d5290198d563edc47dfcff0e9_MIT6_S096_IAP13_lec3.pdf</p></li>
+<li><p>https://cs61c.org/su24/</p></li>
+<li><p>http://wla.berkeley.edu/~cs61c/fa17/</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/fall07/cos217/index.html</p></li>
+<li><p>https://web2.qatar.cmu.edu/~mhhammou/15122-s23/lectures/21-cmem/writeup/pdf/main.pdf</p></li>
+<li><p>https://cs.gmu.edu/~zduric/cs262/Slides/teoX.pdf</p></li>
+<li><p>https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/fall07/cos217/</p></li>
+<li><p>https://www.cs.mtsu.edu/~cs2170/C++labs/lab18/OSmemlayout.pdf</p></li>
+<li><p>https://web2.qatar.cmu.edu/~mhhammou/15122-s23/lectures/21-cmem/writeup/pdf/main.pdf</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/spr24/cos126/schedule/</p></li>
+<li><p>https://github.com/vishwa27yvs/Intro-to-Computer-Science-COS-126</p></li>
+</ul>
 </section>
 </section>
 
