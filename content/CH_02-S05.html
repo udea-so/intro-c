@@ -970,18 +970,16 @@ title="Print to PDF"
 <section id="asignacion-de-memoria-memory-allocation-o-malloc">
 <h4>4.2.1. Asignación de memoria: Memory Allocation o Malloc<a class="headerlink" href="#asignacion-de-memoria-memory-allocation-o-malloc" title="Permalink to this headline">#</a></h4>
 <p>La función <code class="docutils literal notranslate"><span class="pre">malloc</span></code> permite reservar un bloque de memoria (sin inicializar) en el heap. El prototipo de esta función se muestra a continuación:</p>
-<p>:::{admonition} malloc
-:class: tip
-<strong>Sintaxis</strong>:
-:::{code-block}
-void * malloc (size_t size)
-:::</p>
+<div class="tip admonition">
+<p class="admonition-title">malloc</p>
+<p><strong>Sintaxis</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*</span> <span class="pre">malloc</span> <span class="pre">(size_t</span> <span class="pre">size)</span></code></p>
 <p><strong>Donde</strong>:</p>
 <ul class="simple">
 <li><p><strong>size</strong>: Numero de bytes que seran reservados</p></li>
 </ul>
-<p>La funcion retorna la direccion en el heap a partir de la cual se reservó el tamaño de memoria solicitado o retorna <strong>NULL</strong> si no es posible reservar la cantidad de memoria. Cabe recordar que <code class="docutils literal notranslate"><span class="pre">void*</span></code> indica que la dirección retornada es genérica, es decir, en esa dirección se puede almacenar cualquier tipo de variable.
-:::</p>
+<p>La funcion retorna la direccion en el heap a partir de la cual se reservó el tamaño de memoria solicitado o retorna <strong>NULL</strong> si no es posible reservar la cantidad de memoria. Cabe recordar que <code class="docutils literal notranslate"><span class="pre">void*</span></code> indica que la dirección retornada es genérica, es decir, en esa dirección se puede almacenar cualquier tipo de variable.</p>
+</div>
 </section>
 <section id="liberacion-de-memoria-free">
 <h4>4.2.2. Liberación de memoria: free<a class="headerlink" href="#liberacion-de-memoria-free" title="Permalink to this headline">#</a></h4>
