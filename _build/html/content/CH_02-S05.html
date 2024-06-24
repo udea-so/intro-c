@@ -476,12 +476,42 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#asignacion-de-memoria-memory-allocation-o-malloc">
-       4.2.1. Asignación de memoria: Memory Allocation o Malloc
+       4.2.1. Asignación de memoria: Memory Allocation o
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         malloc
+        </span>
+       </code>
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#liberacion-de-memoria-free">
-       4.2.2. Liberación de memoria: free
+       4.2.2. Liberación de memoria:
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         free
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asignacion-de-memoria-con-inicializacion-calloc">
+       4.2.3. Asignación de memoria con inicializacion:
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         calloc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reasignacion-de-memoria-memory-re-allocation-o-realloc">
+       4.2.4. Reasignación de memoria: Memory Re-allocation o
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         realloc
+        </span>
+       </code>
       </a>
      </li>
     </ul>
@@ -590,12 +620,42 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#asignacion-de-memoria-memory-allocation-o-malloc">
-       4.2.1. Asignación de memoria: Memory Allocation o Malloc
+       4.2.1. Asignación de memoria: Memory Allocation o
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         malloc
+        </span>
+       </code>
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#liberacion-de-memoria-free">
-       4.2.2. Liberación de memoria: free
+       4.2.2. Liberación de memoria:
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         free
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asignacion-de-memoria-con-inicializacion-calloc">
+       4.2.3. Asignación de memoria con inicializacion:
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         calloc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reasignacion-de-memoria-memory-re-allocation-o-realloc">
+       4.2.4. Reasignación de memoria: Memory Re-allocation o
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         realloc
+        </span>
+       </code>
       </a>
      </li>
     </ul>
@@ -833,6 +893,7 @@ title="Print to PDF"
 <h3>Forma 3<a class="headerlink" href="#forma-3" title="Permalink to this headline">#</a></h3>
 <p>Declarar un arreglo dinamico de un tamaño especificado en tiempo de ejecución empleando las funciones propias de la libreria estandar para tal caso (<code class="docutils literal notranslate"><span class="pre">malloc</span></code> y <code class="docutils literal notranslate"><span class="pre">calloc</span></code>). En lo que respecta al caso, esta es la mejor forma. La descripción y uso de estas funciones sera tratada en breve. Por ahora veamos el codigo asociado.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">datos</span><span class="p">;</span><span class="w"></span>
@@ -851,6 +912,10 @@ title="Print to PDF"
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Para hacer uso de las funciónes de manejo dinamico de memoria es necesario incluir el archivo cabecera <code class="docutils literal notranslate"><span class="pre">stdlib.h</span></code> en el código</p>
 </div>
 </section>
 <section id="id1">
@@ -982,7 +1047,7 @@ title="Print to PDF"
 <p>El manejo de la memoria en el <strong>heap</strong> consiste basicamente en reservar y liberar memoria en este segmento. Para reservar memoria se emplea la función <code class="docutils literal notranslate"><span class="pre">malloc</span></code> (o similares), mientras que para liberar (una porción de memoria previamente asignada) se emplea la función <code class="docutils literal notranslate"><span class="pre">free</span></code>. A diferencia de java, en C el proceso de gestion de memoria es manual por lo que es fundamental, despues de reservar memoria usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code>, llamar a la función <code class="docutils literal notranslate"><span class="pre">free</span></code> si no se necesita usar mas la porción previamente reservada. Olvidar esto ultimo genera <strong>fugar de memoria</strong> (memory leaks) haciendo que se consuman recursos de memoria innecesariamente y degradando el funcionamiento de la aplicación.</p>
 <p>A continuación vamos a ver con mas detalle las diferentes funciones para la gestión de memoria en el <strong>heap</strong>.</p>
 <section id="asignacion-de-memoria-memory-allocation-o-malloc">
-<h4>4.2.1. Asignación de memoria: Memory Allocation o Malloc<a class="headerlink" href="#asignacion-de-memoria-memory-allocation-o-malloc" title="Permalink to this headline">#</a></h4>
+<h4>4.2.1. Asignación de memoria: Memory Allocation o <code class="docutils literal notranslate"><span class="pre">malloc</span></code><a class="headerlink" href="#asignacion-de-memoria-memory-allocation-o-malloc" title="Permalink to this headline">#</a></h4>
 <p>La función <code class="docutils literal notranslate"><span class="pre">malloc</span></code> permite reservar un bloque de memoria (sin inicializar) en el heap. El prototipo de esta función se muestra a continuación:</p>
 <div class="tip admonition">
 <p class="admonition-title">malloc</p>
@@ -997,7 +1062,7 @@ title="Print to PDF"
 <p>Usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code> tambien es posible declarar arrays en memoria dinamica pasando el tamaño del array en bytes. Asi por ejemplo, para declara un array de <code class="docutils literal notranslate"><span class="pre">N</span></code> elementos, el valor pasado como parametro a la funcion <code class="docutils literal notranslate"><span class="pre">malloc</span></code> sera <code class="docutils literal notranslate"><span class="pre">N*sizeof(dataTipe)</span></code>.</p>
 </section>
 <section id="liberacion-de-memoria-free">
-<h4>4.2.2. Liberación de memoria: free<a class="headerlink" href="#liberacion-de-memoria-free" title="Permalink to this headline">#</a></h4>
+<h4>4.2.2. Liberación de memoria: <code class="docutils literal notranslate"><span class="pre">free</span></code><a class="headerlink" href="#liberacion-de-memoria-free" title="Permalink to this headline">#</a></h4>
 <p>La función <code class="docutils literal notranslate"><span class="pre">free</span></code> libera un bloque de memoria previamente reservado en el heap. El prototipo de esta función se muestra a continuación:</p>
 <div class="tip admonition">
 <p class="admonition-title">free</p>
@@ -1168,7 +1233,103 @@ title="Print to PDF"
 <p>La simulación del código se puede realizar a continuación:</p>
 <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28int%20argc,%20char%20*argv%5B%5D%29%20%7B%0A%20%20%0A%20%20%20%20//%20Reserva%20en%20el%20stack%0A%20%20%20%20int%20A_stack%5B4%5D%3B%0A%20%20%20%20printf%28%22sizeof%28int%29%20%3D%20%25d%5Cn%22,sizeof%28int%29%29%3B%0A%20%20%20%20%0A%20%20%20%20%0A%20%20%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%204%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20%20%20A_stack%5Bi%5D%20%3D%200%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20//%20Reserva%20en%20el%20heap%0A%20%20%20%20int%20*A_heap%20%3D%20malloc%2816%29%3B%20%20//%204*4%20%3D%204*sizeof%28int%29%20%3D%2016%20%20%20%0A%20%20%20%20%0A%20%20%20%20%0A%20%20%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%204%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20%20%20//%20A%5Bi%5D%20%3D%200%3B%0A%20%20%20%20%20%20//%20*A_heap%20%3D%200%3B%0A%20%20%20%20%20%20//%20A_heap%2B%2B%3B%0A%20%20%20%20%20%20*%28A_heap%20%2B%20i%29%20%3D%200%3B%20//A_heap%5Bi%5D%20%3D%200%3B%0A%20%20%20%20%7D%0A%20%20%20%20free%28A_heap%29%3B%0A%20%20%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 </li>
+<li><p>Haciendo uso de <code class="docutils literal notranslate"><span class="pre">malloc</span></code> hacer una copia de una cadena de caracteres definida en el <strong>stack</strong> en otra definida en el <strong>heap</strong>. Despues de usar la cadena que se definió en el <strong>heap</strong> usar <code class="docutils literal notranslate"><span class="pre">free</span></code> para liberarla.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define UDEA &quot;UdeA&quot;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">udea_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UDEA</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">udea_2</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UDEA</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">udea_1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">udea_2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">udea_3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">udea_1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tam</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">udea_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">((</span><span class="n">tam</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">udea_3</span><span class="p">,</span><span class="w"> </span><span class="n">udea_1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">udea_3</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">udea_3</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">udea_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código puede ser simulado a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstring.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0A%23define%20UDEA%20%22UdeA%22%0A%0Aint%20main%28%29%20%7B%20%20%0A%20%20char%20*udea_1%20%3D%20UDEA%3B%0A%20%20char%20udea_2%5B%5D%20%3D%20UDEA%3B%0A%20%20printf%28%22%25s%5Cn%22,%20udea_1%29%3B%0A%20%20printf%28%22%25s%5Cn%22,%20udea_2%29%3B%0A%20%20char%20*udea_3%3B%0A%20%20int%20tam%20%3D%20strlen%28udea_1%29%3B%0A%20%20printf%28%22%25d%5Cn%22,%20tam%29%3B%0A%20%20udea_3%20%3D%20%28char%20*%29malloc%28%28tam%2B1%29*sizeof%28char%29%29%3B%0A%20%20strcpy%28udea_3,%20udea_1%29%3B%0A%20%20printf%28%22%25s%5Cn%22,%20udea_3%29%3B%0A%20%20free%28udea_3%29%3B%0A%20%20udea_3%20%3D%20NULL%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
 </ol>
+</section>
+<section id="asignacion-de-memoria-con-inicializacion-calloc">
+<h4>4.2.3. Asignación de memoria con inicializacion: <code class="docutils literal notranslate"><span class="pre">calloc</span></code><a class="headerlink" href="#asignacion-de-memoria-con-inicializacion-calloc" title="Permalink to this headline">#</a></h4>
+<p>La función <code class="docutils literal notranslate"><span class="pre">calloc</span></code> permite reservar e inicializat a <code class="docutils literal notranslate"><span class="pre">0</span></code> un bloque de memoria en el heap. El prototipo de esta función se muestra a continuación:</p>
+<div class="tip admonition">
+<p class="admonition-title">calloc</p>
+<p><strong>Sintaxis</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*</span> <span class="pre">calloc</span> <span class="pre">(size_t</span> <span class="pre">num,</span> <span class="pre">size_t</span> <span class="pre">size)</span></code></p>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">num</span></code></strong>: numero de elementos consecutivos a reservar.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">size</span></code></strong>: Tamaño en bytes de cada elemento.</p></li>
+</ul>
+<p>El espacio total reservado en la funcion es de <strong><code class="docutils literal notranslate"><span class="pre">numElements*size</span></code></strong>. Normalmente, la funcion retorna un apuntador que contiene la direccion inicial del bloque reservado en el heap. En caso de que no haya suficiente memoria disponible la funcion retornara <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</div>
+<p><strong>Ejemplos</strong></p>
+<p>A continuación, se muestran algunos ejemplos haciendo de uso de la función <code class="docutils literal notranslate"><span class="pre">calloc</span></code></p>
+<ol>
+<li><p>Declare una en el heap un dato <code class="docutils literal notranslate"><span class="pre">double</span></code> inicializado a <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Out of memory</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*p = %.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del programa anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20double%20*p%3B%0A%20%20p%20%3D%20%28double%20*%29calloc%281,%20sizeof%28double%29%29%3B%0A%20%20if%28p%20%3D%3D%200%29%20%7B%0A%20%20%20%20printf%28%22ERROR%3A%20Out%20of%20memory%5Cn%22%29%3B%0A%20%20%20%20return%20-1%3B%0A%20%20%7D%0A%20%20printf%28%22*p%20%3D%20%25.1lf%5Cn%22,%20*p%29%3B%0A%20%20free%28p%29%3B%0A%20%20p%20%3D%20NULL%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del codigo anterior se muestra a continuacion:</p>
+<figure class="align-default" id="fig14">
+<img alt="../_images/CH_02-S05-fig14.png" src="../_images/CH_02-S05-fig14.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Salida codigo tras la reserva con <code class="docutils literal notranslate"><span class="pre">calloc</span></code>.</span><a class="headerlink" href="#fig14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Crear dinamicamente un array de <code class="docutils literal notranslate"><span class="pre">10</span></code> elementos enteros y llenarlo de ceros por medio de la funcion <code class="docutils literal notranslate"><span class="pre">calloc</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">calloc</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Out of memory</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del programa anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p%3B%0A%20%20p%20%3D%20%28int%20*%29calloc%2810,%20sizeof%28int%29%29%3B%0A%20%20if%28p%20%3D%3D%200%29%20%7B%0A%20%20%20%20printf%28%22ERROR%3A%20Out%20of%20memory%5Cn%22%29%3B%0A%20%20%20%20return%20-1%3B%0A%20%20%7D%0A%20%20free%28p%29%3B%0A%20%20p%20%3D%20NULL%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+</ol>
+</section>
+<section id="reasignacion-de-memoria-memory-re-allocation-o-realloc">
+<h4>4.2.4. Reasignación de memoria: Memory Re-allocation o <code class="docutils literal notranslate"><span class="pre">realloc</span></code><a class="headerlink" href="#reasignacion-de-memoria-memory-re-allocation-o-realloc" title="Permalink to this headline">#</a></h4>
 </section>
 </section>
 </section>
