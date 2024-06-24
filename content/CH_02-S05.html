@@ -486,9 +486,19 @@ title="Print to PDF"
        4.2.1. Asignación de memoria: Memory Allocation o Malloc
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#liberacion-de-memoria-free">
+       4.2.2. Liberación de memoria: free
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x-enlaces">
+   x. Enlaces
+  </a>
  </li>
 </ul>
 
@@ -597,9 +607,19 @@ title="Print to PDF"
        4.2.1. Asignación de memoria: Memory Allocation o Malloc
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#liberacion-de-memoria-free">
+       4.2.2. Liberación de memoria: free
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x-enlaces">
+   x. Enlaces
+  </a>
  </li>
 </ul>
 
@@ -953,55 +973,51 @@ title="Print to PDF"
 <div class="tip admonition">
 <p class="admonition-title">malloc</p>
 <p><strong>Sintaxis</strong>:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">malloc</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
+<p>:     void * malloc (size_t size)</p>
 <p><strong>Donde</strong>:</p>
 <ul class="simple">
 <li><p><strong>size</strong>: Numero de bytes que seran reservados</p></li>
 </ul>
 <p>La funcion retorna la direccion en el heap a partir de la cual se reservó el tamaño de memoria solicitado o retorna <strong>NULL</strong> si no es posible reservar la cantidad de memoria. Cabe recordar que <code class="docutils literal notranslate"><span class="pre">void*</span></code> indica que la dirección retornada es genérica, es decir, en esa dirección se puede almacenar cualquier tipo de variable.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-#### 4.2.2. Liberación de memoria: free
-
-La función ```free``` libera un bloque de memoria previamente reservado en el heap. El prototipo de esta función se muestra a continuación:
-
-
-
-&gt; **Sintaxis**:
-&gt;
-&gt; ```C
-&gt; void free(void* pointer);
-&gt; ```
-&gt;
-&gt; **Donde**:
-&gt; * **pointer**: apuntador con la dirección del bloque de memoria (previamente reservado con **malloc** o con **calloc**) a liberar. 
-
-
-## x. Enlaces
-
-* https://bytesoftheday.wordpress.com/2014/07/04/q14/
-* https://www.cs.princeton.edu/courses/archive/spring20/cos217/
-* https://embeddedwala.com/Blogs/embedded-c/memory-layout-of-c-program
-* https://www.cs.mtsu.edu/~cs2170/C++labs/lab18/OSmemlayout.pdf
-* https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf
-* https://ocw.mit.edu/courses/6-s096-introduction-to-c-and-c-january-iap-2013/bba9056d5290198d563edc47dfcff0e9_MIT6_S096_IAP13_lec3.pdf
-* https://cs61c.org/su24/
-* http://wla.berkeley.edu/~cs61c/fa17/
-* https://www.cs.princeton.edu/courses/archive/fall07/cos217/index.html
-* https://web2.qatar.cmu.edu/~mhhammou/15122-s23/lectures/21-cmem/writeup/pdf/main.pdf
-* https://cs.gmu.edu/~zduric/cs262/Slides/teoX.pdf
-* https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf
-* https://www.cs.princeton.edu/courses/archive/fall07/cos217/
-* https://www.cs.mtsu.edu/~cs2170/C++labs/lab18/OSmemlayout.pdf
-* https://web2.qatar.cmu.edu/~mhhammou/15122-s23/lectures/21-cmem/writeup/pdf/main.pdf
-* https://www.cs.princeton.edu/courses/archive/spr24/cos126/schedule/
-* https://github.com/vishwa27yvs/Intro-to-Computer-Science-COS-126
-</pre></div>
 </div>
 </section>
+<section id="liberacion-de-memoria-free">
+<h4>4.2.2. Liberación de memoria: free<a class="headerlink" href="#liberacion-de-memoria-free" title="Permalink to this headline">#</a></h4>
+<p>La función <code class="docutils literal notranslate"><span class="pre">free</span></code> libera un bloque de memoria previamente reservado en el heap. El prototipo de esta función se muestra a continuación:</p>
+<blockquote>
+<div><p><strong>Sintaxis</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">free</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">pointer</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong>pointer</strong>: apuntador con la dirección del bloque de memoria (previamente reservado con <strong>malloc</strong> o con <strong>calloc</strong>) a liberar.</p></li>
+</ul>
+</div></blockquote>
 </section>
+</section>
+</section>
+<section id="x-enlaces">
+<h2>x. Enlaces<a class="headerlink" href="#x-enlaces" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>https://bytesoftheday.wordpress.com/2014/07/04/q14/</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/spring20/cos217/</p></li>
+<li><p>https://embeddedwala.com/Blogs/embedded-c/memory-layout-of-c-program</p></li>
+<li><p>https://www.cs.mtsu.edu/~cs2170/C++labs/lab18/OSmemlayout.pdf</p></li>
+<li><p>https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf</p></li>
+<li><p>https://ocw.mit.edu/courses/6-s096-introduction-to-c-and-c-january-iap-2013/bba9056d5290198d563edc47dfcff0e9_MIT6_S096_IAP13_lec3.pdf</p></li>
+<li><p>https://cs61c.org/su24/</p></li>
+<li><p>http://wla.berkeley.edu/~cs61c/fa17/</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/fall07/cos217/index.html</p></li>
+<li><p>https://web2.qatar.cmu.edu/~mhhammou/15122-s23/lectures/21-cmem/writeup/pdf/main.pdf</p></li>
+<li><p>https://cs.gmu.edu/~zduric/cs262/Slides/teoX.pdf</p></li>
+<li><p>https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/fall07/cos217/</p></li>
+<li><p>https://www.cs.mtsu.edu/~cs2170/C++labs/lab18/OSmemlayout.pdf</p></li>
+<li><p>https://web2.qatar.cmu.edu/~mhhammou/15122-s23/lectures/21-cmem/writeup/pdf/main.pdf</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/spr24/cos126/schedule/</p></li>
+<li><p>https://github.com/vishwa27yvs/Intro-to-Computer-Science-COS-126</p></li>
+</ul>
 </section>
 </section>
 
