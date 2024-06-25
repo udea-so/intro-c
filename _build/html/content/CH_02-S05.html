@@ -519,8 +519,13 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#x-enlaces">
-   x. Enlaces
+  <a class="reference internal nav-link" href="#miselanea-de-ejemplos">
+   5. Miselanea de ejemplos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces">
+   6. Enlaces
   </a>
  </li>
 </ul>
@@ -663,8 +668,13 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#x-enlaces">
-   x. Enlaces
+  <a class="reference internal nav-link" href="#miselanea-de-ejemplos">
+   5. Miselanea de ejemplos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces">
+   6. Enlaces
   </a>
  </li>
 </ul>
@@ -1331,18 +1341,6 @@ title="Print to PDF"
 <section id="reasignacion-de-memoria-memory-re-allocation-o-realloc">
 <h4>4.2.4. Reasignación de memoria: Memory Re-allocation o <code class="docutils literal notranslate"><span class="pre">realloc</span></code><a class="headerlink" href="#reasignacion-de-memoria-memory-re-allocation-o-realloc" title="Permalink to this headline">#</a></h4>
 <p>La función <code class="docutils literal notranslate"><span class="pre">realloc</span></code> permite redimensionar un bloque de memoria previamente reservada con <code class="docutils literal notranslate"><span class="pre">malloc</span></code>. El prototipo de esta función se muestra a continuación.</p>
-<blockquote>
-<div><p><strong>Sintaxis</strong>:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">realloc</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-</div>
-<p><strong>Donde</strong>:</p>
-<ul class="simple">
-<li><p><strong>ptr</strong>: Puntero a memoria.</p></li>
-<li><p><strong>size</strong>: Nuevo tamaño requerido.</p></li>
-</ul>
-<p>Si el tamaño es reducido, los datos se pueden perder. Si el tamaño es incrementado y la funcion es incapaz de extender la localizacion existente, esta asignara un nuevo espacio de memoria y copiara los datos a traves de esa retornando un puntero a la memoria nuevamente asignada.</p>
-</div></blockquote>
 <div class="tip admonition">
 <p class="admonition-title">realloc</p>
 <p><strong>Sintaxis</strong>:</p>
@@ -1448,8 +1446,61 @@ title="Print to PDF"
 </section>
 </section>
 </section>
-<section id="x-enlaces">
-<h2>x. Enlaces<a class="headerlink" href="#x-enlaces" title="Permalink to this headline">#</a></h2>
+<section id="miselanea-de-ejemplos">
+<h2>5. Miselanea de ejemplos<a class="headerlink" href="#miselanea-de-ejemplos" title="Permalink to this headline">#</a></h2>
+<ol>
+<li><p>Usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code> crear la matriz irregular (jagged arrays) mostrada en la siguiente figura:</p>
+<figure class="align-default" id="fig16">
+<img alt="../_images/CH_02-S05-fig16.png" src="../_images/CH_02-S05-fig16.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 80 </span><span class="caption-text">Matriz irregular.</span><a class="headerlink" href="#fig16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">C</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Reserva de espacio para la matriz irregular en el heap</span>
+<span class="w">  </span><span class="kt">int</span><span class="o">**</span><span class="w"> </span><span class="n">jagged_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">**</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">F</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// jagged_array[i] = (int *)malloc(C[i]*sizeof(int));</span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">jagged_array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Llenado de la matriz irregular</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// jagged_array[i][j] = ++val;</span>
+<span class="w">      </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">jagged_array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">++</span><span class="n">val</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// printf(&quot;%d &quot;, jagged_array[i][j]);</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">jagged_array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Liberacion del espacio en el heap asociado a la matriz irregular</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">jagged_array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">jagged_array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">jagged_array</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">jagged_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior se puede realizar a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20F%20%3D%203%3B%0A%20%20int%20C%5B%5D%20%3D%20%7B4,2,3%7D%3B%0A%20%20int%20val%20%3D%200%3B%0A%20%20%0A%20%20//%20Reserva%20de%20espacio%20para%20la%20matriz%20irregular%20en%20el%20heap%0A%20%20int**%20jagged_array%20%3D%20%28int%20**%29malloc%28F*sizeof%28int%20*%29%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20F%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20//%20jagged_array%5Bi%5D%20%3D%20%28int%20*%29malloc%28C%5Bi%5D*sizeof%28int%29%29%3B%0A%20%20%20%20*%28jagged_array%20%2B%20i%29%20%3D%20%28int%20*%29malloc%28C%5Bi%5D*sizeof%28int%29%29%3B%0A%20%20%7D%0A%20%20%0A%20%20//%20Llenado%20de%20la%20matriz%20irregular%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20F%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%20C%5Bi%5D%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20//%20jagged_array%5Bi%5D%5Bj%5D%20%3D%20%2B%2Bval%3B%0A%20%20%20%20%20%20*%28*%28jagged_array%20%2B%20i%29%20%2B%20j%29%20%3D%20%2B%2Bval%3B%0A%20%20%20%20%20%20//%20printf%28%22%25d%20%22,%20jagged_array%5Bi%5D%5Bj%5D%29%3B%0A%20%20%20%20%20%20printf%28%22%25d%20%22,*%28*%28jagged_array%20%2B%20i%29%20%2B%20j%29%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%7D%0A%20%20%0A%20%20//%20Liberacion%20del%20espacio%20en%20el%20heap%20asociado%20a%20la%20matriz%20irregular%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20F%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20free%28*%28jagged_array%20%2B%20i%29%29%3B%0A%20%20%20%20*%28jagged_array%20%2B%20i%29%20%3D%20NULL%3B%0A%20%20%7D%20%20%0A%20%20free%28jagged_array%29%3B%0A%20%20jagged_array%20%3D%20NULL%3B%0A%20%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+</ol>
+</section>
+<section id="enlaces">
+<h2>6. Enlaces<a class="headerlink" href="#enlaces" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>https://bytesoftheday.wordpress.com/2014/07/04/q14/</p></li>
 <li><p>https://www.cs.princeton.edu/courses/archive/spring20/cos217/</p></li>
