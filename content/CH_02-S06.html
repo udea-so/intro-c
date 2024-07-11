@@ -1,0 +1,1685 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Estructuras de datos &#8212; Introducción al lenguaje C</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo_udea.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción al lenguaje C</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CH_00.html">
+   Introducción
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CH_01.html">
+   Herramientas
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="CH_02.html">
+   Lenguaje C
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CH_02-S01.html">
+     Introducción al lenguaje C
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CH_02-S02.html">
+     Apuntadores y arreglos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CH_02-S03.html">
+     Apuntadores y arreglos multidimensionales
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CH_02-S04.html">
+     Estructuras en C
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CH_02-S05.html">
+     Memoria dinámica en C
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/udea-so/intro-c/blob/master/content/CH_02-S06.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/udea-so/intro-c"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/udea-so/intro-c/issues/new?title=Issue%20on%20page%20%2Fcontent/CH_02-S06.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/content/CH_02-S06.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/content/CH_02-S06.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   1. Introduccion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mapa-de-memoria">
+   2. Mapa de memoria
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejemplos">
+     Ejemplos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-1">
+       Ejemplo 1
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-2">
+       Ejemplo 2
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asignando-memoria">
+   3. Asignando memoria
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-1">
+     Forma 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-2">
+     Forma 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-3">
+     Forma 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Ejemplos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manejo-dinamico-de-memoria-mediante-c">
+   4. Manejo dinamico de memoria mediante C
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operador-sizeof">
+     4.1. Operador
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sizeof
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manejo-dinamico-de-memoria">
+     4.2. Manejo dinamico de memoria
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asignacion-de-memoria-memory-allocation-o-malloc">
+       4.2.1. Asignación de memoria: Memory Allocation o
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         malloc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#liberacion-de-memoria-free">
+       4.2.2. Liberación de memoria:
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         free
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asignacion-de-memoria-con-inicializacion-calloc">
+       4.2.3. Asignación de memoria con inicializacion:
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         calloc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reasignacion-de-memoria-memory-re-allocation-o-realloc">
+       4.2.4. Reasignación de memoria: Memory Re-allocation o
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         realloc
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#miselanea-de-ejemplos">
+   5. Miselanea de ejemplos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces">
+   6. Enlaces
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Estructuras de datos</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   1. Introduccion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mapa-de-memoria">
+   2. Mapa de memoria
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejemplos">
+     Ejemplos
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-1">
+       Ejemplo 1
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ejemplo-2">
+       Ejemplo 2
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asignando-memoria">
+   3. Asignando memoria
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-1">
+     Forma 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-2">
+     Forma 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forma-3">
+     Forma 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Ejemplos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manejo-dinamico-de-memoria-mediante-c">
+   4. Manejo dinamico de memoria mediante C
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operador-sizeof">
+     4.1. Operador
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       sizeof
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manejo-dinamico-de-memoria">
+     4.2. Manejo dinamico de memoria
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asignacion-de-memoria-memory-allocation-o-malloc">
+       4.2.1. Asignación de memoria: Memory Allocation o
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         malloc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#liberacion-de-memoria-free">
+       4.2.2. Liberación de memoria:
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         free
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asignacion-de-memoria-con-inicializacion-calloc">
+       4.2.3. Asignación de memoria con inicializacion:
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         calloc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reasignacion-de-memoria-memory-re-allocation-o-realloc">
+       4.2.4. Reasignación de memoria: Memory Re-allocation o
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         realloc
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#miselanea-de-ejemplos">
+   5. Miselanea de ejemplos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces">
+   6. Enlaces
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="estructuras-de-datos">
+<h1>Estructuras de datos<a class="headerlink" href="#estructuras-de-datos" title="Permalink to this headline">#</a></h1>
+<div class="admonition-objetivos admonition">
+<p class="admonition-title">Objetivos</p>
+<ul class="simple">
+<li><p>Objetivo 1…</p></li>
+<li><p>Objetivo 2…</p></li>
+</ul>
+</div>
+<section id="introduccion">
+<h2>1. Introduccion<a class="headerlink" href="#introduccion" title="Permalink to this headline">#</a></h2>
+<p>En los programas tipicos, la cantidad de memoria que usan es desconocida. Por ejemplo, cuando alguien emplea un editor de texto nunca sabe cuantas paginas va a escribir. Como el numero de paginas suele estar relacionada con elementos de memoria como matrices presuponer un numero maximo de paginas suele ser ineficiente, pues ello implicaria dos cosas:</p>
+<ol class="simple">
+<li><p>Que se tenga gran cantidad de memoria ociosa si el usuario del editor no escribe en todas las paginas reservadas por la aplicacion.</p></li>
+<li><p>Que el usuario se quede corto de paginas si escribe mucho, pues al tener el editor de texto el numero de paginas predefinido, es posible que el espacio en memoria no sea suficiente para lo que el usuario escribe.</p></li>
+</ol>
+<p>Para dar administrar la memoria de manera mas eficiente, C permite introduce el concepto de <strong>reserva dinamica de memoria</strong> que no es otra cosa que el proceso de gestion de memoria en tiempo de ejecución segun las necesidades demandadas por la aplicacion. Gracias a esto, es posible que no sea necesario que el editor de texto conozca con antelacion el numero de paginas que debe escribir el usuario, pues gracias a la gestion dinamica de memoria, el editor puede ir creando nuevas paginas a medida que el usuario va demandandolo. En esta seccion se verá las funciones que son empleadas en C para hacer esto posible.</p>
+</section>
+<section id="mapa-de-memoria">
+<h2>2. Mapa de memoria<a class="headerlink" href="#mapa-de-memoria" title="Permalink to this headline">#</a></h2>
+<p>Cuando un programa es cargado en memoria, este se organiza en diferentes regiones memoria conocidas como <strong>segmentos</strong> que se usan para diferentes propositos.</p>
+<figure class="align-default" id="fig1">
+<img alt="../_images/CH_02-S05-fig1_3.png" src="../_images/CH_02-S05-fig1_3.png" />
+<figcaption>
+<p><span class="caption-text">Mapa de memoria (Memory Layout)</span><a class="headerlink" href="#fig1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Text Segment</strong>: Tambien conocido como <strong>code segment</strong>. Es el lugar en el que se encuentra el código ejecutable (o binario) asociado al programa.</p></li>
+<li><p><strong>Data Segment</strong>: Segmento donde se encuentran las variables y constantes asociadas al programa. Este se divide en:</p>
+<ul>
+<li><p><strong>Initialized data segment</strong>: Aqui se almacenan las variables globales y estaticas que son inicializadas antes de la ejecución del programa (inicialización explicita).</p></li>
+<li><p><strong>Uninitialized data segment (BSS - Block Started by Symbol)</strong>: Contiene tolas las variables globales y estadicas que no se inicializaron explicitamente.</p></li>
+</ul>
+</li>
+<li><p><strong>Heap</strong>: Segmento utilizado para la asignación de memoria durante la ejecución del programa. La asignación y liberación de memoria se hace mediante funciones como <code class="docutils literal notranslate"><span class="pre">malloc</span></code>, <code class="docutils literal notranslate"><span class="pre">calloc</span></code>, <code class="docutils literal notranslate"><span class="pre">realloc</span></code> y <code class="docutils literal notranslate"><span class="pre">free</span></code>. Es importante aclarar que esta es una región de caracter dinamico, pues su tamaño cambia a lo largo de la ejecución del programa.</p></li>
+<li><p><strong>Stack</strong>: Región empleada para almacenar las variables locales. Esta región tambien es dinamica ya que su tamaño cambia de manera automatica conforme a medida que se usan funciones.</p></li>
+</ul>
+<p>Existen algunas represetaciones en la cuales los segmentos de <strong>Text Segment</strong> y <strong>Data Segment</strong> se combinan como un segmento conocido como <strong>Program Code</strong> tal y como se muestra a continuación:</p>
+<figure class="align-default" id="fig2">
+<img alt="../_images/CH_02-S05-fig2.png" src="../_images/CH_02-S05-fig2.png" />
+<figcaption>
+<p><span class="caption-text">Mapa de memoria (Memory Layout)</span><a class="headerlink" href="#fig2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="ejemplos">
+<h3>Ejemplos<a class="headerlink" href="#ejemplos" title="Permalink to this headline">#</a></h3>
+<section id="ejemplo-1">
+<h4>Ejemplo 1<a class="headerlink" href="#ejemplo-1" title="Permalink to this headline">#</a></h4>
+<p>Simule el siguiente código y analice en como sería el mapa de memoria asociado al programa.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="n">msg</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">pi</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación se puede realizar a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20x%3D5%3B%0Achar%20msg%5B%5D%20%3D%20%22Hello%22%3B%0A%0Aint%20main%28int%20argc,%20const%20char*%20argv%5B%5D%29%20%7B%0A%20%20int%20v%3B%0A%20%20float%20pi%20%3D%203.14159%3B%0A%20%20printf%28%22%25d%5Cn%22,x%29%3B%0A%20%20printf%28%22%25f%5Cn%22,pi%29%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>El resultado de la simulación se muestra a continuación:</p>
+<figure class="align-default" id="fig3">
+<img alt="../_images/CH_02-S05-fig3.png" src="../_images/CH_02-S05-fig3.png" />
+<figcaption>
+<p><span class="caption-text">Salida del programa.</span><a class="headerlink" href="#fig3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Como se puede ver de la figura anterior, se resaltan los espacios de memoria y las variables que se encuentran en estos:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Espacio de memoria</p></th>
+<th class="head"><p>Variables</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Text</strong></p></td>
+<td><p>Instrucciones</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">msg</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stack</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">argc</span></code>, <code class="docutils literal notranslate"><span class="pre">argv</span></code>, <code class="docutils literal notranslate"><span class="pre">v</span></code>, <code class="docutils literal notranslate"><span class="pre">pi</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Heap</strong></p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+<p>En la siguiente figura se muestra mas claramente como se distribuyen las variables anteriores en el mapa de memoria:</p>
+<figure class="align-default" id="fig4">
+<img alt="../_images/CH_02-S05-fig4.png" src="../_images/CH_02-S05-fig4.png" />
+<figcaption>
+<p><span class="caption-text">Asignacion de las variables en el espacio de memoria.</span><a class="headerlink" href="#fig4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>En la figura anterior, se puede ver que no hay variables en el <strong>heap</strong> pues no se hicieron asignaciones dinamicas de memoria el cual sera el proximo tema a tratar.</p>
+</section>
+<section id="ejemplo-2">
+<h4>Ejemplo 2<a class="headerlink" href="#ejemplo-2" title="Permalink to this headline">#</a></h4>
+<p>Dado el siguiente código (tomado del documento <strong>Memory &amp; C</strong> (<a class="reference external" href="https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf">link</a>)) como seria el mapa de memoria asociado.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">s_static</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;61C&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">s_stack</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">s_stack</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;6&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">s_stack</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">s_stack</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;B&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">s_stack</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">heap_arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">heap_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">heap_arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">heap_arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El programa se puede simular a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20z%20%3D%20-1%3B%0A%0Aint%20main%28int%20argc,%20char*%20argv%29%20%7B%0A%20%20%20%20int%20x%20%3D%203%20*%20sizeof%28int%29%3B%0A%20%20%20%20char*%20s_static%20%3D%20%2261C%22%3B%0A%20%20%20%20char%20s_stack%5B4%5D%3B%0A%20%20%20%20s_stack%5B0%5D%20%3D%20'6'%3B%0A%20%20%20%20s_stack%5B1%5D%20%3D%20'1'%3B%0A%20%20%20%20s_stack%5B2%5D%20%3D%20'B'%3B%0A%20%20%20%20s_stack%5B3%5D%20%3D%20'%5C0'%3B%0A%20%20%20%20int%20*heap_arr%20%3D%20%28int%20*%29malloc%28x%29%3B%0A%20%20%20%20heap_arr%5B0%5D%20%3D%201%3B%0A%20%20%20%20heap_arr%5B1%5D%20%3D%202%3B%0A%20%20%20%20heap_arr%5B2%5D%20%3D%204%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cppShowMemAddrs=true&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La siguiente figura muestra el resultado de la simulación:</p>
+<figure class="align-default" id="fig5">
+<img alt="../_images/CH_02-S05-fig5.png" src="../_images/CH_02-S05-fig5.png" />
+<figcaption>
+<p><span class="caption-text">Asignacion de las variables en el espacio de memoria.</span><a class="headerlink" href="#fig5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Espacio de memoria</p></th>
+<th class="head"><p>Variables</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Text</strong></p></td>
+<td><p>Instrucciones</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">z</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stack</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">argc</span></code>, <code class="docutils literal notranslate"><span class="pre">argv</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">static</span></code>, <code class="docutils literal notranslate"><span class="pre">s_stack[]</span></code>, <code class="docutils literal notranslate"><span class="pre">heap_arr</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Heap</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">heap</span> <span class="pre">arr[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">heap</span> <span class="pre">arr[3]</span></code>, <code class="docutils literal notranslate"><span class="pre">heap</span> <span class="pre">arr[2]</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="asignando-memoria">
+<h2>3. Asignando memoria<a class="headerlink" href="#asignando-memoria" title="Permalink to this headline">#</a></h2>
+<p>Para tratar esta parte abordemos un problema tipico para ver las diferentes formas de solucion desde el punto de vista del manejo de memoria. Supongase que se desean ingresar un conjunto de datos asociados con la temperatura a lo largo del dia, el ingreso de estos datos se hace de manera manual leyendo el numero de registros manuales existentes en una planilla para luego ingresarlos al sistema. Hacer un programa que facilite esta tarea.</p>
+<p>Existen diferentes maneras de asignar memoria.</p>
+<section id="forma-1">
+<h3>Forma 1<a class="headerlink" href="#forma-1" title="Permalink to this headline">#</a></h3>
+<p>Declarar un arreglo estatico de tamaño fijo asumiento que el numero de registros a ingresar nunca va a ser mayor que el tamaño fijo previamente definido. Esta forma de declaración es <strong>estatica</strong> por que la reserva de memoria (arreglo) se hace en tiempo de compilación. A continuación se muestra el código:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define NUM_MAX_REG 100</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">datos</span><span class="p">[</span><span class="n">NUM_MAX_REG</span><span class="p">];</span><span class="w"> </span><span class="c1">// Se supone que no se van a ingresar mas de 100 registros</span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese la cantidad de registros a leer: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;&amp;d&quot;</span><span class="p">,</span><span class="n">numReg</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numReg</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">NUM_MAX_REG</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: se pierden %d datos</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">numReg</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">NUM_MAX_REG</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">numReg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NUM_MAX_REG</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato[%d]: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reg</span><span class="p">);</span><span class="w">    </span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">datos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Como se podra notar, la forma anterior es ineficiente por razones similares a las expuestas en la introducción.</p>
+</section>
+<section id="forma-2">
+<h3>Forma 2<a class="headerlink" href="#forma-2" title="Permalink to this headline">#</a></h3>
+<p>Declarar un arreglo dinamico (automatico) de un tamaño especificado en tiempo de ejecución. El siguiente codigo ilustra esta idea:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese la cantidad de registros a leer: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;&amp;d&quot;</span><span class="p">,</span><span class="n">numReg</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">datos</span><span class="p">[</span><span class="n">numReg</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato[%d]: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reg</span><span class="p">);</span><span class="w">    </span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">datos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El problema de la forma anterior es que el compilador es previo a C99, no permite declarar un arreglo definiendo su tamaño a partir de una variable (siendo <strong>numReg</strong>) para el caso.</p>
+</section>
+<section id="forma-3">
+<h3>Forma 3<a class="headerlink" href="#forma-3" title="Permalink to this headline">#</a></h3>
+<p>Declarar un arreglo dinamico de un tamaño especificado en tiempo de ejecución empleando las funciones propias de la libreria estandar para tal caso (<code class="docutils literal notranslate"><span class="pre">malloc</span></code> y <code class="docutils literal notranslate"><span class="pre">calloc</span></code>). En lo que respecta al caso, esta es la mejor forma. La descripción y uso de estas funciones sera tratada en breve. Por ahora veamos el codigo asociado.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">datos</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ingrese la cantidad de registros a leer: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;&amp;d&quot;</span><span class="p">,</span><span class="n">numReg</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">datos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">numReg</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pF</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numReg</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato[%d]: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">reg</span><span class="p">);</span><span class="w">    </span>
+<span class="w">      </span><span class="o">*</span><span class="p">(</span><span class="n">datos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reg</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">datos</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Para hacer uso de las funciónes de manejo dinamico de memoria es necesario incluir el archivo cabecera <code class="docutils literal notranslate"><span class="pre">stdlib.h</span></code> en el código</p>
+</div>
+</section>
+<section id="id1">
+<h3>Ejemplos<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>En los siguientes ejemplos se muestra la diferencia entre declarar una variable en el <strong>stack</strong> y declararla en el <strong>heap</strong> usando reserva dinamica de memoria.</p>
+<ol>
+<li><p><strong>Creando una variable en el stack</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*p = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código anterior se puede simular a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20a%3B%0A%20%20int%20*p%20%3D%20%26a%3B%0A%20%20*p%20%3D%205%3B%0A%20%20printf%28%22*p%20%3D%20%25d%5Cn%22,%20*p%29%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La siguiente figura muestre el efecto del codigo anterior:</p>
+<figure class="align-default" id="fig6">
+<img alt="../_images/CH_02-S05-fig6.png" src="../_images/CH_02-S05-fig6.png" />
+<figcaption>
+<p><span class="caption-text">Accediendo desde un apuntador a una variable definida en el <strong>stack</strong>.</span><a class="headerlink" href="#fig6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>La siguiente figura muestre el efecto del codigo anterior:</p>
+<p><img alt="mem_heap" src="https://github.com/repos-SO-UdeA/laboratorios/blob/master/lab1/teoria/parte5/imagenes/malloc_help.png?raw=true" />
+<strong>Figura 4</strong>. Asignacion dinamica de una variable usando malloc</p>
+</li>
+<li><p><strong>Creando una variable en el heap</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Out of memory</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*p = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación, se puede simular el código anteriormente mostrado:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p%3B%0A%20%20p%20%3D%20%28int%20*%29malloc%28sizeof%28int%29%29%3B%0A%20%20if%28p%20%3D%3D%200%29%20%7B%0A%20%20%20%20printf%28%22ERROR%3A%20Out%20of%20memory%5Cn%22%29%3B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20*p%20%3D%205%3B%0A%20%20printf%28%22*p%20%3D%20%25d%5Cn%22,%20*p%29%3B%0A%20%20free%28p%29%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La siguiente figura muestre el efecto del codigo anterior:</p>
+<figure class="align-default" id="fig7">
+<img alt="../_images/CH_02-S05-fig7.png" src="../_images/CH_02-S05-fig7.png" />
+<figcaption>
+<p><span class="caption-text">Asignacion dinamica de una variable en el <strong>heap</strong> usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code></span><a class="headerlink" href="#fig7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Analizar el siguiente ejemplo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;location of code : %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(int) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;location of heap : %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;location of p2 in heap : %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;location of stack: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-2</span><span class="p">;</span><span class="w">    </span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación se muestra la simulación del código:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28int%20argc,%20char%20*argv%5B%5D%29%20%7B%0A%20%20%20%20printf%28%22location%20of%20code%20%3A%20%25p%5Cn%22,%20main%29%3B%0A%20%20%20%20printf%28%22sizeof%28int%29%20%3D%20%25d%5Cn%22,sizeof%28int%29%29%3B%0A%20%20%20%20int%20*p%20%3D%20malloc%288%29%3B%0A%20%20%20%20int%20*p2%20%3D%20malloc%284%29%3B%0A%20%20%20%20printf%28%22location%20of%20heap%20%3A%20%25p%5Cn%22,%20p%29%3B%0A%20%20%20%20printf%28%22location%20of%20p2%20in%20heap%20%3A%20%25p%5Cn%22,%20p2%29%3B%0A%20%20%20%20*p%20%3D%203%3B%0A%20%20%20%20*%28p%20%2B%201%29%20%3D%202%3B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20int%20x%20%3D%203%3B%0A%20%20%20%20%20%20printf%28%22location%20of%20stack%3A%20%25p%5Cn%22,%20%26x%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20int%20y%20%3D%20-2%3B%20%20%20%20%0A%20%20%20%20free%28p2%29%3B%0A%20%20%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+</ol>
+</section>
+</section>
+<section id="manejo-dinamico-de-memoria-mediante-c">
+<h2>4. Manejo dinamico de memoria mediante C<a class="headerlink" href="#manejo-dinamico-de-memoria-mediante-c" title="Permalink to this headline">#</a></h2>
+<section id="operador-sizeof">
+<h3>4.1. Operador <code class="docutils literal notranslate"><span class="pre">sizeof</span></code><a class="headerlink" href="#operador-sizeof" title="Permalink to this headline">#</a></h3>
+<p>Este es un operador (no una funcion) que devielve la cantidad en bytes ocupada por una variable o algun tipo de dato. La sintaxis basica de este operador se muestra a continuacion:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">size_t</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">type</span><span class="o">-</span><span class="n">name</span><span class="w"> </span><span class="p">)</span><span class="w">  </span>
+</pre></div>
+</div>
+<p>El <code class="docutils literal notranslate"><span class="pre">size_t</span></code> es un tipo de dato <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">int</span></code> retornado por el operador <code class="docutils literal notranslate"><span class="pre">sizeof()</span></code></p>
+<p><strong>Ejemplo</strong></p>
+<p>En el siguiente codigo ejemplo se muestran algunos ejemplos del uso de este operador:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">short</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(short*) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">short</span><span class="o">*</span><span class="p">));</span><span class="w">  </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(p1) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">p</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando una variable</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(short) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">short</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(long long) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(long long) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando una variable</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(double*) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="o">*</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(char*) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(char) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span><span class="w"> </span><span class="c1">// Pasando un tipo de dato</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código anterior puede ser simulado a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20short%20*p%3B%0A%20%20long%20long%20a%3B%0A%20%20printf%28%22sizeof%28short*%29%20%3D%20%25d%5Cn%22,sizeof%28short*%29%29%3B%20%20%0A%20%20printf%28%22sizeof%28p1%29%20%3D%20%25d%5Cn%22,sizeof%28p%29%29%3B%20%0A%20%20printf%28%22sizeof%28short%29%20%3D%20%25d%5Cn%22,sizeof%28short%29%29%3B%20%0A%20%20printf%28%22sizeof%28long%20long%29%20%3D%20%25d%5Cn%22,sizeof%28long%20long%29%29%3B%20%0A%20%20printf%28%22sizeof%28long%20long%29%20%3D%20%25d%5Cn%22,sizeof%28a%29%29%3B%20%0A%20%20printf%28%22sizeof%28double*%29%20%3D%20%25d%5Cn%22,sizeof%28double*%29%29%3B%0A%20%20printf%28%22sizeof%28char*%29%20%3D%20%25d%5Cn%22,sizeof%28char*%29%29%3B%20%0A%20%20printf%28%22sizeof%28char%29%20%3D%20%25d%5Cn%22,sizeof%28char%29%29%3B%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cppShowMemAddrs=true&cumulative=false&curInstr=9&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>A continuacion se muestra la salida en el simulador para diferentes tipos de datos:</p>
+<figure class="align-default" id="fig8">
+<img alt="../_images/CH_02-S05-fig8.png" src="../_images/CH_02-S05-fig8.png" />
+<figcaption>
+<p><span class="caption-text">Tamaño de diferentes tipos de datos.</span><a class="headerlink" href="#fig8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="manejo-dinamico-de-memoria">
+<h3>4.2. Manejo dinamico de memoria<a class="headerlink" href="#manejo-dinamico-de-memoria" title="Permalink to this headline">#</a></h3>
+<p>El manejo de la memoria en el <strong>heap</strong> consiste basicamente en reservar y liberar memoria en este segmento. Para reservar memoria se emplea la función <code class="docutils literal notranslate"><span class="pre">malloc</span></code> (o similares), mientras que para liberar (una porción de memoria previamente asignada) se emplea la función <code class="docutils literal notranslate"><span class="pre">free</span></code>. A diferencia de java, en C el proceso de gestion de memoria es manual por lo que es fundamental, despues de reservar memoria usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code>, llamar a la función <code class="docutils literal notranslate"><span class="pre">free</span></code> si no se necesita usar mas la porción previamente reservada. Olvidar esto ultimo genera <strong>fugar de memoria</strong> (memory leaks) haciendo que se consuman recursos de memoria innecesariamente y degradando el funcionamiento de la aplicación.</p>
+<p>A continuación vamos a ver con mas detalle las diferentes funciones para la gestión de memoria en el <strong>heap</strong>.</p>
+<section id="asignacion-de-memoria-memory-allocation-o-malloc">
+<h4>4.2.1. Asignación de memoria: Memory Allocation o <code class="docutils literal notranslate"><span class="pre">malloc</span></code><a class="headerlink" href="#asignacion-de-memoria-memory-allocation-o-malloc" title="Permalink to this headline">#</a></h4>
+<p>La función <code class="docutils literal notranslate"><span class="pre">malloc</span></code> permite reservar un bloque de memoria (sin inicializar) en el heap. El prototipo de esta función se muestra a continuación:</p>
+<div class="tip admonition">
+<p class="admonition-title">malloc</p>
+<p><strong>Sintaxis</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*</span> <span class="pre">malloc</span> <span class="pre">(size_t</span> <span class="pre">size)</span></code></p>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">size</span></code></strong>: Numero de bytes que seran reservados</p></li>
+</ul>
+<p>La funcion retorna la direccion en el heap a partir de la cual se reservó el tamaño de memoria solicitado o retorna <strong><code class="docutils literal notranslate"><span class="pre">NULL</span></code></strong> si no es posible reservar la cantidad de memoria. Cabe recordar que <code class="docutils literal notranslate"><span class="pre">void*</span></code> indica que la dirección retornada es genérica, es decir, en esa dirección se puede almacenar cualquier tipo de variable.</p>
+</div>
+<p>Usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code> tambien es posible declarar arrays en memoria dinamica pasando el tamaño del array en bytes. Asi por ejemplo, para declara un array de <code class="docutils literal notranslate"><span class="pre">N</span></code> elementos, el valor pasado como parametro a la funcion <code class="docutils literal notranslate"><span class="pre">malloc</span></code> sera <code class="docutils literal notranslate"><span class="pre">N*sizeof(dataTipe)</span></code>.</p>
+</section>
+<section id="liberacion-de-memoria-free">
+<h4>4.2.2. Liberación de memoria: <code class="docutils literal notranslate"><span class="pre">free</span></code><a class="headerlink" href="#liberacion-de-memoria-free" title="Permalink to this headline">#</a></h4>
+<p>La función <code class="docutils literal notranslate"><span class="pre">free</span></code> libera un bloque de memoria previamente reservado en el heap. El prototipo de esta función se muestra a continuación:</p>
+<div class="tip admonition">
+<p class="admonition-title">free</p>
+<p><strong>Sintaxis</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">free(void*</span> <span class="pre">pointer);</span></code></p>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pointer</span></code></strong>: apuntador con la dirección del bloque de memoria (previamente reservado con <strong><code class="docutils literal notranslate"><span class="pre">malloc</span></code></strong> o con <strong><code class="docutils literal notranslate"><span class="pre">calloc</span></code></strong>) a liberar.</p></li>
+</ul>
+</div>
+<p><strong>Ejemplos</strong></p>
+<p>Para comprender el uso del par de funciones anteriormente mencioadas se muestran algunos códigos a continuación:</p>
+<ol>
+<li><p>Hacer un programa que reserve y libere una variable tipo <code class="docutils literal notranslate"><span class="pre">int</span></code> en el <strong>heap</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">  </span><span class="c1">// Tambien para el caso puede ser q</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del programa anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p,%20*q%3B%0A%20%20p%20%3D%20%28int%20*%29malloc%28sizeof%28int%29%29%3B%0A%20%20q%20%3D%20p%3B%0A%20%20*p%20%3D%2010%3B%0A%20%20printf%28%22%25d%5Cn%22,*q%29%3B%0A%20%20*q%20%3D%2020%3B%0A%20%20printf%28%22%25d%5Cn%22,*q%29%3B%0A%20%20free%28p%29%3B%20%20//%20Tambien%20para%20el%20caso%20puede%20ser%20q%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del codigo anterior se muestra a continuacion:</p>
+<figure class="align-default" id="fig9">
+<img alt="../_images/CH_02-S05-fig9.png" src="../_images/CH_02-S05-fig9.png" />
+<figcaption>
+<p><span class="caption-text">Funcionamiento código ejemplo 1</span><a class="headerlink" href="#fig9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Hacer un programa que reserve y libere dos variables tipo <code class="docutils literal notranslate"><span class="pre">int</span></code> en el <strong>heap</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*p = %d; *q = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*p = %d; *q = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">q</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p,%20*q%3B%0A%20%20p%20%3D%20%28int%20*%29%20malloc%28sizeof%28int%29%29%3B%0A%20%20q%20%3D%20%28int%20*%29%20malloc%28sizeof%28int%29%29%3B%0A%20%20*p%20%3D%2010%3B%0A%20%20*q%20%3D%2020%3B%0A%20%20printf%28%22*p%20%3D%20%25d%3B%20*q%20%3D%20%25d%5Cn%22,%20*p,%20*q%29%3B%0A%20%20*p%20%3D%20*q%3B%0A%20%20printf%28%22*p%20%3D%20%25d%3B%20*q%20%3D%20%25d%5Cn%22,%20*p,%20*q%29%3B%0A%20%20free%28p%29%3B%20%20%0A%20%20free%28q%29%3B%20%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida de ejemplo se puede ver en la siguiente figura:</p>
+<figure class="align-default" id="fig10">
+<img alt="../_images/CH_02-S05-fig10.png" src="../_images/CH_02-S05-fig10.png" />
+<figcaption>
+<p><span class="caption-text">Funcionamiento código ejemplo 2</span><a class="headerlink" href="#fig10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Crear dinamicamente un array de 10 elementos y llenarlo de ceros.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define TAM 10 </span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">TAM</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TAM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// p[i] = 0</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0A%23define%20TAM%2010%20%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p,%20*q%3B%0A%20%20p%20%3D%20malloc%28TAM*sizeof%28int%29%29%3B%0A%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20*%28p%20%2B%20i%29%20%3D%200%3B%20//%20p%5Bi%5D%20%3D%200%0A%20%20%7D%0A%20%20free%28p%29%3B%20%20%20%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del codigo anterior se muestra a continuacion:</p>
+<figure class="align-default" id="fig11">
+<img alt="../_images/CH_02-S05-fig11.png" src="../_images/CH_02-S05-fig11.png" />
+<figcaption>
+<p><span class="caption-text">Salida del código del ejemplo 3</span><a class="headerlink" href="#fig11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Asignar <code class="docutils literal notranslate"><span class="pre">NULL</span></code> a un apuntador no es obligatorio, pero es buena practica. Esto para evitar algun error si el apuntador es erroneamente utilizado despues de que la memoria ha sido liberada.</p>
+</div>
+<ol>
+<li><p>Crear dinamicamente un array de 10 elementos y llenarlo de ceros, pero esta vez haga uso de la buena practica de programacion para entenderla.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define TAM 10 </span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">TAM</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TAM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// p[i] = 0</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0A%23define%20TAM%2010%20%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p,%20*q%3B%0A%20%20p%20%3D%20%28int%20*%29%20malloc%28TAM*sizeof%28int%29%29%3B%0A%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20TAM%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20*%28p%20%2B%20i%29%20%3D%200%3B%20//%20p%5Bi%5D%20%3D%200%0A%20%20%7D%0A%20%20free%28p%29%3B%20%0A%20%20p%20%3D%20NULL%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del codigo anterior se muestra a continuacion cuando se hace la reserva dinamica de memoria:</p>
+<figure class="align-default" id="fig12">
+<img alt="../_images/CH_02-S05-fig12.png" src="../_images/CH_02-S05-fig12.png" />
+<figcaption>
+<p><span class="caption-text">Salida codigo 4 tras la reserva con <code class="docutils literal notranslate"><span class="pre">malloc</span></code>.</span><a class="headerlink" href="#fig12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>El efecto despues de liberar memoria y poner el apuntador a <code class="docutils literal notranslate"><span class="pre">NULL</span></code>:</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/CH_02-S05-fig13.png" src="../_images/CH_02-S05-fig13.png" />
+<figcaption>
+<p><span class="caption-text">Salida codigo tras aplicar del <code class="docutils literal notranslate"><span class="pre">free</span></code> y poner el apuntador en valor <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Definir e inicializar a cero un dos array de 4 elementos. Uno de estos arrays estará en el <strong>stack</strong> y el otro estara en el <strong>heap</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Reserva en el stack</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">A_stack</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sizeof(int) = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w"> </span>
+<span class="w"> </span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">A_stack</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w"> </span>
+<span class="w">  </span><span class="c1">// Reserva en el heap</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">A_heap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span><span class="w">  </span><span class="c1">// 4*4 = 4*sizeof(int) = 16   </span>
+<span class="w"> </span>
+<span class="w"> </span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// A[i] = 0;</span>
+<span class="w">    </span><span class="c1">// *A_heap = 0;</span>
+<span class="w">    </span><span class="c1">// A_heap++;</span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">A_heap</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">//A_heap[i] = 0;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">A_heap</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código se puede realizar a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28int%20argc,%20char%20*argv%5B%5D%29%20%7B%0A%20%20%0A%20%20%20%20//%20Reserva%20en%20el%20stack%0A%20%20%20%20int%20A_stack%5B4%5D%3B%0A%20%20%20%20printf%28%22sizeof%28int%29%20%3D%20%25d%5Cn%22,sizeof%28int%29%29%3B%0A%20%20%20%20%0A%20%20%20%20%0A%20%20%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%204%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20%20%20A_stack%5Bi%5D%20%3D%200%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20//%20Reserva%20en%20el%20heap%0A%20%20%20%20int%20*A_heap%20%3D%20malloc%2816%29%3B%20%20//%204*4%20%3D%204*sizeof%28int%29%20%3D%2016%20%20%20%0A%20%20%20%20%0A%20%20%20%20%0A%20%20%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%204%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20%20%20//%20A%5Bi%5D%20%3D%200%3B%0A%20%20%20%20%20%20//%20*A_heap%20%3D%200%3B%0A%20%20%20%20%20%20//%20A_heap%2B%2B%3B%0A%20%20%20%20%20%20*%28A_heap%20%2B%20i%29%20%3D%200%3B%20//A_heap%5Bi%5D%20%3D%200%3B%0A%20%20%20%20%7D%0A%20%20%20%20free%28A_heap%29%3B%0A%20%20%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+<li><p>Haciendo uso de <code class="docutils literal notranslate"><span class="pre">malloc</span></code> hacer una copia de una cadena de caracteres definida en el <strong>stack</strong> en otra definida en el <strong>heap</strong>. Despues de usar la cadena que se definió en el <strong>heap</strong> usar <code class="docutils literal notranslate"><span class="pre">free</span></code> para liberarla.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define UDEA &quot;UdeA&quot;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">udea_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UDEA</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">udea_2</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UDEA</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">udea_1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">udea_2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">udea_3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">udea_1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">tam</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">udea_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">((</span><span class="n">tam</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">strcpy</span><span class="p">(</span><span class="n">udea_3</span><span class="p">,</span><span class="w"> </span><span class="n">udea_1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">udea_3</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">udea_3</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">udea_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>El código puede ser simulado a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstring.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0A%23define%20UDEA%20%22UdeA%22%0A%0Aint%20main%28%29%20%7B%20%20%0A%20%20char%20*udea_1%20%3D%20UDEA%3B%0A%20%20char%20udea_2%5B%5D%20%3D%20UDEA%3B%0A%20%20printf%28%22%25s%5Cn%22,%20udea_1%29%3B%0A%20%20printf%28%22%25s%5Cn%22,%20udea_2%29%3B%0A%20%20char%20*udea_3%3B%0A%20%20int%20tam%20%3D%20strlen%28udea_1%29%3B%0A%20%20printf%28%22%25d%5Cn%22,%20tam%29%3B%0A%20%20udea_3%20%3D%20%28char%20*%29malloc%28%28tam%2B1%29*sizeof%28char%29%29%3B%0A%20%20strcpy%28udea_3,%20udea_1%29%3B%0A%20%20printf%28%22%25s%5Cn%22,%20udea_3%29%3B%0A%20%20free%28udea_3%29%3B%0A%20%20udea_3%20%3D%20NULL%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+</ol>
+</section>
+<section id="asignacion-de-memoria-con-inicializacion-calloc">
+<h4>4.2.3. Asignación de memoria con inicializacion: <code class="docutils literal notranslate"><span class="pre">calloc</span></code><a class="headerlink" href="#asignacion-de-memoria-con-inicializacion-calloc" title="Permalink to this headline">#</a></h4>
+<p>La función <code class="docutils literal notranslate"><span class="pre">calloc</span></code> permite reservar e inicializat a <code class="docutils literal notranslate"><span class="pre">0</span></code> un bloque de memoria en el heap. El prototipo de esta función se muestra a continuación:</p>
+<div class="tip admonition">
+<p class="admonition-title">calloc</p>
+<p><strong>Sintaxis</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">*</span> <span class="pre">calloc</span> <span class="pre">(size_t</span> <span class="pre">num,</span> <span class="pre">size_t</span> <span class="pre">size)</span></code></p>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">num</span></code></strong>: numero de elementos consecutivos a reservar.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">size</span></code></strong>: Tamaño en bytes de cada elemento.</p></li>
+</ul>
+<p>El espacio total reservado en la funcion es de <strong><code class="docutils literal notranslate"><span class="pre">numElements*size</span></code></strong>. Normalmente, la funcion retorna un apuntador que contiene la direccion inicial del bloque reservado en el heap. En caso de que no haya suficiente memoria disponible la funcion retornara <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</div>
+<p><strong>Ejemplos</strong></p>
+<p>A continuación, se muestran algunos ejemplos haciendo de uso de la función <code class="docutils literal notranslate"><span class="pre">calloc</span></code></p>
+<ol>
+<li><p>Declare una en el heap un dato <code class="docutils literal notranslate"><span class="pre">double</span></code> inicializado a <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Out of memory</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;*p = %.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del programa anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20double%20*p%3B%0A%20%20p%20%3D%20%28double%20*%29calloc%281,%20sizeof%28double%29%29%3B%0A%20%20if%28p%20%3D%3D%200%29%20%7B%0A%20%20%20%20printf%28%22ERROR%3A%20Out%20of%20memory%5Cn%22%29%3B%0A%20%20%20%20return%20-1%3B%0A%20%20%7D%0A%20%20printf%28%22*p%20%3D%20%25.1lf%5Cn%22,%20*p%29%3B%0A%20%20free%28p%29%3B%0A%20%20p%20%3D%20NULL%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del codigo anterior se muestra a continuacion:</p>
+<figure class="align-default" id="fig14">
+<img alt="../_images/CH_02-S05-fig14.png" src="../_images/CH_02-S05-fig14.png" />
+<figcaption>
+<p><span class="caption-text">Salida codigo tras la reserva con <code class="docutils literal notranslate"><span class="pre">calloc</span></code>.</span><a class="headerlink" href="#fig14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Crear dinamicamente un array de <code class="docutils literal notranslate"><span class="pre">10</span></code> elementos enteros y llenarlo de ceros por medio de la funcion <code class="docutils literal notranslate"><span class="pre">calloc</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">calloc</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Out of memory</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del programa anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p%3B%0A%20%20p%20%3D%20%28int%20*%29calloc%2810,%20sizeof%28int%29%29%3B%0A%20%20if%28p%20%3D%3D%200%29%20%7B%0A%20%20%20%20printf%28%22ERROR%3A%20Out%20of%20memory%5Cn%22%29%3B%0A%20%20%20%20return%20-1%3B%0A%20%20%7D%0A%20%20free%28p%29%3B%0A%20%20p%20%3D%20NULL%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+</ol>
+</section>
+<section id="reasignacion-de-memoria-memory-re-allocation-o-realloc">
+<h4>4.2.4. Reasignación de memoria: Memory Re-allocation o <code class="docutils literal notranslate"><span class="pre">realloc</span></code><a class="headerlink" href="#reasignacion-de-memoria-memory-re-allocation-o-realloc" title="Permalink to this headline">#</a></h4>
+<p>La función <code class="docutils literal notranslate"><span class="pre">realloc</span></code> permite redimensionar un bloque de memoria previamente reservada con <code class="docutils literal notranslate"><span class="pre">malloc</span></code>. El prototipo de esta función se muestra a continuación.</p>
+<div class="tip admonition">
+<p class="admonition-title">realloc</p>
+<p><strong>Sintaxis</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">void*</span> <span class="pre">realloc(void*</span> <span class="pre">ptr,</span> <span class="pre">size_t</span> <span class="pre">new_size)</span></code></p>
+<p><strong>Donde</strong>:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">ptr</span></code></strong>: Puntero a memoria.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">new_size</span></code></strong>: Nuevo tamaño requerido.</p></li>
+</ul>
+<p>Si el tamaño es reducido, hay datos que se pueden perder. Si el tamaño es incrementado y la funcion es incapaz de extender la localizacion existente, esta asignara un nuevo espacio de memoria y copiara los datos a traves de esa retornando un puntero a la memoria nuevamente asignada.</p>
+</div>
+<p><strong>Ejemplos</strong></p>
+<p>A continuación, se muestran algunos ejemplos haciendo de uso de la función <code class="docutils literal notranslate"><span class="pre">realloc</span></code></p>
+<ol>
+<li><p>El siguiente ejemplo muestra un caso de uso de la función <code class="docutils literal notranslate"><span class="pre">realloc</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define TAM1 10 </span>
+<span class="cp">#define TAM2 5</span>
+<span class="cp">#define TAM3 15</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">TAM1</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ubicacion del apuntador tras el malloc: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TAM1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// p[i] = 0</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">realloc</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">TAM2</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ubicacion del apuntador tras el primer realloc: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">realloc</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">TAM3</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"> </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ubicacion del apuntador tras el segundo realloc: %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">p</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">   </span>
+<span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del programa anterior se muestra a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0A%23define%20TAM1%2010%20%0A%23define%20TAM2%205%0A%23define%20TAM3%2015%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20*p%3B%0A%20%20p%20%3D%20%28int%20*%29malloc%28TAM1*sizeof%28int%29%29%3B%0A%20%20printf%28%22Ubicacion%20del%20apuntador%20tras%20el%20malloc%3A%20%25p%5Cn%22,p%29%3B%0A%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20TAM1%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20*%28p%20%2B%20i%29%20%3D%20i%20%2B%201%3B%20//%20p%5Bi%5D%20%3D%200%0A%20%20%7D%0A%20%20p%20%3D%20realloc%28p,TAM2*sizeof%28int%29%29%3B%0A%20%20printf%28%22Ubicacion%20del%20apuntador%20tras%20el%20primer%20realloc%3A%20%25p%5Cn%22,p%29%3B%0A%20%20p%20%3D%20realloc%28p,TAM3*sizeof%28int%29%29%3B%20%0A%20%20printf%28%22Ubicacion%20del%20apuntador%20tras%20el%20segundo%20realloc%3A%20%25p%5Cn%22,p%29%3B%0A%20%20free%28p%29%3B%20%20%20%0A%20%20p%20%3D%20NULL%3B%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+<p>La salida del codigo anterior se muestra a continuacion:</p>
+<figure class="align-default" id="fig15">
+<img alt="../_images/CH_02-S05-fig15.png" src="../_images/CH_02-S05-fig15.png" />
+<figcaption>
+<p><span class="caption-text">Efecto de usar <code class="docutils literal notranslate"><span class="pre">realloc</span></code>.</span><a class="headerlink" href="#fig15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Analice y simule el siguiente código.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define BUFF_SIZE 3</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">printArray</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">);</span><span class="w"> </span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">array</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">alloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BUFF_SIZE</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">calloc</span><span class="p">(</span><span class="n">alloc</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">buf</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Out of memory</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">size_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Inicio: buf =&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printArray</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">alloc</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">size_array</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">alloc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">alloc</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">realloc</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">alloc</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">alloc</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size_array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="o">*</span><span class="p">(</span><span class="n">buf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"> </span><span class="c1">// buf[i] = array[i]</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="o">*</span><span class="p">(</span><span class="n">buf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Fin: buf =&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printArray</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">alloc</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">printArray</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[ &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;]&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación, se puede simular el código anterior:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0A%23define%20BUFF_SIZE%203%0A%0Avoid%20printArray%28int%20*A,%20int%20tam%29%3B%20%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20array%5B%5D%20%3D%20%7B1,2,4,6%7D%3B%0A%20%20int%20alloc%20%3D%20BUFF_SIZE%3B%0A%20%20int%20*buf%20%3D%20%28int%20*%29calloc%28alloc,sizeof%28int%29%29%3B%0A%20%20if%28buf%20%3D%3D%200%29%20%7B%0A%20%20%20%20printf%28%22ERROR%3A%20Out%20of%20memory%5Cn%22%29%3B%0A%20%20%20%20return%20-1%3B%0A%20%20%7D%0A%20%20int%20size_array%20%3D%20sizeof%28array%29/sizeof%28array%5B0%5D%29%3B%0A%20%20printf%28%22Inicio%3A%20buf%20%3D%22%29%3B%0A%20%20printArray%28buf,%20alloc%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20while%28size_array%20%3E%20alloc%29%20%7B%0A%20%20%20%20alloc%20*%3D%202%3B%0A%20%20%20%20buf%20%3D%20realloc%28buf,%20alloc*sizeof%28int%29%29%3B%0A%20%20%7D%0A%20%20for%20%28int%20i%20%3D%200%3B%20i%20%3C%20alloc%3Bi%2B%2B%29%20%7B%0A%20%20%20%20if%28i%20%3C%20size_array%29%20%7B%0A%20%20%20%20%20%20%20*%28buf%20%2B%20i%29%20%3D%20*%28array%20%2B%20i%29%3B%20//%20buf%5Bi%5D%20%3D%20array%5Bi%5D%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20*%28buf%20%2B%20i%29%20%3D%200%3B%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20printf%28%22Fin%3A%20buf%20%3D%22%29%3B%0A%20%20printArray%28buf,%20alloc%29%3B%0A%20%20printf%28%22%5Cn%22%29%3B%0A%20%20free%28buf%29%3B%0A%20%20buf%20%3D%20NULL%3B%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20printArray%28int%20*A,%20int%20tam%29%20%7B%0A%20%20printf%28%22%5B%20%22%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20tam%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20printf%28%22%25d%20%22,%20*%28A%20%2B%20i%29%29%3B%0A%20%20%7D%0A%20%20printf%28%22%5D%22%29%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="miselanea-de-ejemplos">
+<h2>5. Miselanea de ejemplos<a class="headerlink" href="#miselanea-de-ejemplos" title="Permalink to this headline">#</a></h2>
+<ol>
+<li><p>Usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code> crear la matriz irregular (jagged arrays) mostrada en la siguiente figura:</p>
+<figure class="align-default" id="fig16">
+<img alt="../_images/CH_02-S05-fig16.png" src="../_images/CH_02-S05-fig16.png" />
+<figcaption>
+<p><span class="caption-text">Matriz irregular.</span><a class="headerlink" href="#fig16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">C</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Reserva de espacio para la matriz irregular en el heap</span>
+<span class="w">  </span><span class="kt">int</span><span class="o">**</span><span class="w"> </span><span class="n">jagged_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">**</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">F</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// jagged_array[i] = (int *)malloc(C[i]*sizeof(int));</span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">jagged_array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Llenado de la matriz irregular</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// jagged_array[i][j] = ++val;</span>
+<span class="w">      </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">jagged_array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">++</span><span class="n">val</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// printf(&quot;%d &quot;, jagged_array[i][j]);</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">jagged_array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">j</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Liberacion del espacio en el heap asociado a la matriz irregular</span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">F</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">jagged_array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">jagged_array</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">jagged_array</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">jagged_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La simulación del código anterior se puede realizar a continuación:</p>
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%0Aint%20main%28%29%20%7B%0A%20%20int%20F%20%3D%203%3B%0A%20%20int%20C%5B%5D%20%3D%20%7B4,2,3%7D%3B%0A%20%20int%20val%20%3D%200%3B%0A%20%20%0A%20%20//%20Reserva%20de%20espacio%20para%20la%20matriz%20irregular%20en%20el%20heap%0A%20%20int**%20jagged_array%20%3D%20%28int%20**%29malloc%28F*sizeof%28int%20*%29%29%3B%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20F%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20//%20jagged_array%5Bi%5D%20%3D%20%28int%20*%29malloc%28C%5Bi%5D*sizeof%28int%29%29%3B%0A%20%20%20%20*%28jagged_array%20%2B%20i%29%20%3D%20%28int%20*%29malloc%28C%5Bi%5D*sizeof%28int%29%29%3B%0A%20%20%7D%0A%20%20%0A%20%20//%20Llenado%20de%20la%20matriz%20irregular%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20F%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20for%28int%20j%20%3D%200%3B%20j%20%3C%20C%5Bi%5D%3B%20j%2B%2B%29%20%7B%0A%20%20%20%20%20%20//%20jagged_array%5Bi%5D%5Bj%5D%20%3D%20%2B%2Bval%3B%0A%20%20%20%20%20%20*%28*%28jagged_array%20%2B%20i%29%20%2B%20j%29%20%3D%20%2B%2Bval%3B%0A%20%20%20%20%20%20//%20printf%28%22%25d%20%22,%20jagged_array%5Bi%5D%5Bj%5D%29%3B%0A%20%20%20%20%20%20printf%28%22%25d%20%22,*%28*%28jagged_array%20%2B%20i%29%20%2B%20j%29%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%7D%0A%20%20%0A%20%20//%20Liberacion%20del%20espacio%20en%20el%20heap%20asociado%20a%20la%20matriz%20irregular%0A%20%20for%28int%20i%20%3D%200%3B%20i%20%3C%20F%3B%20i%2B%2B%29%20%7B%0A%20%20%20%20free%28*%28jagged_array%20%2B%20i%29%29%3B%0A%20%20%20%20*%28jagged_array%20%2B%20i%29%20%3D%20NULL%3B%0A%20%20%7D%20%20%0A%20%20free%28jagged_array%29%3B%0A%20%20jagged_array%20%3D%20NULL%3B%0A%20%20%0A%20%20return%200%3B%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+</li>
+<li><p>Implementar una lista enlazada sencilla.</p>
+<p>El código solución se muestra a continuación (Para simularlo usa el siguiente <a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cassert.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cstdio.h%3E%0A%0Astruct%20node%20%7B%0A%20%20%20%20int%20data%3B%0A%20%20%20%20struct%20node%20*%20next%3B%0A%7D%3B%0A%0Avoid%20print_list%28struct%20node%20*head%29%3B%0Astruct%20node%20*%20insert_at_end%28struct%20node%20*head,%20int%20data%29%3B%0Aint%20delete_at_front%28struct%20node%20**phead%29%3B%20%0Avoid%20delete_at_begin%28struct%20node%20**phead%29%3B%0Avoid%20addOne%28int%20*pn%29%3B%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20int%20n%20%3D%20100%3B%0A%20%20%20%20addOne%28%26n%29%3B%0A%20%20%20%20printf%28%22n%20%3D%20%25d%5Cn%22,%20n%29%3B%0A%20%20%20%20struct%20node%20*%20head%20%3D%20NULL%3B%0A%20%20%20%20head%20%3D%20insert_at_end%28head,%2010%29%3B%0A%20%20%20%20print_list%28head%29%3B%0A%20%20%20%20head%20%3D%20insert_at_end%28head,%2020%29%3B%0A%20%20%20%20print_list%28head%29%3B%0A%20%20%20%20head%20%3D%20insert_at_end%28head,%2030%29%3B%0A%20%20%20%20print_list%28head%29%3B%0A%20%20%20%20delete_at_begin%28%26head%29%3B%0A%20%20%20%20print_list%28head%29%3B%0A%20%20%20%20delete_at_begin%28%26head%29%3B%0A%20%20%20%20print_list%28head%29%3B%0A%20%20%20%20delete_at_begin%28%26head%29%3B%0A%20%20%20%20print_list%28head%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Aint%20delete_at_front%28struct%20node%20**phead%29%20%7B%0A%20%20%20%20struct%20node%20*%20first%20%3D%20*phead%3B%0A%20%20%20%20assert%28first%20%21%3D%20NULL%29%3B%0A%20%20%20%20*phead%20%3D%20first-%3Enext%3B%0A%20%20%20%20int%20data%20%3D%20first-%3Edata%3B%0A%20%20%20%20free%28first%29%3B%0A%20%20%20%20return%20data%3B%0A%7D%0A%0Astruct%20node%20*%20insert_at_end%28struct%20node%20*head,%20int%20data%29%20%7B%0A%20%20%20%20//%20create%20a%20new%20node.%0A%20%20%20%20struct%20node%20*%20new_node%20%3D%20malloc%28sizeof%28struct%20node%29%29%3B%0A%20%20%20%20assert%28new_node%20%21%3D%20NULL%29%3B%0A%20%20%20%20new_node-%3Edata%20%3D%20data%3B%0A%20%20%20%20new_node-%3Enext%20%3D%20NULL%3B%0A%0A%20%20%20%20//%20list%20is%20empty.%0A%20%20%20%20if%20%28head%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20head%20%3D%20new_node%3B%0A%20%20%20%20%20%20%20%20return%20head%3B%20%20%20%20%0A%20%20%20%20%7D%0A%0A%20%20%20%20//%20list%20has%20some%20elements%20already.%0A%20%20%20%20struct%20node%20*current%20%3D%20head%3B%0A%20%20%20%20while%20%28current-%3Enext%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20current-%3Enext%20%3D%20new_node%3B%0A%20%20%20%20return%20head%3B%0A%7D%0A%0Avoid%20print_list%28struct%20node%20*head%29%20%7B%0A%20%20%20%20struct%20node%20*%20current%20%3D%20head%3B%0A%20%20%20%20if%20%28current%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Empty%20list.%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%7C%25d%7C%25p%7C%20-%3E%20%22,%20current-%3Edata,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%20%20printf%28%22%5Cn%22%29%3B%0A%20%20%20%20%7D%20%0A%7D%0A%0Avoid%20delete_at_begin%28struct%20node%20**phead%29%20%7B%0A%20%20%20%20struct%20node%20*first%20%3D%20*phead%3B%0A%20%20%20%20*phead%20%3D%20%28*phead%29-%3Enext%3B%0A%20%20%20%20free%28first%29%3B%0A%7D%0A%0Avoid%20addOne%28int%20*pn%29%20%7B%0A%20%20%20%20*pn%20%3D%20*pn%20%2B%201%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">link</a>)</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">print_list</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">insert_at_end</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">delete_at_front</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">**</span><span class="n">phead</span><span class="p">);</span><span class="w"> </span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">delete_at_begin</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">**</span><span class="n">phead</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">addOne</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pn</span><span class="p">);</span><span class="w"></span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">addOne</span><span class="p">(</span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;n = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">insert_at_end</span><span class="p">(</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">print_list</span><span class="p">(</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">insert_at_end</span><span class="p">(</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">print_list</span><span class="p">(</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">insert_at_end</span><span class="p">(</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">print_list</span><span class="p">(</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">delete_at_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">print_list</span><span class="p">(</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">delete_at_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">print_list</span><span class="p">(</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">delete_at_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">print_list</span><span class="p">(</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">delete_at_front</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">**</span><span class="n">phead</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">phead</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">phead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">first</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">insert_at_end</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// create a new node.</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">new_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">new_node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">new_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// list is empty.</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_node</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w">    </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// list has some elements already.</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_node</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">print_list</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Empty list.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;|%d|%p| -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">delete_at_begin</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">**</span><span class="n">phead</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">phead</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">phead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">phead</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">first</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">addOne</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="o">*</span><span class="n">pn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">pn</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="enlaces">
+<h2>6. Enlaces<a class="headerlink" href="#enlaces" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>https://bytesoftheday.wordpress.com/2014/07/04/q14/</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/spring20/cos217/</p></li>
+<li><p>https://embeddedwala.com/Blogs/embedded-c/memory-layout-of-c-program</p></li>
+<li><p>https://www.cs.mtsu.edu/~cs2170/C++labs/lab18/OSmemlayout.pdf</p></li>
+<li><p>https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf</p></li>
+<li><p>https://ocw.mit.edu/courses/6-s096-introduction-to-c-and-c-january-iap-2013/bba9056d5290198d563edc47dfcff0e9_MIT6_S096_IAP13_lec3.pdf</p></li>
+<li><p>https://cs61c.org/su24/</p></li>
+<li><p>http://wla.berkeley.edu/~cs61c/fa17/</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/fall07/cos217/index.html</p></li>
+<li><p>https://web2.qatar.cmu.edu/~mhhammou/15122-s23/lectures/21-cmem/writeup/pdf/main.pdf</p></li>
+<li><p>https://cs.gmu.edu/~zduric/cs262/Slides/teoX.pdf</p></li>
+<li><p>https://d1b10bmlvqabco.cloudfront.net/attach/j6fe5friemd22w/hzd1madqsie3ts/j7kw6i4tmqf8/61C_Note_1_Memory.pdf</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/fall07/cos217/</p></li>
+<li><p>https://www.cs.mtsu.edu/~cs2170/C++labs/lab18/OSmemlayout.pdf</p></li>
+<li><p>https://web2.qatar.cmu.edu/~mhhammou/15122-s23/lectures/21-cmem/writeup/pdf/main.pdf</p></li>
+<li><p>https://www.cs.princeton.edu/courses/archive/spr24/cos126/schedule/</p></li>
+<li><p>https://github.com/vishwa27yvs/Intro-to-Computer-Science-COS-126</p></li>
+<li><p>https://www.berthon.eu/wiki/foss:wikishelf:linux:memory</p></li>
+<li><p>http://resources.infosecinstitute.com/system-address-map-initialization-in-x86x64-architecture-part-1-pci-based-systems/#gref</p></li>
+<li><p>https://fypandroid.wordpress.com/2011/01/17/anatomy-of-a-program-in-memory/</p></li>
+<li><p>https://www.securitysift.com/windows-exploit-development-part-1-basics/</p></li>
+<li><p>https://www.ibm.com/developerworks/library/j-nativememory-linux/</p></li>
+<li><p>https://gabrieletolomei.wordpress.com/miscellanea/operating-systems/in-memory-layout/</p></li>
+<li><p>http://www.cs.utexas.edu/users/fussell/cs310h/lectures/Lecture_17-310h.pdf</p></li>
+<li><p>https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-087-practical-programming-in-c-january-iap-2010/lecture-notes/</p></li>
+<li><p>https://stackoverflow.com/questions/2128728/allocate-matrix-in-c</p></li>
+<li><p>https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/</p></li>
+<li><p>https://www.programiz.com/c-programming/c-dynamic-memory-allocation</p></li>
+<li><p>https://www.cs.swarthmore.edu/~newhall/unixhelp/C_arrays.html</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
