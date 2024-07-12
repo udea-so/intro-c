@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Memoria dinámica en C" href="CH_02-S05.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,7 +112,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../markdown.html">
    Markdown Files
@@ -137,16 +138,16 @@ const thebe_selector_output = ".output, .cell_output"
    Herramientas
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="CH_02.html">
    Lenguaje C
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="CH_02-S01.html">
      Introducción al lenguaje C
@@ -170,6 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="CH_02-S05.html">
      Memoria dinámica en C
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Estructuras de datos
     </a>
    </li>
   </ul>
@@ -710,7 +716,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig1">
 <img alt="../_images/CH_02-S05-fig1_3.png" src="../_images/CH_02-S05-fig1_3.png" />
 <figcaption>
-<p><span class="caption-text">Mapa de memoria (Memory Layout)</span><a class="headerlink" href="#fig1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 81 </span><span class="caption-text">Mapa de memoria (Memory Layout)</span><a class="headerlink" href="#fig1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -728,7 +734,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig2">
 <img alt="../_images/CH_02-S05-fig2.png" src="../_images/CH_02-S05-fig2.png" />
 <figcaption>
-<p><span class="caption-text">Mapa de memoria (Memory Layout)</span><a class="headerlink" href="#fig2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Mapa de memoria (Memory Layout)</span><a class="headerlink" href="#fig2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="ejemplos">
@@ -754,7 +760,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig3">
 <img alt="../_images/CH_02-S05-fig3.png" src="../_images/CH_02-S05-fig3.png" />
 <figcaption>
-<p><span class="caption-text">Salida del programa.</span><a class="headerlink" href="#fig3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Salida del programa.</span><a class="headerlink" href="#fig3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Como se puede ver de la figura anterior, se resaltan los espacios de memoria y las variables que se encuentran en estos:</p>
@@ -783,7 +789,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig4">
 <img alt="../_images/CH_02-S05-fig4.png" src="../_images/CH_02-S05-fig4.png" />
 <figcaption>
-<p><span class="caption-text">Asignacion de las variables en el espacio de memoria.</span><a class="headerlink" href="#fig4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Asignacion de las variables en el espacio de memoria.</span><a class="headerlink" href="#fig4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>En la figura anterior, se puede ver que no hay variables en el <strong>heap</strong> pues no se hicieron asignaciones dinamicas de memoria el cual sera el proximo tema a tratar.</p>
@@ -817,7 +823,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig5">
 <img alt="../_images/CH_02-S05-fig5.png" src="../_images/CH_02-S05-fig5.png" />
 <figcaption>
-<p><span class="caption-text">Asignacion de las variables en el espacio de memoria.</span><a class="headerlink" href="#fig5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Asignacion de las variables en el espacio de memoria.</span><a class="headerlink" href="#fig5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <table class="colwidths-auto table">
@@ -949,7 +955,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig6">
 <img alt="../_images/CH_02-S05-fig6.png" src="../_images/CH_02-S05-fig6.png" />
 <figcaption>
-<p><span class="caption-text">Accediendo desde un apuntador a una variable definida en el <strong>stack</strong>.</span><a class="headerlink" href="#fig6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Accediendo desde un apuntador a una variable definida en el <strong>stack</strong>.</span><a class="headerlink" href="#fig6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>La siguiente figura muestre el efecto del codigo anterior:</p>
@@ -980,7 +986,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig7">
 <img alt="../_images/CH_02-S05-fig7.png" src="../_images/CH_02-S05-fig7.png" />
 <figcaption>
-<p><span class="caption-text">Asignacion dinamica de una variable en el <strong>heap</strong> usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code></span><a class="headerlink" href="#fig7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Asignacion dinamica de una variable en el <strong>heap</strong> usando <code class="docutils literal notranslate"><span class="pre">malloc</span></code></span><a class="headerlink" href="#fig7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1047,7 +1053,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig8">
 <img alt="../_images/CH_02-S05-fig8.png" src="../_images/CH_02-S05-fig8.png" />
 <figcaption>
-<p><span class="caption-text">Tamaño de diferentes tipos de datos.</span><a class="headerlink" href="#fig8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Tamaño de diferentes tipos de datos.</span><a class="headerlink" href="#fig8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1108,7 +1114,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig9">
 <img alt="../_images/CH_02-S05-fig9.png" src="../_images/CH_02-S05-fig9.png" />
 <figcaption>
-<p><span class="caption-text">Funcionamiento código ejemplo 1</span><a class="headerlink" href="#fig9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Funcionamiento código ejemplo 1</span><a class="headerlink" href="#fig9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1137,7 +1143,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig10">
 <img alt="../_images/CH_02-S05-fig10.png" src="../_images/CH_02-S05-fig10.png" />
 <figcaption>
-<p><span class="caption-text">Funcionamiento código ejemplo 2</span><a class="headerlink" href="#fig10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Funcionamiento código ejemplo 2</span><a class="headerlink" href="#fig10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1164,7 +1170,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig11">
 <img alt="../_images/CH_02-S05-fig11.png" src="../_images/CH_02-S05-fig11.png" />
 <figcaption>
-<p><span class="caption-text">Salida del código del ejemplo 3</span><a class="headerlink" href="#fig11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Salida del código del ejemplo 3</span><a class="headerlink" href="#fig11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1198,14 +1204,14 @@ title="Print to PDF"
 <figure class="align-default" id="fig12">
 <img alt="../_images/CH_02-S05-fig12.png" src="../_images/CH_02-S05-fig12.png" />
 <figcaption>
-<p><span class="caption-text">Salida codigo 4 tras la reserva con <code class="docutils literal notranslate"><span class="pre">malloc</span></code>.</span><a class="headerlink" href="#fig12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Salida codigo 4 tras la reserva con <code class="docutils literal notranslate"><span class="pre">malloc</span></code>.</span><a class="headerlink" href="#fig12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>El efecto despues de liberar memoria y poner el apuntador a <code class="docutils literal notranslate"><span class="pre">NULL</span></code>:</p>
 <figure class="align-default" id="id2">
 <img alt="../_images/CH_02-S05-fig13.png" src="../_images/CH_02-S05-fig13.png" />
 <figcaption>
-<p><span class="caption-text">Salida codigo tras aplicar del <code class="docutils literal notranslate"><span class="pre">free</span></code> y poner el apuntador en valor <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Salida codigo tras aplicar del <code class="docutils literal notranslate"><span class="pre">free</span></code> y poner el apuntador en valor <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1311,7 +1317,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig14">
 <img alt="../_images/CH_02-S05-fig14.png" src="../_images/CH_02-S05-fig14.png" />
 <figcaption>
-<p><span class="caption-text">Salida codigo tras la reserva con <code class="docutils literal notranslate"><span class="pre">calloc</span></code>.</span><a class="headerlink" href="#fig14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Salida codigo tras la reserva con <code class="docutils literal notranslate"><span class="pre">calloc</span></code>.</span><a class="headerlink" href="#fig14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1385,7 +1391,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig15">
 <img alt="../_images/CH_02-S05-fig15.png" src="../_images/CH_02-S05-fig15.png" />
 <figcaption>
-<p><span class="caption-text">Efecto de usar <code class="docutils literal notranslate"><span class="pre">realloc</span></code>.</span><a class="headerlink" href="#fig15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Efecto de usar <code class="docutils literal notranslate"><span class="pre">realloc</span></code>.</span><a class="headerlink" href="#fig15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1452,7 +1458,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig16">
 <img alt="../_images/CH_02-S05-fig16.png" src="../_images/CH_02-S05-fig16.png" />
 <figcaption>
-<p><span class="caption-text">Matriz irregular.</span><a class="headerlink" href="#fig16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Matriz irregular.</span><a class="headerlink" href="#fig16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
@@ -1657,6 +1663,13 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="CH_02-S05.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Memoria dinámica en C</p>
+        </div>
+    </a>
 </div>
             </footer>
         </div>
