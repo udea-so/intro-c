@@ -19,7 +19,7 @@ void List_print(list *, int);
 int List_length(list *);
 int List_delete_at_begin(list *);
 int List_delete_at_end(list *);
-node* List_search(list *, int);
+node* List_lookup(list *, int);
 
 int main() {
     list *L = List_new();
@@ -170,6 +170,7 @@ int List_delete_at_end(list *L) {
 }
 
 node* List_lookup(list *L, int item) {
+    assert(L != NULL);
     node *current = L->head;
     while (current) {
         if (current->item == item) {
