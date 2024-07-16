@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Estructuras de datos &#8212; Introducción al lenguaje C</title>
+    <title>Pilas &#8212; Introducción al lenguaje C</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -175,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Estructuras de datos
+     Pilas
     </a>
    </li>
   </ul>
@@ -409,42 +409,42 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mapa-de-memoria">
-   2. Mapa de memoria
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estructuras-de-datos-abstractas">
-   3. Estructuras de datos abstractas
+  <a class="reference internal nav-link" href="#pila-stack">
+   2. Pila (Stack)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pila-stack">
-     3.1 Pila (Stack)
+    <a class="reference internal nav-link" href="#definicion-de-la-pila">
+     2.1. Definición de la pila
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#definicion-de-la-pila">
-       3.1.1. Definición de la pila
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#funcionas-de-la-pila">
-       3.1.2. Funcionas de la pila
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#uso-de-la-estructura">
-       3.1.3. Uso de la estructura
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcionas-de-la-pila">
+     2.2. Funcionas de la pila
+    </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#x-enlaces">
-   x. Enlaces
+  <a class="reference internal nav-link" href="#uso-de-la-estructura-stack">
+   3. Uso de la estructura
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     stack
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejemplos">
+     3.1. Ejemplos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces">
+   4. Enlaces
   </a>
  </li>
 </ul>
@@ -456,7 +456,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Estructuras de datos</h1>
+                <h1>Pilas</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -472,42 +472,42 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mapa-de-memoria">
-   2. Mapa de memoria
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estructuras-de-datos-abstractas">
-   3. Estructuras de datos abstractas
+  <a class="reference internal nav-link" href="#pila-stack">
+   2. Pila (Stack)
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pila-stack">
-     3.1 Pila (Stack)
+    <a class="reference internal nav-link" href="#definicion-de-la-pila">
+     2.1. Definición de la pila
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#definicion-de-la-pila">
-       3.1.1. Definición de la pila
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#funcionas-de-la-pila">
-       3.1.2. Funcionas de la pila
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#uso-de-la-estructura">
-       3.1.3. Uso de la estructura
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funcionas-de-la-pila">
+     2.2. Funcionas de la pila
+    </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#x-enlaces">
-   x. Enlaces
+  <a class="reference internal nav-link" href="#uso-de-la-estructura-stack">
+   3. Uso de la estructura
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     stack
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejemplos">
+     3.1. Ejemplos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enlaces">
+   4. Enlaces
   </a>
  </li>
 </ul>
@@ -520,8 +520,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="estructuras-de-datos">
-<h1>Estructuras de datos<a class="headerlink" href="#estructuras-de-datos" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="pilas">
+<h1>Pilas<a class="headerlink" href="#pilas" title="Permalink to this headline">#</a></h1>
 <div class="admonition-objetivos admonition">
 <p class="admonition-title">Objetivos</p>
 <ul class="simple">
@@ -533,29 +533,33 @@ title="Print to PDF"
 <h2>1. Introduccion<a class="headerlink" href="#introduccion" title="Permalink to this headline">#</a></h2>
 <p>En los programas tipicos, la cantidad de memoria que usan es desconocida. xx</p>
 </section>
-<section id="mapa-de-memoria">
-<h2>2. Mapa de memoria<a class="headerlink" href="#mapa-de-memoria" title="Permalink to this headline">#</a></h2>
-</section>
-<section id="estructuras-de-datos-abstractas">
-<h2>3. Estructuras de datos abstractas<a class="headerlink" href="#estructuras-de-datos-abstractas" title="Permalink to this headline">#</a></h2>
 <section id="pila-stack">
-<h3>3.1 Pila (Stack)<a class="headerlink" href="#pila-stack" title="Permalink to this headline">#</a></h3>
+<h2>2. Pila (Stack)<a class="headerlink" href="#pila-stack" title="Permalink to this headline">#</a></h2>
 <p>Una <strong>pila</strong> (<strong>stack</strong>) es una ADT que permite almacenar y recuperar datos. Esta presenta un modo de acceso a sus elementos de tipo <strong>LIFO</strong> (del inglés <strong>Last In</strong>, <strong>First Out</strong>, último en entrar, primero en salir) debido a que los datos almacenados en ella se retiran en orden inverso al que fueron entrados.</p>
-<p>Cuando se trabajan con pilas se manejan las siguientes operaciones basicas:</p>
-<ul class="simple">
-<li><p><strong>Verificar lista vacia (empty)</strong>: Inicia una pila vacia.</p></li>
-<li><p><strong>Inicializar (init)</strong>: Inicia una pila vacia.</p></li>
-<li><p><strong>Apilar (push)</strong>: Consiste en insertar un registro al principio de una lista ligada.</p></li>
-<li><p><strong>Desapilar (pop)</strong>: Consiste en eliminar el primer nodo de la lista y retornar el dato que se hallaba en ese nodo.</p></li>
-</ul>
 <figure class="align-default" id="stack-fig1">
 <img alt="../_images/CH_02-S06-stack_fig1.png" src="../_images/CH_02-S06-stack_fig1.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 81 </span><span class="caption-text">Representación y operaciones de una pila (stack)</span><a class="headerlink" href="#stack-fig1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Cuando se trabajan con pilas se manejan las siguientes operaciones básicas:</p>
+<ul class="simple">
+<li><p><strong>Verificar lista vacia</strong>: Inicia una pila vacia.</p></li>
+<li><p><strong>Inicializar</strong>: Inicia una pila vacia.</p></li>
+<li><p><strong>Apilar (<code class="docutils literal notranslate"><span class="pre">push</span></code>)</strong>: Consiste en insertar un registro al principio de una lista ligada.</p></li>
+<li><p><strong>Desapilar (<code class="docutils literal notranslate"><span class="pre">pop</span></code>)</strong>: Consiste en eliminar el primer nodo de la lista y retornar el dato que se hallaba en ese nodo.</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Simulación</p>
+<p>En el siguiente <a class="reference external" href="https://liveexample.pearsoncmg.com/dsanimation13ejava/StackeBook.html">link</a> se muestra una simulación de una pila.</p>
+</div>
 <section id="definicion-de-la-pila">
-<h4>3.1.1. Definición de la pila<a class="headerlink" href="#definicion-de-la-pila" title="Permalink to this headline">#</a></h4>
+<h3>2.1. Definición de la pila<a class="headerlink" href="#definicion-de-la-pila" title="Permalink to this headline">#</a></h3>
+<p>La siguiente estructura se define una pila (<code class="docutils literal notranslate"><span class="pre">stack</span></code>) de tamaño fijo (<code class="docutils literal notranslate"><span class="pre">CAPACITY</span></code>) cuyos miembros son:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">count</span></code></strong>: Catidad de elementos agregados a la pila.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">data</span></code></strong>: Arreglo donde se almacenan los elementos de la pila.</p></li>
+</ul>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define CAPACITY 10</span>
 
 <span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_stack</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -564,9 +568,23 @@ title="Print to PDF"
 <span class="p">}</span><span class="w"> </span><span class="n">stack</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
+<p>La siguiente figura muestra la estructura asociada a la pila (<code class="docutils literal notranslate"><span class="pre">stack</span></code>) previamente definida:</p>
+<figure class="align-default" id="stack-fig1a">
+<img alt="../_images/CH_02-S06-stack_fig1a_.png" src="../_images/CH_02-S06-stack_fig1a_.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Estructura asociada a la pila (<code class="docutils literal notranslate"><span class="pre">stack</span></code>)</span><a class="headerlink" href="#stack-fig1a" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Es importante tener en cuenta, que en este caso, como la pila implementada tiene un tamaño fijo, la forma como se maneja la memoria no es la mas eficiente. Al respecto, si el tamaño (<code class="docutils literal notranslate"><span class="pre">CAPACITY</span></code>) de la pila es mucho mas grande que la cantidad de elementos almacenados, se puede estar desperdiciando una gran cantidad de memoria debido a la gran cantidad de espacio sin usar; por contrario, si el tamaño de la pila es muy pequeño, este puede hacer se la pila se quede corta cuando la cantidad de datos a manejar es mayor.</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/CH_02-S06-stack_fig1a.png" src="../_images/CH_02-S06-stack_fig1a.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Comparación uso de memoria.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="funcionas-de-la-pila">
-<h4>3.1.2. Funcionas de la pila<a class="headerlink" href="#funcionas-de-la-pila" title="Permalink to this headline">#</a></h4>
+<h3>2.2. Funcionas de la pila<a class="headerlink" href="#funcionas-de-la-pila" title="Permalink to this headline">#</a></h3>
 <p>Las operaciones asociadas la ADT <code class="docutils literal notranslate"><span class="pre">stack</span></code> definida previamente se destriben a continuación:</p>
 <ul>
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">stack_init</span></code></strong>: crea una pila vacía:</p>
@@ -623,15 +641,100 @@ title="Print to PDF"
 </li>
 </ul>
 </section>
-<section id="uso-de-la-estructura">
-<h4>3.1.3. Uso de la estructura<a class="headerlink" href="#uso-de-la-estructura" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="uso-de-la-estructura-stack">
+<h2>3. Uso de la estructura <code class="docutils literal notranslate"><span class="pre">stack</span></code><a class="headerlink" href="#uso-de-la-estructura-stack" title="Permalink to this headline">#</a></h2>
+<p>Recordemos que el <strong>programa cliente</strong> es aquel que hace el llamado de las funciones definidas en bibliotecas, modulos o clases para realizar determinadas tareas.</p>
+<p>En un programa, la función encargada de iniciar la ejecución de este es la función <code class="docutils literal notranslate"><span class="pre">main</span></code>. En esta función, se implementa la logica de la aplicación mediante el llamado a las funciones que han sido previamente definidas tal y como se muestra en la siguiente figura:</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/CH_02-S06-stack_fig1b.png" src="../_images/CH_02-S06-stack_fig1b.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Función <code class="docutils literal notranslate"><span class="pre">main</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>El siguiente código, muestra el caso como seria un programa de un solo archivo en el cual se hace uso de la estructura <code class="docutils literal notranslate"><span class="pre">stack</span></code>. Notese que al implementarse la logica de la aplicación función <code class="docutils literal notranslate"><span class="pre">main</span></code>, las instrucciones se definen de acuerdo a los requerimientos de la aplicación.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define CAPACITY 10</span>
+
+<span class="cm">/*</span>
+<span class="cm">Definicion de la pila</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_stack</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">CAPACITY</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">stack</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="cm">/*</span>
+<span class="cm">Declaración de las funciones asociadas a la pila</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">stack_init</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">stack_empty</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">stack_push</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">stack_pop</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">stack_full</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">stack_peek</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/*</span>
+<span class="cm">Funcion principal</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Codigo de la aplicacion</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="cm">/*</span>
+<span class="cm">Definicion de las funciones asociadas a la pila</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">stack_init</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">stack_empty</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">stack_push</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CAPACITY</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">stack_pop</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">count</span><span class="o">--</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">count</span><span class="p">];</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">stack_full</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CAPACITY</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">stack_peek</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">top</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="ejemplos">
+<h3>3.1. Ejemplos<a class="headerlink" href="#ejemplos" title="Permalink to this headline">#</a></h3>
 <p>Asumiendo una pila de 3 elementos (<code class="docutils literal notranslate"><span class="pre">CAPACITY</span> <span class="pre">=</span> <span class="pre">3</span></code>).</p>
 <ol>
 <li><p><strong>Codigo 1</strong>: Mediante código implemente la siguiente pila:</p>
 <figure class="align-default" id="stack-fig2">
 <img alt="../_images/CH_02-S06-stack_fig2.png" src="../_images/CH_02-S06-stack_fig2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Pila asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Pila asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>El siguiente fragmento de código hace uso de las funciones definidas anteriormente para:</p>
@@ -642,6 +745,30 @@ title="Print to PDF"
 <li><p>Mostrar cada vez que se agrega un elemento el valor del tope (<code class="docutils literal notranslate"><span class="pre">top</span></code>) de la pila.</p></li>
 </ul>
 <p>La implementación de este código se muestra a continuación (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0A%23define%20CAPACITY%203%0A%0Atypedef%20struct%20_stack%20%7B%0A%20%20int%20count%3B%0A%20%20int%20data%5BCAPACITY%5D%3B%0A%7D%20stack%3B%0A%0Avoid%20stack_init%28stack%20*s%29%3B%0Aint%20stack_empty%28stack%20*s%29%3B%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%3B%0Aint%20stack_pop%28stack%20*s%29%3B%0Aint%20stack_full%28stack%20*s%29%3B%0Aint%20stack_peek%28stack%20*s%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20stack%20S%3B%0A%20%20stack_init%28%26S%29%3B%0A%20%20if%28stack_empty%28%26S%29%20%3D%3D%201%29%20%7B%0A%20%20%20%20printf%28%22La%20pila%20esta%20vacia%5Cn%22%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28stack_full%28%26S%29%20%3D%3D%201%29%20%7B%0A%20%20%20%20printf%28%22La%20pila%20esta%20llena%5Cn%22%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20printf%28%22En%20la%20pila%20aun%20caben%20%25d%20elementos%5Cn%22,CAPACITY%20-%20S.count%29%3B%0A%20%20%7D%0A%20%20stack_push%28%26S,%201%29%3B%0A%20%20printf%28%22Elemento%20agregado%3A%20%25d%5Cn%22,%20stack_peek%28%26S%29%29%3B%0A%20%20stack_push%28%26S,%202%29%3B%0A%20%20printf%28%22Elemento%20agregado%3A%20%25d%5Cn%22,%20stack_peek%28%26S%29%29%3B%0A%20%20if%28stack_empty%28%26S%29%20%3D%3D%201%29%20%7B%0A%20%20%20%20printf%28%22La%20pila%20esta%20vacia%5Cn%22%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28stack_full%28%26S%29%20%3D%3D%201%29%20%7B%0A%20%20%20%20printf%28%22La%20pila%20esta%20llena%5Cn%22%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20printf%28%22En%20la%20pila%20aun%20caben%20%25d%20elementos%5Cn%22,CAPACITY%20-%20S.count%29%3B%0A%20%20%7D%0A%20%20stack_push%28%26S,%203%29%3B%0A%20%20printf%28%22Elemento%20agregado%3A%20%25d%5Cn%22,%20stack_peek%28%26S%29%29%3B%0A%20%20if%28stack_empty%28%26S%29%20%3D%3D%201%29%20%7B%0A%20%20%20%20printf%28%22La%20pila%20esta%20vacia%5Cn%22%29%3B%0A%20%20%7D%0A%20%20else%20if%20%28stack_full%28%26S%29%20%3D%3D%201%29%20%7B%0A%20%20%20%20printf%28%22La%20pila%20esta%20llena%5Cn%22%29%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20printf%28%22En%20la%20pila%20aun%20caben%20%25d%20elementos%5Cn%22,CAPACITY%20-%20S.count%29%3B%0A%20%20%7D%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20stack_init%28stack%20*s%29%20%7B%20%0A%20%20s-%3Ecount%20%3D%200%3B%0A%7D%0A%0Aint%20stack_empty%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%200%29%3B%0A%7D%0A%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3C%20CAPACITY%29%3B%0A%20%20s-%3Edata%5Bs-%3Ecount%5D%20%3D%20item%3B%0A%20%20s-%3Ecount%2B%2B%3B%0A%7D%0A%0Aint%20stack_pop%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3E%200%29%3B%0A%20%20s-%3Ecount--%3B%0A%20%20return%20s-%3Edata%5Bs-%3Ecount%5D%3B%0A%7D%0A%0Aint%20stack_full%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%20CAPACITY%29%3B%0A%7D%0A%0Aint%20stack_peek%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20int%20top%20%3D%20s-%3Edata%5Bs-%3Ecount%20-%201%5D%3B%0A%20%20return%20top%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulación</a>):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>El resultado del código anterior, se muestra a continuación:</p>
+<figure class="align-default" id="stack-fig2a">
+<img alt="../_images/CH_02-S06-stack_fig2a.png" src="../_images/CH_02-S06-stack_fig2a.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#stack-fig2a" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><strong>Codigo 2</strong>: Partiendo de la lista de 3 elementos anteriormente mostrada, saque el ultimo elemento agregado tal y como se muestra en la siguiente figura:</p>
+<figure class="align-default" id="stack-fig3">
+<img alt="../_images/CH_02-S06-stack_fig3.png" src="../_images/CH_02-S06-stack_fig3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Pila asociada al ejemplo anterior</span><a class="headerlink" href="#stack-fig3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>La implementación realizada en el siguiente fragmento de código (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0A%23define%20CAPACITY%203%0A%0Atypedef%20struct%20_stack%20%7B%0A%20%20int%20count%3B%0A%20%20int%20data%5BCAPACITY%5D%3B%0A%7D%20stack%3B%0A%0Avoid%20stack_init%28stack%20*s%29%3B%0Aint%20stack_empty%28stack%20*s%29%3B%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%3B%0Aint%20stack_pop%28stack%20*s%29%3B%0Aint%20stack_full%28stack%20*s%29%3B%0Aint%20stack_peek%28stack%20*s%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20stack%20S%3B%0A%20%20stack_init%28%26S%29%3B%20%20%20%20//%20S%20%3D%20%5B%20%5D%20%3A%20Lista%20vacia%0A%20%20stack_push%28%26S,%201%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%201%5D%0A%20%20stack_push%28%26S,%202%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%0A%20%20stack_push%28%26S,%203%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%203,%202%20,%201%5D%0A%20%20int%20e%20%3D%20stack_pop%28%26S%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%20%3B%20e%20%3D%203%0A%20%20printf%28%22Elemento%20sacado%20de%20la%20pila%3A%20%25d%5Cn%22,%20e%29%3B%0A%20%20printf%28%22Elementos%20disponibles%20en%20la%20pila%3A%20%25d%20%5Cn%22,%20%20S.count%29%3B%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20stack_init%28stack%20*s%29%20%7B%20%0A%20%20s-%3Ecount%20%3D%200%3B%0A%7D%0A%0Aint%20stack_empty%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%200%29%3B%0A%7D%0A%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3C%20CAPACITY%29%3B%0A%20%20s-%3Edata%5Bs-%3Ecount%5D%20%3D%20item%3B%0A%20%20s-%3Ecount%2B%2B%3B%0A%7D%0A%0Aint%20stack_pop%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3E%200%29%3B%0A%20%20s-%3Ecount--%3B%0A%20%20return%20s-%3Edata%5Bs-%3Ecount%5D%3B%0A%7D%0A%0Aint%20stack_full%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%20CAPACITY%29%3B%0A%7D%0A%0Aint%20stack_peek%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20int%20top%20%3D%20s-%3Edata%5Bs-%3Ecount%20-%201%5D%3B%0A%20%20return%20top%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulacion</a>) hace lo siguiente:</p>
+<ul class="simple">
+<li><p>Inicializa la pila al estado inicial (<code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code> y <code class="docutils literal notranslate"><span class="pre">3</span></code>).</p></li>
+<li><p>Saca el ultimo elemento ingresado a la pila (<code class="docutils literal notranslate"><span class="pre">3</span></code>) imprimiendo su valor.</p></li>
+<li><p>Muestra la cantidad de elementos que quedan en la pila.</p></li>
+</ul>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
@@ -660,40 +787,13 @@ title="Print to PDF"
 <span class="c1">// Codigo main</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">stack</span><span class="w"> </span><span class="n">S</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">stack_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">stack_empty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La pila esta vacia</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stack_full</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La pila esta llena</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;En la pila aun caben %d elementos</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">CAPACITY</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">count</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="n">stack_push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Elemento agregado: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stack_peek</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="n">stack_push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Elemento agregado: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stack_peek</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">stack_empty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La pila esta vacia</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stack_full</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La pila esta llena</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;En la pila aun caben %d elementos</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">CAPACITY</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">count</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="n">stack_push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Elemento agregado: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stack_peek</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">stack_empty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La pila esta vacia</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stack_full</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La pila esta llena</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;En la pila aun caben %d elementos</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">CAPACITY</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">count</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">stack_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">);</span><span class="w">    </span><span class="c1">// S = [ ] : Lista vacia</span>
+<span class="w">  </span><span class="n">stack_push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// S = [|top|-&gt; 1]</span>
+<span class="w">  </span><span class="n">stack_push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// S = [|top|-&gt; 2 , 1]</span>
+<span class="w">  </span><span class="n">stack_push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// S = [|top|-&gt; 3, 2 , 1]</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stack_pop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">);</span><span class="w"> </span><span class="c1">// S = [|top|-&gt; 2 , 1] ; e = 3</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Elemento sacado de la pila: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Elementos disponibles en la pila: %d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w">  </span><span class="n">S</span><span class="p">.</span><span class="n">count</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
@@ -701,20 +801,19 @@ title="Print to PDF"
 <span class="c1">// Codigo definición...</span>
 </pre></div>
 </div>
-<p>El resultado del código anterior, se muestra a continuación:</p>
-<figure class="align-default" id="stack-fig2a">
-<img alt="../_images/CH_02-S06-stack_fig2a.png" src="../_images/CH_02-S06-stack_fig2a.png" />
+<p>La salida del fragmento de código anterior, se muestra a continuación:</p>
+<figure class="align-default" id="id3">
+<img alt="../_images/CH_02-S06-stack_fig3a.png" src="../_images/CH_02-S06-stack_fig3a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#stack-fig2a" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ol>
 </section>
 </section>
-</section>
-<section id="x-enlaces">
-<h2>x. Enlaces<a class="headerlink" href="#x-enlaces" title="Permalink to this headline">#</a></h2>
+<section id="enlaces">
+<h2>4. Enlaces<a class="headerlink" href="#enlaces" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>https://ranger.uta.edu/~alex/courses/3318/</p></li>
 <li><p>https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</p></li>
@@ -725,9 +824,6 @@ title="Print to PDF"
 <li><p>https://web.stanford.edu/class/archive/cs/cs107/cs107.1248/calendar</p></li>
 <li><p>https://web.stanford.edu/class/cs106x/res/reader/CS106BX-Reader.pdf</p></li>
 <li><p>http://cslibrary.stanford.edu/</p></li>
-</ul>
-<hr class="docutils" />
-<ul class="simple">
 <li><p>https://www.cs.swarthmore.edu/~newhall/cs45/s14/#schedule</p></li>
 <li><p>https://www.cs.swarthmore.edu/~newhall/unixlinks.html#lang</p></li>
 <li><p>https://publications.gbdirect.co.uk/c_book/</p></li>
@@ -735,18 +831,11 @@ title="Print to PDF"
 <li><p>https://www.cs.swarthmore.edu/~newhall/unixhelp/os_stats.php</p></li>
 <li><p>https://www.cs.swarthmore.edu/~newhall/cs35/</p></li>
 <li><p>https://www.cs.swarthmore.edu/~newhall/unixhelp/C_linkedlists.pdf</p></li>
-</ul>
-<hr class="docutils" />
-<ul class="simple">
 <li><p>https://www.cs.princeton.edu/courses/archive/spring20/cos217/</p></li>
 <li><p>https://www.cs.princeton.edu/courses/archive/spring20/cos217/precepts/09voidptrs/symtablelist.pdf</p></li>
 <li><p>https://www.cs.princeton.edu/courses/archive/spring20/cos217/lectures/01_Intro.pdf</p></li>
 <li><p>https://august.princeton.edu/</p></li>
 <li><p>https://www.cs.princeton.edu/courses/archive/fall07/cos217/lectures/</p></li>
-<li></li>
-</ul>
-<hr class="docutils" />
-<ul class="simple">
 <li><p>https://ocw.mit.edu/courses/6-s096-introduction-to-c-and-c-january-iap-2013/</p></li>
 <li><p>https://ocw.mit.edu/courses/6-s096-introduction-to-c-and-c-january-iap-2013/pages/lectures-and-assignments/data-structures-debugging/</p></li>
 <li><p>https://ocw.mit.edu/courses/6-s096-introduction-to-c-and-c-january-iap-2013/pages/lectures-and-assignments/data-structures-debugging/</p></li>
@@ -758,18 +847,10 @@ title="Print to PDF"
 <li><p>https://ocw.mit.edu/courses/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/</p></li>
 <li><p>https://ocw.mit.edu/courses/6-100l-introduction-to-cs-and-programming-using-python-fall-2022/</p></li>
 <li><p>https://ocw.mit.edu/collections/introductory-programming/</p></li>
-</ul>
-<hr class="docutils" />
-<ul class="simple">
 <li><p>https://cs61c.org/su24/</p></li>
 <li><p>https://www.cs.princeton.edu/courses/archive/spr24/cos126/schedule/</p></li>
-<li></li>
-</ul>
-<hr class="docutils" />
-<ul class="simple">
 <li><p>https://web2.qatar.cmu.edu/~mhhammou/15122-s23/</p></li>
 <li><p>https://web2.qatar.cmu.edu/~mhhammou/15122-s23/schedule.html</p></li>
-<li></li>
 <li><p>https://bytesoftheday.wordpress.com/2014/07/04/q14/</p></li>
 <li><p>https://www.cs.princeton.edu/courses/archive/spring20/cos217/</p></li>
 <li><p>https://embeddedwala.com/Blogs/embedded-c/memory-layout-of-c-program</p></li>
