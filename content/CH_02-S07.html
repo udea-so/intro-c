@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Pilas" href="CH_02-S06.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,7 +112,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../markdown.html">
    Markdown Files
@@ -137,16 +138,16 @@ const thebe_selector_output = ".output, .cell_output"
    Herramientas
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="CH_02.html">
    Lenguaje C
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="CH_02-S01.html">
      Introducción al lenguaje C
@@ -175,6 +176,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="CH_02-S06.html">
      Pilas
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Listas enlazadas
     </a>
    </li>
   </ul>
@@ -548,7 +554,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig1">
 <img alt="../_images/CH_02-S06-stack_fig1.png" src="../_images/CH_02-S06-stack_fig1.png" />
 <figcaption>
-<p><span class="caption-text">Representación y operaciones de una pila (stack)</span><a class="headerlink" href="#stack-fig1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Representación y operaciones de una pila (stack)</span><a class="headerlink" href="#stack-fig1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Cuando se trabajan con pilas se manejan las siguientes operaciones básicas:</p>
@@ -582,7 +588,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig1a">
 <img alt="../_images/CH_02-S06-stack_fig1a_.png" src="../_images/CH_02-S06-stack_fig1a_.png" />
 <figcaption>
-<p><span class="caption-text">Estructura asociada a la pila (<code class="docutils literal notranslate"><span class="pre">stack</span></code>)</span><a class="headerlink" href="#stack-fig1a" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Estructura asociada a la pila (<code class="docutils literal notranslate"><span class="pre">stack</span></code>)</span><a class="headerlink" href="#stack-fig1a" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -773,7 +779,7 @@ title="Print to PDF"
 <figure class="align-default" id="id1">
 <img alt="../_images/CH_02-S06-stack_fig1b.png" src="../_images/CH_02-S06-stack_fig1b.png" />
 <figcaption>
-<p><span class="caption-text">Función <code class="docutils literal notranslate"><span class="pre">main</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Función <code class="docutils literal notranslate"><span class="pre">main</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>El siguiente código, muestra el caso como seria un programa de un solo archivo en el cual se hace uso de la estructura <code class="docutils literal notranslate"><span class="pre">stack</span></code>. Notese que al implementarse la logica de la aplicación función <code class="docutils literal notranslate"><span class="pre">main</span></code>, las instrucciones se definen de acuerdo a los requerimientos de la aplicación.</p>
@@ -980,7 +986,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig2">
 <img alt="../_images/CH_02-S06-stack_fig2.png" src="../_images/CH_02-S06-stack_fig2.png" />
 <figcaption>
-<p><span class="caption-text">Pila asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Pila asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>El siguiente fragmento de código hace uso de las funciones definidas anteriormente para:</p>
@@ -997,7 +1003,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig2a">
 <img alt="../_images/CH_02-S06-stack_fig2a.png" src="../_images/CH_02-S06-stack_fig2a.png" />
 <figcaption>
-<p><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#stack-fig2a" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#stack-fig2a" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1005,7 +1011,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig3">
 <img alt="../_images/CH_02-S06-stack_fig3.png" src="../_images/CH_02-S06-stack_fig3.png" />
 <figcaption>
-<p><span class="caption-text">Pila asociada al ejemplo anterior</span><a class="headerlink" href="#stack-fig3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Pila asociada al ejemplo anterior</span><a class="headerlink" href="#stack-fig3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>La implementación realizada en el siguiente fragmento de código (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0A%23define%20CAPACITY%203%0A%0Atypedef%20struct%20_stack%20%7B%0A%20%20int%20count%3B%0A%20%20int%20data%5BCAPACITY%5D%3B%0A%7D%20stack%3B%0A%0Avoid%20stack_init%28stack%20*s%29%3B%0Aint%20stack_empty%28stack%20*s%29%3B%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%3B%0Aint%20stack_pop%28stack%20*s%29%3B%0Aint%20stack_full%28stack%20*s%29%3B%0Aint%20stack_peek%28stack%20*s%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20stack%20S%3B%0A%20%20stack_init%28%26S%29%3B%20%20%20%20//%20S%20%3D%20%5B%20%5D%20%3A%20Lista%20vacia%0A%20%20stack_push%28%26S,%201%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%201%5D%0A%20%20stack_push%28%26S,%202%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%0A%20%20stack_push%28%26S,%203%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%203,%202%20,%201%5D%0A%20%20int%20e%20%3D%20stack_pop%28%26S%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%20%3B%20e%20%3D%203%0A%20%20printf%28%22Elemento%20sacado%20de%20la%20pila%3A%20%25d%5Cn%22,%20e%29%3B%0A%20%20printf%28%22Elementos%20disponibles%20en%20la%20pila%3A%20%25d%20%5Cn%22,%20%20S.count%29%3B%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20stack_init%28stack%20*s%29%20%7B%20%0A%20%20s-%3Ecount%20%3D%200%3B%0A%7D%0A%0Aint%20stack_empty%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%200%29%3B%0A%7D%0A%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3C%20CAPACITY%29%3B%0A%20%20s-%3Edata%5Bs-%3Ecount%5D%20%3D%20item%3B%0A%20%20s-%3Ecount%2B%2B%3B%0A%7D%0A%0Aint%20stack_pop%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3E%200%29%3B%0A%20%20s-%3Ecount--%3B%0A%20%20return%20s-%3Edata%5Bs-%3Ecount%5D%3B%0A%7D%0A%0Aint%20stack_full%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%20CAPACITY%29%3B%0A%7D%0A%0Aint%20stack_peek%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20int%20top%20%3D%20s-%3Edata%5Bs-%3Ecount%20-%201%5D%3B%0A%20%20return%20top%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulacion</a>) hace lo siguiente:</p>
@@ -1050,7 +1056,7 @@ title="Print to PDF"
 <figure class="align-default" id="id2">
 <img alt="../_images/CH_02-S06-stack_fig3a.png" src="../_images/CH_02-S06-stack_fig3a.png" />
 <figcaption>
-<p><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1156,6 +1162,13 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="CH_02-S06.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Pilas</p>
+        </div>
+    </a>
 </div>
             </footer>
         </div>
