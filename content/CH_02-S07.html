@@ -414,14 +414,27 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lista-enlazada">
-   2. Lista enlazada
+  <a class="reference internal nav-link" href="#lista-enlazada-simple">
+   2. Lista enlazada simple
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nodo">
-     2.1. Nodo
+    <a class="reference internal nav-link" href="#estructuras-asociadas-a-ua-lista-enlazada-simple">
+     2.1. Estructuras asociadas a ua lista enlazada simple
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nodo-node">
+       2.1.2. Nodo (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         node
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lista">
@@ -448,6 +461,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ejemplos">
      3.1. Ejemplos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Ejemplos
     </a>
    </li>
   </ul>
@@ -482,14 +500,27 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lista-enlazada">
-   2. Lista enlazada
+  <a class="reference internal nav-link" href="#lista-enlazada-simple">
+   2. Lista enlazada simple
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nodo">
-     2.1. Nodo
+    <a class="reference internal nav-link" href="#estructuras-asociadas-a-ua-lista-enlazada-simple">
+     2.1. Estructuras asociadas a ua lista enlazada simple
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nodo-node">
+       2.1.2. Nodo (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         node
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lista">
@@ -516,6 +547,11 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ejemplos">
      3.1. Ejemplos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Ejemplos
     </a>
    </li>
   </ul>
@@ -546,39 +582,62 @@ title="Print to PDF"
 </div>
 <section id="introduccion">
 <h2>1. Introduccion<a class="headerlink" href="#introduccion" title="Permalink to this headline">#</a></h2>
-<p>xxx</p>
+<p>Una <strong>lista enlazada</strong> (<strong>Linked list</strong>) es una estructura de datos dinamica que consiste en una secuencia de registros donde cada elemento contiene un <strong>link</strong> al proximo registro de la secuencia. Las listas enlazadas pueden ser Listas simplemente enlazadas, Listas doblemente enlazadas o listas circulares. En este caso solo nos limitaremos a las listas simplemente enlazadas.</p>
 </section>
-<section id="lista-enlazada">
-<h2>2. Lista enlazada<a class="headerlink" href="#lista-enlazada" title="Permalink to this headline">#</a></h2>
-<p>Una <strong>pila</strong> (<strong>stack</strong>) es una ADT que permite almacenar y recuperar datos. Esta presenta un modo de acceso a sus elementos de tipo <strong>LIFO</strong> (del inglés <strong>Last In</strong>, <strong>First Out</strong>, último en entrar, primero en salir) debido a que los datos almacenados en ella se retiran en orden inverso al que fueron entrados.</p>
-<figure class="align-default" id="stack-fig1">
-<img alt="../_images/CH_02-S06-stack_fig1.png" src="../_images/CH_02-S06-stack_fig1.png" />
+<section id="lista-enlazada-simple">
+<h2>2. Lista enlazada simple<a class="headerlink" href="#lista-enlazada-simple" title="Permalink to this headline">#</a></h2>
+<p>Como se dijo previamente, una <strong>lista enlazada</strong> es una secuencia de datos conectadas a traves de <strong>links</strong>. A continuación vamos a describir las principales estructuras asociadas a la lista enlazada y las funciones involucradas en este.</p>
+<figure class="align-default" id="linked-list-fig4">
+<img alt="../_images/CH_02-S07-LL_fig4.png" src="../_images/CH_02-S07-LL_fig4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Representación y operaciones de una pila (stack)</span><a class="headerlink" href="#stack-fig1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Lista enlazada simple</span><a class="headerlink" href="#linked-list-fig4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Cuando se trabajan con pilas se manejan las siguientes operaciones básicas:</p>
-<ul class="simple">
-<li><p><strong>Verificar lista vacia</strong>: Inicia una pila vacia.</p></li>
-</ul>
-<hr class="docutils" />
 <div class="tip admonition">
 <p class="admonition-title">Simulaciones</p>
 <p>La pagina <strong>Data Structure Visualizations</strong> (<a class="reference external" href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">link</a>) recopila una gran cantidad de animaciones sobre estructuras de datos.</p>
 </div>
-<section id="nodo">
-<h3>2.1. Nodo<a class="headerlink" href="#nodo" title="Permalink to this headline">#</a></h3>
-<p>La siguiente …</p>
+<section id="estructuras-asociadas-a-ua-lista-enlazada-simple">
+<h3>2.1. Estructuras asociadas a ua lista enlazada simple<a class="headerlink" href="#estructuras-asociadas-a-ua-lista-enlazada-simple" title="Permalink to this headline">#</a></h3>
+<section id="nodo-node">
+<h4>2.1.2. Nodo (<code class="docutils literal notranslate"><span class="pre">node</span></code>)<a class="headerlink" href="#nodo-node" title="Permalink to this headline">#</a></h4>
+<p>Un <strong>nodo</strong> (<strong><code class="docutils literal notranslate"><span class="pre">node</span></code></strong>) es la estructura fundamental que compone a una lista. La siguiente figura muestra la representación de un nodo:</p>
+<figure class="align-default" id="linked-list-fig1">
+<img alt="../_images/CH_02-S07-LL_fig1.png" src="../_images/CH_02-S07-LL_fig1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Estructura de un nodo (<code class="docutils literal notranslate"><span class="pre">node</span></code>)</span><a class="headerlink" href="#linked-list-fig1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A continuación, se muestra la definición de esta estructura de datos en C:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="n">node</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
+<p>Como se puede observar, en el fragmento de código anterior hay dos miembros:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">item</span></code></strong>: Miembro del nodo en el que se almacena el contenido (payload) del nodo. En este caso, el contenido es un dato tipo <code class="docutils literal notranslate"><span class="pre">int</span></code> pero en general, el item puede ser cualquier tipo de dato generico.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">next</span></code></strong>: Este es el <em>link</em> que apunta al proximo nodo de la lista. Al ser este un apuntador, lo que se almacena es la dirección del proximo nodo.</p></li>
+</ul>
+<p>En la siguiente figura se muestra la lista enlazada de la primera figura, observe que en la parte asociada al <em>link</em> lo que se almacena es la dirección del próximo nodo de la lista.</p>
+<figure class="align-default" id="stack-fig">
+<img alt="../_images/CH_02-S07-LL_fig5.png" src="../_images/CH_02-S07-LL_fig5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Lista enlazada simple</span><a class="headerlink" href="#stack-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 <section id="lista">
 <h3>2.2. Lista<a class="headerlink" href="#lista" title="Permalink to this headline">#</a></h3>
 <p>La siguiente …</p>
+<p>Every node has a payload and a link to the next node in the list.
+•
+The start (head) of the list is maintained in a separate
+variable.
+•
+End of the list is indicated by NULL (sentinel).</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_list</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"> </span><span class="n">list</span><span class="p">;</span><span class="w"></span>
@@ -588,7 +647,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig1a">
 <img alt="../_images/CH_02-S06-stack_fig1a_.png" src="../_images/CH_02-S06-stack_fig1a_.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Estructura asociada a la pila (<code class="docutils literal notranslate"><span class="pre">stack</span></code>)</span><a class="headerlink" href="#stack-fig1a" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Estructura asociada a la pila (<code class="docutils literal notranslate"><span class="pre">stack</span></code>)</span><a class="headerlink" href="#stack-fig1a" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -779,7 +838,7 @@ title="Print to PDF"
 <figure class="align-default" id="id1">
 <img alt="../_images/CH_02-S06-stack_fig1b.png" src="../_images/CH_02-S06-stack_fig1b.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Función <code class="docutils literal notranslate"><span class="pre">main</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Función <code class="docutils literal notranslate"><span class="pre">main</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>El siguiente código, muestra el caso como seria un programa de un solo archivo en el cual se hace uso de la estructura <code class="docutils literal notranslate"><span class="pre">stack</span></code>. Notese que al implementarse la logica de la aplicación función <code class="docutils literal notranslate"><span class="pre">main</span></code>, las instrucciones se definen de acuerdo a los requerimientos de la aplicación.</p>
@@ -986,7 +1045,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig2">
 <img alt="../_images/CH_02-S06-stack_fig2.png" src="../_images/CH_02-S06-stack_fig2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Pila asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Pila asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>El siguiente fragmento de código hace uso de las funciones definidas anteriormente para:</p>
@@ -1003,7 +1062,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig2a">
 <img alt="../_images/CH_02-S06-stack_fig2a.png" src="../_images/CH_02-S06-stack_fig2a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#stack-fig2a" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#stack-fig2a" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1011,7 +1070,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig3">
 <img alt="../_images/CH_02-S06-stack_fig3.png" src="../_images/CH_02-S06-stack_fig3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Pila asociada al ejemplo anterior</span><a class="headerlink" href="#stack-fig3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Pila asociada al ejemplo anterior</span><a class="headerlink" href="#stack-fig3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>La implementación realizada en el siguiente fragmento de código (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0A%23define%20CAPACITY%203%0A%0Atypedef%20struct%20_stack%20%7B%0A%20%20int%20count%3B%0A%20%20int%20data%5BCAPACITY%5D%3B%0A%7D%20stack%3B%0A%0Avoid%20stack_init%28stack%20*s%29%3B%0Aint%20stack_empty%28stack%20*s%29%3B%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%3B%0Aint%20stack_pop%28stack%20*s%29%3B%0Aint%20stack_full%28stack%20*s%29%3B%0Aint%20stack_peek%28stack%20*s%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20stack%20S%3B%0A%20%20stack_init%28%26S%29%3B%20%20%20%20//%20S%20%3D%20%5B%20%5D%20%3A%20Lista%20vacia%0A%20%20stack_push%28%26S,%201%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%201%5D%0A%20%20stack_push%28%26S,%202%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%0A%20%20stack_push%28%26S,%203%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%203,%202%20,%201%5D%0A%20%20int%20e%20%3D%20stack_pop%28%26S%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%20%3B%20e%20%3D%203%0A%20%20printf%28%22Elemento%20sacado%20de%20la%20pila%3A%20%25d%5Cn%22,%20e%29%3B%0A%20%20printf%28%22Elementos%20disponibles%20en%20la%20pila%3A%20%25d%20%5Cn%22,%20%20S.count%29%3B%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20stack_init%28stack%20*s%29%20%7B%20%0A%20%20s-%3Ecount%20%3D%200%3B%0A%7D%0A%0Aint%20stack_empty%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%200%29%3B%0A%7D%0A%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3C%20CAPACITY%29%3B%0A%20%20s-%3Edata%5Bs-%3Ecount%5D%20%3D%20item%3B%0A%20%20s-%3Ecount%2B%2B%3B%0A%7D%0A%0Aint%20stack_pop%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3E%200%29%3B%0A%20%20s-%3Ecount--%3B%0A%20%20return%20s-%3Edata%5Bs-%3Ecount%5D%3B%0A%7D%0A%0Aint%20stack_full%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%20CAPACITY%29%3B%0A%7D%0A%0Aint%20stack_peek%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20int%20top%20%3D%20s-%3Edata%5Bs-%3Ecount%20-%201%5D%3B%0A%20%20return%20top%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulacion</a>) hace lo siguiente:</p>
@@ -1056,11 +1115,18 @@ title="Print to PDF"
 <figure class="align-default" id="id2">
 <img alt="../_images/CH_02-S06-stack_fig3a.png" src="../_images/CH_02-S06-stack_fig3a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ol>
+</section>
+<section id="id3">
+<h3>Ejemplos<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Simulacion 1</strong> (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0Atypedef%20struct%20_node%20%7B%0A%20%20%20%20int%20item%3B%0A%20%20%20%20struct%20_node*%20next%3B%0A%7Dnode%3B%0A%0Atypedef%20struct%20_list%20%7B%0A%20%20%20%20node%20*head%3B%0A%7D%20list%3B%0A%0Alist*%20List_new%28void%29%3B%0Aint%20List_empty%28list%20*%29%3B%0Avoid%20List_insert_at_begin%28list%20*,%20int%29%3B%0Avoid%20List_insert_at_end%28list%20*,%20int%29%3B%0Avoid%20List_print%28list%20*,%20int%29%3B%0Aint%20List_length%28list%20*%29%3B%0Anode*%20List_search%28list%20*,%20int%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20list%20*L%20%3D%20List_new%28%29%3B%0A%20%20%20%20List_insert_at_begin%28L,%2065%29%3B%0A%20%20%20%20List_insert_at_begin%28L,%2045%29%3B%0A%20%20%20%20List_insert_at_end%28L,%2034%29%3B%0A%20%20%20%20List_insert_at_end%28L,%2036%29%3B%0A%20%20%20%20List_print%28L,1%29%3B%0A%20%20%20%20List_print%28L,2%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0A%0Alist*%20List_new%28void%29%20%7B%0A%20%20%20%20list%20*L%20%3D%20malloc%28sizeof%28L%29%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20L-%3Ehead%20%3D%20NULL%3B%0A%20%20%20%20return%20L%3B%0A%7D%0A%0Aint%20List_empty%28list%20*L%29%20%7B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20return%20%28L-%3Ehead%20%3D%3D%20NULL%29%3B%0A%7D%0A%0Avoid%20List_insert_at_begin%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20new-%3Eitem%20%3D%20item%3B%0A%20%20%20%20if%20%28L-%3Ehead%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20//%20El%20resto%20de%20los%20elementos%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20//%20Primer%20elemento%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%7D%0A%0Avoid%20List_insert_at_end%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20new-%3Eitem%20%3D%20item%3B%0A%20%20%20%20if%20%28L-%3Ehead%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20while%20%28current-%3Enext%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20current-%3Enext%20%3D%20new%3B%0A%20%20%20%20%7D%20%20%20%20%0A%7D%0A%0Aint%20List_length%28list%20*L%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20int%20count%20%3D%200%3B%0A%20%20%20%20while%20%28current%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20count%2B%2B%3B%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20count%3B%0A%7D%0A%0A%0Avoid%20List_print%28list%20*L,%20int%20opt%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20if%20%28current%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Empty%20list.%5Cn%22%29%3B%0A%20%20%20%20%7D%20%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20switch%20%28opt%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20case%201%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%5D%20-%3E%20%22,%20current-%3Eitem%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5BX%5D%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20case%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20for%28%3B%20current-%3Enext%20%21%3D%20NULL%3B%20current%20%3D%20current-%3Enext%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%7C%25p%5D%20-%3E%20%22,%20current-%3Eitem,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%7C%25p%5D%5Cn%22,%20current-%3Eitem,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20default%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22Invalid%20option.%5Cn%22%29%3B%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%20%0A%7D%0A%0Anode*%20List_lookup%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20if%20%28current-%3Eitem%20%3D%3D%20item%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20current%3B%20//%20success%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20NULL%3B%20//%20failure%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulacion</a>)</p></li>
+<li><p><strong>Simulacion 2</strong> (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0Atypedef%20struct%20_node%20%7B%0A%20%20%20%20int%20item%3B%0A%20%20%20%20struct%20_node*%20next%3B%0A%7Dnode%3B%0A%0Atypedef%20struct%20_list%20%7B%0A%20%20%20%20node%20*head%3B%0A%7D%20list%3B%0A%0Aint%20List_empty%28list%20*%29%3B%0Avoid%20List_insert_at_begin%28list%20*,%20int%29%3B%0Avoid%20List_insert_at_end%28list%20*,%20int%29%3B%0Avoid%20List_print%28list%20*,%20int%29%3B%0Aint%20List_length%28list%20*%29%3B%0Anode*%20List_search%28list%20*,%20int%29%3B%0Avoid%20List_init%28list%20*%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20list%20L%3B%20%0A%20%20%20%20List_init%28%26L%29%3B%0A%20%20%20%20List_insert_at_begin%28%26L,%2065%29%3B%0A%20%20%20%20List_insert_at_begin%28%26L,%2045%29%3B%0A%20%20%20%20List_insert_at_end%28%26L,%2034%29%3B%0A%20%20%20%20List_insert_at_end%28%26L,%2036%29%3B%0A%20%20%20%20List_print%28%26L,1%29%3B%0A%20%20%20%20List_print%28%26L,2%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20List_init%28list%20*L%29%20%7B%0A%20%20%20%20L-%3Ehead%20%3D%20NULL%3B%0A%20%20%20%20return%20L%3B%0A%7D%0A%0Aint%20List_empty%28list%20*L%29%20%7B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20return%20%28L-%3Ehead%20%3D%3D%20NULL%29%3B%0A%7D%0A%0Avoid%20List_insert_at_begin%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20new-%3Eitem%20%3D%20item%3B%0A%20%20%20%20if%20%28L-%3Ehead%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20//%20El%20resto%20de%20los%20elementos%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20//%20Primer%20elemento%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%7D%0A%0Avoid%20List_insert_at_end%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20new-%3Eitem%20%3D%20item%3B%0A%20%20%20%20if%20%28L-%3Ehead%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20while%20%28current-%3Enext%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20current-%3Enext%20%3D%20new%3B%0A%20%20%20%20%7D%20%20%20%20%0A%7D%0A%0Aint%20List_length%28list%20*L%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20int%20count%20%3D%200%3B%0A%20%20%20%20while%20%28current%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20count%2B%2B%3B%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20count%3B%0A%7D%0A%0A%0Avoid%20List_print%28list%20*L,%20int%20opt%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20if%20%28current%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Empty%20list.%5Cn%22%29%3B%0A%20%20%20%20%7D%20%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20switch%20%28opt%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20case%201%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%5D%20-%3E%20%22,%20current-%3Eitem%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5BX%5D%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20case%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20for%28%3B%20current-%3Enext%20%21%3D%20NULL%3B%20current%20%3D%20current-%3Enext%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%7C%25p%5D%20-%3E%20%22,%20current-%3Eitem,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%7C%25p%5D%5Cn%22,%20current-%3Eitem,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20default%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22Invalid%20option.%5Cn%22%29%3B%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%20%0A%7D%0A%0Anode*%20List_lookup%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20if%20%28current-%3Eitem%20%3D%3D%20item%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20current%3B%20//%20success%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20NULL%3B%20//%20failure%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">link</a>)</p></li>
+</ul>
 </section>
 </section>
 <section id="enlaces">
