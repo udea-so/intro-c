@@ -669,7 +669,7 @@ title="Print to PDF"
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list*</span> <span class="pre">List_new(void)</span></code></p></td>
-<td><p>Crea a inicializa una lista sin elementos creando un nodo <code class="docutils literal notranslate"><span class="pre">dummy</span></code> el cual es asociado al <code class="docutils literal notranslate"><span class="pre">head</span></code> de la lista</p></td>
+<td><p>Crea e inicializa una nueva lista</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_init(list</span> <span class="pre">*L)</span></code></p></td>
 <td><p>Iniclizaliza una lista vacia haciendo que el apuntador <code class="docutils literal notranslate"><span class="pre">head</span></code> se inicialice en <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></td>
@@ -680,35 +680,40 @@ title="Print to PDF"
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">List_length(list</span> <span class="pre">*L)</span></code></p></td>
 <td><p>Obtiene la longitud de la lista</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_insert_at_begin(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">item)</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node*</span> <span class="pre">List_lookup(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">item)</span></code></p></td>
+<td><p>Obtiene un puntero al nodo de la lista cuyo valor es <code class="docutils literal notranslate"><span class="pre">item</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_insert_at_begin(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">item)</span></code></p></td>
 <td><p>Inserta un nodo cuyo valor es <code class="docutils literal notranslate"><span class="pre">item</span></code> al principio de la lista</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_insert_at_end(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">item)</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_insert_at_end(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">item)</span></code></p></td>
 <td><p>Inserta un nodo cuyo valor es <code class="docutils literal notranslate"><span class="pre">item</span></code> al final de la lista</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">List_delete_at_begin(list</span> <span class="pre">*L)</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">List_delete_at_begin(list</span> <span class="pre">*L)</span></code></p></td>
 <td><p>Elimina el nodo que se encuentra al principio de la lista</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">List_delete_at_end(list</span> <span class="pre">*L)</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">List_delete_at_end(list</span> <span class="pre">*L)</span></code></p></td>
 <td><p>Elimina el nodo que se encuentra al final de la lista</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">List_delete_item(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">item)</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">List_delete_item(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">item)</span></code></p></td>
 <td><p>Elimina el nodo cuyo valor es <code class="docutils literal notranslate"><span class="pre">item</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node*</span> <span class="pre">List_search(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">item)</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node*</span> <span class="pre">List_search(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">item)</span></code></p></td>
 <td><p>Elimina el nodo que se encuentra al final de la lista</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_print(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">opt)</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_print(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">opt)</span></code></p></td>
 <td><p>Imprime el contenido de la lista enlazada</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_clean(void)</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_clean(list</span> <span class="pre">*L)</span></code></p></td>
 <td><p>Vacia una lista enlazada</p></td>
 </tr>
 </tbody>
 </table>
 <p>A continuación se muestra la implementación en C de cada una de las funciones anteriormente descritas.</p>
+<p>Es un nodo que no contiene datos significativos y sirve como marcador o punto de referencia en la estructura. Los nodos ficticios pueden simplificar la implementación y el manejo de ciertas operaciones, como la inserción y eliminación de nodos.</p>
+<p>Simplificación del código: Facilita el manejo de casos especiales, como la inserción o eliminación en una lista vacía o en la cabeza de la lista.</p>
 <ul>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_new</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_new</span></code></strong>: En esta función permite crear nueva lista en el heap, inicializando su miembro <code class="docutils literal notranslate"><span class="pre">head</span></code> y retornando un apuntador a esta.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">list</span><span class="o">*</span><span class="w"> </span><span class="nf">List_new</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">L</span><span class="p">));</span><span class="w"></span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
@@ -718,7 +723,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_init</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_init</span></code></strong>: Inicializa el nodo <code class="docutils literal notranslate"><span class="pre">head</span></code> de una lista.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">List_init</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"></span>
@@ -726,7 +731,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_empty</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_empty</span></code></strong>: Determina si una lista <code class="docutils literal notranslate"><span class="pre">L</span></code> esta vacia retornando <code class="docutils literal notranslate"><span class="pre">1</span></code> si en efecto lo esta o <code class="docutils literal notranslate"><span class="pre">0</span></code> en caso contrario.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">List_empty</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
@@ -734,7 +739,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_length</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_length</span></code></strong>: Determina la longitud (numero de nodos que tiene la lista) de una lista <code class="docutils literal notranslate"><span class="pre">L</span></code>.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">List_length</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
@@ -747,7 +752,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_insert_at_begin</span></code></strong>: .</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_insert_at_begin</span></code></strong>: Inserta un nodo cuyo valor es <code class="docutils literal notranslate"><span class="pre">item</span></code> al principio de la lista.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">List_insert_at_begin</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node</span><span class="p">));</span><span class="w"></span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
@@ -767,7 +772,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_insert_at_end</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_insert_at_end</span></code></strong>: Inserta un nodo con valor <code class="docutils literal notranslate"><span class="pre">item</span></code> al final de la lista.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">List_insert_at_end</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node</span><span class="p">));</span><span class="w"></span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
@@ -789,7 +794,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_delete_at_begin</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_delete_at_begin</span></code></strong>: Elimina el primer nodo de la lista devolviendo <code class="docutils literal notranslate"><span class="pre">0</span></code> si la operación es correcta o <code class="docutils literal notranslate"><span class="pre">-1</span></code> en caso contrario</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">List_delete_at_begin</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty List</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
@@ -805,7 +810,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_delete_at_end</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_delete_at_end</span></code></strong>: Elimina el ultimo nodo de la lista devolviendo <code class="docutils literal notranslate"><span class="pre">0</span></code> si la operación es correcta o <code class="docutils literal notranslate"><span class="pre">-1</span></code> en caso contrario</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">List_delete_at_end</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty List</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
@@ -830,7 +835,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_seach</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_seach</span></code></strong>: Devuelve un puntero al nodo de la lista <code class="docutils literal notranslate"><span class="pre">L</span></code> cuyo valor es <code class="docutils literal notranslate"><span class="pre">item</span></code>. En caso de que el valor no se encuentre en la lista el valor devuelto es <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">node</span><span class="o">*</span><span class="w"> </span><span class="nf">List_search</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -844,9 +849,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_delete_item</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_delete_item</span></code></strong>: Elimina el nodo de la lista cuyo valor es <code class="docutils literal notranslate"><span class="pre">item</span></code>. El valor retornado es <code class="docutils literal notranslate"><span class="pre">0</span></code> si la operacion es correcta o <code class="docutils literal notranslate"><span class="pre">-1</span></code> si hay fallas.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">List_delete_item</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty List</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
@@ -855,7 +859,6 @@ title="Print to PDF"
 <span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">i</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="c1">// First node</span>
@@ -883,7 +886,11 @@ title="Print to PDF"
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_print</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">List_print</span></code></strong>: Imprime el contenido de la lista enlazada dependiendo de la opción (<code class="docutils literal notranslate"><span class="pre">opt</span></code>) elegida:</p>
+<ul class="simple">
+<li><p><strong>Impresión de la lista mostrando solo datos</strong>: Si <code class="docutils literal notranslate"><span class="pre">opc</span> <span class="pre">=</span> <span class="pre">1</span></code> se imprimen los datos de cada uno de los nodos de la lista enlazada.</p></li>
+<li><p><strong>Impresión mostrando direcciones y datos</strong>: Si <code class="docutils literal notranslate"><span class="pre">opc</span> <span class="pre">=</span> <span class="pre">2</span></code> se imprimen componentes (dato y apuntador al siguiente nodo) de cada uno de los nodos de la lista enlazada.</p></li>
+</ul>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">List_print</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">opt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -918,30 +925,30 @@ title="Print to PDF"
 </section>
 <section id="uso-de-la-estructura-list">
 <h2>3. Uso de la estructura <code class="docutils literal notranslate"><span class="pre">list</span></code><a class="headerlink" href="#uso-de-la-estructura-list" title="Permalink to this headline">#</a></h2>
-<p>Recordemos que el <strong>programa cliente</strong> es aquel que hace el llamado de las funciones definidas en bibliotecas, modulos o clases para realizar determinadas tareas.</p>
-<p>En un programa, la función encargada de iniciar la ejecución de este es la función <code class="docutils literal notranslate"><span class="pre">main</span></code>. En esta función, se implementa la logica de la aplicación mediante el llamado a las funciones que han sido previamente definidas tal y como se muestra en la siguiente figura:</p>
-<figure class="align-default" id="stack-fig1a">
-<img alt="../_images/CH_02-S06-stack_fig1b.png" src="../_images/CH_02-S06-stack_fig1b.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Función <code class="docutils literal notranslate"><span class="pre">main</span></code></span><a class="headerlink" href="#stack-fig1a" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>El siguiente código, muestra el caso como seria un programa de un solo archivo en el cual se hace uso de la estructura <code class="docutils literal notranslate"><span class="pre">stack</span></code>. Notese que al implementarse la logica de la aplicación función <code class="docutils literal notranslate"><span class="pre">main</span></code>, las instrucciones se definen de acuerdo a los requerimientos de la aplicación.</p>
+<p>El siguiente código muestra el esqueleto de un programa en el cual se va a hacer uso de <strong>Listas enlazadas</strong>:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
 
+<span class="cm">/*</span>
+<span class="cm">Definicion de las estructuras de datos</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="c1">// Estructura nodo (node)</span>
 <span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="n">node</span><span class="p">;</span><span class="w"></span>
 
+<span class="c1">// Estructura lista (list)</span>
 <span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_list</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"> </span><span class="n">list</span><span class="p">;</span><span class="w"></span>
 
+<span class="cm">/*</span>
+<span class="cm">Declaración de las funciones asociadas a la pila</span>
+<span class="cm">*/</span><span class="w"></span>
 <span class="n">list</span><span class="o">*</span><span class="w"> </span><span class="nf">List_new</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">List_init</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">List_empty</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">List_insert_at_begin</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">List_insert_at_end</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
@@ -949,176 +956,192 @@ title="Print to PDF"
 <span class="kt">int</span><span class="w"> </span><span class="nf">List_length</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">List_delete_at_begin</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">List_delete_at_end</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
-<span class="n">node</span><span class="o">*</span><span class="w"> </span><span class="nf">List_search</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">List_delete</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="n">node</span><span class="o">*</span><span class="w"> </span><span class="nf">List_lookup</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">List_delete_item</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">);</span><span class="w"></span>
 
+<span class="cm">/*</span>
+<span class="cm">Funcion principal</span>
+<span class="cm">*/</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List_new</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_insert_at_begin</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_insert_at_begin</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_insert_at_begin</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_delete_at_begin</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_delete_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_delete_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_delete_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Codigo de la aplicacion</span>
+<span class="w">  </span><span class="p">...</span><span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-
+<span class="cm">/*</span>
+<span class="cm">Definicion de las funciones asociadas a la lista enlazada</span>
+<span class="cm">*/</span><span class="w"></span>
 <span class="n">list</span><span class="o">*</span><span class="w"> </span><span class="nf">List_new</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">L</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">List_init</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">L</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">List_empty</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">List_insert_at_begin</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// El resto de los elementos</span>
-<span class="w">        </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// Primer elemento</span>
-<span class="w">        </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// El resto de los elementos</span>
+<span class="w">    </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Primer elemento</span>
+<span class="w">    </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">List_insert_at_end</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w">    </span>
+<span class="w">    </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">    </span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">List_length</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">List_print</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">opt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Empty list.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">opt</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"></span>
-<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[%d] -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="p">);</span><span class="w"></span>
-<span class="w">                </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"> </span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[X]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"></span>
-<span class="w">            </span><span class="k">for</span><span class="p">(;</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[%d|%p] -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[%d|%p]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Invalid option.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w">            </span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Empty list.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">opt</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[%d] -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="p">);</span><span class="w"></span>
+<span class="w">          </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[X]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[%d|%p] -&gt; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[%d|%p]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Invalid option.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w">            </span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">List_delete_at_begin</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty List</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">free</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty List</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">List_delete_at_end</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty List</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">free</span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">            </span>
-<span class="w">            </span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span>
-<span class="w">        </span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">free</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w">       </span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="n">node</span><span class="o">*</span><span class="w"> </span><span class="nf">List_search</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty List</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="p">;</span><span class="w"> </span><span class="c1">// success</span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="c1">// failure</span>
+<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">            </span>
+<span class="w">      </span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w">       </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">List_delete</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// ToDo...</span>
+<span class="n">node</span><span class="o">*</span><span class="w"> </span><span class="nf">List_lookup</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">current</span><span class="p">;</span><span class="w"> </span><span class="c1">// success</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="c1">// failure</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">List_delete_item</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty List</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// First node</span>
+<span class="w">        </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">free</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w">                </span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">free</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w">            </span>
+<span class="w">    </span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Last node</span>
+<span class="w">    </span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">        </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Value not found</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">List_clean</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List_length</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">List_delete_at_begin</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1130,7 +1153,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig2">
 <img alt="../_images/CH_02-S06-stack_fig2.png" src="../_images/CH_02-S06-stack_fig2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Pila asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Pila asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>El siguiente fragmento de código hace uso de las funciones definidas anteriormente para:</p>
@@ -1147,7 +1170,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig2a">
 <img alt="../_images/CH_02-S06-stack_fig2a.png" src="../_images/CH_02-S06-stack_fig2a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#stack-fig2a" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#stack-fig2a" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1155,7 +1178,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig3">
 <img alt="../_images/CH_02-S06-stack_fig3.png" src="../_images/CH_02-S06-stack_fig3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Pila asociada al ejemplo anterior</span><a class="headerlink" href="#stack-fig3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Pila asociada al ejemplo anterior</span><a class="headerlink" href="#stack-fig3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>La implementación realizada en el siguiente fragmento de código (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0A%23define%20CAPACITY%203%0A%0Atypedef%20struct%20_stack%20%7B%0A%20%20int%20count%3B%0A%20%20int%20data%5BCAPACITY%5D%3B%0A%7D%20stack%3B%0A%0Avoid%20stack_init%28stack%20*s%29%3B%0Aint%20stack_empty%28stack%20*s%29%3B%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%3B%0Aint%20stack_pop%28stack%20*s%29%3B%0Aint%20stack_full%28stack%20*s%29%3B%0Aint%20stack_peek%28stack%20*s%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20stack%20S%3B%0A%20%20stack_init%28%26S%29%3B%20%20%20%20//%20S%20%3D%20%5B%20%5D%20%3A%20Lista%20vacia%0A%20%20stack_push%28%26S,%201%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%201%5D%0A%20%20stack_push%28%26S,%202%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%0A%20%20stack_push%28%26S,%203%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%203,%202%20,%201%5D%0A%20%20int%20e%20%3D%20stack_pop%28%26S%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%20%3B%20e%20%3D%203%0A%20%20printf%28%22Elemento%20sacado%20de%20la%20pila%3A%20%25d%5Cn%22,%20e%29%3B%0A%20%20printf%28%22Elementos%20disponibles%20en%20la%20pila%3A%20%25d%20%5Cn%22,%20%20S.count%29%3B%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20stack_init%28stack%20*s%29%20%7B%20%0A%20%20s-%3Ecount%20%3D%200%3B%0A%7D%0A%0Aint%20stack_empty%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%200%29%3B%0A%7D%0A%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3C%20CAPACITY%29%3B%0A%20%20s-%3Edata%5Bs-%3Ecount%5D%20%3D%20item%3B%0A%20%20s-%3Ecount%2B%2B%3B%0A%7D%0A%0Aint%20stack_pop%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3E%200%29%3B%0A%20%20s-%3Ecount--%3B%0A%20%20return%20s-%3Edata%5Bs-%3Ecount%5D%3B%0A%7D%0A%0Aint%20stack_full%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%20CAPACITY%29%3B%0A%7D%0A%0Aint%20stack_peek%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20int%20top%20%3D%20s-%3Edata%5Bs-%3Ecount%20-%201%5D%3B%0A%20%20return%20top%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulacion</a>) hace lo siguiente:</p>
@@ -1200,7 +1223,7 @@ title="Print to PDF"
 <figure class="align-default" id="id3">
 <img alt="../_images/CH_02-S06-stack_fig3a.png" src="../_images/CH_02-S06-stack_fig3a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 98 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
