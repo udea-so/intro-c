@@ -25,25 +25,34 @@ int List_delete_item(list *L, int item);
 void List_clean(list *L);
 
 int main() {
-    list *L = List_new();   
+    list *L = (list *)malloc(sizeof(list)); 
+    List_init(L);
     List_insert_at_end(L, 1);
     List_insert_at_end(L, 2);
     List_insert_at_end(L, 3);
     List_insert_at_end(L, 4);
     List_insert_at_end(L, 5);
+    printf("Lista inicial: ");
     List_print(L,1);
-    List_print(L,2);
-    List_delete_item(L,7);
-    List_print(L,2);
-    List_delete_item(L,1);
-    List_delete_item(L,5);
-    List_delete_item(L,3);
-    List_print(L,2);
+    List_delete_at_begin(L);
+    printf("Lista al borrar el primer elemento (1): ");
+    List_print(L,1);
+    List_delete_at_end(L);
+    printf("Lista al borrar ultimo elemento elemento (5): ");
+    List_print(L,1);
+    printf("Lista al borrar el elemento de la mitad (3): ");
+    List_delete_item(L, 3);
+    List_print(L,1);
     List_clean(L);
+    printf("Lista al ser limpiada: ");
     List_print(L,1);
+    free(L);
     return 0;
 }
 
+void List_init(list *L) {
+    L->head = NULL;
+}
 
 list* List_new(void) {
     list *L = malloc(sizeof(L));
@@ -52,9 +61,7 @@ list* List_new(void) {
     return L;
 }
 
-void List_init(list *L) {
-    L->head = NULL;
-}
+
 
 int List_empty(list *L) {
     assert(L != NULL);

@@ -12,6 +12,7 @@ typedef struct _list {
 } list;
 
 list* List_new(void);
+void List_init(list *);
 int List_empty(list *);
 void List_insert_at_begin(list *, int);
 void List_insert_at_end(list *, int);
@@ -20,32 +21,19 @@ int List_length(list *);
 int List_delete_at_begin(list *);
 int List_delete_at_end(list *);
 node* List_lookup(list *, int);
+void List_clean(list *L);
 
 int main() {
     list *L = List_new();
-    List_insert_at_begin(L, 1);
-    List_print(L,1);
-    List_insert_at_begin(L, 2);
-    List_insert_at_begin(L, 3);
-    List_print(L,2);
-    List_insert_at_end(L, 0);
-    List_print(L,1);
-    List_print(L,2);
-    List_delete_at_begin(L);
-    List_print(L,1);
-    List_delete_at_end(L);
-    List_print(L,2);
-    List_delete_at_end(L);
-    List_print(L,1);
-    List_delete_at_end(L);
-    List_print(L,1);
-    List_insert_at_end(L, 1);
-    List_insert_at_end(L, 2);
-    List_insert_at_end(L, 3);
+    List_insert_at_begin(L, 65);
+    List_insert_at_begin(L, 45);
+    List_insert_at_end(L, 34);
+    List_insert_at_end(L, 36);
     List_print(L,1);
     List_print(L,2);
     return 0;
 }
+
 
 
 list* List_new(void) {
@@ -53,6 +41,10 @@ list* List_new(void) {
     assert(L != NULL);
     L->head = NULL;
     return L;
+}
+
+void List_init(list *L) {
+    L->head = NULL;
 }
 
 int List_empty(list *L) {
@@ -181,3 +173,43 @@ node* List_lookup(list *L, int item) {
     return NULL; // failure
 }
 
+int List_delete_item(list *L, int item) {
+    assert(L != NULL);
+    if (L->head == NULL) {
+        printf("ERROR: Empty List\n");
+        return -1;
+    }
+    node *current = L->head;
+    node *prev;
+    while(current->next != NULL) {
+        if(current->item == item) {
+            if(current == L->head) {
+                // First node
+                L->head = current->next;
+                free(current);                
+            }
+            else {
+                prev->next = current->next;
+                free(current);
+            }
+            return 0;
+        }            
+        prev = current;
+        current = current->next;
+    }
+    if(current->item == item) {
+        // Last node
+        prev->next = NULL;
+        free(current);
+        return 0;        
+    }
+    printf("ERROR: Value not found\n");
+    return -1;
+}
+
+void List_clean(list *L) {
+    int len = List_length(L);
+    for(int i = 0; i < len; i++) {
+        List_delete_at_begin(L);
+    }
+}

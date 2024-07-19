@@ -12,7 +12,7 @@ typedef struct _list {
 } list;
 
 list* List_new(void);
-int List_empty(list *);
+int List_init(list *);
 void List_insert_at_begin(list *, int);
 void List_insert_at_end(list *, int);
 void List_print(list *, int);
@@ -20,6 +20,7 @@ int List_length(list *);
 int List_delete_at_begin(list *);
 int List_delete_at_end(list *);
 node* List_lookup(list *, int);
+void List_clean(list *L);
 
 int main() {
     list *L = List_new();
@@ -44,6 +45,8 @@ int main() {
     List_insert_at_end(L, 3);
     List_print(L,1);
     List_print(L,2);
+    List_clean(L);
+    List_print(L,1);
     return 0;
 }
 
@@ -55,7 +58,7 @@ list* List_new(void) {
     return L;
 }
 
-int List_empty(list *L) {
+int List_init(list *L) {
     assert(L != NULL);
     return (L->head == NULL);
 }
@@ -181,3 +184,9 @@ node* List_lookup(list *L, int item) {
     return NULL; // failure
 }
 
+void List_clean(list *L) {
+    int len = List_length(L);
+    for(int i = 0; i < len; i++) {
+        List_delete_at_begin(L);
+    }
+}

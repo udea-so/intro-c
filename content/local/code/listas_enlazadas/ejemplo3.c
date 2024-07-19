@@ -25,25 +25,39 @@ int List_delete_item(list *L, int item);
 void List_clean(list *L);
 
 int main() {
-    list *L = List_new();   
-    List_insert_at_end(L, 1);
-    List_insert_at_end(L, 2);
-    List_insert_at_end(L, 3);
-    List_insert_at_end(L, 4);
-    List_insert_at_end(L, 5);
-    List_print(L,1);
-    List_print(L,2);
-    List_delete_item(L,7);
-    List_print(L,2);
-    List_delete_item(L,1);
-    List_delete_item(L,5);
-    List_delete_item(L,3);
-    List_print(L,2);
-    List_clean(L);
-    List_print(L,1);
+    list L;
+    List_init(&L);
+    List_insert_at_begin(&L, 3);
+    List_insert_at_begin(&L, 2);
+    List_insert_at_begin(&L, 1);
+    printf("Lista inicial: \n");
+    printf("   ");
+    List_print(&L,1);
+    printf("   ");
+    List_print(&L,2);
+    printf("\n");
+    printf("Tamaño de la lista: %d\n",List_length(&L));
+    node *n;
+    int data = 3;
+    if ((n = List_lookup(&L,data)) != NULL) {
+        printf("Nodo con valor %d encontrado\n", n->item);
+    }
+    else {
+        printf("Nodo con valor %d no encontrado\n", data);
+    }
+    data = 5;
+    if ((n = List_lookup(&L,data)) != NULL) {
+        printf("Nodo con valor %d encontrado\n", n->item);
+    }
+    else {
+        printf("Nodo con valor %d no encontrado\n", data);
+    }
     return 0;
 }
 
+void List_init(list *L) {
+    L->head = NULL;
+}
 
 list* List_new(void) {
     list *L = malloc(sizeof(L));
@@ -52,9 +66,7 @@ list* List_new(void) {
     return L;
 }
 
-void List_init(list *L) {
-    L->head = NULL;
-}
+
 
 int List_empty(list *L) {
     assert(L != NULL);
