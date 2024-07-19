@@ -463,16 +463,22 @@ title="Print to PDF"
      3.1. Ejemplos
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     Ejemplos
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construccion-de-una-pila-stack-a-partir-de-una-lista-enlazada">
+   6. Construcción de una pila (
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     stack
+    </span>
+   </code>
+   ) a partir de una lista enlazada
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#enlaces">
-   4. Enlaces
+   5. Enlaces
   </a>
  </li>
 </ul>
@@ -549,16 +555,22 @@ title="Print to PDF"
      3.1. Ejemplos
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     Ejemplos
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construccion-de-una-pila-stack-a-partir-de-una-lista-enlazada">
+   6. Construcción de una pila (
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     stack
+    </span>
+   </code>
+   ) a partir de una lista enlazada
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#enlaces">
-   4. Enlaces
+   5. Enlaces
   </a>
  </li>
 </ul>
@@ -726,7 +738,6 @@ title="Print to PDF"
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">List_init</span></code></strong>: Inicializa el nodo <code class="docutils literal notranslate"><span class="pre">head</span></code> de una lista.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">List_init</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">L</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1147,98 +1158,193 @@ title="Print to PDF"
 </div>
 <section id="ejemplos">
 <h3>3.1. Ejemplos<a class="headerlink" href="#ejemplos" title="Permalink to this headline">#</a></h3>
-<p>Asumiendo xxx</p>
 <ol>
-<li><p><strong>Codigo 1</strong>: Mediante código implemente la siguiente pila:</p>
+<li><p><strong>Codigo 1</strong>: Mediante código implemente la siguiente lista enlazada:</p>
 <figure class="align-default" id="stack-fig2">
-<img alt="../_images/CH_02-S06-stack_fig2.png" src="../_images/CH_02-S06-stack_fig2.png" />
+<img alt="../_images/CH_02-S07-LL_fig4.png" src="../_images/CH_02-S07-LL_fig4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Pila asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Lista enlazada asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>El siguiente fragmento de código hace uso de las funciones definidas anteriormente para:</p>
+<p>El siguiente fragmento de código (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0A%23define%20CAPACITY%203%0A%0Atypedef%20struct%20_stack%20%7B%0A%20%20int%20count%3B%0A%20%20int%20data%5BCAPACITY%5D%3B%0A%7D%20stack%3B%0A%0Avoid%20stack_init%28stack%20*s%29%3B%0Aint%20stack_empty%28stack%20*s%29%3B%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%3B%0Aint%20stack_pop%28stack%20*s%29%3B%0Aint%20stack_full%28stack%20*s%29%3B%0Aint%20stack_peek%28stack%20*s%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20stack%20S%3B%0A%20%20stack_init%28%26S%29%3B%20%20%20%20//%20S%20%3D%20%5B%20%5D%20%3A%20Lista%20vacia%0A%20%20stack_push%28%26S,%201%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%201%5D%0A%20%20stack_push%28%26S,%202%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%0A%20%20stack_push%28%26S,%203%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%203,%202%20,%201%5D%0A%20%20int%20e%20%3D%20stack_pop%28%26S%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%20%3B%20e%20%3D%203%0A%20%20printf%28%22Elemento%20sacado%20de%20la%20pila%3A%20%25d%5Cn%22,%20e%29%3B%0A%20%20printf%28%22Elementos%20disponibles%20en%20la%20pila%3A%20%25d%20%5Cn%22,%20%20S.count%29%3B%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20stack_init%28stack%20*s%29%20%7B%20%0A%20%20s-%3Ecount%20%3D%200%3B%0A%7D%0A%0Aint%20stack_empty%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%200%29%3B%0A%7D%0A%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3C%20CAPACITY%29%3B%0A%20%20s-%3Edata%5Bs-%3Ecount%5D%20%3D%20item%3B%0A%20%20s-%3Ecount%2B%2B%3B%0A%7D%0A%0Aint%20stack_pop%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3E%200%29%3B%0A%20%20s-%3Ecount--%3B%0A%20%20return%20s-%3Edata%5Bs-%3Ecount%5D%3B%0A%7D%0A%0Aint%20stack_full%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%20CAPACITY%29%3B%0A%7D%0A%0Aint%20stack_peek%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20int%20top%20%3D%20s-%3Edata%5Bs-%3Ecount%20-%201%5D%3B%0A%20%20return%20top%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulacion</a>) hace uso de las funciones definidas anteriormente para:</p>
 <ul class="simple">
-<li><p>Inicializar una pila (<code class="docutils literal notranslate"><span class="pre">S</span></code>).</p></li>
-<li><p>Agregar tres elementos a la pila: <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code> y <code class="docutils literal notranslate"><span class="pre">3</span></code> respectivamente.</p></li>
-<li><p>Mostrar si la pila esta vacia, llena o parcialmente llena (indicando el numero de elementos que puede se pueden colocar).</p></li>
-<li><p>Mostrar cada vez que se agrega un elemento el valor del tope (<code class="docutils literal notranslate"><span class="pre">top</span></code>) de la pila.</p></li>
+<li><p>Crear una nueva lista enlazada en el <code class="docutils literal notranslate"><span class="pre">heap</span></code> (<code class="docutils literal notranslate"><span class="pre">L</span></code>) mediante la función <code class="docutils literal notranslate"><span class="pre">List_new</span></code>.</p></li>
+<li><p>Agregar los nodos de la lista (<code class="docutils literal notranslate"><span class="pre">45</span></code>, <code class="docutils literal notranslate"><span class="pre">65</span></code>, <code class="docutils literal notranslate"><span class="pre">34</span></code> y <code class="docutils literal notranslate"><span class="pre">36</span></code>) respectivamente. Esto se hace usando las funciones <code class="docutils literal notranslate"><span class="pre">List_insert_at_begin</span></code> y <code class="docutils literal notranslate"><span class="pre">List_insert_at_end</span></code>.</p></li>
+<li><p>Imprimir la lista enlazada de las dos formas (Normal y detallada).</p></li>
 </ul>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">...</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List_new</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_begin</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_begin</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">34</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">36</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
 </pre></div>
 </div>
 <p>El resultado del código anterior, se muestra a continuación:</p>
-<figure class="align-default" id="stack-fig2a">
-<img alt="../_images/CH_02-S06-stack_fig2a.png" src="../_images/CH_02-S06-stack_fig2a.png" />
+<figure class="align-default" id="stack-fig6">
+<img alt="../_images/CH_02-S07-LL_fig6.png" src="../_images/CH_02-S07-LL_fig6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#stack-fig2a" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Lista enlazada resultante.</span><a class="headerlink" href="#stack-fig6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>El resultado en pantalla se muestra en la siguiente figura:</p>
+<p>El resultado del código anterior, se muestra a continuación:</p>
+<figure class="align-default" id="id3">
+<img alt="../_images/CH_02-S07-LL_fig6a.png" src="../_images/CH_02-S07-LL_fig6a.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Resultado en pantalla.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
-<li><p><strong>Codigo 2</strong>: Partiendo de la lista de 3 elementos anteriormente mostrada, saque el ultimo elemento agregado tal y como se muestra en la siguiente figura:</p>
+<li><p><strong>Codigo 2</strong>: El codigo que se muestra a continuación hace lo mismo que el código anterior (<strong>codigo 1</strong>), pero a diferencia de este ultimo, inicializa la lista, definiendo previamente una variable local (<code class="docutils literal notranslate"><span class="pre">L</span></code>) tipo <code class="docutils literal notranslate"><span class="pre">list</span></code> en el stack:</p>
 <figure class="align-default" id="stack-fig3">
-<img alt="../_images/CH_02-S06-stack_fig3.png" src="../_images/CH_02-S06-stack_fig3.png" />
+<img alt="content/local/img/CH_02-S06-stack_fig4.png" src="content/local/img/CH_02-S06-stack_fig4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Pila asociada al ejemplo anterior</span><a class="headerlink" href="#stack-fig3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Lista enlazada del ejemplo.</span><a class="headerlink" href="#stack-fig3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>La implementación realizada en el siguiente fragmento de código (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0A%23define%20CAPACITY%203%0A%0Atypedef%20struct%20_stack%20%7B%0A%20%20int%20count%3B%0A%20%20int%20data%5BCAPACITY%5D%3B%0A%7D%20stack%3B%0A%0Avoid%20stack_init%28stack%20*s%29%3B%0Aint%20stack_empty%28stack%20*s%29%3B%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%3B%0Aint%20stack_pop%28stack%20*s%29%3B%0Aint%20stack_full%28stack%20*s%29%3B%0Aint%20stack_peek%28stack%20*s%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20stack%20S%3B%0A%20%20stack_init%28%26S%29%3B%20%20%20%20//%20S%20%3D%20%5B%20%5D%20%3A%20Lista%20vacia%0A%20%20stack_push%28%26S,%201%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%201%5D%0A%20%20stack_push%28%26S,%202%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%0A%20%20stack_push%28%26S,%203%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%203,%202%20,%201%5D%0A%20%20int%20e%20%3D%20stack_pop%28%26S%29%3B%20//%20S%20%3D%20%5B%7Ctop%7C-%3E%202%20,%201%5D%20%3B%20e%20%3D%203%0A%20%20printf%28%22Elemento%20sacado%20de%20la%20pila%3A%20%25d%5Cn%22,%20e%29%3B%0A%20%20printf%28%22Elementos%20disponibles%20en%20la%20pila%3A%20%25d%20%5Cn%22,%20%20S.count%29%3B%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20stack_init%28stack%20*s%29%20%7B%20%0A%20%20s-%3Ecount%20%3D%200%3B%0A%7D%0A%0Aint%20stack_empty%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%200%29%3B%0A%7D%0A%0Avoid%20stack_push%28stack%20*s,%20int%20item%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3C%20CAPACITY%29%3B%0A%20%20s-%3Edata%5Bs-%3Ecount%5D%20%3D%20item%3B%0A%20%20s-%3Ecount%2B%2B%3B%0A%7D%0A%0Aint%20stack_pop%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20assert%28s-%3Ecount%20%3E%200%29%3B%0A%20%20s-%3Ecount--%3B%0A%20%20return%20s-%3Edata%5Bs-%3Ecount%5D%3B%0A%7D%0A%0Aint%20stack_full%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20return%20%28s-%3Ecount%20%3D%3D%20CAPACITY%29%3B%0A%7D%0A%0Aint%20stack_peek%28stack%20*s%29%20%7B%0A%20%20assert%28s%20%21%3D%20NULL%29%3B%0A%20%20int%20top%20%3D%20s-%3Edata%5Bs-%3Ecount%20-%201%5D%3B%0A%20%20return%20top%3B%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulacion</a>) hace lo siguiente:</p>
+<p>La implementación realizada en el siguiente fragmento de código (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0Atypedef%20struct%20_node%20%7B%0A%20%20%20%20int%20item%3B%0A%20%20%20%20struct%20_node*%20next%3B%0A%7Dnode%3B%0A%0Atypedef%20struct%20_list%20%7B%0A%20%20%20%20node%20*head%3B%0A%7D%20list%3B%0A%0Aint%20List_empty%28list%20*%29%3B%0Avoid%20List_insert_at_begin%28list%20*,%20int%29%3B%0Avoid%20List_insert_at_end%28list%20*,%20int%29%3B%0Avoid%20List_print%28list%20*,%20int%29%3B%0Aint%20List_length%28list%20*%29%3B%0Anode*%20List_search%28list%20*,%20int%29%3B%0Avoid%20List_init%28list%20*%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20list%20L%3B%20%0A%20%20%20%20List_init%28%26L%29%3B%0A%20%20%20%20List_insert_at_begin%28%26L,%2065%29%3B%0A%20%20%20%20List_insert_at_begin%28%26L,%2045%29%3B%0A%20%20%20%20List_insert_at_end%28%26L,%2034%29%3B%0A%20%20%20%20List_insert_at_end%28%26L,%2036%29%3B%0A%20%20%20%20List_print%28%26L,1%29%3B%0A%20%20%20%20List_print%28%26L,2%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20List_init%28list%20*L%29%20%7B%0A%20%20%20%20L-%3Ehead%20%3D%20NULL%3B%0A%20%20%20%20return%20L%3B%0A%7D%0A%0Aint%20List_empty%28list%20*L%29%20%7B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20return%20%28L-%3Ehead%20%3D%3D%20NULL%29%3B%0A%7D%0A%0Avoid%20List_insert_at_begin%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20new-%3Eitem%20%3D%20item%3B%0A%20%20%20%20if%20%28L-%3Ehead%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20//%20El%20resto%20de%20los%20elementos%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20//%20Primer%20elemento%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%7D%0A%0Avoid%20List_insert_at_end%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20new-%3Eitem%20%3D%20item%3B%0A%20%20%20%20if%20%28L-%3Ehead%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20while%20%28current-%3Enext%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20current-%3Enext%20%3D%20new%3B%0A%20%20%20%20%7D%20%20%20%20%0A%7D%0A%0Aint%20List_length%28list%20*L%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20int%20count%20%3D%200%3B%0A%20%20%20%20while%20%28current%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20count%2B%2B%3B%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20count%3B%0A%7D%0A%0A%0Avoid%20List_print%28list%20*L,%20int%20opt%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20if%20%28current%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Empty%20list.%5Cn%22%29%3B%0A%20%20%20%20%7D%20%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20switch%20%28opt%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20case%201%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%5D%20-%3E%20%22,%20current-%3Eitem%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5BX%5D%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20case%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20for%28%3B%20current-%3Enext%20%21%3D%20NULL%3B%20current%20%3D%20current-%3Enext%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%7C%25p%5D%20-%3E%20%22,%20current-%3Eitem,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%7C%25p%5D%5Cn%22,%20current-%3Eitem,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20default%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22Invalid%20option.%5Cn%22%29%3B%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%20%0A%7D%0A%0Anode*%20List_lookup%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20if%20%28current-%3Eitem%20%3D%3D%20item%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20current%3B%20//%20success%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20NULL%3B%20//%20failure%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulación</a>) hace lo siguiente:</p>
 <ul class="simple">
-<li><p>Inicializa la pila al estado inicial (<code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code> y <code class="docutils literal notranslate"><span class="pre">3</span></code>).</p></li>
-<li><p>Saca el ultimo elemento ingresado a la pila (<code class="docutils literal notranslate"><span class="pre">3</span></code>) imprimiendo su valor.</p></li>
-<li><p>Muestra la cantidad de elementos que quedan en la pila.</p></li>
+<li><p>Crear una nueva lista enlazada <code class="docutils literal notranslate"><span class="pre">L</span></code> (variable local) en el <code class="docutils literal notranslate"><span class="pre">stack</span></code>.</p></li>
+<li><p>Mediante la función <code class="docutils literal notranslate"><span class="pre">List_init</span></code> inicializa la lista <code class="docutils literal notranslate"><span class="pre">L</span></code>.</p></li>
+<li><p>Agregar los nodos de la lista (<code class="docutils literal notranslate"><span class="pre">45</span></code>, <code class="docutils literal notranslate"><span class="pre">65</span></code>, <code class="docutils literal notranslate"><span class="pre">34</span></code> y <code class="docutils literal notranslate"><span class="pre">36</span></code>) respectivamente. Esto se hace usando las funciones <code class="docutils literal notranslate"><span class="pre">List_insert_at_begin</span></code> y <code class="docutils literal notranslate"><span class="pre">List_insert_at_end</span></code>.</p></li>
+<li><p>Imprimir la lista enlazada de las dos formas (Normal y detallada).</p></li>
 </ul>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
-
-<span class="cp">#define CAPACITY 3</span>
-
-<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_stack</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">CAPACITY</span><span class="p">];</span><span class="w"></span>
-<span class="p">}</span><span class="w"> </span><span class="n">stack</span><span class="p">;</span><span class="w"></span>
-
-<span class="c1">// Declaración de funciones</span>
-<span class="c1">// Codigo declaración...</span>
-
-
-<span class="c1">// Codigo main</span>
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">stack</span><span class="w"> </span><span class="n">S</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">stack_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">);</span><span class="w">    </span><span class="c1">// S = [ ] : Lista vacia</span>
-<span class="w">  </span><span class="n">stack_push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// S = [|top|-&gt; 1]</span>
-<span class="w">  </span><span class="n">stack_push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// S = [|top|-&gt; 2 , 1]</span>
-<span class="w">  </span><span class="n">stack_push</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// S = [|top|-&gt; 3, 2 , 1]</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stack_pop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">S</span><span class="p">);</span><span class="w"> </span><span class="c1">// S = [|top|-&gt; 2 , 1] ; e = 3</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Elemento sacado de la pila: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Elementos disponibles en la pila: %d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w">  </span><span class="n">S</span><span class="p">.</span><span class="n">count</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">list</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="n">List_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">65</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">34</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">36</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-
-<span class="c1">// Definición de funciones</span>
-<span class="c1">// Codigo definición...</span>
 </pre></div>
 </div>
-<p>La salida del fragmento de código anterior, se muestra a continuación:</p>
-<figure class="align-default" id="id3">
-<img alt="../_images/CH_02-S06-stack_fig3a.png" src="../_images/CH_02-S06-stack_fig3a.png" />
+<p>La lista resultante al ejecutar el elemento anterior se muestra a continuación, notese que en este caso, a diferencia del código 1, la lista se encuentra en el <code class="docutils literal notranslate"><span class="pre">stack</span></code> y no en el <code class="docutils literal notranslate"><span class="pre">heap</span></code>:</p>
+<figure class="align-default" id="stack-fig7">
+<img alt="../_images/CH_02-S07-LL_fig7.png" src="../_images/CH_02-S07-LL_fig7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 97 </span><span class="caption-text">Resultado código anterior</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text">Lista resultante.</span><a class="headerlink" href="#stack-fig7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Finalmente, la salida en pantalla se muestra a continuación:</p>
+<figure class="align-default" id="id4">
+<img alt="../_images/CH_02-S07-LL_fig7b.png" src="../_images/CH_02-S07-LL_fig7b.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">Salida en pantalla resultante.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><strong>Código 3</strong>: El siguiente crea una lista enlazada con los elementos <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code> y <code class="docutils literal notranslate"><span class="pre">3</span></code> y realiza las siguientes tareas:</p>
+<ul class="simple">
+<li><p>Imprime la lista de las dos formas.</p></li>
+<li><p>Imprime la longitud de la lista.</p></li>
+<li><p>Busca un elemento que se encuentra e imprime su valor.</p></li>
+<li><p>Busca un elemento que no se encuentra y muestra un mensaje que indica esto.</p></li>
+</ul>
+<p>A continuación, se muestra el fragmento de código de la función <code class="docutils literal notranslate"><span class="pre">main</span></code> asociado al ejemplo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">list</span><span class="p">));</span><span class="w"> </span>
+<span class="w">  </span><span class="n">List_init</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Lista inicial: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_delete_at_begin</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Lista al borrar el primer elemento (1): &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_delete_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Lista al borrar ultimo elemento elemento (5): &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Lista al borrar el elemento de la mitad (3): &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_delete_item</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_clean</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Lista al ser limpiada: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La salida del código anterior se muestra a continuación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Lista</span> <span class="n">inicial</span><span class="p">:</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">X</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="o">|</span><span class="mh">0x7fffc5cf52c0</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="o">|</span><span class="mh">0x7fffc5cf52a0</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="o">|</span><span class="p">(</span><span class="n">nil</span><span class="p">)]</span>
+
+<span class="n">Tamaño</span> <span class="n">de</span> <span class="n">la</span> <span class="n">lista</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">Nodo</span> <span class="n">con</span> <span class="n">valor</span> <span class="mi">3</span> <span class="n">encontrado</span>
+<span class="n">Nodo</span> <span class="n">con</span> <span class="n">valor</span> <span class="mi">5</span> <span class="n">no</span> <span class="n">encontrado</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Codigo 4</strong>: A partir de la lista enlazada cuyos elementos son: <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code>, <code class="docutils literal notranslate"><span class="pre">4</span></code> y <code class="docutils literal notranslate"><span class="pre">5</span></code> pruebe las funciones para eliminar datos en el siguiente orden:</p>
+<ul class="simple">
+<li><p>Eliminar el primer elemento (<code class="docutils literal notranslate"><span class="pre">1</span></code>).</p></li>
+<li><p>Eliminar el último elemento (<code class="docutils literal notranslate"><span class="pre">5</span></code>).</p></li>
+<li><p>Eliminar el elemento de la mitad de la lista (<code class="docutils literal notranslate"><span class="pre">3</span></code>).</p></li>
+<li><p>Eliminar los elementos restantes (<code class="docutils literal notranslate"><span class="pre">2</span></code> y <code class="docutils literal notranslate"><span class="pre">4</span></code>) limpiando la lista.</p></li>
+</ul>
+<p>El código se encuentra a continuación:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">...</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">list</span><span class="p">));</span><span class="w"> </span>
+<span class="w">  </span><span class="n">List_init</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_insert_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Lista inicial: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_delete_at_begin</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Lista al borrar el primer elemento (1): &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_delete_at_end</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Lista al borrar ultimo elemento elemento (5): &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Lista al borrar el elemento de la mitad (3): &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_delete_item</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_clean</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Lista al ser limpiada: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">List_print</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">L</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+<p>La salida del código anterior se muestra a continuación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Lista</span> <span class="n">inicial</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">X</span><span class="p">]</span>
+<span class="n">Lista</span> <span class="n">al</span> <span class="n">borrar</span> <span class="n">el</span> <span class="n">primer</span> <span class="n">elemento</span> <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">X</span><span class="p">]</span>
+<span class="n">Lista</span> <span class="n">al</span> <span class="n">borrar</span> <span class="n">ultimo</span> <span class="n">elemento</span> <span class="n">elemento</span> <span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">X</span><span class="p">]</span>
+<span class="n">Lista</span> <span class="n">al</span> <span class="n">borrar</span> <span class="n">el</span> <span class="n">elemento</span> <span class="n">de</span> <span class="n">la</span> <span class="n">mitad</span> <span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">X</span><span class="p">]</span>
+<span class="n">Lista</span> <span class="n">al</span> <span class="n">ser</span> <span class="n">limpiada</span><span class="p">:</span> <span class="n">Empty</span> <span class="nb">list</span><span class="o">.</span>
+</pre></div>
+</div>
 </li>
 </ol>
 </section>
-<section id="id4">
-<h3>Ejemplos<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p><strong>Simulacion 1</strong> (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0Atypedef%20struct%20_node%20%7B%0A%20%20%20%20int%20item%3B%0A%20%20%20%20struct%20_node*%20next%3B%0A%7Dnode%3B%0A%0Atypedef%20struct%20_list%20%7B%0A%20%20%20%20node%20*head%3B%0A%7D%20list%3B%0A%0Alist*%20List_new%28void%29%3B%0Aint%20List_empty%28list%20*%29%3B%0Avoid%20List_insert_at_begin%28list%20*,%20int%29%3B%0Avoid%20List_insert_at_end%28list%20*,%20int%29%3B%0Avoid%20List_print%28list%20*,%20int%29%3B%0Aint%20List_length%28list%20*%29%3B%0Anode*%20List_search%28list%20*,%20int%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20list%20*L%20%3D%20List_new%28%29%3B%0A%20%20%20%20List_insert_at_begin%28L,%2065%29%3B%0A%20%20%20%20List_insert_at_begin%28L,%2045%29%3B%0A%20%20%20%20List_insert_at_end%28L,%2034%29%3B%0A%20%20%20%20List_insert_at_end%28L,%2036%29%3B%0A%20%20%20%20List_print%28L,1%29%3B%0A%20%20%20%20List_print%28L,2%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0A%0Alist*%20List_new%28void%29%20%7B%0A%20%20%20%20list%20*L%20%3D%20malloc%28sizeof%28L%29%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20L-%3Ehead%20%3D%20NULL%3B%0A%20%20%20%20return%20L%3B%0A%7D%0A%0Aint%20List_empty%28list%20*L%29%20%7B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20return%20%28L-%3Ehead%20%3D%3D%20NULL%29%3B%0A%7D%0A%0Avoid%20List_insert_at_begin%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20new-%3Eitem%20%3D%20item%3B%0A%20%20%20%20if%20%28L-%3Ehead%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20//%20El%20resto%20de%20los%20elementos%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20//%20Primer%20elemento%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%7D%0A%0Avoid%20List_insert_at_end%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20new-%3Eitem%20%3D%20item%3B%0A%20%20%20%20if%20%28L-%3Ehead%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20while%20%28current-%3Enext%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20current-%3Enext%20%3D%20new%3B%0A%20%20%20%20%7D%20%20%20%20%0A%7D%0A%0Aint%20List_length%28list%20*L%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20int%20count%20%3D%200%3B%0A%20%20%20%20while%20%28current%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20count%2B%2B%3B%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20count%3B%0A%7D%0A%0A%0Avoid%20List_print%28list%20*L,%20int%20opt%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20if%20%28current%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Empty%20list.%5Cn%22%29%3B%0A%20%20%20%20%7D%20%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20switch%20%28opt%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20case%201%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%5D%20-%3E%20%22,%20current-%3Eitem%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5BX%5D%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20case%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20for%28%3B%20current-%3Enext%20%21%3D%20NULL%3B%20current%20%3D%20current-%3Enext%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%7C%25p%5D%20-%3E%20%22,%20current-%3Eitem,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%7C%25p%5D%5Cn%22,%20current-%3Eitem,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20default%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22Invalid%20option.%5Cn%22%29%3B%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%20%0A%7D%0A%0Anode*%20List_lookup%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20if%20%28current-%3Eitem%20%3D%3D%20item%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20current%3B%20//%20success%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20NULL%3B%20//%20failure%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulacion</a>)</p></li>
-<li><p><strong>Simulacion 2</strong> (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cassert.h%3E%0A%0Atypedef%20struct%20_node%20%7B%0A%20%20%20%20int%20item%3B%0A%20%20%20%20struct%20_node*%20next%3B%0A%7Dnode%3B%0A%0Atypedef%20struct%20_list%20%7B%0A%20%20%20%20node%20*head%3B%0A%7D%20list%3B%0A%0Aint%20List_empty%28list%20*%29%3B%0Avoid%20List_insert_at_begin%28list%20*,%20int%29%3B%0Avoid%20List_insert_at_end%28list%20*,%20int%29%3B%0Avoid%20List_print%28list%20*,%20int%29%3B%0Aint%20List_length%28list%20*%29%3B%0Anode*%20List_search%28list%20*,%20int%29%3B%0Avoid%20List_init%28list%20*%29%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20list%20L%3B%20%0A%20%20%20%20List_init%28%26L%29%3B%0A%20%20%20%20List_insert_at_begin%28%26L,%2065%29%3B%0A%20%20%20%20List_insert_at_begin%28%26L,%2045%29%3B%0A%20%20%20%20List_insert_at_end%28%26L,%2034%29%3B%0A%20%20%20%20List_insert_at_end%28%26L,%2036%29%3B%0A%20%20%20%20List_print%28%26L,1%29%3B%0A%20%20%20%20List_print%28%26L,2%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20List_init%28list%20*L%29%20%7B%0A%20%20%20%20L-%3Ehead%20%3D%20NULL%3B%0A%20%20%20%20return%20L%3B%0A%7D%0A%0Aint%20List_empty%28list%20*L%29%20%7B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20return%20%28L-%3Ehead%20%3D%3D%20NULL%29%3B%0A%7D%0A%0Avoid%20List_insert_at_begin%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20new-%3Eitem%20%3D%20item%3B%0A%20%20%20%20if%20%28L-%3Ehead%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20//%20El%20resto%20de%20los%20elementos%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20//%20Primer%20elemento%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%7D%0A%0Avoid%20List_insert_at_end%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20%20%20assert%28L%20%21%3D%20NULL%29%3B%0A%20%20%20%20new-%3Eitem%20%3D%20item%3B%0A%20%20%20%20if%20%28L-%3Ehead%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20L-%3Ehead%20%3D%20new%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20%20%20%20%20while%20%28current-%3Enext%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20current-%3Enext%20%3D%20new%3B%0A%20%20%20%20%7D%20%20%20%20%0A%7D%0A%0Aint%20List_length%28list%20*L%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20int%20count%20%3D%200%3B%0A%20%20%20%20while%20%28current%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20count%2B%2B%3B%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20count%3B%0A%7D%0A%0A%0Avoid%20List_print%28list%20*L,%20int%20opt%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20if%20%28current%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Empty%20list.%5Cn%22%29%3B%0A%20%20%20%20%7D%20%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20switch%20%28opt%29%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20case%201%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%5D%20-%3E%20%22,%20current-%3Eitem%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5BX%5D%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20case%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20for%28%3B%20current-%3Enext%20%21%3D%20NULL%3B%20current%20%3D%20current-%3Enext%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%7C%25p%5D%20-%3E%20%22,%20current-%3Eitem,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%5B%25d%7C%25p%5D%5Cn%22,%20current-%3Eitem,%20current-%3Enext%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20default%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22Invalid%20option.%5Cn%22%29%3B%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%20%0A%7D%0A%0Anode*%20List_lookup%28list%20*L,%20int%20item%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20L-%3Ehead%3B%0A%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20if%20%28current-%3Eitem%20%3D%3D%20item%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20current%3B%20//%20success%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%20NULL%3B%20//%20failure%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">link</a>)</p></li>
-</ul>
 </section>
+<section id="construccion-de-una-pila-stack-a-partir-de-una-lista-enlazada">
+<h2>6. Construcción de una pila (<code class="docutils literal notranslate"><span class="pre">stack</span></code>) a partir de una lista enlazada<a class="headerlink" href="#construccion-de-una-pila-stack-a-partir-de-una-lista-enlazada" title="Permalink to this headline">#</a></h2>
+<p>To Do.</p>
 </section>
 <section id="enlaces">
-<h2>4. Enlaces<a class="headerlink" href="#enlaces" title="Permalink to this headline">#</a></h2>
+<h2>5. Enlaces<a class="headerlink" href="#enlaces" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>https://ranger.uta.edu/~alex/courses/3318/</p></li>
 <li><p>https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</p></li>
