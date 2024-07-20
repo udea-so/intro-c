@@ -1699,72 +1699,72 @@ title="Print to PDF"
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;malloc&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
-<span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">   </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">((</span><span class="n">strlen</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span><span class="w"></span>
-<span class="w">   </span><span class="n">strcpy</span><span class="p">(</span><span class="n">new</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">     </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">;</span><span class="w"></span>
-<span class="w">   </span><span class="p">}</span><span class="w"></span>
-<span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">     </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">   </span><span class="p">}</span><span class="w"></span>
-<span class="w">   </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
-<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">((</span><span class="n">strlen</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">new</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">new</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">Stack_pop</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">popped</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Empty Stack</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
+<span class="w">    </span><span class="n">popped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">;</span><span class="w">        </span>
+<span class="w">    </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strdup</span><span class="p">(</span><span class="n">popped</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">popped</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">popped</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">Stack_peek</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="w">     </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Empty Stack</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Stack_print</span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">top</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Empty Stack.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;| %10s |</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;--------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 </ol>
-<p>}</p>
-<p>char* Stack_pop(stack *s) {<br />
-node *popped;
-char *data;
-if (s-&gt;top == NULL) {
-printf(“Empty Stack\n”);
-return NULL;
-}
-else {<br />
-popped = s-&gt;top;<br />
-s-&gt;top = s-&gt;top-&gt;next;
-data = strdup(popped-&gt;data);
-free(popped-&gt;data);
-free(popped);
-return data;
-}
-}</p>
-<p>char* Stack_peek(stack *s) {
-if(s-&gt;top != NULL) {
-return s-&gt;top-&gt;data;<br />
-}
-else {
-printf(“Empty Stack\n”);
-return NULL;
-}
-}</p>
-<p>void Stack_print(stack *s) {
-node *current = s-&gt;top;
-if (current == NULL) {
-printf(“Empty Stack.\n”);
-}
-else {
-while (current) {
-printf(”| %10s |\n”, current-&gt;data);
-current = current-&gt;next;
-}
-printf(”————–\n”);
-}
-}</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-La salida resultante del código anterior se muestra a continuación:
-
-```{figure} ./local/img/CH_02-S07-LL_fig15.png
----
-name: LL_fig15
----
-Salida en pantalla.
-</pre></div>
-</div>
+<p>La salida resultante del código anterior se muestra a continuación:</p>
+<figure class="align-default" id="ll-fig15">
+<img alt="../_images/CH_02-S07-LL_fig15.png" src="../_images/CH_02-S07-LL_fig15.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text">Salida en pantalla.</span><a class="headerlink" href="#ll-fig15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>La <strong>simulación</strong> se encuentra en el siguiente <a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cstring.h%3E%0A%23include%20%3Cassert.h%3E%0A%0Astruct%20_node%20%7B%0A%20%20%20%20char%20*data%3B%0A%20%20%20%20struct%20_node*%20next%3B%0A%7D%3B%0A%0Atypedef%20struct%20_node%20node%3B%0A%0Atypedef%20struct%20_stack%20%7B%0A%20%20%20%20node%20*top%3B%0A%7D%20stack%3B%0A%0Avoid%20Stack_init%28stack%20*s%29%3B%0Aint%20Stack_push%28stack%20*s,%20char%20*data%29%3B%0Achar*%20Stack_pop%28stack%20*s%29%3B%0Achar*%20Stack_peek%28stack%20*s%29%3B%0Avoid%20Stack_print%28stack%20*s%29%3B%0A%0A%0Aint%20main%28%29%20%7B%0A%20%20stack%20s%3B%0A%20%20Stack_init%28%26s%29%3B%0A%20%20char%20*the_simpson%5B%5D%20%3D%20%7B%0A%20%20%20%20%22Bart%22,%0A%20%20%20%20%22Lisa%22,%0A%20%20%20%20%22Maggie%22%0A%20%20%7D%3B%20%0A%20%20printf%28%22Agregando%20elementos%20a%20la%20pila%3A%5Cn%22%29%3B%0A%20%20Stack_push%28%26s,%20the_simpson%5B0%5D%29%3B%0A%20%20Stack_push%28%26s,%20the_simpson%5B1%5D%29%3B%0A%20%20Stack_push%28%26s,%20the_simpson%5B2%5D%29%3B%0A%20%20Stack_print%28%26s%29%3B%0A%20%20char%20*child%20%3D%20NULL%3B%0A%20%20%0A%20%20printf%28%22%5CnElemento%20Top%3A%20%25s%5Cn%22,Stack_peek%28%26s%29%29%3B%0A%20%20printf%28%22Vaciando%20la%20pila%3A%5Cn%22%29%3B%0A%20%20child%20%3D%20Stack_pop%28%26s%29%3B%0A%20%20printf%28%22Elemento%20sacado%20-%3E%20%25s%5Cn%22,child%29%3B%0A%20%20child%20%3D%20Stack_pop%28%26s%29%3B%0A%20%20printf%28%22Elemento%20sacado%20-%3E%20%25s%5Cn%22,child%29%3B%0A%20%20child%20%3D%20Stack_pop%28%26s%29%3B%0A%20%20printf%28%22Elemento%20sacado%20-%3E%20%25s%5Cn%22,child%29%3B%0A%20%20%0A%20%20if%28child%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20free%28child%29%3B%0A%20%20%20%20child%20%3D%20NULL%3B%0A%20%20%7D%0A%20%20return%200%3B%0A%7D%0A%0Avoid%20Stack_init%28stack%20*s%29%20%7B%0A%20%20%20%20s-%3Etop%20%3D%20NULL%3B%0A%7D%0A%0Aint%20Stack_push%28stack%20*s,%20char%20*data%29%20%7B%0A%20%20%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20%20%20if%20%28new%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20perror%28%22malloc%22%29%3B%0A%20%20%20%20%20%20%20%20return%20-1%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20new-%3Edata%20%3D%20%28char%20*%29malloc%28%28strlen%28data%29%20%2B%201%29*sizeof%28char%29%29%3B%0A%20%20%20%20%20%20%20%20strcpy%28new-%3Edata,%20data%29%3B%0A%20%20%20%20%20%20%20%20if%20%28s-%3Etop%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20s-%3Etop%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20s-%3Etop%20%3D%20new%3B%0A%20%20%20%20%20%20%20%20return%200%3B%0A%20%20%20%20%7D%0A%7D%0A%0Achar*%20Stack_pop%28stack%20*s%29%20%7B%20%20%20%20%0A%20%20%20%20node%20*popped%3B%0A%20%20%20%20char%20*data%3B%0A%20%20%20%20if%20%28s-%3Etop%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Empty%20Stack%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20return%20NULL%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20popped%20%3D%20s-%3Etop%3B%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20s-%3Etop%20%3D%20s-%3Etop-%3Enext%3B%0A%20%20%20%20%20%20%20%20data%20%3D%20strdup%28popped-%3Edata%29%3B%0A%20%20%20%20%20%20%20%20free%28popped-%3Edata%29%3B%0A%20%20%20%20%20%20%20%20free%28popped%29%3B%0A%20%20%20%20%20%20%20%20return%20data%3B%0A%20%20%20%20%7D%0A%7D%0A%0Achar*%20Stack_peek%28stack%20*s%29%20%7B%0A%20%20%20%20if%28s-%3Etop%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20return%20s-%3Etop-%3Edata%3B%20%20%20%20%20%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Empty%20Stack%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20return%20NULL%3B%20%0A%20%20%20%20%7D%0A%7D%20%0A%0Avoid%20Stack_print%28stack%20*s%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20s-%3Etop%3B%0A%20%20%20%20if%20%28current%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Empty%20Stack.%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%7D%20%0A%20%20%20%20else%20%7B%20%0A%20%20%20%20%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%7C%20%2510s%20%7C%5Cn%22,%20current-%3Edata%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%20%20printf%28%22--------------%5Cn%22%29%3B%0A%20%20%20%20%7D%20%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">link</a></p>
 </section>
 </section>
