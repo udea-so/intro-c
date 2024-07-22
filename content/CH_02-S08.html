@@ -419,10 +419,25 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cola">
-   2. Cola
+  <a class="reference internal nav-link" href="#sobre-las-colas-queues">
+   2. Sobre las colas (queues)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementacion-de-una-cola">
+   2. Implementación de una cola
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementacion-a-partir-array">
+     2.1. Implementación a partir array
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementacion-como-lista-enlazada">
+     2.2. Implementación como lista enlazada
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#estructuras-asociadas-a-una-lista-enlazada-simple">
      2.1. Estructuras asociadas a una lista enlazada simple
@@ -500,10 +515,25 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cola">
-   2. Cola
+  <a class="reference internal nav-link" href="#sobre-las-colas-queues">
+   2. Sobre las colas (queues)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementacion-de-una-cola">
+   2. Implementación de una cola
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementacion-a-partir-array">
+     2.1. Implementación a partir array
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementacion-como-lista-enlazada">
+     2.2. Implementación como lista enlazada
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#estructuras-asociadas-a-una-lista-enlazada-simple">
      2.1. Estructuras asociadas a una lista enlazada simple
@@ -577,21 +607,61 @@ title="Print to PDF"
 </div>
 <section id="introduccion">
 <h2>1. Introduccion<a class="headerlink" href="#introduccion" title="Permalink to this headline">#</a></h2>
-<p>Una <strong>lista enlazada</strong> (<strong>Linked list</strong>) es una estructura de datos dinamica que consiste en una secuencia de registros donde cada elemento contiene un <strong>link</strong> al proximo registro de la secuencia. Las listas enlazadas pueden ser Listas simplemente enlazadas, Listas doblemente enlazadas o listas circulares. En este caso solo nos limitaremos a las listas simplemente enlazadas.</p>
+<p>Una <strong>cola</strong> (<strong>queue</strong> en inglés) es una <em>lista ordenada</em> en la cual las operaciones de inserción se efectúan en un extremo llamado ultimo (<em>last</em>, <em>rear</em> o <em>tail</em>) y las operaciones de borrado se efectúan en el otro extremo llamado primero (<em>first</em>, <em>front</em> o <em>head</em>). Es una estructura <strong>FIFO</strong> (First Input First Output).</p>
+<figure class="align-default" id="cola1">
+<img alt="../_images/CH_02-S08-Q_fig1.jpg" src="../_images/CH_02-S08-Q_fig1.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 109 </span><span class="caption-text">Representación de una cola en la vida real</span><a class="headerlink" href="#cola1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Una metáfora de esta terminología es una fila de las que se hace en los bancos cuando se esta haciendo en alguna diligencia. Tal y como sucede en la vida real; para el caso, una fila tiene dos extremos (tal y como se muestra en la figura anterior). En una cola. Cuando se esta haciendo una fila en un banco, y el cajero esta libre, este llama a la primera persona que se encuentra en la fila para ser atendida, una vez esta persona sale de la fila (es desencolada de la fila), la persona que seguia (segunda previamente) es colocada de primera a la espera de ser llamada. Por otro lado, cada vez que llega una persona a la fila, esta se ubica al final (se encola en la fila) haciendo que la fila crezca. La siguiente figura muestra un ejemplo de casos como estos:</p>
+<figure class="align-default" id="cola2">
+<img alt="../_images/CH_02-S08-Q_fig1a.png" src="../_images/CH_02-S08-Q_fig1a.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 110 </span><span class="caption-text">Casos de aplicación de una cola</span><a class="headerlink" href="#cola2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
-<section id="cola">
-<h2>2. Cola<a class="headerlink" href="#cola" title="Permalink to this headline">#</a></h2>
-<p>Como se dijo previamente, una <strong>lista enlazada</strong> es una secuencia de datos conectadas a traves de <strong>links</strong>. A continuación vamos a describir las principales estructuras asociadas a la lista enlazada y las funciones involucradas en este.</p>
+<section id="sobre-las-colas-queues">
+<h2>2. Sobre las colas (queues)<a class="headerlink" href="#sobre-las-colas-queues" title="Permalink to this headline">#</a></h2>
+<p>Cuando hablamos de colas tenemos que tener en cuenta que se hace alución a un espacio de datos (buffer) donde se colocan datos de determinada manera tal y como se muestra en la siguiente representación:</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/CH_02-S08-Q_fig2.png" src="../_images/CH_02-S08-Q_fig2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Representación de una cola</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>De la figura anterior podemos observar se usan tres variables para definir las caracteristicas de la cola:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">buffer</span></code></strong>: espacio de memoria donde se ponen los datos.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">tail</span></code></strong>: Variable que apunta al ultimo dato del buffer.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">head</span></code></strong>: Variable que apunta al primer dato del buffer.</p></li>
+</ul>
+<p>Por otro lado, para meter o sacar datos al <code class="docutils literal notranslate"><span class="pre">buffer</span></code>, se definen dos operaciones las cuales son:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Enqueue</span></code> (Encolar)</strong>: agrega un nuevo elemento al final de la cola.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Dequeue</span></code> (Desencolar)</strong>: elimina el primero de la cola y lo devuelve.</p></li>
+</ul>
+<p>A continuación vamos a describir la implementación de la cola en C.</p>
+</section>
+<section id="implementacion-de-una-cola">
+<h2>2. Implementación de una cola<a class="headerlink" href="#implementacion-de-una-cola" title="Permalink to this headline">#</a></h2>
+<section id="implementacion-a-partir-array">
+<h3>2.1. Implementación a partir array<a class="headerlink" href="#implementacion-a-partir-array" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="implementacion-como-lista-enlazada">
+<h3>2.2. Implementación como lista enlazada<a class="headerlink" href="#implementacion-como-lista-enlazada" title="Permalink to this headline">#</a></h3>
 <figure class="align-default" id="linked-list-fig4">
 <img alt="../_images/CH_02-S07-LL_fig4.png" src="../_images/CH_02-S07-LL_fig4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 109 </span><span class="caption-text">Lista enlazada simple</span><a class="headerlink" href="#linked-list-fig4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Lista enlazada simple</span><a class="headerlink" href="#linked-list-fig4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="tip admonition">
 <p class="admonition-title">Simulaciones</p>
 <p>La pagina <strong>Data Structure Visualizations</strong> (<a class="reference external" href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">link</a>) recopila una gran cantidad de animaciones sobre estructuras de datos.</p>
 </div>
+</section>
 <section id="estructuras-asociadas-a-una-lista-enlazada-simple">
 <h3>2.1. Estructuras asociadas a una lista enlazada simple<a class="headerlink" href="#estructuras-asociadas-a-una-lista-enlazada-simple" title="Permalink to this headline">#</a></h3>
 <section id="nodo-node">
@@ -600,7 +670,7 @@ title="Print to PDF"
 <figure class="align-default" id="linked-list-fig1">
 <img alt="../_images/CH_02-S07-LL_fig1.png" src="../_images/CH_02-S07-LL_fig1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 110 </span><span class="caption-text">Estructura de un nodo (<code class="docutils literal notranslate"><span class="pre">node</span></code>)</span><a class="headerlink" href="#linked-list-fig1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Estructura de un nodo (<code class="docutils literal notranslate"><span class="pre">node</span></code>)</span><a class="headerlink" href="#linked-list-fig1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>A continuación, se muestra la definición de esta estructura de datos en C:</p>
@@ -621,7 +691,7 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig">
 <img alt="../_images/CH_02-S07-LL_fig5.png" src="../_images/CH_02-S07-LL_fig5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Lista enlazada simple</span><a class="headerlink" href="#stack-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Lista enlazada simple</span><a class="headerlink" href="#stack-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Como se puede ver en la figura anterior; el primer nodo de la lista es referenciado mediante una variable externa conocido como <code class="docutils literal notranslate"><span class="pre">head</span></code>, mientras el fin de la lista es indicado mediante un <code class="docutils literal notranslate"><span class="pre">NULL</span></code> (sentinela), al cual apunta el link del ultimo nodo de la lista.</p>
@@ -633,17 +703,17 @@ title="Print to PDF"
 <section id="lista">
 <h4>2.1.2. Lista<a class="headerlink" href="#lista" title="Permalink to this headline">#</a></h4>
 <p>Como se menciono previamente, el <code class="docutils literal notranslate"><span class="pre">heap</span></code> es una referencia externa externa que permite indicar el inicio de la lista y por ende, no hace propiamente parte del contenido de esta. La siguiente figura muestra este caso:</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id2">
 <img alt="../_images/CH_02-S07-LL_fig5a.png" src="../_images/CH_02-S07-LL_fig5a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 112 </span><span class="caption-text">Referencia <code class="docutils literal notranslate"><span class="pre">head</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 115 </span><span class="caption-text">Referencia <code class="docutils literal notranslate"><span class="pre">head</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Sin embargo, podemos usar un envoltorio (wraper) con el fin de asociar la referencia <code class="docutils literal notranslate"><span class="pre">heap</span></code> como miembro de un nuevo tipo de dato <code class="docutils literal notranslate"><span class="pre">list</span></code> que define la lista enlazada.</p>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id3">
 <img alt="../_images/CH_02-S07-LL_fig2.png" src="../_images/CH_02-S07-LL_fig2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Estructura tipo <code class="docutils literal notranslate"><span class="pre">list</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Estructura tipo <code class="docutils literal notranslate"><span class="pre">list</span></code></span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Para hacer esto definimos mediante la estructura <code class="docutils literal notranslate"><span class="pre">list</span></code> con la referncia <code class="docutils literal notranslate"><span class="pre">heap</span></code> como su miembro tal y como se muestra en el siguiente código:</p>
@@ -943,10 +1013,10 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig2">
 <img alt="../_images/CH_02-S07-LL_fig4.png" src="../_images/CH_02-S07-LL_fig4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Lista enlazada asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 117 </span><span class="caption-text">Lista enlazada asociada al ejemplo.</span><a class="headerlink" href="#stack-fig2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>El siguiente fragmento de código (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cstring.h%3E%0A%23include%20%3Cassert.h%3E%0A%0Astruct%20_node%20%7B%0A%20%20%20%20int%20data%3B%0A%20%20%20%20struct%20_node*%20next%3B%0A%7D%3B%0A%0Atypedef%20struct%20_node%20node%3B%0A%0Atypedef%20struct%20_queue%20%7B%0A%20%20%20%20node%20*head%3B%0A%20%20%20%20node%20*tail%3B%0A%7D%20queue%3B%0A%0Avoid%20Queue_init%28queue%20*q%29%3B%0Aint%20Queue_isEmpty%28queue%20*q%29%3B%20%0Aint%20Queue_size%28queue%20*q%29%3B%0Avoid%20Queue_enqueue%28queue%20*q,%20%20int%20data%29%3B%0Aint%20Queue_dequeue%28queue%20*q,%20int%20*data%29%3B%0Avoid%20Queue_print%28queue%20*q%29%3B%0A%0Aint%20main%28int%20argc,%20char%20*argv%5B%5D%29%20%7B%0A%20%20%20%20queue*%20Q%20%3D%20%28queue*%29malloc%28sizeof%28queue%29%29%3B%0A%20%20%20%20assert%28Q%20%21%3D%20NULL%29%3B%0A%20%20%20%20Queue_init%28Q%29%3B%0A%20%20%20%20if%28Queue_isEmpty%28Q%29%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22La%20cola%20esta%20vacia%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22La%20cola%20tiene%20elementos%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22Tama%C3%B1o%20Q%3A%20%25d%5Cn%22,Queue_size%28Q%29%29%3B%0A%20%20%20%20Queue_init%28Q%29%3B%0A%20%20%20%20printf%28%22Tama%C3%B1o%20Q%3A%20%25d%5Cn%22,Queue_size%28Q%29%29%3B%0A%20%20%20%20//%20Agregando%20elementos%20a%20la%20cola%0A%20%20%20%20Queue_enqueue%28Q,%2019%29%3B%0A%20%20%20%20Queue_enqueue%28Q,%2045%29%3B%0A%20%20%20%20Queue_enqueue%28Q,%2013%29%3B%0A%20%20%20%20Queue_enqueue%28Q,%207%29%3B%0A%20%20%20%20printf%28%22Tama%C3%B1o%20Q%3A%20%25d%5Cn%22,Queue_size%28Q%29%29%3B%0A%20%20%20%20Queue_print%28Q%29%3B%20%20%0A%20%20%20%20free%28Q%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0Avoid%20Queue_init%28queue%20*q%29%7B%0A%20%20%20%20q-%3Ehead%20%3D%20NULL%3B%0A%20%20%20%20q-%3Etail%20%3D%20NULL%3B%0A%7D%0A%0Aint%20Queue_isEmpty%28queue%20*q%29%20%7B%0A%20%20%20%20if%20%28%28q-%3Ehead%20%3D%3D%20q-%3Etail%29%20%26%20%28q-%3Ehead%20%3D%3D%20NULL%29%29%20%7B%0A%20%20%20%20%20%20%20%20return%201%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20return%200%3B%0A%20%20%20%20%7D%0A%7D%20%0A%0Aint%20Queue_size%28queue%20*q%29%20%7B%0A%20%20%20%20int%20tam%20%3D%200%3B%0A%20%20%20%20if%20%28q-%3Ehead%20%3D%3D%20NULL%29%20%7B%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20return%200%3B%0A%20%20%20%20%7D%20%0A%20%20%20%20else%20%7B%20%20%20%20%20%20%0A%20%20%20%20%20%20node%20*current%20%3D%20q-%3Ehead%3B%0A%20%20%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20tam%2B%2B%3B%0A%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20return%20tam%3B%0A%20%20%20%20%7D%20%0A%7D%0A%0A%0Avoid%20Queue_enqueue%28queue%20*q,%20%20int%20data%29%20%7B%20%20%0A%20%20node%20*new%20%3D%20malloc%28sizeof%28node%29%29%3B%0A%20%20assert%28new%20%21%3D%20NULL%29%3B%0A%20%20new-%3Edata%20%3D%20data%3B%0A%20%20if%20%28q-%3Ehead%20%21%3D%20NULL%29%20%7B%0A%20%20%20%20//%20El%20resto%20de%20los%20elementos%0A%20%20%20%20new-%3Enext%20%3D%20NULL%3B%0A%20%20%20%20q-%3Etail-%3Enext%20%3D%20new%3B%0A%20%20%20%20q-%3Etail%20%3D%20new%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20//%20Primer%20elemento%20%20%20%20%0A%20%20%20%20new-%3Enext%20%3D%20NULL%3B%20%20%20%20%20%20%20%20%0A%20%20%20%20q-%3Ehead%20%3D%20q-%3Etail%20%3D%20new%3B%20%20%20%0A%20%20%7D%0A%7D%0A%0A%0Aint%20Queue_dequeue%28queue%20*q,%20int%20*data%29%20%7B%0A%20%20%20%20if%20%28q-%3Ehead%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22ERROR%3A%20Empty%20Queue%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20return%20-1%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20node%20*current%20%3D%20q-%3Ehead%3B%0A%20%20%20%20%20%20%20%20q-%3Ehead%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20*data%20%3D%20current-%3Edata%3B%0A%20%20%20%20%20%20%20%20free%28current%29%3B%0A%20%20%20%20%20%20%20%20return%200%3B%0A%20%20%20%20%7D%0A%7D%0A%0Avoid%20Queue_print%28queue%20*q%29%20%7B%0A%20%20%20%20node%20*current%20%3D%20q-%3Ehead%3B%0A%20%20%20%20if%20%28current%20%3D%3D%20NULL%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Empty%20queue.%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%7D%20%0A%20%20%20%20else%20%7B%20%0A%20%20%20%20%20%20%20%20printf%28%22%3C--%20%22%29%3B%0A%20%20%20%20%20%20%20%20while%20%28current%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%28current%29%20%7B%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20printf%28%22%254d%20%20%20%20%22,%20current-%3Edata%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20current%20%3D%20current-%3Enext%3B%0A%20%20%20%20%20%20%20%20%7D%20%0A%20%20%20%20%20%20%20%20printf%28%22%3C--%20%5Cn%22%29%3B%0A%20%20%20%20%7D%20%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulacion</a>) hace uso de las funciones definidas anteriormente para:</p>
+<p>El siguiente fragmento de código (<a class="reference external" href="https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstdlib.h%3E%0A%23include%20%3Cstring.h%3E%0A%23include%20%3Cassert.h%3E%0A%0Atypedef%20struct%20_queue%20%7B%0A%20%20%20%20int%20maxQueueSize%3B%0A%20%20%20%20int%20count%3B%0A%20%20%20%20int%20front%3B%0A%20%20%20%20int%20rear%3B%0A%20%20%20%20int%20*list%3B%0A%7D%20queue%3B%0A%0Avoid%20Queue_init%28queue%20*q,%20int%20maxQueueSize%29%3B%0Aint%20Queue_isEmpty%28queue%20*q%29%3B%20%0Aint%20Queue_isFull%28queue%20*q%29%3B%0Aint%20Queue_size%28queue%20*q%29%3B%0Aint%20Queue_front%28queue%20*q%29%3B%0Aint%20Queue_back%28queue%20*q%29%3B%0Avoid%20Queue_enqueue%28queue%20*q,%20%20int%20data%29%3B%0Aint%20Queue_dequeue%28queue%20*q,%20int%20*data%29%3B%0A//%20void%20Queue_print%28queue%20*q%29%3B%0A%0Aint%20main%28int%20argc,%20char%20*argv%5B%5D%29%20%7B%0A%20%20%20%20queue%20Q%3B%0A%20%20%20%20Queue_init%28%26Q,4%29%3B%0A%20%20%20%20if%28Queue_isEmpty%28%26Q%29%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22La%20cola%20esta%20vacia%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22La%20cola%20tiene%20elementos%5Cn%22%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf%28%22Tama%C3%B1o%20Q%3A%20%25d%5Cn%22,Queue_size%28%26Q%29%29%3B%0A%20%20%20%20//%20Agregando%20elementos%20a%20la%20cola%0A%20%20%20%20%0A%20%20%20%20Queue_enqueue%28%26Q,%2019%29%3B%0A%20%20%20%20Queue_enqueue%28%26Q,%2045%29%3B%0A%20%20%20%20Queue_enqueue%28%26Q,%2013%29%3B%0A%20%20%20%20Queue_enqueue%28%26Q,%207%29%3B%0A%20%20%20%20printf%28%22Primero%3A%20%25d%5Cn%22,Queue_front%28%26Q%29%29%3B%0A%20%20%20%20printf%28%22Ultimo%3A%20%25d%5Cn%22,Queue_back%28%26Q%29%29%3B%0A%20%20%20%20Queue_enqueue%28%26Q,%2021%29%3B%0A%20%20%20%20int%20data%3B%0A%20%20%20%20Queue_dequeue%28%26Q,%20%26data%29%3B%0A%20%20%20%20printf%28%22Dato%20sacado%3A%20%25d%5Cn%22,data%29%3B%0A%20%20%20%20Queue_dequeue%28%26Q,%20%26data%29%3B%0A%20%20%20%20printf%28%22Dato%20sacado%3A%20%25d%5Cn%22,data%29%3B%0A%20%20%20%20printf%28%22Primero%3A%20%25d%5Cn%22,Queue_front%28%26Q%29%29%3B%0A%20%20%20%20printf%28%22Ultimo%3A%20%25d%5Cn%22,Queue_back%28%26Q%29%29%3B%0A%20%20%20%20Queue_dequeue%28%26Q,%20%26data%29%3B%0A%20%20%20%20printf%28%22Dato%20sacado%3A%20%25d%5Cn%22,data%29%3B%0A%20%20%20%20Queue_dequeue%28%26Q,%20%26data%29%3B%0A%20%20%20%20printf%28%22Dato%20sacado%3A%20%25d%5Cn%22,data%29%3B%0A%20%20%20%20Queue_dequeue%28%26Q,%20%26data%29%3B%0A%20%20%20%20printf%28%22Dato%20sacado%3A%20%25d%5Cn%22,data%29%3B%0A%20%20%20%20Queue_dequeue%28%26Q,%20%26data%29%3B%0A%20%20%20%20printf%28%22Dato%20sacado%3A%20%25d%5Cn%22,data%29%3B%0A%20%20%20%20return%200%3B%0A%7D%0A%0A%0Avoid%20Queue_init%28queue%20*q,%20int%20maxQueueSize%29%20%7B%0A%20%20%20%20q-%3EmaxQueueSize%20%3D%20maxQueueSize%3B%0A%20%20%20%20q-%3Efront%20%3D%200%3B%0A%20%20%20%20q-%3Erear%20%3D%20q-%3EmaxQueueSize%20-%201%3B%0A%20%20%20%20q-%3Ecount%20%3D%200%3B%0A%20%20%20%20q-%3Elist%20%3D%20%28int%20*%29malloc%28q-%3EmaxQueueSize*sizeof%28int%29%29%3B%0A%7D%0A%0Aint%20Queue_isEmpty%28queue%20*q%29%20%7B%0A%20%20%20%20return%20%28q-%3Ecount%20%3D%3D%200%29%3B%0A%7D%20%0A%0Aint%20Queue_isFull%28queue%20*q%29%20%7B%0A%20%20%20%20return%20%28q-%3Ecount%20%3D%3D%20q-%3EmaxQueueSize%29%3B%0A%7D%20%0A%0Aint%20Queue_size%28queue%20*q%29%20%7B%0A%20%20%20%20return%20q-%3EmaxQueueSize%3B%0A%7D%0A%0Aint%20Queue_front%28queue%20*q%29%20%7B%0A%20%20%20%20assert%28%21Queue_isEmpty%28q%29%29%3B%0A%20%20%20%20return%20q-%3Elist%5Bq-%3Efront%5D%3B%0A%7D%0A%0Aint%20Queue_back%28queue%20*q%29%20%7B%0A%20%20%20%20assert%28%21Queue_isEmpty%28q%29%29%3B%0A%20%20%20%20return%20q-%3Elist%5Bq-%3Erear%5D%3B%0A%7D%0A%0Avoid%20Queue_enqueue%28queue%20*q,%20%20int%20data%29%20%7B%20%20%0A%20%20if%28%21Queue_isFull%28q%29%29%20%7B%0A%20%20%20%20q-%3Erear%20%3D%20%28q-%3Erear%20%2B%201%29%20%25%20q-%3EmaxQueueSize%3B%20%0A%20%20%20%20q-%3Ecount%2B%2B%3B%0A%20%20%20%20q-%3Elist%5Bq-%3Erear%5D%20%3D%20data%3B%20%20%20%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20printf%28%22ERROR%3A%20Full%20queue%5Cn%22%29%3B%0A%20%20%7D%0A%7D%0A%0A%0Aint%20Queue_dequeue%28queue%20*q,%20int%20*data%29%20%7B%0A%20%20%20%20if%20%28%21Queue_isEmpty%28q%29%29%20%7B%0A%20%20%20%20%20%20%20%20q-%3Ecount--%3B%0A%20%20%20%20%20%20%20%20*data%20%3D%20q-%3Elist%5Bq-%3Efront%5D%3B%0A%20%20%20%20%20%20%20%20q-%3Efront%20%3D%20%28q-%3Efront%20%2B%201%29%20%25%20q-%3EmaxQueueSize%3B%0A%20%20%20%20%20%20%20%20return%200%3B%0A%20%20%20%20%7D%0A%20%20%20%20else%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22ERROR%3A%20Empty%20queue%5Cn%22%29%3B%0A%20%20%20%20%20%20%20%20return%20-1%3B%0A%20%20%20%20%7D%0A%7D&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=c_gcc9.3.0&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">simulacion</a>) hace uso de las funciones definidas anteriormente para:</p>
 <ul class="simple">
 <li><p>Crear una nueva lista enlazada en el <code class="docutils literal notranslate"><span class="pre">heap</span></code> (<code class="docutils literal notranslate"><span class="pre">L</span></code>) mediante la función <code class="docutils literal notranslate"><span class="pre">List_new</span></code>.</p></li>
 <li><p>Agregar los nodos de la lista (<code class="docutils literal notranslate"><span class="pre">45</span></code>, <code class="docutils literal notranslate"><span class="pre">65</span></code>, <code class="docutils literal notranslate"><span class="pre">34</span></code> y <code class="docutils literal notranslate"><span class="pre">36</span></code>) respectivamente. Esto se hace usando las funciones <code class="docutils literal notranslate"><span class="pre">List_insert_at_begin</span></code> y <code class="docutils literal notranslate"><span class="pre">List_insert_at_end</span></code>.</p></li>
@@ -970,15 +1040,15 @@ title="Print to PDF"
 <figure class="align-default" id="stack-fig6">
 <img alt="../_images/CH_02-S07-LL_fig6.png" src="../_images/CH_02-S07-LL_fig6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 115 </span><span class="caption-text">Lista enlazada resultante.</span><a class="headerlink" href="#stack-fig6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Lista enlazada resultante.</span><a class="headerlink" href="#stack-fig6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>El resultado en pantalla se muestra en la siguiente figura:</p>
 <p>El resultado del código anterior, se muestra a continuación:</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id4">
 <img alt="../_images/CH_02-S07-LL_fig6a.png" src="../_images/CH_02-S07-LL_fig6a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Resultado en pantalla.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Resultado en pantalla.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -987,6 +1057,11 @@ title="Print to PDF"
 </section>
 <section id="enlaces">
 <h2>5. Enlaces<a class="headerlink" href="#enlaces" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>https://github.com/ErdemOzgen/Cpp-Learning-Archive/blob/master/README.md</p></li>
+<li></li>
+</ul>
+<hr class="docutils" />
 <ul class="simple">
 <li><p>https://ranger.uta.edu/~alex/courses/3318/</p></li>
 <li><p>https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</p></li>
