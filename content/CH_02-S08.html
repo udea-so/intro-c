@@ -486,7 +486,7 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
+    <a class="reference internal nav-link" href="#id12">
      2.2.3. Ejemplos
     </a>
    </li>
@@ -589,7 +589,7 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
+    <a class="reference internal nav-link" href="#id12">
      2.2.3. Ejemplos
     </a>
    </li>
@@ -693,6 +693,13 @@ title="Print to PDF"
 <p class="admonition-title">Simulación</p>
 <p>En el siguiente <a class="reference external" href="https://www.cs.usfca.edu/~galles/visualization/QueueArray.html">link</a> se muestra una simulación de una cola mediante un array.</p>
 </div>
+<p>La siguiente figura muestra en caso de simulación de una cola implementada mediante arrays:</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/CH_02-S08-Q_array_fig2a.png" src="../_images/CH_02-S08-Q_array_fig2a.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Simulación de una cola usando arrays</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="funciones-de-la-cola">
 <h4>2.1.2. Funciones de la cola<a class="headerlink" href="#funciones-de-la-cola" title="Permalink to this headline">#</a></h4>
@@ -726,7 +733,7 @@ title="Print to PDF"
 <td><p>Agrega un elemento con valor entero <code class="docutils literal notranslate"><span class="pre">data</span></code> al final de la cola <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">Queue_dequeue(queue</span> <span class="pre">*q,</span> <span class="pre">int</span> <span class="pre">*data)</span></code></p></td>
-<td><p>Elimina y el primer elemento de la cola <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></td>
+<td><p>Elimina el primer elemento de la cola <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">Queue_clear(queue</span> <span class="pre">*q)</span></code></p></td>
 <td><p>Limpia la cola <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></td>
@@ -750,7 +757,7 @@ title="Print to PDF"
 <figure class="align-default" id="cola-array2">
 <img alt="../_images/CH_02-S08-Q_array_fig2.png" src="../_images/CH_02-S08-Q_array_fig2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 113 </span><span class="caption-text">Inicialización de la cola.</span><a class="headerlink" href="#cola-array2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Inicialización de la cola.</span><a class="headerlink" href="#cola-array2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -809,14 +816,14 @@ title="Print to PDF"
 <figure class="align-default" id="cola-array3">
 <img alt="../_images/CH_02-S08-Q_array_fig3.png" src="../_images/CH_02-S08-Q_array_fig3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Inserción del <code class="docutils literal notranslate"><span class="pre">19</span></code> en la cola</span><a class="headerlink" href="#cola-array3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 115 </span><span class="caption-text">Inserción del <code class="docutils literal notranslate"><span class="pre">19</span></code> en la cola</span><a class="headerlink" href="#cola-array3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Notese que el contador de elementos (<code class="docutils literal notranslate"><span class="pre">count</span></code>) que actualmente estan en la cola se actualiza a <code class="docutils literal notranslate"><span class="pre">1</span></code> y lo mismo sucede con el indice <code class="docutils literal notranslate"><span class="pre">tail</span></code>, el cual se asocia al elemento acabado de agregar. La siguiente figura muestra el caso en el cual, se inserta nuevamente otro dato (<code class="docutils literal notranslate"><span class="pre">45</span></code>) en el caso.</p>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id3">
 <img alt="../_images/CH_02-S08-Q_array_fig4.png" src="../_images/CH_02-S08-Q_array_fig4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 115 </span><span class="caption-text">Inserción del <code class="docutils literal notranslate"><span class="pre">45</span></code> en la cola</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Inserción del <code class="docutils literal notranslate"><span class="pre">45</span></code> en la cola</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Notese que ya hay dos elementos (<code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">=</span> <span class="pre">2</span></code>) y el indice del ultimo elemento en el array ya corresponde a valor recien agregado (<code class="docutils literal notranslate"><span class="pre">45</span></code>).</p>
@@ -824,7 +831,7 @@ title="Print to PDF"
 <figure class="align-default" id="cola-array5">
 <img alt="../_images/CH_02-S08-Q_array_fig5.png" src="../_images/CH_02-S08-Q_array_fig5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 116 </span><span class="caption-text">Inserción de los numeros <code class="docutils literal notranslate"><span class="pre">13</span></code> y <code class="docutils literal notranslate"><span class="pre">7</span></code> en la cola</span><a class="headerlink" href="#cola-array5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 117 </span><span class="caption-text">Inserción de los numeros <code class="docutils literal notranslate"><span class="pre">13</span></code> y <code class="docutils literal notranslate"><span class="pre">7</span></code> en la cola</span><a class="headerlink" href="#cola-array5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Es importante recordar que si la cola esta llena (estado anterior), se intenta agregar un nuevo elemento a la cola, se mostrara un mensaje de <strong>error</strong> y esta permancecera sin alterarse.</p>
@@ -845,10 +852,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>Suponiendo que se tiene una cola <code class="docutils literal notranslate"><span class="pre">Q</span></code> con los elementos: <code class="docutils literal notranslate"><span class="pre">19</span></code>,  <code class="docutils literal notranslate"><span class="pre">45</span></code>, <code class="docutils literal notranslate"><span class="pre">13</span></code>, <code class="docutils literal notranslate"><span class="pre">7</span></code> y se saca el primer elemento mediante la invocación de la función desencolar, se actualiza el numero de elementos (validos) que la cola tiene actualmente pasando <code class="docutils literal notranslate"><span class="pre">count</span></code> de <code class="docutils literal notranslate"><span class="pre">4</span></code> a <code class="docutils literal notranslate"><span class="pre">3</span></code> y actualizando el indice <code class="docutils literal notranslate"><span class="pre">head</span></code> para que apunte al proximo elemento a sacar del array  (<code class="docutils literal notranslate"><span class="pre">45</span></code> ya que <code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">=</span> <span class="pre">1</span></code>) la proxima vez que se llame nuevamente la función desencolar. Aunque el valor de que se saco (<code class="docutils literal notranslate"><span class="pre">19</span></code>) permanece en el array, este sera un valor invalido y llegado el momento sera sobreescrito por un nuevo valor que sea encolado.</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id4">
 <img alt="../_images/CH_02-S08-Q_array_fig6.png" src="../_images/CH_02-S08-Q_array_fig6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 117 </span><span class="caption-text">Sacando el primer elemento (<code class="docutils literal notranslate"><span class="pre">19</span></code>) de la cola</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Sacando el primer elemento (<code class="docutils literal notranslate"><span class="pre">19</span></code>) de la cola</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1081,6 +1088,13 @@ title="Print to PDF"
 </section>
 <section id="implementacion-como-lista-enlazada">
 <h3>2.2. Implementación como lista enlazada<a class="headerlink" href="#implementacion-como-lista-enlazada" title="Permalink to this headline">#</a></h3>
+<p>La siguiente figura muestra una cola implementada usando un lista enlazada:</p>
+<figure class="align-default" id="linked-queue">
+<img alt="../_images/CH_02-S08-Q_fig3a.png" src="../_images/CH_02-S08-Q_fig3a.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Cola implementada por medio de una lista enlazada.</span><a class="headerlink" href="#linked-queue" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="tip admonition">
 <p class="admonition-title">Simulación</p>
 <p>En el siguiente <a class="reference external" href="https://www.cs.usfca.edu/~galles/visualization/QueueLL.html">link</a> se muestra una simulación
@@ -1088,16 +1102,17 @@ de una cola mediante una lista enlazada.</p>
 </div>
 <section id="estructuras-asociadas-la-cola">
 <h4>2.2.1 Estructuras asociadas la cola<a class="headerlink" href="#estructuras-asociadas-la-cola" title="Permalink to this headline">#</a></h4>
+<p>Inicialmente vamos a describir las estructuras y funciones por medio de las cuales se implementa la cola (<code class="docutils literal notranslate"><span class="pre">queue</span></code>).</p>
 <section id="nodo-node">
 <h5>2.2.1.1. Nodo (<code class="docutils literal notranslate"><span class="pre">node</span></code>)<a class="headerlink" href="#nodo-node" title="Permalink to this headline">#</a></h5>
-<p>Un <strong>nodo</strong> (<strong><code class="docutils literal notranslate"><span class="pre">node</span></code></strong>) es la estructura fundamental que compone a una lista. La siguiente figura muestra la representación de un nodo:</p>
-<figure class="align-default" id="linked-queue">
+<p>La estructura asociada al nodo <strong>nodo</strong> (<strong><code class="docutils literal notranslate"><span class="pre">node</span></code></strong>) se muestra a continuación:</p>
+<figure class="align-default" id="id5">
 <img alt="../_images/CH_02-S08-Q_fig3.png" src="../_images/CH_02-S08-Q_fig3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Estructura de un nodo (<code class="docutils literal notranslate"><span class="pre">node</span></code>)</span><a class="headerlink" href="#linked-queue" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 120 </span><span class="caption-text">Estructura de un nodo (<code class="docutils literal notranslate"><span class="pre">node</span></code>)</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>A continuación, se muestra la definición de esta estructura de datos en C:</p>
+<p>El siguiente fragmento de código muestra la implementación en lenguaje C del nodo:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
@@ -1114,7 +1129,7 @@ de una cola mediante una lista enlazada.</p>
 <figure class="align-default" id="queue">
 <img alt="../_images/CH_02-S08-Q_fig4.png" src="../_images/CH_02-S08-Q_fig4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Representación de una cola (<code class="docutils literal notranslate"><span class="pre">queue</span></code>) mediante listas enlazadas.</span><a class="headerlink" href="#queue" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 121 </span><span class="caption-text">Representación de una cola (<code class="docutils literal notranslate"><span class="pre">queue</span></code>) mediante listas enlazadas.</span><a class="headerlink" href="#queue" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>La definición en lenguaje C de la estructura <code class="docutils literal notranslate"><span class="pre">queue</span></code> se muestra a continuación:</p>
@@ -1138,64 +1153,52 @@ de una cola mediante una lista enlazada.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">Queue_init(queue</span> <span class="pre">*q)</span></code></p></td>
-<td><p></p></td>
+<td><p>Inicializa la cola <code class="docutils literal notranslate"><span class="pre">q</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">Queue_isEmpty(queue</span> <span class="pre">*q)</span></code></p></td>
-<td><p></p></td>
+<td><p>Retorna verdadero (<code class="docutils literal notranslate"><span class="pre">1</span></code>) si la cola q esta vacia.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">Queue_size(queue</span> <span class="pre">*q)</span></code></p></td>
-<td><p></p></td>
+<td><p>Devuelve el tamaño (numero de elementos) de la cola <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">List_length(list</span> <span class="pre">*L)</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">Queue_front(queue</span> <span class="pre">*q)</span></code></p></td>
+<td><p>Devuelve el valor del primer elemento de la cola <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">Queue_front(queue</span> <span class="pre">*q)</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">Queue_back(queue</span> <span class="pre">*q)</span></code></p></td>
+<td><p>Devuelve el contenido del último elemento de la cola <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">Queue_back(queue</span> <span class="pre">*q)</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">Queue_enqueue(queue</span> <span class="pre">*q,</span>&#160; <span class="pre">int</span> <span class="pre">data)</span></code></p></td>
+<td><p>Agrega un elemento con contenido <code class="docutils literal notranslate"><span class="pre">data</span></code> al final de la cola <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">Queue_enqueue(queue</span> <span class="pre">*q,</span>&#160; <span class="pre">int</span> <span class="pre">data)</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">Queue_dequeue(queue</span> <span class="pre">*q,</span> <span class="pre">int</span> <span class="pre">*data)</span></code></p></td>
+<td><p>Elimina el primer elemento de la cola <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">Queue_dequeue(queue</span> <span class="pre">*q,</span> <span class="pre">int</span> <span class="pre">*data)</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">Queue_print(queue</span> <span class="pre">*q)</span></code></p></td>
+<td><p>Imprime el contenido de la cola <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">Queue_print(queue</span> <span class="pre">*q)</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Vaciar</span> <span class="pre">cola...</span></code></p></td>
-<td><p>Implementar</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node*</span> <span class="pre">List_search(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">item)</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_print(list</span> <span class="pre">*L,</span> <span class="pre">int</span> <span class="pre">opt)</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">List_clean(list</span> <span class="pre">*L)</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">Queue_clear(queue</span> <span class="pre">*q)</span></code></p></td>
+<td><p>Vacia la cola <code class="docutils literal notranslate"><span class="pre">q</span></code> eliminando sus elementos.</p></td>
 </tr>
 </tbody>
 </table>
 <p>A continuación se muestra la implementación en C de cada una de las funciones anteriormente descritas.</p>
 <ul>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_init</span></code></strong>: .</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_init</span></code></strong>: Inicializa la cola colocando los punteros <code class="docutils literal notranslate"><span class="pre">head</span></code> y <code class="docutils literal notranslate"><span class="pre">tail</span></code> en <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Queue_init</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">){</span><span class="w"></span>
 <span class="w">  </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>La siguiente figura…</p>
-<figure class="align-default" id="id4">
+<p>La siguiente muestra el resultado de la invocación de la función anterior:</p>
+<figure class="align-default" id="id6">
 <img alt="../_images/CH_02-S08-Q_fig5a.png" src="../_images/CH_02-S08-Q_fig5a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 120 </span><span class="caption-text">Inicializacón de la cola (<code class="docutils literal notranslate"><span class="pre">queue</span></code>)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 122 </span><span class="caption-text">Inicializacón de la cola (<code class="docutils literal notranslate"><span class="pre">queue</span></code>)</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_isEmpty</span></code></strong>: Inicializa el nodo <code class="docutils literal notranslate"><span class="pre">head</span></code> de una lista.</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_isEmpty</span></code></strong>: Determina si la cola esta vacia devolviendo <code class="docutils literal notranslate"><span class="pre">1</span></code> en caso de que lo este y <code class="docutils literal notranslate"><span class="pre">0</span></code> en caso contrario.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">Queue_isEmpty</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">tail</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
@@ -1207,7 +1210,7 @@ de una cola mediante una lista enlazada.</p>
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_size</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_size</span></code></strong>: Devuelve el numero de nodos que hay la cola.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">Queue_size</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
@@ -1225,7 +1228,7 @@ de una cola mediante una lista enlazada.</p>
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_front</span></code></strong>: Determina la longitud (numero de nodos que tiene la lista) de una lista <code class="docutils literal notranslate"><span class="pre">L</span></code>.</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_front</span></code></strong>: Devuelve el contenido almacenado en el primer nodo de la cola.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">Queue_front</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="w"></span>
@@ -1233,7 +1236,7 @@ de una cola mediante una lista enlazada.</p>
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_back</span></code></strong>: Inserta un nodo cuyo valor es <code class="docutils literal notranslate"><span class="pre">item</span></code> al principio de la lista.</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_back</span></code></strong>: Devuelve el contenido almacenado en el último nodo de la cola.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">Queue_back</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">tail</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="w"></span>
@@ -1241,7 +1244,7 @@ de una cola mediante una lista enlazada.</p>
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_enqueue</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_enqueue</span></code></strong>: Agrega un nodo con valor <code class="docutils literal notranslate"><span class="pre">data</span></code> al final de la cola.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Queue_enqueue</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">,</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
 <span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node</span><span class="p">));</span><span class="w"></span>
 <span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
@@ -1260,31 +1263,29 @@ de una cola mediante una lista enlazada.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Suponiendo que…</p>
-<p>La siguiente figura…</p>
-<figure class="align-default" id="id5">
+<p>Suponiendo que se tiene una cola cuyos elementos son <code class="docutils literal notranslate"><span class="pre">45</span></code>, <code class="docutils literal notranslate"><span class="pre">13</span></code> y <code class="docutils literal notranslate"><span class="pre">7</span></code> tal y como se muestra en la siguiente figura.</p>
+<figure class="align-default" id="id7">
 <img alt="../_images/CH_02-S08-Q_fig6d.png" src="../_images/CH_02-S08-Q_fig6d.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 121 </span><span class="caption-text">Estado inicial de la cola.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Estado inicial de la cola.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Si se desea poner un dato se invoca ka función…</p>
-<figure class="align-default" id="id6">
+<p>Si se desea encolar un nuevo dato (<code class="docutils literal notranslate"><span class="pre">21</span></code>) tal y como se muestra en la siguiente figura:</p>
+<figure class="align-default" id="id8">
 <img alt="../_images/CH_02-S08-Q_fig6e.png" src="../_images/CH_02-S08-Q_fig6e.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 122 </span><span class="caption-text">Encolando un dato</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Encolando un dato</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Estado de la cola despues de meter el dato:</p>
-<p>…</p>
-<figure class="align-default" id="id7">
+<p>Se recuerre a llamar la función <code class="docutils literal notranslate"><span class="pre">Queue_enqueue</span></code> de tal manera que si el resultado es el esperado, este elemento se agrega a la lista enlazada que implementa la cola y el apuntador que indica el final de la lista (<code class="docutils literal notranslate"><span class="pre">tail</span></code>) se actualiza para apuntar a este elemento recien agregado tal y como se muestra en la siguiente figura:</p>
+<figure class="align-default" id="id9">
 <img alt="../_images/CH_02-S08-Q_fig6f.png" src="../_images/CH_02-S08-Q_fig6f.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Estado de la cola despues de que se mete el dato en el buffer.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 125 </span><span class="caption-text">Estado de la cola despues de que se mete el dato en la cola</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_dequeue</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_dequeue</span></code></strong>: Saca el primer elemento de la cola. El valor asociado al elemento que se saca de la cola es devuelto a traves del apuntador <code class="docutils literal notranslate"><span class="pre">data</span></code> (parametro por referencia de la función Queue_dequeue). Si la operación es exitosa se devuelve un <code class="docutils literal notranslate"><span class="pre">0</span></code>, en caso contrario se devuelve un <code class="docutils literal notranslate"><span class="pre">-1</span></code> y se muestra en pantalla el motivo del error.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">Queue_dequeue</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty Queue</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
@@ -1300,30 +1301,22 @@ de una cola mediante una lista enlazada.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Suponiendo que…</p>
-<figure class="align-default" id="id8">
+<p>Para ver comprender esta función; supongamos que inicialmente se tiene una cola cuyos elementos son: <code class="docutils literal notranslate"><span class="pre">19</span></code>, <code class="docutils literal notranslate"><span class="pre">45</span></code>, <code class="docutils literal notranslate"><span class="pre">13</span></code> y <code class="docutils literal notranslate"><span class="pre">7</span></code> tal y como se muestra en la siguiente figura.</p>
+<figure class="align-default" id="id10">
 <img alt="../_images/CH_02-S08-Q_fig6a.png" src="../_images/CH_02-S08-Q_fig6a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Estado inicial de la cola.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 126 </span><span class="caption-text">Estado inicial de la cola.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Si se desea poner un dato se invoca ka función…</p>
-<figure class="align-default" id="id9">
-<img alt="../_images/CH_02-S08-Q_fig6c.png" src="../_images/CH_02-S08-Q_fig6c.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 125 </span><span class="caption-text">Encolando un dato</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Estado de la cola despues de meter el dato:</p>
-<p>…</p>
-<figure class="align-default" id="id10">
+<p>Cuando se invoca la función para desencolar, saca obtiene el dato (<code class="docutils literal notranslate"><span class="pre">19</span></code> en el caso) asociado al primer nodo (el cual es eliminado) de la cola y se actualiza el puntero <code class="docutils literal notranslate"><span class="pre">head</span></code> para que apunte al siguiente nodo tal y como se muestra a continuación:</p>
+<figure class="align-default" id="id11">
 <img alt="../_images/CH_02-S08-Q_fig6d.png" src="../_images/CH_02-S08-Q_fig6d.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 126 </span><span class="caption-text">Estado de la cola despues de que se mete el dato en el buffer.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 127 </span><span class="caption-text">Estado de la cola despues de que se mete el dato en el buffer.</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_print</span></code></strong>:</p>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_print</span></code></strong>: Imprime el contenido de la cola.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Queue_print</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1344,118 +1337,142 @@ de una cola mediante una lista enlazada.</p>
 </pre></div>
 </div>
 </li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">Vaciar</span> <span class="pre">la</span> <span class="pre">cola</span></code></strong>: To Do.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">node</span><span class="o">*</span><span class="w"> </span><span class="nf">List_search</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Queue_clear</span></code></strong>: Función que limpia la cola eliminando todos sus elementos.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Queue_clear</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">dummy_data</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">Queue_isEmpty</span><span class="p">(</span><span class="n">q</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dummy_data</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 </ul>
 </section>
 </section>
-<section id="id11">
-<h3>2.2.3. Ejemplos<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
-<p>El siguiente código muestra el esqueleto de un programa en el cual se va a hacer uso de <strong>Listas enlazadas</strong>:</p>
+<section id="id12">
+<h3>2.2.3. Ejemplos<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<ol>
+<li><p>En el siguiente código se muestra un ejemplo donde se hace uso de una cola implementada usando una lista enlazada.</p>
+<p>A continuación se muestra el fragmento de código donde se ejemplifica la cola y las funciones asociadas a esta:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="o">*</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
 <span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_node</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w"></span>
 
 <span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_queue</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">tail</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">tail</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"> </span><span class="n">queue</span><span class="p">;</span><span class="w"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">Queue_init</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">Queue_isEmpty</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"> </span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">Queue_size</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Queue_front</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Queue_back</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">Queue_enqueue</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">,</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">);</span><span class="w"></span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">Queue_dequeue</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">Queue_print</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Queue_clear</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">);</span><span class="w"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">queue</span><span class="o">*</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">queue</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">queue</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">Q</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_init</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">Queue_isEmpty</span><span class="p">(</span><span class="n">Q</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La cola esta vacia</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La cola tiene elementos</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Tamaño Q: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_init</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Tamaño Q: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Agregando elementos a la cola</span>
-<span class="w">    </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Tamaño Q: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato sacado: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">    </span>
-<span class="w">    </span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato sacado: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">    </span>
-<span class="w">    </span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato sacado: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">    </span>
-<span class="w">    </span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato sacado: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">    </span>
-<span class="w">    </span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato sacado: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w"></span>
-
-<span class="w">    </span><span class="cm">/*</span>
-<span class="cm">    Queue_init(&amp;Q);</span>
-<span class="cm">    Queue_print(&amp;Q);</span>
-<span class="cm">    Queue_enqueue(&amp;Q, 1);</span>
-<span class="cm">    Queue_enqueue(&amp;Q, 2);</span>
-<span class="cm">    Queue_print(&amp;Q);</span>
-<span class="cm">    */</span><span class="w"></span>
-<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">queue</span><span class="o">*</span><span class="w"> </span><span class="n">Q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">queue</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">queue</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">Q</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Inicializacion de la cola</span>
+<span class="w">  </span><span class="n">Queue_init</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">                  </span><span class="c1">// --&gt; [(T) -&gt; | | -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">Queue_isEmpty</span><span class="p">(</span><span class="n">Q</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La cola esta vacia</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;La cola tiene elementos</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Tamaño Q: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w">    </span>
+<span class="w">  </span><span class="c1">// Agregando elementos a la cola</span>
+<span class="w">  </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">);</span><span class="w">         </span><span class="c1">// --&gt; [(T) -&gt; |19| -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">);</span><span class="w">         </span><span class="c1">// --&gt; [(T) -&gt; |45 --&gt; 19| -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">);</span><span class="w">         </span><span class="c1">// --&gt; [(T) -&gt; |13 --&gt; 45 --&gt; 19| -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span><span class="w">          </span><span class="c1">// --&gt; [(T) -&gt; |7 --&gt; 13 --&gt; 45 --&gt; 19| -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Tamaño Q: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Primer elemento de Q: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">Queue_front</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Ultimo elemento de Q: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">Queue_back</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span><span class="w">      </span><span class="c1">// --&gt; [(T) -&gt; |7 --&gt; 13 --&gt; 45| -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato sacado: %d (elementos disponibles: %d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span><span class="w">      </span><span class="c1">// --&gt; [(T) -&gt; |7 --&gt; 13| -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato sacado: %d (elementos disponibles: %d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span><span class="w">      </span><span class="c1">// --&gt; [(T) -&gt; |7| -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato sacado: %d (elementos disponibles: %d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span><span class="w">      </span><span class="c1">// --&gt; [(T) -&gt; | | -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Dato sacado: %d (elementos disponibles: %d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span><span class="w">      </span><span class="c1">// --&gt; [(T) -&gt; | | -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">++</span><span class="p">);</span><span class="w">     </span><span class="c1">// --&gt; [(T) -&gt; |1| -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">++</span><span class="p">);</span><span class="w">     </span><span class="c1">// --&gt; [(T) -&gt; |2 --&gt; 1| -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">Queue_enqueue</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">++</span><span class="p">);</span><span class="w">     </span><span class="c1">// --&gt; [(T) -&gt; |3 --&gt; 2 --&gt; 1| -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">    </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Vaciando la cola de %d elementos</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">Queue_clear</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">                </span><span class="c1">// --&gt; [(T) -&gt; | | -&gt; (H)] --&gt;</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Numero de elementos en la cola: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">Queue_size</span><span class="p">(</span><span class="n">Q</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">Queue_print</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w">   </span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">Q</span><span class="o">!=</span><span class="nb">NULL</span><span class="p">);</span><span class="w">  </span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">Q</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">Queue_init</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">){</span><span class="w"></span>
-<span class="w">    </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">Queue_isEmpty</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">tail</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">tail</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"> </span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">Queue_size</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">tam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
+<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">tam</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
-<span class="w">      </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">tam</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"> </span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">tam</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span>
 <span class="p">}</span><span class="w"></span>
 
+<span class="kt">int</span><span class="w"> </span><span class="nf">Queue_front</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">Queue_back</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">tail</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">Queue_enqueue</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">,</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
 <span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">node</span><span class="p">));</span><span class="w"></span>
@@ -1474,50 +1491,79 @@ de una cola mediante una lista enlazada.</p>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-
 <span class="kt">int</span><span class="w"> </span><span class="nf">Queue_dequeue</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty Queue</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="o">*</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="n">free</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Empty Queue</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">Queue_print</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Empty queue.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">node</span><span class="w"> </span><span class="o">*</span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Empty queue.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;&lt;-- &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%4d    &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;&lt;-- &quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">current</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
-<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%4d    &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">            </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;&lt;-- </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;&lt;-- </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Queue_clear</span><span class="p">(</span><span class="n">queue</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">dummy_data</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">Queue_isEmpty</span><span class="p">(</span><span class="n">q</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">Queue_dequeue</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dummy_data</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">q</span><span class="o">-&gt;</span><span class="n">tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+<p>El resultado de la salida del código anterior, se muestra a continuación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">La</span> <span class="n">cola</span> <span class="n">esta</span> <span class="n">vacia</span>
+<span class="n">Tamaño</span> <span class="n">Q</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">Tamaño</span> <span class="n">Q</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">Primer</span> <span class="n">elemento</span> <span class="n">de</span> <span class="n">Q</span><span class="p">:</span> <span class="mi">19</span>
+<span class="n">Ultimo</span> <span class="n">elemento</span> <span class="n">de</span> <span class="n">Q</span><span class="p">:</span> <span class="mi">7</span>
+<span class="o">&lt;--</span>   <span class="mi">19</span>      <span class="mi">45</span>      <span class="mi">13</span>       <span class="mi">7</span>    <span class="o">&lt;--</span>
+<span class="n">Dato</span> <span class="n">sacado</span><span class="p">:</span> <span class="mi">19</span> <span class="p">(</span><span class="n">elementos</span> <span class="n">disponibles</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">&lt;--</span>   <span class="mi">45</span>      <span class="mi">13</span>       <span class="mi">7</span>    <span class="o">&lt;--</span>
+<span class="n">Dato</span> <span class="n">sacado</span><span class="p">:</span> <span class="mi">45</span> <span class="p">(</span><span class="n">elementos</span> <span class="n">disponibles</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&lt;--</span>   <span class="mi">13</span>       <span class="mi">7</span>    <span class="o">&lt;--</span>
+<span class="n">Dato</span> <span class="n">sacado</span><span class="p">:</span> <span class="mi">13</span> <span class="p">(</span><span class="n">elementos</span> <span class="n">disponibles</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">&lt;--</span>    <span class="mi">7</span>    <span class="o">&lt;--</span>
+<span class="n">Dato</span> <span class="n">sacado</span><span class="p">:</span> <span class="mi">7</span> <span class="p">(</span><span class="n">elementos</span> <span class="n">disponibles</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">Empty</span> <span class="n">queue</span><span class="o">.</span>
+<span class="n">ERROR</span><span class="p">:</span> <span class="n">Empty</span> <span class="n">Queue</span>
+<span class="o">&lt;--</span>    <span class="mi">1</span>       <span class="mi">2</span>       <span class="mi">3</span>    <span class="o">&lt;--</span>
+<span class="n">Vaciando</span> <span class="n">la</span> <span class="n">cola</span> <span class="n">de</span> <span class="mi">3</span> <span class="n">elementos</span>
+<span class="n">Numero</span> <span class="n">de</span> <span class="n">elementos</span> <span class="n">en</span> <span class="n">la</span> <span class="n">cola</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">Empty</span> <span class="n">queue</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ol>
 </section>
 </section>
 <section id="enlaces">
 <h2>3. Enlaces<a class="headerlink" href="#enlaces" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>https://github.com/ErdemOzgen/Cpp-Learning-Archive/blob/master/README.md</p></li>
-<li></li>
-</ul>
-<hr class="docutils" />
-<ul class="simple">
 <li><p>https://ranger.uta.edu/~alex/courses/3318/</p></li>
 <li><p>https://www.cs.usfca.edu/~galles/visualization/Algorithms.html</p></li>
 <li><p>http://cslibrary.stanford.edu/</p></li>
