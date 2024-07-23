@@ -23,53 +23,53 @@ int Queue_back(queue *q);
 void Queue_enqueue(queue *q,  int data);
 int Queue_dequeue(queue *q, int *data);
 void Queue_print(queue *q);
+void Queue_clear(queue *q);
 
 int main(int argc, char *argv[]) {
     queue* Q = (queue*)malloc(sizeof(queue));
     assert(Q != NULL);
-    Queue_init(Q);
+    // Inicializacion de la cola
+    Queue_init(Q);                  // --> [(T) -> | | -> (H)] -->
     if(Queue_isEmpty(Q)) {
         printf("La cola esta vacia\n");
     }
     else {
         printf("La cola tiene elementos\n");
     }
-    printf("Tamaño Q: %d\n",Queue_size(Q));
-    Queue_init(Q);
-    printf("Tamaño Q: %d\n",Queue_size(Q));
+    printf("Tamaño Q: %d\n",Queue_size(Q));    
     // Agregando elementos a la cola
-    Queue_enqueue(Q, 19);
-    Queue_enqueue(Q, 45);
-    Queue_enqueue(Q, 13);
-    Queue_enqueue(Q, 7);
+    Queue_enqueue(Q, 19);         // --> [(T) -> |19| -> (H)] -->
+    Queue_enqueue(Q, 45);         // --> [(T) -> |45 --> 19| -> (H)] -->
+    Queue_enqueue(Q, 13);         // --> [(T) -> |13 --> 45 --> 19| -> (H)] -->
+    Queue_enqueue(Q, 7);          // --> [(T) -> |7 --> 13 --> 45 --> 19| -> (H)] -->
     printf("Tamaño Q: %d\n",Queue_size(Q));
     printf("Primer elemento de Q: %d\n",Queue_front(Q));
     printf("Ultimo elemento de Q: %d\n",Queue_back(Q));
     Queue_print(Q);
     int data;
-    Queue_dequeue(Q, &data);
-    printf("Dato sacado: %d\n",data);
+    Queue_dequeue(Q, &data);      // --> [(T) -> |7 --> 13 --> 45| -> (H)] -->
+    printf("Dato sacado: %d (elementos disponibles: %d)\n",data, Queue_size(Q));
     Queue_print(Q);    
-    Queue_dequeue(Q, &data);
-    printf("Dato sacado: %d\n",data);
+    Queue_dequeue(Q, &data);      // --> [(T) -> |7 --> 13| -> (H)] -->
+    printf("Dato sacado: %d (elementos disponibles: %d)\n",data, Queue_size(Q));
     Queue_print(Q);    
-    Queue_dequeue(Q, &data);
-    printf("Dato sacado: %d\n",data);
+    Queue_dequeue(Q, &data);      // --> [(T) -> |7| -> (H)] -->
+    printf("Dato sacado: %d (elementos disponibles: %d)\n",data, Queue_size(Q));
     Queue_print(Q);    
-    Queue_dequeue(Q, &data);
-    printf("Dato sacado: %d\n",data);
+    Queue_dequeue(Q, &data);      // --> [(T) -> | | -> (H)] -->
+    printf("Dato sacado: %d (elementos disponibles: %d)\n",data, Queue_size(Q));
     Queue_print(Q);    
-    Queue_dequeue(Q, &data);
-    printf("Dato sacado: %d\n",data);
-    Queue_print(Q);
-
-    /*
-    Queue_init(&Q);
-    Queue_print(&Q);
-    Queue_enqueue(&Q, 1);
-    Queue_enqueue(&Q, 2);
-    Queue_print(&Q);
-    */
+    Queue_dequeue(Q, &data);      // --> [(T) -> | | -> (H)] -->
+    data = 1;
+    Queue_enqueue(Q, data++);     // --> [(T) -> |1| -> (H)] -->
+    Queue_enqueue(Q, data++);     // --> [(T) -> |2 --> 1| -> (H)] -->
+    Queue_enqueue(Q, data++);     // --> [(T) -> |3 --> 2 --> 1| -> (H)] -->
+    Queue_print(Q);    
+    printf("Vaciando la cola de %d elementos\n",Queue_size(Q));
+    Queue_clear(Q);                // --> [(T) -> | | -> (H)] -->
+    printf("Numero de elementos en la cola: %d\n",Queue_size(Q));
+    Queue_print(Q);   
+    assert(Q!=NULL);
     free(Q);
     return 0;
 }
@@ -161,4 +161,15 @@ void Queue_print(queue *q) {
         } 
         printf("<-- \n");
     } 
+}
+
+void Queue_clear(queue *q) {
+    int dummy_data;
+    while(!Queue_isEmpty(q)) {
+        if(!Queue_dequeue(q, &dummy_data)) {
+            break;
+        }
+    }
+    q->head = NULL;
+    q->tail = NULL;
 }

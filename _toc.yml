@@ -4,9 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
 - file: content/CH_00
 - file: content/CH_01
 - file: content/CH_02
@@ -19,3 +16,4 @@ chapters:
   - file: content/CH_02-S06
   - file: content/CH_02-S07
   - file: content/CH_02-S08
+  - file: content/CH_02-S09

@@ -32,7 +32,6 @@ html:
 
 launch_buttons:
   binderhub_url: ""
-  colab_url: https://colab.research.google.com
 
 parse:
   myst_enable_extensions:
